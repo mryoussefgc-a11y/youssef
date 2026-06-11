@@ -5,7 +5,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'SABIRI_VERSION', '1.0.0' );
+define( 'SABIRI_VERSION', '1.1.0' );
+
+require get_template_directory() . '/inc/demo-import.php';
 
 /* ---------- Supports du thème ---------- */
 add_action( 'after_setup_theme', function () {
