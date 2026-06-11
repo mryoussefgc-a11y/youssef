@@ -80,6 +80,29 @@ add_filter( 'woocommerce_add_to_cart_fragments', function ( $fragments ) {
 	return $fragments;
 } );
 
+/* ---------- Traductions de secours (si le pack FR de WooCommerce n'est pas installé) ---------- */
+add_filter( 'gettext', function ( $translated, $text, $domain ) {
+	if ( 'woocommerce' !== $domain ) return $translated;
+	$fr = array(
+		'Add to cart'        => 'Ajouter au panier',
+		'Read more'          => 'Lire la suite',
+		'%s customer review' => '%s avis client',
+		'%s customer reviews'=> '%s avis clients',
+		'Select options'     => 'Choisir les options',
+		'Sale!'              => 'Promo !',
+		'In stock'           => 'En stock',
+		'Out of stock'       => 'Rupture de stock',
+		'Related products'   => 'Produits similaires',
+		'Description'        => 'Description',
+		'Reviews'            => 'Avis',
+		'Additional information' => 'Informations complémentaires',
+		'Category:'          => 'Catégorie :',
+		'Categories:'        => 'Catégories :',
+		'Shop'               => 'Boutique',
+	);
+	return $fr[ $text ] ?? $translated;
+}, 20, 3 );
+
 /* ---------- Helper : produits mis en avant ---------- */
 function sabiri_get_featured_products( $limit = 6 ) {
 	if ( ! class_exists( 'WooCommerce' ) ) return array();
