@@ -4,16 +4,16 @@
    ========================================================= */
 
 :root {
-	--bg: #06090f;
-	--bg-soft: #0b1220;
-	--card: #0e1626;
-	--card-hover: #131e33;
-	--border: #1d2a44;
-	--text: #e8edf5;
-	--muted: #93a0b8;
-	--accent: #2f7bff;
-	--accent-hover: #5193ff;
-	--gold: #f5b50a;
+	--bg: #050B14;
+	--bg-soft: #071426;
+	--card: #0a1a30;
+	--card-hover: #0e2240;
+	--border: #16294a;
+	--text: #FFFFFF;
+	--muted: #9CA3AF;
+	--accent: #007BFF;
+	--accent-hover: #3395ff;
+	--gold: #D4A441;
 	--radius: 14px;
 	--container: 1240px;
 	--font-head: 'Oswald', sans-serif;
@@ -183,6 +183,42 @@ h1, h2, h3, h4 { font-family: var(--font-head); text-transform: uppercase; lette
 .why-card h3 { font-size: .95rem; }
 .why-card p { color: var(--muted); font-size: .85rem; margin: 0; }
 
+/* ---------- Médailles & Récompenses ---------- */
+.section-medals { background: var(--bg-soft); border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+.gold-title { color: var(--gold); }
+.medals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 28px; }
+.medal-card, .recovery-card {
+	display: flex; flex-direction: column;
+	background: var(--card); border: 1px solid var(--border);
+	border-radius: var(--radius); overflow: hidden;
+	transition: transform .25s, border-color .25s;
+}
+.medal-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+.medal-card img, .recovery-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--bg-soft); }
+.medal-name {
+	font-family: var(--font-head); font-size: .85rem; text-transform: uppercase;
+	color: #fff; padding: 12px 14px; letter-spacing: .04em; text-align: center;
+}
+
+/* ---------- Récupération & Protection ---------- */
+.recovery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 28px; }
+.recovery-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+.recovery-card .medal-name { padding-bottom: 2px; }
+.recovery-card .category-link { text-align: center; padding-bottom: 14px; }
+
+/* ---------- Instagram ---------- */
+.insta-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+.insta-item { border-radius: 10px; overflow: hidden; display: block; }
+.insta-item img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .3s, opacity .3s; }
+.insta-item:hover img { transform: scale(1.07); opacity: .85; }
+
+/* ---------- Animations (reveal au scroll) ---------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+	.reveal { opacity: 1; transform: none; transition: none; }
+}
+
 /* ---------- Trust bar ---------- */
 .trust-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-soft); padding: 26px 0; }
 .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
@@ -312,6 +348,9 @@ h1, h2, h3, h4 { font-family: var(--font-head); text-transform: uppercase; lette
    ========================================================= */
 @media (max-width: 1024px) {
 	.category-grid { grid-template-columns: repeat(3, 1fr); }
+	.medals-grid { grid-template-columns: repeat(2, 1fr); }
+	.recovery-grid { grid-template-columns: repeat(3, 1fr); }
+	.insta-grid { grid-template-columns: repeat(4, 1fr); }
 	.why-grid, .trust-grid { grid-template-columns: repeat(2, 1fr); }
 	.footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -336,6 +375,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); text-transform: uppercase; lette
 	body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 	.category-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+	.recovery-grid { grid-template-columns: repeat(2, 1fr); }
 	.product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 	.woocommerce ul.products[class*="columns-"] li.product { width: 48%; margin-right: 4%; }
 	.woocommerce ul.products[class*="columns-"] li.product:nth-child(2n) { margin-right: 0; }
@@ -344,6 +384,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); text-transform: uppercase; lette
 
 @media (max-width: 480px) {
 	.why-grid, .trust-grid { grid-template-columns: 1fr; }
+	.medals-grid, .recovery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+	.insta-grid { grid-template-columns: repeat(2, 1fr); }
 	.footer-grid { grid-template-columns: 1fr; gap: 24px; }
 	.section-title { font-size: 1.25rem; }
 	.whatsapp-float { width: 50px; height: 50px; bottom: 14px; right: 14px; }

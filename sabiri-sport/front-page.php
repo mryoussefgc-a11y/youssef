@@ -37,7 +37,7 @@ $hero_img = sabiri_opt( 'sabiri_hero_image' );
 		'exclude'    => array( get_option( 'default_product_cat' ) ),
 	) );
 	if ( $cats && ! is_wp_error( $cats ) ) : ?>
-<section class="section section-categories">
+<section class="section section-categories reveal">
 	<div class="container">
 		<div class="category-grid">
 			<?php foreach ( $cats as $cat ) :
@@ -60,7 +60,7 @@ $hero_img = sabiri_opt( 'sabiri_hero_image' );
 <!-- ============ PRODUITS PHARES ============ -->
 <?php $featured = sabiri_get_featured_products( 6 );
 if ( $featured ) : ?>
-<section class="section section-featured">
+<section class="section section-featured reveal">
 	<div class="container">
 		<div class="section-head">
 			<h2 class="section-title"><?php esc_html_e( 'Produits phares', 'sabiri-sport' ); ?></h2>
@@ -89,7 +89,7 @@ if ( $featured ) : ?>
 <?php endif; // WC ?>
 
 <!-- ============ POURQUOI NOUS CHOISIR ============ -->
-<section class="section section-why">
+<section class="section section-why reveal">
 	<div class="container">
 		<h2 class="section-title centered"><?php esc_html_e( 'Pourquoi nous choisir ?', 'sabiri-sport' ); ?></h2>
 		<div class="why-grid">
@@ -116,6 +116,73 @@ if ( $featured ) : ?>
 		</div>
 	</div>
 </section>
+
+<!-- ============ MÉDAILLES & RÉCOMPENSES ============ -->
+<?php if ( function_exists( 'WC' ) ) :
+	$medals_parent = get_term_by( 'slug', sabiri_opt( 'sabiri_medals_slug', 'medailles-trophees' ), 'product_cat' );
+	$medal_cats = $medals_parent ? get_terms( array( 'taxonomy' => 'product_cat', 'parent' => $medals_parent->term_id, 'hide_empty' => false, 'number' => 4 ) ) : array();
+	if ( $medal_cats && ! is_wp_error( $medal_cats ) ) : ?>
+<section class="section section-medals reveal">
+	<div class="container">
+		<h2 class="section-title centered gold-title"><?php esc_html_e( 'Médailles & Récompenses', 'sabiri-sport' ); ?></h2>
+		<div class="medals-grid">
+			<?php foreach ( $medal_cats as $cat ) :
+				$thumb_id = get_term_meta( $cat->term_id, 'thumbnail_id', true ); ?>
+				<a class="medal-card" href="<?php echo esc_url( get_term_link( $cat ) ); ?>">
+					<?php if ( $thumb_id ) echo wp_get_attachment_image( $thumb_id, 'sabiri-category', false, array( 'loading' => 'lazy' ) ); else echo '<span class="category-placeholder"></span>'; ?>
+					<span class="medal-name"><?php echo esc_html( $cat->name ); ?></span>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+	<?php endif; ?>
+
+<!-- ============ RÉCUPÉRATION & PROTECTION ============ -->
+<?php
+	$recov_parent = get_term_by( 'slug', sabiri_opt( 'sabiri_recovery_slug', 'recuperation-protection' ), 'product_cat' );
+	$recov_cats = $recov_parent ? get_terms( array( 'taxonomy' => 'product_cat', 'parent' => $recov_parent->term_id, 'hide_empty' => false, 'number' => 5 ) ) : array();
+	if ( $recov_cats && ! is_wp_error( $recov_cats ) ) : ?>
+<section class="section section-recovery reveal">
+	<div class="container">
+		<h2 class="section-title centered"><?php esc_html_e( 'Récupération & Protection', 'sabiri-sport' ); ?></h2>
+		<div class="recovery-grid">
+			<?php foreach ( $recov_cats as $cat ) :
+				$thumb_id = get_term_meta( $cat->term_id, 'thumbnail_id', true ); ?>
+				<a class="recovery-card" href="<?php echo esc_url( get_term_link( $cat ) ); ?>">
+					<?php if ( $thumb_id ) echo wp_get_attachment_image( $thumb_id, 'sabiri-category', false, array( 'loading' => 'lazy' ) ); else echo '<span class="category-placeholder"></span>'; ?>
+					<span class="medal-name"><?php echo esc_html( $cat->name ); ?></span>
+					<span class="category-link"><?php esc_html_e( 'Voir les produits', 'sabiri-sport' ); ?> →</span>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+	<?php endif; ?>
+<?php endif; ?>
+
+<!-- ============ INSTAGRAM ============ -->
+<?php
+$insta_ids = array_filter( array_map( 'absint', explode( ',', (string) sabiri_opt( 'sabiri_instagram_images', '' ) ) ) );
+if ( $insta_ids ) : ?>
+<section class="section section-instagram reveal">
+	<div class="container">
+		<div class="section-head">
+			<h2 class="section-title"><?php esc_html_e( 'Suivez-nous sur Instagram', 'sabiri-sport' ); ?></h2>
+			<?php if ( sabiri_opt( 'sabiri_instagram' ) ) : ?>
+				<a class="section-more" href="<?php echo esc_url( sabiri_opt( 'sabiri_instagram' ) ); ?>" target="_blank" rel="noopener">@sabiri_sport</a>
+			<?php endif; ?>
+		</div>
+		<div class="insta-grid">
+			<?php foreach ( array_slice( $insta_ids, 0, 8 ) as $img_id ) : ?>
+				<a class="insta-item" href="<?php echo esc_url( sabiri_opt( 'sabiri_instagram', '#' ) ); ?>" target="_blank" rel="noopener">
+					<?php echo wp_get_attachment_image( $img_id, 'sabiri-product', false, array( 'loading' => 'lazy' ) ); ?>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
 
 <!-- ============ CONTENU DE LA PAGE (sections additionnelles via l'éditeur) ============ -->
 <?php

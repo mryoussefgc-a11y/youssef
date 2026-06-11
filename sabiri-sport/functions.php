@@ -108,6 +108,9 @@ add_action( 'customize_register', function ( $wp_customize ) {
 		'sabiri_phone'         => array( __( 'Téléphone affiché', 'sabiri-sport' ), '+212 6 12 34 56 78' ),
 		'sabiri_email'         => array( __( 'Email de contact', 'sabiri-sport' ), 'contact@sabirisport.ma' ),
 		'sabiri_address'       => array( __( 'Adresse', 'sabiri-sport' ), 'Casablanca, Maroc' ),
+		'sabiri_medals_slug'   => array( __( 'Slug catégorie parente — Médailles & Récompenses', 'sabiri-sport' ), 'medailles-trophees' ),
+		'sabiri_recovery_slug' => array( __( 'Slug catégorie parente — Récupération & Protection', 'sabiri-sport' ), 'recuperation-protection' ),
+		'sabiri_instagram_images' => array( __( 'IDs des images Instagram (séparés par des virgules, ex: 12,15,18)', 'sabiri-sport' ), '' ),
 	);
 
 	foreach ( $fields as $id => $data ) {
