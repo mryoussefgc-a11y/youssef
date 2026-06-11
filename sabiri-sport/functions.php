@@ -39,6 +39,14 @@ add_action( 'after_setup_theme', function () {
 	add_image_size( 'sabiri-product', 600, 600, true );
 } );
 
+/* ---------- Désactiver les styles de mise en page par défaut de WooCommerce ---------- */
+// Évite les conflits (float/columns) avec notre grille personnalisée.
+add_filter( 'woocommerce_enqueue_styles', function ( $styles ) {
+	unset( $styles['woocommerce-layout'] );
+	unset( $styles['woocommerce-smallscreen'] );
+	return $styles;
+} );
+
 /* ---------- Scripts & styles ---------- */
 add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'sabiri-fonts', 'https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap', array(), null );
