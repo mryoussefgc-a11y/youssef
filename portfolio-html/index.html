@@ -6,14 +6,15 @@
 
   <!-- ✏️ EDIT: Page title & description (SEO) -->
   <title>Youssef Bekkari — Digital Marketing & Lead Generation Specialist</title>
-  <meta name="description" content="Youssef Bekkari helps businesses generate qualified leads using Meta Ads, landing pages, customer research, and clear marketing systems." />
+  <meta name="description" content="Youssef Bekkari helps businesses and personal brands grow online through lead generation, Meta Ads, customer research, and clear marketing systems." />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <!-- Inter font — change here if you want a different font -->
+  <!-- Fonts: serif for headings (premium editorial look) + sans for body.
+       ✏️ Change fonts here if you want different ones. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Chart.js for the Marketing Skill Map chart (bundled locally, works offline) -->
   <script src="chart.umd.min.js"></script>
@@ -28,18 +29,17 @@
   <header class="navbar" id="navbar">
     <nav class="navbar-inner">
       <!-- ✏️ EDIT: your name / logo -->
-      <a href="#home" class="logo">Youssef <span class="gradient-text">Bekkari</span></a>
+      <a href="#home" class="logo">Youssef Bekkari</a>
 
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#story">Story</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#skills">Skills</a></li>
-        <li><a href="#process">Process</a></li>
         <li><a href="#work">Work</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <!-- ✏️ EDIT: replace #contact with your Calendly link if you have one -->
       <a href="#contact" class="btn btn-primary nav-cta">Book a Call</a>
 
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
@@ -48,9 +48,9 @@
     </nav>
     <div class="mobile-menu" id="mobile-menu">
       <a href="#about">About</a>
+      <a href="#story">Story</a>
       <a href="#services">Services</a>
       <a href="#skills">Skills</a>
-      <a href="#process">Process</a>
       <a href="#work">Work</a>
       <a href="#contact">Contact</a>
       <a href="#contact" class="btn btn-primary">Book a Call</a>
@@ -63,7 +63,6 @@
          1. HERO SECTION
          ============================================================ -->
     <section id="home" class="hero">
-      <div class="glow glow-top"></div>
       <div class="section hero-grid">
         <div class="hero-text">
           <div class="hero-badge reveal">
@@ -77,7 +76,7 @@
 
           <!-- ✏️ EDIT: main headline -->
           <h1 class="reveal">
-            I Build <span class="gradient-text">Lead Generation Systems</span> That Turn Attention Into Customers.
+            I Build <em>Lead Generation Systems</em> That Turn Attention Into Customers.
           </h1>
 
           <!-- ✏️ EDIT: hero description -->
@@ -98,7 +97,6 @@
              (put youssef.jpg in the same folder as this file,
               then DELETE the whole <div class="image-placeholder">...</div>) -->
         <div class="hero-image reveal">
-          <div class="image-glow"></div>
           <div class="image-placeholder">
             <div class="placeholder-avatar">
               <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -121,7 +119,26 @@
     </section>
 
     <!-- ============================================================
-         2. ABOUT ME
+         2. BIG STATEMENT — business & personal branding
+         ✏️ EDIT: this is your main positioning statement
+         ============================================================ -->
+    <section id="statement" class="statement">
+      <div class="section">
+        <p class="statement-label reveal">What I Do Best</p>
+        <h2 class="statement-text reveal">
+          I help businesses <em>grow online</em> — and I help people build a strong
+          <em>personal brand</em> that attracts clients, trust, and real opportunities.
+        </h2>
+        <p class="statement-sub reveal">
+          From local businesses that need more qualified leads, to founders, coaches, doctors and
+          experts who want to become a reference in their field online — I build the strategy,
+          the content angles, and the marketing systems that make it happen.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. ABOUT ME
          ============================================================ -->
     <section id="about" class="alt-bg">
       <div class="section">
@@ -147,36 +164,74 @@
     </section>
 
     <!-- ============================================================
-         3. MY STORY
+         4. MY STORY — year tabs (2023 → 2026)
+         ✏️ EDIT: change the text of each year below.
+         To add a year: copy a <button> AND its matching
+         <div class="story-panel" data-year="..."> block.
          ============================================================ -->
     <section id="story">
-      <div class="section story-grid">
-        <div class="reveal">
+      <div class="section">
+        <div class="reveal center">
           <span class="section-label">The Journey</span>
           <h2>My Story</h2>
-          <!-- ✏️ EDIT: story text -->
           <p class="section-subtitle">
-            I started by studying how businesses attract customers online, why some ads convert
-            and others fail, and how customer problems can become strong marketing angles. Over
-            time, I built skills in Meta Ads, market research, copywriting, landing pages, and
-            lead generation systems. Today, my focus is helping businesses turn attention into
-            qualified leads and real opportunities.
+            How I went from studying why ads work, to building marketing systems
+            for businesses and personal brands.
           </p>
         </div>
 
-        <!-- ✏️ EDIT: timeline steps -->
-        <ul class="timeline">
-          <li class="reveal">Started learning digital marketing</li>
-          <li class="reveal">Studied ads, competitors, and customer psychology</li>
-          <li class="reveal">Practiced lead generation and funnels</li>
-          <li class="reveal">Built a problem-solving marketing approach</li>
-          <li class="reveal">Now helping businesses grow through clear marketing systems</li>
-        </ul>
+        <!-- Year tabs -->
+        <div class="story-tabs reveal" id="story-tabs">
+          <button class="story-tab active" data-year="2023">2023</button>
+          <button class="story-tab" data-year="2024">2024</button>
+          <button class="story-tab" data-year="2025">2025</button>
+          <button class="story-tab" data-year="2026">2026</button>
+        </div>
+
+        <!-- Year content panels -->
+        <div class="story-panels reveal">
+          <div class="card story-panel active" data-year="2023">
+            <span class="story-year">2023</span>
+            <h3>The Foundation</h3>
+            <p>
+              Started learning digital marketing seriously. I studied how businesses attract
+              customers online, why some ads convert and others fail, and how customer problems
+              can become strong marketing angles.
+            </p>
+          </div>
+          <div class="card story-panel" data-year="2024">
+            <span class="story-year">2024</span>
+            <h3>Practice &amp; Research</h3>
+            <p>
+              Went deep into Meta Ads, market research, competitor analysis, and customer
+              psychology. Built my first landing pages and funnels, and learned how to write
+              copy that speaks to real pain points.
+            </p>
+          </div>
+          <div class="card story-panel" data-year="2025">
+            <span class="story-year">2025</span>
+            <h3>Building Systems</h3>
+            <p>
+              Focused on complete lead generation systems: ads, landing pages, WhatsApp
+              follow-up, and tracking. Started helping people build their personal brand
+              online and turn their expertise into opportunities.
+            </p>
+          </div>
+          <div class="card story-panel" data-year="2026">
+            <span class="story-year">2026</span>
+            <h3>Helping Brands Grow</h3>
+            <p>
+              Today, my focus is helping businesses and personal brands turn attention into
+              qualified leads and real growth — with clear strategy, strong positioning, and
+              marketing systems that bring measurable results.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============================================================
-         4. SERVICES
+         5. SERVICES
          ============================================================ -->
     <section id="services" class="alt-bg">
       <div class="section">
@@ -184,7 +239,8 @@
           <span class="section-label">What I Do</span>
           <h2>Services</h2>
           <p class="section-subtitle">
-            Everything a business needs to attract attention and turn it into qualified leads.
+            Everything a business or a personal brand needs to attract attention
+            and turn it into qualified leads.
           </p>
         </div>
 
@@ -206,9 +262,9 @@
             <p>Competitor analysis, customer pain point research, Reddit research, trend research, and offer positioning.</p>
           </div>
           <div class="card service-card reveal">
-            <div class="service-icon">🖥️</div>
-            <h3>Landing Pages</h3>
-            <p>Modern pages focused on trust, clarity, conversion, and appointment booking.</p>
+            <div class="service-icon">👤</div>
+            <h3>Personal Branding</h3>
+            <p>Positioning, content strategy, and online presence for founders, coaches, and experts who want to stand out.</p>
           </div>
           <div class="card service-card reveal">
             <div class="service-icon">✍️</div>
@@ -225,7 +281,7 @@
     </section>
 
     <!-- ============================================================
-         5. SKILLS (animated progress bars)
+         6. SKILLS (animated progress bars)
          ✏️ EDIT: to change a skill % update BOTH:
             - the number in the <span> text
             - data-value="..." on the .bar-fill div
@@ -282,7 +338,7 @@
     </section>
 
     <!-- ============================================================
-         6. MARKETING SKILL MAP (Chart.js)
+         7. MARKETING SKILL MAP (Chart.js)
          ✏️ EDIT: chart data is in script.js (chartLabels / chartValues)
          ============================================================ -->
     <section id="skill-map" class="alt-bg">
@@ -300,7 +356,7 @@
     </section>
 
     <!-- ============================================================
-         7. MY PROCESS
+         8. MY PROCESS
          ============================================================ -->
     <section id="process">
       <div class="section">
@@ -313,25 +369,25 @@
         <div class="grid grid-4">
           <div class="card process-card reveal">
             <span class="process-bg">01</span>
-            <span class="process-num gradient-text">01</span>
+            <span class="process-num">01</span>
             <h3>Research</h3>
             <p>I study the market, competitors, customers, and problems.</p>
           </div>
           <div class="card process-card reveal">
             <span class="process-bg">02</span>
-            <span class="process-num gradient-text">02</span>
+            <span class="process-num">02</span>
             <h3>Strategy</h3>
             <p>I build a clear offer, targeting plan, and creative angles.</p>
           </div>
           <div class="card process-card reveal">
             <span class="process-bg">03</span>
-            <span class="process-num gradient-text">03</span>
+            <span class="process-num">03</span>
             <h3>Launch</h3>
             <p>I launch campaigns, landing pages, tracking, and lead systems.</p>
           </div>
           <div class="card process-card reveal">
             <span class="process-bg">04</span>
-            <span class="process-num gradient-text">04</span>
+            <span class="process-num">04</span>
             <h3>Optimize</h3>
             <p>I analyze results, improve creatives, reduce cost per lead, and scale what works.</p>
           </div>
@@ -340,7 +396,7 @@
     </section>
 
     <!-- ============================================================
-         8. INDUSTRIES
+         9. INDUSTRIES
          ============================================================ -->
     <section id="industries" class="alt-bg">
       <div class="section">
@@ -367,7 +423,7 @@
     </section>
 
     <!-- ============================================================
-         9. TOOLS
+         10. TOOLS
          ============================================================ -->
     <section id="tools">
       <div class="section">
@@ -393,83 +449,76 @@
     </section>
 
     <!-- ============================================================
-         10. SELECTED WORK / CASE STUDIES
-         🖼️ PROJECT IMAGES: replace each
-            <div class="project-placeholder">...</div>
-            with: <img src="project-1.jpg" alt="..." class="project-img" />
+         11. SELECTED WORK — cards styled like the reference image
+         (title, description, DATE / CATEGORY rows, black pill button)
+         ✏️ EDIT: titles, text, dates and categories below
          ============================================================ -->
     <section id="work" class="alt-bg">
       <div class="section">
-        <div class="reveal center">
-          <span class="section-label">Portfolio</span>
+        <div class="reveal">
           <h2>Selected Work</h2>
-          <p class="section-subtitle">
-            Case studies showing how research, ads, and landing pages come together.
-          </p>
         </div>
 
-        <div class="grid grid-3">
-          <article class="card project-card reveal">
-            <div class="project-placeholder">
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A1.5 1.5 0 0021.75 19.5V4.5A1.5 1.5 0 0020.25 3H3.75A1.5 1.5 0 002.25 4.5v15A1.5 1.5 0 003.75 21z" />
-              </svg>
-              <p>Project Image</p>
-            </div>
-            <div class="project-body">
-              <span class="project-tag">Lead Generation</span>
+        <div class="grid grid-3 work-grid">
+          <article class="card release-card reveal">
+            <div class="release-body">
               <h3>Lead Generation System for Local Business</h3>
               <p>Qualified leads through Meta Ads + WhatsApp follow-up.</p>
             </div>
+            <div class="release-meta">
+              <div class="release-row"><span>DATE</span><span>2025</span></div>
+              <div class="release-row"><span>CATEGORY</span><span>Lead Generation</span></div>
+            </div>
+            <a href="#contact" class="btn btn-primary release-btn">View Case Study</a>
           </article>
 
-          <article class="card project-card reveal">
-            <div class="project-placeholder">
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A1.5 1.5 0 0021.75 19.5V4.5A1.5 1.5 0 0020.25 3H3.75A1.5 1.5 0 002.25 4.5v15A1.5 1.5 0 003.75 21z" />
-              </svg>
-              <p>Project Image</p>
-            </div>
-            <div class="project-body">
-              <span class="project-tag">Research</span>
+          <article class="card release-card reveal">
+            <div class="release-body">
               <h3>Market Research &amp; Competitor Analysis</h3>
               <p>Clear customer pain points, angles, and offer positioning.</p>
             </div>
+            <div class="release-meta">
+              <div class="release-row"><span>DATE</span><span>2025</span></div>
+              <div class="release-row"><span>CATEGORY</span><span>Research</span></div>
+            </div>
+            <a href="#contact" class="btn btn-primary release-btn">View Case Study</a>
           </article>
 
-          <article class="card project-card reveal">
-            <div class="project-placeholder">
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A1.5 1.5 0 0021.75 19.5V4.5A1.5 1.5 0 0020.25 3H3.75A1.5 1.5 0 002.25 4.5v15A1.5 1.5 0 003.75 21z" />
-              </svg>
-              <p>Project Image</p>
-            </div>
-            <div class="project-body">
-              <span class="project-tag">Conversion</span>
+          <article class="card release-card reveal">
+            <div class="release-body">
               <h3>Landing Page Optimization</h3>
               <p>Conversion-focused landing page structure built for trust and clarity.</p>
             </div>
+            <div class="release-meta">
+              <div class="release-row"><span>DATE</span><span>2026</span></div>
+              <div class="release-row"><span>CATEGORY</span><span>Conversion</span></div>
+            </div>
+            <a href="#contact" class="btn btn-primary release-btn">View Case Study</a>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         11. CONTACT
-         ✏️ EDIT: replace the email and WhatsApp number below.
-         For the WhatsApp link use digits only: https://wa.me/2126XXXXXXXX
+         12. CONTACT — info + form (name, email, phone)
+         ✏️ EDIT: email & WhatsApp below AND in script.js
+            (WHATSAPP_NUMBER + CONTACT_EMAIL at the top of script.js —
+             the form sends its message there)
          ============================================================ -->
     <section id="contact" class="contact">
-      <div class="glow glow-bottom"></div>
       <div class="section">
-        <div class="card contact-card reveal">
+        <div class="reveal center">
           <span class="section-label">Get In Touch</span>
           <h2>Let's Build Your Growth System</h2>
-          <p class="section-subtitle center-text">
-            If you want more leads, better ads, and a clear marketing system, let’s talk.
+          <p class="section-subtitle">
+            If you want more leads, better ads, a strong personal brand, and a clear
+            marketing system — let’s talk.
           </p>
+        </div>
 
-          <div class="contact-grid">
+        <div class="contact-layout">
+          <!-- Contact info -->
+          <div class="contact-info reveal">
             <a href="mailto:your-email@example.com" class="card contact-item">
               <p class="contact-label">Email</p>
               <p class="contact-value">your-email@example.com</p>
@@ -484,7 +533,27 @@
             </div>
           </div>
 
-          <a href="mailto:your-email@example.com" class="btn btn-primary contact-btn">Contact Me ✉️</a>
+          <!-- Contact form -->
+          <form class="card contact-form reveal" id="contact-form">
+            <div class="form-field">
+              <label for="form-name">Full Name</label>
+              <input type="text" id="form-name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-field">
+              <label for="form-email">Email</label>
+              <input type="email" id="form-email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-field">
+              <label for="form-phone">Phone Number</label>
+              <input type="tel" id="form-phone" name="phone" placeholder="+212 6XX XXX XXX" required />
+            </div>
+            <div class="form-field">
+              <label for="form-message">Message <span class="optional">(optional)</span></label>
+              <textarea id="form-message" name="message" rows="4" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Contact Me →</button>
+            <p class="form-note" id="form-note"></p>
+          </form>
         </div>
       </div>
     </section>

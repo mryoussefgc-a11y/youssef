@@ -3,6 +3,14 @@
 // ============================================================
 
 // ------------------------------------------------------------
+// ✏️ EDIT: YOUR CONTACT DETAILS — the form sends here.
+// WhatsApp number: digits only, with country code, no spaces.
+// Example: '212612345678'
+// ------------------------------------------------------------
+const WHATSAPP_NUMBER = '212XXXXXXXXX'
+const CONTACT_EMAIL = 'your-email@example.com'
+
+// ------------------------------------------------------------
 // Navbar: solid background after scrolling
 // ------------------------------------------------------------
 const navbar = document.getElementById('navbar')
@@ -21,7 +29,6 @@ menuToggle.addEventListener('click', () => {
   mobileMenu.classList.toggle('open')
 })
 
-// Close the menu when a link is clicked
 mobileMenu.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => {
     menuToggle.classList.remove('open')
@@ -47,6 +54,21 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
 
 // ------------------------------------------------------------
+// My Story — year tabs (2023 / 2024 / 2025 / 2026)
+// Clicking a year shows its panel.
+// ------------------------------------------------------------
+const storyTabs = document.querySelectorAll('.story-tab')
+const storyPanels = document.querySelectorAll('.story-panel')
+
+storyTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const year = tab.dataset.year
+    storyTabs.forEach((t) => t.classList.toggle('active', t === tab))
+    storyPanels.forEach((p) => p.classList.toggle('active', p.dataset.year === year))
+  })
+})
+
+// ------------------------------------------------------------
 // Animated skill bars (fill when scrolled into view)
 // ------------------------------------------------------------
 const barObserver = new IntersectionObserver(
@@ -65,7 +87,47 @@ const barObserver = new IntersectionObserver(
 document.querySelectorAll('.bar-fill').forEach((el) => barObserver.observe(el))
 
 // ------------------------------------------------------------
-// Marketing Skill Map chart (Chart.js)
+// Contact form (name, email, phone, message)
+// On submit it opens WhatsApp with the details pre-filled.
+// If WHATSAPP_NUMBER is not set yet, it falls back to email.
+// ------------------------------------------------------------
+const form = document.getElementById('contact-form')
+const formNote = document.getElementById('form-note')
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const name = document.getElementById('form-name').value.trim()
+  const email = document.getElementById('form-email').value.trim()
+  const phone = document.getElementById('form-phone').value.trim()
+  const message = document.getElementById('form-message').value.trim()
+
+  const text =
+    `Hello Youssef! I'm interested in working with you.\n\n` +
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `Phone: ${phone}` +
+    (message ? `\n\nMessage: ${message}` : '')
+
+  // Use WhatsApp if the number is configured, otherwise email
+  if (!WHATSAPP_NUMBER.includes('X')) {
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
+      '_blank'
+    )
+    formNote.textContent = 'Opening WhatsApp… ✓'
+  } else {
+    window.location.href =
+      `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('New project inquiry from ' + name)}` +
+      `&body=${encodeURIComponent(text)}`
+    formNote.textContent = 'Opening your email app… ✓'
+  }
+
+  form.reset()
+})
+
+// ------------------------------------------------------------
+// Marketing Skill Map chart (Chart.js) — light theme
 // ✏️ EDIT: change your skill names and values here
 // ------------------------------------------------------------
 const chartLabels = [
@@ -85,10 +147,10 @@ const canvas = document.getElementById('skillChart')
 function buildChart() {
   const ctx = canvas.getContext('2d')
 
-  // Gradient fill for the bars (accent → soft accent)
+  // Gradient fill for the bars (black → terracotta accent)
   const gradient = ctx.createLinearGradient(0, 400, 0, 0)
-  gradient.addColorStop(0, '#2563EB')
-  gradient.addColorStop(1, '#38BDF8')
+  gradient.addColorStop(0, '#141413')
+  gradient.addColorStop(1, '#CC785C')
 
   new Chart(ctx, {
     type: 'bar',
@@ -114,11 +176,9 @@ function buildChart() {
       plugins: {
         legend: { display: false },
         tooltip: {
-          backgroundColor: 'rgba(11, 15, 25, 0.95)',
-          borderColor: 'rgba(255, 255, 255, 0.1)',
-          borderWidth: 1,
-          titleColor: '#A1A1AA',
-          bodyColor: '#38BDF8',
+          backgroundColor: '#141413',
+          titleColor: '#A8A49B',
+          bodyColor: '#E0B084',
           bodyFont: { size: 15, weight: 'bold' },
           padding: 12,
           cornerRadius: 10,
@@ -131,14 +191,14 @@ function buildChart() {
       scales: {
         x: {
           grid: { display: false },
-          ticks: { color: '#A1A1AA', font: { size: 11 } },
-          border: { color: 'rgba(255, 255, 255, 0.1)' },
+          ticks: { color: '#5E5A52', font: { size: 11 } },
+          border: { color: 'rgba(20, 20, 19, 0.15)' },
         },
         y: {
           min: 0,
           max: 100,
-          grid: { color: 'rgba(255, 255, 255, 0.07)' },
-          ticks: { color: '#A1A1AA', font: { size: 12 } },
+          grid: { color: 'rgba(20, 20, 19, 0.07)' },
+          ticks: { color: '#5E5A52', font: { size: 12 } },
           border: { display: false },
         },
       },
@@ -146,8 +206,7 @@ function buildChart() {
   })
 }
 
-// Build the chart only when it scrolls into view (so the
-// animation plays in front of the visitor)
+// Build the chart only when it scrolls into view
 if (canvas && typeof Chart !== 'undefined') {
   const chartObserver = new IntersectionObserver(
     (entries) => {
