@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Global styles — premium dark theme
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-base text-primary font-sans antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  @apply bg-accent/40 text-white;
+}
+
+/* Thin premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@layer components {
+  /* Glassmorphism card — used across all sections */
+  .glass-card {
+    @apply rounded-2xl border border-white/10 backdrop-blur-md;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-300 hover:border-accent/40 hover:-translate-y-1;
+  }
+
+  .glass-card-hover:hover {
+    box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.35);
+  }
+
+  /* Section container */
+  .section {
+    @apply mx-auto w-full max-w-6xl px-6 py-24 md:py-32;
+  }
+
+  /* Gradient text for headings */
+  .gradient-text {
+    @apply bg-gradient-to-r from-accent to-accent-soft bg-clip-text text-transparent;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5
+      text-sm font-semibold text-white transition-all duration-300
+      hover:bg-accent-soft hover:shadow-[0_0_30px_rgba(56,189,248,0.4)];
+  }
+
+  /* Secondary (outline) button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15
+      bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md
+      transition-all duration-300 hover:border-white/40 hover:bg-white/10;
+  }
+
+  /* Small label above section titles */
+  .section-label {
+    @apply mb-3 inline-block text-xs font-semibold uppercase tracking-[0.25em] text-accent-soft;
+  }
+}
