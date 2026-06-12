@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Youssef Bekkari — Poster</title>
+<!--
+  ============================================================
+  POSTER 1080 x 1350 (Instagram 4:5)
+  Same brand as the website: cream / black / terracotta + serif
+
+  🖼️ YOUR PHOTO: put your photo next to this file, name it
+     me.jpg  — it appears automatically in the arch window.
+     (Best: portrait photo, dark clothes, plain background)
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F0EEE6;
+    --bg-strip: #F7EFD9;
+    --card: #E3DDD1;
+    --text: #141413;
+    --muted: #5E5A52;
+    --accent: #CC785C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1350px;
+    background:
+      radial-gradient(900px 500px at 50% -100px, var(--bg-strip), transparent 70%),
+      var(--bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Thin rounded frame, like the reference */
+  .frame {
+    position: absolute;
+    inset: 42px;
+    border: 2px solid rgba(20, 20, 19, 0.35);
+    border-radius: 56px;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Handle top */
+  .handle {
+    position: absolute;
+    top: 92px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    z-index: 6;
+  }
+  .handle b { color: var(--text); font-weight: 700; }
+
+  /* Asterisk burst behind the photo */
+  .burst {
+    position: absolute;
+    top: 170px;
+    left: 48px;
+    width: 330px;
+    height: 330px;
+    z-index: 1;
+    opacity: 0.9;
+  }
+
+  /* Pixel smiley accent */
+  .pixel {
+    position: absolute;
+    top: 330px;
+    right: 105px;
+    width: 170px;
+    height: 170px;
+    z-index: 1;
+  }
+
+  /* Photo arch window */
+  .photo {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 540px;
+    height: 760px;
+    border-radius: 270px 270px 28px 28px; /* arch shape */
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--card), #D8CFBE 55%, rgba(204,120,92,0.45));
+    border: 2px solid rgba(20, 20, 19, 0.25);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+  }
+
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo .ph-icon {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    border: 2px solid rgba(20,20,19,0.25);
+    background: rgba(255,255,255,0.35);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .photo .ph-icon svg {
+    width: 64px; height: 64px;
+    fill: none; stroke: rgba(20,20,19,0.45);
+    stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .photo p { font-size: 24px; font-weight: 600; color: rgba(20,20,19,0.5); }
+  .photo span { font-size: 17px; color: rgba(20,20,19,0.35); }
+
+  /* Big name bottom-left */
+  .name {
+    position: absolute;
+    left: 95px;
+    bottom: 300px;
+    z-index: 4;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 700;
+    font-size: 118px;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  .name em {
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .role {
+    position: absolute;
+    top: 132px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* Ticket card bottom-right */
+  .ticket {
+    position: absolute;
+    right: 84px;
+    bottom: 84px;
+    width: 640px;
+    height: 240px;
+    display: flex;
+    border-radius: 22px;
+    overflow: hidden;
+    z-index: 4;
+    box-shadow: 0 30px 60px -25px rgba(20, 20, 19, 0.45);
+  }
+
+  .ticket-main {
+    flex: 1;
+    background: var(--accent);
+    color: #FBF7EF;
+    padding: 38px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ticket-main h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 29px;
+    font-weight: 500;
+    line-height: 1.32;
+    letter-spacing: 0.01em;
+  }
+  .ticket-main h2 b { font-weight: 700; }
+
+  .ticket-date {
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.92;
+  }
+
+  .ticket-stub {
+    width: 170px;
+    background: #FBF7EF;
+    border-left: 3px dashed rgba(20, 20, 19, 0.25);
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .barcode {
+    width: 120px;
+    height: 64px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--text) 0 3px, transparent 3px 6px,
+      var(--text) 6px 11px, transparent 11px 13px,
+      var(--text) 13px 15px, transparent 15px 20px
+    );
+  }
+
+  .ticket-stub .site {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    line-height: 1.4;
+  }
+  .ticket-stub .site span {
+    display: block;
+    font-weight: 500;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .ticket-vertical {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+    position: absolute;
+    right: 270px;
+    bottom: 120px;
+    z-index: 5;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+  <div class="frame"></div>
+
+  <!-- ✏️ EDIT: your handle / username -->
+  <p class="handle">@YOUSSEF<b>BEKKARI</b></p>
+  <p class="role">Digital Marketing · Lead Generation</p>
+
+  <!-- Asterisk burst (terracotta) -->
+  <svg class="burst" viewBox="0 0 100 100">
+    <g fill="#CC785C">
+      <path d="M50 8 L57 42 L43 42 Z" transform="rotate(0 50 50)"/>
+      <path d="M50 8 L57 42 L43 42 Z" transform="rotate(60 50 50)"/>
+      <path d="M50 8 L57 42 L43 42 Z" transform="rotate(120 50 50)"/>
+      <path d="M50 8 L57 42 L43 42 Z" transform="rotate(180 50 50)"/>
+      <path d="M50 8 L57 42 L43 42 Z" transform="rotate(240 50 50)"/>
+      <path d="M50 8 L57 42 L43 42 Z" transform="rotate(300 50 50)"/>
+    </g>
+  </svg>
+
+  <!-- Pixel smiley (black + terracotta shadow) -->
+  <svg class="pixel" viewBox="0 0 14 14">
+    <g fill="#CC785C">
+      <rect x="4" y="1" width="8" height="2"/><rect x="2" y="3" width="2" height="2"/>
+      <rect x="12" y="3" width="2" height="8"/><rect x="2" y="11" width="10" height="2"/>
+      <rect x="1" y="5" width="1" height="6"/>
+    </g>
+    <g fill="#141413">
+      <rect x="3" y="0" width="8" height="2"/><rect x="1" y="2" width="2" height="2"/>
+      <rect x="11" y="2" width="2" height="2"/><rect x="0" y="4" width="2" height="6"/>
+      <rect x="12" y="4" width="2" height="6"/><rect x="1" y="10" width="2" height="2"/>
+      <rect x="11" y="10" width="2" height="2"/><rect x="3" y="12" width="8" height="2"/>
+      <rect x="4" y="4" width="2" height="3"/><rect x="8" y="4" width="2" height="3"/>
+      <rect x="4" y="8" width="6" height="1.6"/>
+    </g>
+  </svg>
+
+  <!-- 🖼️ PHOTO: when me.jpg exists next to this file it shows
+       automatically. Otherwise the placeholder stays visible. -->
+  <div class="photo">
+    <img src="me.jpg" alt="" onerror="this.remove()" />
+    <div class="ph-icon">
+      <svg viewBox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 0115 0"/></svg>
+    </div>
+    <p>Your Photo Here</p>
+    <span>Add me.jpg next to this file</span>
+  </div>
+
+  <!-- ✏️ EDIT: name + role -->
+  <h1 class="name">Youssef<br /><em>Bekkari</em></h1>
+
+  <!-- ✏️ EDIT: ticket text -->
+  <div class="ticket">
+    <div class="ticket-main">
+      <h2>A <b>lead generation</b> system made for businesses that want to <b>grow, learn</b> &amp; <b>evolve.</b></h2>
+      <p class="ticket-date">Book a call · Morocco</p>
+    </div>
+    <div class="ticket-stub">
+      <div class="barcode"></div>
+      <p class="site">@youssefbekkari<span>Digital Marketing</span></p>
+    </div>
+  </div>
+
+  <script>
+    // Hide the placeholder content when the photo loads
+    const img = document.querySelector('.photo img')
+    if (img) img.addEventListener('load', () => {
+      document.querySelectorAll('.photo .ph-icon, .photo p, .photo span').forEach(el => el.remove())
+    })
+  </script>
+</body>
+</html>
