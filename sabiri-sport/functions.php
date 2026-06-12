@@ -5,7 +5,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'SABIRI_VERSION', '1.1.3' );
+define( 'SABIRI_VERSION', '1.1.4' );
 
 require get_template_directory() . '/inc/demo-import.php';
 
