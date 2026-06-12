@@ -7,6 +7,7 @@
   <!-- ✏️ EDIT: Page title & description (SEO) -->
   <title>Youssef Bekkari — Digital Marketing & Lead Generation Specialist</title>
   <meta name="description" content="Youssef Bekkari helps businesses and personal brands grow online through lead generation, Meta Ads, customer research, and clear marketing systems." />
+  <meta name="theme-color" content="#F0EEE6" />
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
@@ -17,11 +18,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Chart.js for the Marketing Skill Map chart (bundled locally, works offline) -->
-  <script src="chart.umd.min.js"></script>
+  <script src="chart.umd.min.js" defer></script>
 
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- ============================================================
+       ICON LIBRARY (SVG sprite — used instead of emojis)
+       Icons inherit the site colors automatically.
+       ============================================================ -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+    <symbol id="i-trending" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-magnet" viewBox="0 0 24 24"><path d="m6 15-4-4 6.75-6.77a7.79 7.79 0 0 1 11 11L13 22l-4-4 6.39-6.36a2.14 2.14 0 0 0-3-3L6 15"/><path d="m5 8 4 4"/><path d="m12 15 4 4"/></symbol>
+    <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+    <symbol id="i-grad" viewBox="0 0 24 24"><path d="M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.57 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h5v5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2z"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.94 15.5a2 2 0 0 0-1.44-1.44L2.37 12.5a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0l1.58 6.14a2 2 0 0 0 1.44 1.44l6.13 1.58a.5.5 0 0 1 0 .96l-6.13 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></symbol>
+    <symbol id="i-dumbbell" viewBox="0 0 24 24"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.66 21.49a2 2 0 1 1-2.83-2.83l-1.77 1.77a2 2 0 1 1-2.83-2.83l6.37-6.37a2 2 0 1 1 2.83 2.83l-1.77 1.77a2 2 0 1 1 2.83 2.83z"/><path d="m21.5 21.5-1.4-1.4"/><path d="M3.9 3.9 2.5 2.5"/><path d="M6.4 12.77a2 2 0 1 1-2.83-2.83l1.77-1.77a2 2 0 1 1-2.83-2.83l2.83-2.83a2 2 0 1 1 2.83 2.83l1.77-1.77a2 2 0 1 1 2.83 2.83z"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+  </svg>
 
   <!-- ============================================================
        NAVBAR
@@ -108,11 +135,11 @@
           </div>
           <div class="float-badge float-badge-1">
             <p class="float-label">Focus</p>
-            <p class="float-value">Qualified Leads 🎯</p>
+            <p class="float-value"><svg class="icon icon-sm"><use href="#i-target"/></svg> Qualified Leads</p>
           </div>
           <div class="float-badge float-badge-2">
             <p class="float-label">Approach</p>
-            <p class="float-value">Data Driven 📊</p>
+            <p class="float-value"><svg class="icon icon-sm"><use href="#i-chart"/></svg> Data Driven</p>
           </div>
         </div>
       </div>
@@ -155,10 +182,10 @@
         </div>
 
         <div class="grid grid-4 traits">
-          <div class="card trait-card reveal"><span class="trait-icon">🧩</span><p>Problem Solver</p></div>
-          <div class="card trait-card reveal"><span class="trait-icon">📊</span><p>Data Driven</p></div>
-          <div class="card trait-card reveal"><span class="trait-icon">🎯</span><p>Lead Generation Focused</p></div>
-          <div class="card trait-card reveal"><span class="trait-icon">🚀</span><p>Growth Mindset</p></div>
+          <div class="card trait-card reveal"><span class="trait-icon"><svg class="icon"><use href="#i-bulb"/></svg></span><p>Problem Solver</p></div>
+          <div class="card trait-card reveal"><span class="trait-icon"><svg class="icon"><use href="#i-chart"/></svg></span><p>Data Driven</p></div>
+          <div class="card trait-card reveal"><span class="trait-icon"><svg class="icon"><use href="#i-target"/></svg></span><p>Lead Generation Focused</p></div>
+          <div class="card trait-card reveal"><span class="trait-icon"><svg class="icon"><use href="#i-trending"/></svg></span><p>Growth Mindset</p></div>
         </div>
       </div>
     </section>
@@ -247,32 +274,32 @@
         <!-- ✏️ EDIT: service cards -->
         <div class="grid grid-3">
           <div class="card service-card reveal">
-            <div class="service-icon">🧲</div>
+            <div class="service-icon"><svg class="icon"><use href="#i-magnet"/></svg></div>
             <h3>Lead Generation</h3>
             <p>Facebook &amp; Instagram Ads, lead forms, landing pages, WhatsApp follow-up, and lead tracking.</p>
           </div>
           <div class="card service-card reveal">
-            <div class="service-icon">📣</div>
+            <div class="service-icon"><svg class="icon"><use href="#i-megaphone"/></svg></div>
             <h3>Meta Ads</h3>
             <p>Campaign structure, audience testing, creative testing, optimization, and reporting.</p>
           </div>
           <div class="card service-card reveal">
-            <div class="service-icon">🔍</div>
+            <div class="service-icon"><svg class="icon"><use href="#i-search"/></svg></div>
             <h3>Market Research</h3>
             <p>Competitor analysis, customer pain point research, Reddit research, trend research, and offer positioning.</p>
           </div>
           <div class="card service-card reveal">
-            <div class="service-icon">👤</div>
+            <div class="service-icon"><svg class="icon"><use href="#i-user"/></svg></div>
             <h3>Personal Branding</h3>
             <p>Positioning, content strategy, and online presence for founders, coaches, and experts who want to stand out.</p>
           </div>
           <div class="card service-card reveal">
-            <div class="service-icon">✍️</div>
+            <div class="service-icon"><svg class="icon"><use href="#i-pen"/></svg></div>
             <h3>Copywriting</h3>
             <p>Ad copy, hooks, headlines, offers, and messages based on customer psychology.</p>
           </div>
           <div class="card service-card reveal">
-            <div class="service-icon">🧭</div>
+            <div class="service-icon"><svg class="icon"><use href="#i-compass"/></svg></div>
             <h3>Marketing Strategy</h3>
             <p>Clear acquisition plans for local businesses, e-commerce brands, training centers, real estate, clinics, and service businesses.</p>
           </div>
@@ -409,15 +436,15 @@
         </div>
 
         <div class="grid grid-3 industries">
-          <div class="card industry-card reveal"><span class="industry-icon">🏠</span><p>Real Estate</p></div>
-          <div class="card industry-card reveal"><span class="industry-icon">🎓</span><p>Training Centers</p></div>
-          <div class="card industry-card reveal"><span class="industry-icon">✈️</span><p>Study Abroad Agencies</p></div>
-          <div class="card industry-card reveal"><span class="industry-icon">☀️</span><p>Solar Energy Companies</p></div>
-          <div class="card industry-card reveal"><span class="industry-icon">🏥</span><p>Clinics</p></div>
-          <div class="card industry-card reveal"><span class="industry-icon">💅</span><p>Beauty Salons</p></div>
-          <div class="card industry-card reveal"><span class="industry-icon">💪</span><p>Gyms</p></div>
-          <div class="card industry-card reveal"><span class="industry-icon">🛒</span><p>E-commerce Brands</p></div>
-          <div class="card industry-card reveal"><span class="industry-icon">🔧</span><p>Local Services</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-home"/></svg></span><p>Real Estate</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-grad"/></svg></span><p>Training Centers</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-plane"/></svg></span><p>Study Abroad Agencies</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-sun"/></svg></span><p>Solar Energy Companies</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-cross"/></svg></span><p>Clinics</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-sparkles"/></svg></span><p>Beauty Salons</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-dumbbell"/></svg></span><p>Gyms</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-cart"/></svg></span><p>E-commerce Brands</p></div>
+          <div class="card industry-card reveal"><span class="industry-icon"><svg class="icon"><use href="#i-wrench"/></svg></span><p>Local Services</p></div>
         </div>
       </div>
     </section>
@@ -570,6 +597,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
