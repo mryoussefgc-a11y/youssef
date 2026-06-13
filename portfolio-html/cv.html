@@ -260,12 +260,12 @@
   <!-- ============ SIDEBAR ============ -->
   <aside class="side">
 
-    <!-- Photo (loaded from your site; shows YB if it can't load) -->
-    <!-- 🖼️ PHOTO SPOT — empty for now. Later, put your photo here:
-         replace the <span>YB</span> line with:
-         <img src="your-photo.jpg" alt="Youssef Bekkari" /> -->
+    <!-- 🖼️ PHOTO — loaded from your site (youssefbekkari.png).
+         If it can't load, the YB circle shows instead. -->
     <div class="photo-wrap">
-      <span class="photo-fallback">YB</span>
+      <img src="https://mediumseagreen-deer-347855.hostingersite.com/youssefbekkari.png" alt="Youssef Bekkari"
+           onerror="this.remove(); document.querySelector('.photo-fallback').style.display='block'" />
+      <span class="photo-fallback" style="display:none">YB</span>
     </div>
 
     <!-- ✏️ EDIT: your contact info -->
