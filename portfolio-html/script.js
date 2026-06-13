@@ -7,8 +7,8 @@
 // WhatsApp number: digits only, with country code, no spaces.
 // Example: '212612345678'
 // ------------------------------------------------------------
-const WHATSAPP_NUMBER = '212XXXXXXXXX'
-const CONTACT_EMAIL = 'your-email@example.com'
+const WHATSAPP_NUMBER = '212610369508'
+const CONTACT_EMAIL = 'contact@youssefbekkari.io'
 
 // ------------------------------------------------------------
 // Navbar: solid background after scrolling
