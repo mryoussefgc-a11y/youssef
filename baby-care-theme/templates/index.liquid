@@ -8,7 +8,7 @@
       <h1>The Natural Teething Solution That Doesn't Make You Guess (or Stress)</h1>
       <p class="lede">Gentle, pre-diluted essential-oil relief you can trust for your teething baby — thoughtfully selected and carefully diluted.</p>
       <a href="{% if feat %}{{ feat.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}" class="btn btn--lg">Shop Now</a>
-      <div class="rating-row"><span class="stars">★★★★★</span> Loved by 1,200+ parents</div>
+      <div class="rating-row">{% render 'stars' %} Loved by 1,200+ parents</div>
     </div>
     <div class="hero-img">
       {% if feat and feat.featured_image %}
@@ -22,10 +22,10 @@
 
 <section class="trust-strip">
   <div class="wrap">
-    <span>🌿 Naturally Sourced</span>
-    <span>🍼 Baby-Safe Dilution</span>
-    <span>✋ Mess-Free Roller</span>
-    <span>🛡️ 30-Day Guarantee</span>
+    <span>{% render 'icon', name: 'leaf' %} Naturally Sourced</span>
+    <span>{% render 'icon', name: 'bottle' %} Baby-Safe Dilution</span>
+    <span>{% render 'icon', name: 'roller' %} Mess-Free Roller</span>
+    <span>{% render 'icon', name: 'shield' %} 30-Day Guarantee</span>
   </div>
 </section>
 
@@ -40,10 +40,10 @@
   <div class="wrap center">
     <h2>Thoughtfully Selected, Carefully Diluted</h2>
     <div class="cols cols-4" style="margin-top:36px">
-      <div class="card"><div class="ico">🌿</div><h3>Copaiba Oil</h3><p class="muted">Naturally soothing &amp; calming.</p></div>
-      <div class="card"><div class="ico">💜</div><h3>Lavender Oil</h3><p class="muted">Gentle and relaxing.</p></div>
-      <div class="card"><div class="ico">🌼</div><h3>Roman Chamomile</h3><p class="muted">Classic comfort and calm.</p></div>
-      <div class="card"><div class="ico">🫒</div><h3>Carrier Oils</h3><p class="muted">Safe, smooth application.</p></div>
+      <div class="card"><div class="ico">{% render 'icon', name: 'leaf' %}</div><h3>Copaiba Oil</h3><p class="muted">Naturally soothing &amp; calming.</p></div>
+      <div class="card"><div class="ico">{% render 'icon', name: 'heart' %}</div><h3>Lavender Oil</h3><p class="muted">Gentle and relaxing.</p></div>
+      <div class="card"><div class="ico">{% render 'icon', name: 'flower' %}</div><h3>Roman Chamomile</h3><p class="muted">Classic comfort and calm.</p></div>
+      <div class="card"><div class="ico">{% render 'icon', name: 'drop' %}</div><h3>Carrier Oils</h3><p class="muted">Safe, smooth application.</p></div>
     </div>
   </div>
 </section>
@@ -79,9 +79,9 @@
   <div class="wrap">
     <h2 class="center">Don't Just Take Our Word For It</h2>
     <div class="cols cols-3" style="margin-top:36px">
-      <div class="review"><div class="stars">★★★★★</div><p>"The only thing that helped my daughter settle at night."</p><div class="who">— Sarah M.</div></div>
-      <div class="review"><div class="stars">★★★★★</div><p>"Pre-diluted, natural, and smells lovely. So easy."</p><div class="who">— Amina K.</div></div>
-      <div class="review"><div class="stars">★★★★★</div><p>"Worked within minutes. Keep one in the diaper bag."</p><div class="who">— Leila B.</div></div>
+      <div class="review">{% render 'stars' %}<p>"The only thing that helped my daughter settle at night."</p><div class="who">— Sarah M.</div></div>
+      <div class="review">{% render 'stars' %}<p>"Pre-diluted, natural, and smells lovely. So easy."</p><div class="who">— Amina K.</div></div>
+      <div class="review">{% render 'stars' %}<p>"Worked within minutes. Keep one in the diaper bag."</p><div class="who">— Leila B.</div></div>
     </div>
   </div>
 </section>

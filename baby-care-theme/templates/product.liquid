@@ -22,7 +22,7 @@
 
       {%- comment -%} ---------- BUY BOX ---------- {%- endcomment -%}
       <div class="buybox">
-        <div class="stars">★★★★★ <span class="muted" style="font-size:.85rem;font-weight:600">4.9 · 1,200+ happy parents</span></div>
+        <div style="display:flex;align-items:center;gap:8px">{% render 'stars' %}<span class="muted" style="font-size:.85rem;font-weight:600">4.9 · 1,200+ happy parents</span></div>
         <h1 class="product-title">{{ product.title }}</h1>
 
         <div class="price">
@@ -48,14 +48,14 @@
         </form>
 
         <ul class="pdp-list">
-          <li>Pre-diluted &amp; ready to use — no mixing, no guessing</li>
-          <li>Thoughtfully selected, gentle ingredients</li>
-          <li>Easy roller application — mess-free</li>
-          <li>Made for parents who want natural comfort they can trust</li>
+          <li>{% render 'icon', name: 'check' %}Pre-diluted &amp; ready to use — no mixing, no guessing</li>
+          <li>{% render 'icon', name: 'check' %}Thoughtfully selected, gentle ingredients</li>
+          <li>{% render 'icon', name: 'check' %}Easy roller application — mess-free</li>
+          <li>{% render 'icon', name: 'check' %}Made for parents who want natural comfort they can trust</li>
         </ul>
 
         <div class="guarantee">
-          <span class="ico">🛡️</span>
+          <span class="ico">{% render 'icon', name: 'shield' %}</span>
           <div><strong>30-Day Comfort Guarantee.</strong> If you're not completely happy, we'll make it right — no stress.</div>
         </div>
 
@@ -73,10 +73,10 @@
     <h2>Thoughtfully Selected, Carefully Diluted</h2>
     <p class="muted" style="max-width:58ch;margin:0 auto 38px">Nature-first care with clinical discipline — every bottle is diluted to a baby-safe ratio.</p>
     <div class="cols cols-4">
-      <div class="card"><div class="ico">🌿</div><h3>Copaiba Oil</h3><p class="muted">Naturally soothing &amp; calming properties.</p></div>
-      <div class="card"><div class="ico">💜</div><h3>Lavender Oil</h3><p class="muted">Gentle and relaxing to help baby settle.</p></div>
-      <div class="card"><div class="ico">🌼</div><h3>Roman Chamomile</h3><p class="muted">A classic for comfort and calm.</p></div>
-      <div class="card"><div class="ico">🫒</div><h3>Carrier Oils</h3><p class="muted">Safe, smooth, skin-friendly application.</p></div>
+      <div class="card"><div class="ico">{% render 'icon', name: 'leaf' %}</div><h3>Copaiba Oil</h3><p class="muted">Naturally soothing &amp; calming properties.</p></div>
+      <div class="card"><div class="ico">{% render 'icon', name: 'heart' %}</div><h3>Lavender Oil</h3><p class="muted">Gentle and relaxing to help baby settle.</p></div>
+      <div class="card"><div class="ico">{% render 'icon', name: 'flower' %}</div><h3>Roman Chamomile</h3><p class="muted">A classic for comfort and calm.</p></div>
+      <div class="card"><div class="ico">{% render 'icon', name: 'drop' %}</div><h3>Carrier Oils</h3><p class="muted">Safe, smooth, skin-friendly application.</p></div>
     </div>
   </div>
 </section>
@@ -98,9 +98,9 @@
   <div class="wrap">
     <h2 class="center">Don't Just Take Our Word For It</h2>
     <div class="cols cols-3" style="margin-top:36px">
-      <div class="review"><div class="stars">★★★★★</div><p>"The only thing that helped my daughter settle at night. A lifesaver during teething."</p><div class="who">— Sarah M.</div></div>
-      <div class="review"><div class="stars">★★★★★</div><p>"Love that it's pre-diluted and natural. Easy to apply and smells lovely."</p><div class="who">— Amina K.</div></div>
-      <div class="review"><div class="stars">★★★★★</div><p>"Worked within minutes. We keep one in the diaper bag now."</p><div class="who">— Leila B.</div></div>
+      <div class="review">{% render 'stars' %}<p>"The only thing that helped my daughter settle at night. A lifesaver during teething."</p><div class="who">— Sarah M.</div></div>
+      <div class="review">{% render 'stars' %}<p>"Love that it's pre-diluted and natural. Easy to apply and smells lovely."</p><div class="who">— Amina K.</div></div>
+      <div class="review">{% render 'stars' %}<p>"Worked within minutes. We keep one in the diaper bag now."</p><div class="who">— Leila B.</div></div>
     </div>
   </div>
 </section>
