@@ -1,0 +1,119 @@
+<section class="product">
+  <div class="wrap">
+    <div class="grid">
+
+      {%- comment -%} ---------- GALLERY ---------- {%- endcomment -%}
+      <div class="gallery">
+        <div class="main-img">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.featured_image.alt | escape }}">
+          {% else %}
+            {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+        {% if product.images.size > 1 %}
+          <div class="thumbs">
+            {% for image in product.images limit: 5 %}
+              <img src="{{ image | image_url: width: 150 }}" data-full="{{ image | image_url: width: 900 }}" alt="{{ image.alt | escape }}">
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} ---------- BUY BOX ---------- {%- endcomment -%}
+      <div class="buybox">
+        <div class="stars">★★★★★ <span class="muted" style="font-size:.85rem;font-weight:600">4.9 · 1,200+ happy parents</span></div>
+        <h1 class="product-title">{{ product.title }}</h1>
+
+        <div class="price">
+          {{ product.price | money }}
+          {% if product.compare_at_price > product.price %}
+            <span class="compare">{{ product.compare_at_price | money }}</span>
+          {% endif %}
+        </div>
+
+        <form method="post" action="/cart/add" id="product-form">
+          <div class="bundle-opts">
+            {% for variant in product.variants %}
+              <label class="bundle {% if forloop.first %}selected{% endif %}">
+                {% if variant.title contains 'Popular' or forloop.index == 2 %}<span class="badge-pop">Most Popular</span>{% endif %}
+                <input type="radio" name="id" value="{{ variant.id }}" {% if forloop.first %}checked{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                <span class="b-title">{{ variant.title }}</span>
+                <span class="b-price">{{ variant.price | money }}{% unless variant.available %} · Sold out{% endunless %}</span>
+              </label>
+            {% endfor %}
+          </div>
+
+          <button type="submit" class="btn btn--block btn--lg">Add to Cart</button>
+        </form>
+
+        <ul class="pdp-list">
+          <li>Pre-diluted &amp; ready to use — no mixing, no guessing</li>
+          <li>Thoughtfully selected, gentle ingredients</li>
+          <li>Easy roller application — mess-free</li>
+          <li>Made for parents who want natural comfort they can trust</li>
+        </ul>
+
+        <div class="guarantee">
+          <span class="ico">🛡️</span>
+          <div><strong>30-Day Comfort Guarantee.</strong> If you're not completely happy, we'll make it right — no stress.</div>
+        </div>
+
+        {% if product.description != blank %}
+          <div style="margin-top:26px">{{ product.description }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} ---------- INGREDIENTS ---------- {%- endcomment -%}
+<section class="section" style="background:var(--white)">
+  <div class="wrap center">
+    <h2>Thoughtfully Selected, Carefully Diluted</h2>
+    <p class="muted" style="max-width:58ch;margin:0 auto 38px">Nature-first care with clinical discipline — every bottle is diluted to a baby-safe ratio.</p>
+    <div class="cols cols-4">
+      <div class="card"><div class="ico">🌿</div><h3>Copaiba Oil</h3><p class="muted">Naturally soothing &amp; calming properties.</p></div>
+      <div class="card"><div class="ico">💜</div><h3>Lavender Oil</h3><p class="muted">Gentle and relaxing to help baby settle.</p></div>
+      <div class="card"><div class="ico">🌼</div><h3>Roman Chamomile</h3><p class="muted">A classic for comfort and calm.</p></div>
+      <div class="card"><div class="ico">🫒</div><h3>Carrier Oils</h3><p class="muted">Safe, smooth, skin-friendly application.</p></div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} ---------- HOW TO USE ---------- {%- endcomment -%}
+<section class="band section">
+  <div class="wrap center">
+    <h2>3 Simple Steps to Help Your Baby Settle</h2>
+    <div class="cols cols-3" style="margin-top:36px">
+      <div class="card"><div class="step-num">1</div><h3>Roll</h3><p>Roll a small amount along the jawline (avoiding the mouth and eyes).</p></div>
+      <div class="card"><div class="step-num">2</div><h3>Massage</h3><p>Gently massage in with your fingertips.</p></div>
+      <div class="card"><div class="step-num">3</div><h3>Settle</h3><p>Reapply as needed to help your baby relax and settle.</p></div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} ---------- REVIEWS ---------- {%- endcomment -%}
+<section class="section">
+  <div class="wrap">
+    <h2 class="center">Don't Just Take Our Word For It</h2>
+    <div class="cols cols-3" style="margin-top:36px">
+      <div class="review"><div class="stars">★★★★★</div><p>"The only thing that helped my daughter settle at night. A lifesaver during teething."</p><div class="who">— Sarah M.</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"Love that it's pre-diluted and natural. Easy to apply and smells lovely."</p><div class="who">— Amina K.</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"Worked within minutes. We keep one in the diaper bag now."</p><div class="who">— Leila B.</div></div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} ---------- FAQ ---------- {%- endcomment -%}
+<section class="section" style="background:var(--white)">
+  <div class="wrap">
+    <h2 class="center">Frequently Asked Questions</h2>
+    <div class="faq" style="margin-top:34px">
+      <details open><summary>Is it safe for babies?</summary><div class="a">Yes — every bottle is pre-diluted to a baby-safe ratio so it's ready to use straight away.</div></details>
+      <details><summary>How do I use it?</summary><div class="a">Roll a small amount along the jawline, avoiding the mouth and eyes, then massage in gently.</div></details>
+      <details><summary>How long until it works?</summary><div class="a">Many parents notice their baby settling within minutes. Reapply as needed.</div></details>
+      <details><summary>What is your guarantee?</summary><div class="a">A 30-Day Comfort Guarantee. If you're not happy, we'll make it right.</div></details>
+    </div>
+  </div>
+</section>

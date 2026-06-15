@@ -1,0 +1,18 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Baby Care — Natural Teething",
+    "theme_version": "1.0.0",
+    "theme_author": "Custom",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_sage", "label": "Primary (sage)", "default": "#8a9a7b" },
+      { "type": "color", "id": "color_cream", "label": "Background (cream)", "default": "#f6f2e9" },
+      { "type": "color", "id": "color_text", "label": "Text", "default": "#3d3a34" }
+    ]
+  }
+]

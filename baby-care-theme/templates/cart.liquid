@@ -1,0 +1,33 @@
+<section class="section">
+  <div class="wrap">
+    <h1 class="center">Your Cart</h1>
+    {% if cart.item_count == 0 %}
+      <p class="center muted">Your cart is empty.</p>
+      <p class="center"><a href="{{ routes.all_products_collection_url }}" class="btn">Continue shopping</a></p>
+    {% else %}
+      <form action="{{ routes.cart_url }}" method="post" novalidate>
+        <table style="width:100%;border-collapse:collapse;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)">
+          {% for item in cart.items %}
+            <tr style="border-bottom:1px solid var(--beige)">
+              <td style="padding:16px;width:90px">
+                {% if item.image %}<img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" style="border-radius:10px">{% endif %}
+              </td>
+              <td style="padding:16px"><strong>{{ item.product.title }}</strong><br><span class="muted">{{ item.variant.title }}</span></td>
+              <td style="padding:16px">
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" style="width:60px;padding:8px;border:1px solid var(--beige);border-radius:8px">
+              </td>
+              <td style="padding:16px;text-align:right"><strong>{{ item.final_line_price | money }}</strong></td>
+            </tr>
+          {% endfor %}
+        </table>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:24px">
+          <button type="submit" name="update" class="btn btn--ghost">Update</button>
+          <div style="text-align:right">
+            <div style="font-size:1.3rem;margin-bottom:12px"><strong>Subtotal: {{ cart.total_price | money }}</strong></div>
+            <button type="submit" name="checkout" class="btn btn--lg">Checkout</button>
+          </div>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="wrap">
+    <h1 class="center">{{ blog.title }}</h1>
+    <div class="pgrid" style="margin-top:30px">
+      {% for article in blog.articles %}
+        <a href="{{ article.url }}" class="pcard">
+          <div class="ph">
+            {% if article.image %}<img src="{{ article.image | image_url: width: 500 }}" alt="{{ article.title | escape }}">{% else %}{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}{% endif %}
+          </div>
+          <div class="pb"><div class="pt">{{ article.title }}</div><p class="muted">{{ article.excerpt_or_content | strip_html | truncatewords: 16 }}</p></div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

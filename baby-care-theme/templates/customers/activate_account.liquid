@@ -1,0 +1,11 @@
+<section class="section">
+  <div class="wrap" style="max-width:460px">
+    <h1 class="center">Activate Account</h1>
+    {% form 'activate_customer_password' %}
+      {{ form.errors | default_errors }}
+      <p><input type="password" name="customer[password]" placeholder="Password" style="width:100%;padding:13px;border:1px solid var(--beige);border-radius:10px"></p>
+      <p><input type="password" name="customer[password_confirmation]" placeholder="Confirm password" style="width:100%;padding:13px;border:1px solid var(--beige);border-radius:10px"></p>
+      <button type="submit" class="btn btn--block">Activate</button>
+    {% endform %}
+  </div>
+</section>

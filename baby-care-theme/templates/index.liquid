@@ -1,0 +1,87 @@
+{%- assign feat = collections['baby-care'].products.first -%}
+{%- unless feat -%}{%- assign feat = collections.all.products.first -%}{%- endunless -%}
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Natural Teething Relief</span>
+      <h1>The Natural Teething Solution That Doesn't Make You Guess (or Stress)</h1>
+      <p class="lede">Gentle, pre-diluted essential-oil relief you can trust for your teething baby — thoughtfully selected and carefully diluted.</p>
+      <a href="{% if feat %}{{ feat.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}" class="btn btn--lg">Shop Now</a>
+      <div class="rating-row"><span class="stars">★★★★★</span> Loved by 1,200+ parents</div>
+    </div>
+    <div class="hero-img">
+      {% if feat and feat.featured_image %}
+        <img src="{{ feat.featured_image | image_url: width: 900 }}" alt="{{ feat.title | escape }}">
+      {% else %}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="wrap">
+    <span>🌿 Naturally Sourced</span>
+    <span>🍼 Baby-Safe Dilution</span>
+    <span>✋ Mess-Free Roller</span>
+    <span>🛡️ 30-Day Guarantee</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap center">
+    <h2>Nature-first care, with clinical discipline</h2>
+    <p class="muted" style="max-width:60ch;margin:0 auto">Every bottle is carefully diluted to a baby-safe ratio — ready to use, no mixing, no guessing. So you know exactly what you're putting on your little one's skin.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--white)">
+  <div class="wrap center">
+    <h2>Thoughtfully Selected, Carefully Diluted</h2>
+    <div class="cols cols-4" style="margin-top:36px">
+      <div class="card"><div class="ico">🌿</div><h3>Copaiba Oil</h3><p class="muted">Naturally soothing &amp; calming.</p></div>
+      <div class="card"><div class="ico">💜</div><h3>Lavender Oil</h3><p class="muted">Gentle and relaxing.</p></div>
+      <div class="card"><div class="ico">🌼</div><h3>Roman Chamomile</h3><p class="muted">Classic comfort and calm.</p></div>
+      <div class="card"><div class="ico">🫒</div><h3>Carrier Oils</h3><p class="muted">Safe, smooth application.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band section">
+  <div class="wrap center">
+    <h2>3 Simple Steps to Help Your Baby Settle</h2>
+    <div class="cols cols-3" style="margin-top:36px">
+      <div class="card"><div class="step-num">1</div><h3>Roll</h3><p>Along the jawline, avoiding mouth and eyes.</p></div>
+      <div class="card"><div class="step-num">2</div><h3>Massage</h3><p>Gently massage in with fingertips.</p></div>
+      <div class="card"><div class="step-num">3</div><h3>Settle</h3><p>Reapply as needed to help baby relax.</p></div>
+    </div>
+    {% if feat %}<a href="{{ feat.url }}" class="btn btn--lg" style="margin-top:34px;background:#fff;color:var(--sage-dark)">Get Yours Today</a>{% endif %}
+  </div>
+</section>
+
+{% if feat %}
+<section class="section">
+  <div class="wrap">
+    <h2 class="center" style="margin-bottom:34px">Save Up To 30% Today</h2>
+    <div class="pgrid">
+      {% for product in collections['baby-care'].products limit: 4 %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        {% render 'product-card', product: feat %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section" style="background:var(--white)">
+  <div class="wrap">
+    <h2 class="center">Don't Just Take Our Word For It</h2>
+    <div class="cols cols-3" style="margin-top:36px">
+      <div class="review"><div class="stars">★★★★★</div><p>"The only thing that helped my daughter settle at night."</p><div class="who">— Sarah M.</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"Pre-diluted, natural, and smells lovely. So easy."</p><div class="who">— Amina K.</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"Worked within minutes. Keep one in the diaper bag."</p><div class="who">— Leila B.</div></div>
+    </div>
+  </div>
+</section>

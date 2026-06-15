@@ -1,0 +1,32 @@
+{% if section.settings.announcement != blank %}
+  <div class="announce">{{ section.settings.announcement }}</div>
+{% endif %}
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="{{ routes.root_url }}" class="logo">{{ shop.name }}</a>
+    <nav class="nav">
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="{{ routes.all_products_collection_url }}">Shop</a>
+      {% if section.settings.menu != blank %}
+        {% for link in linklists[section.settings.menu].links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% endif %}
+    </nav>
+    <div class="header-actions">
+      <a href="{{ routes.search_url }}" aria-label="Search">Search</a>
+      <a href="{{ routes.cart_url }}" class="cart-link">Cart ({{ cart.item_count }})</a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "announcement", "label": "Announcement bar", "default": "FREE shipping today · 30-Day Comfort Guarantee" },
+    { "type": "link_list", "id": "menu", "label": "Extra menu" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,8 @@
+<section class="section">
+  <div class="wrap" style="max-width:780px">
+    <h1>{{ article.title }}</h1>
+    <p class="muted">{{ article.published_at | date: "%B %d, %Y" }} · {{ article.author }}</p>
+    {% if article.image %}<img src="{{ article.image | image_url: width: 1000 }}" alt="{{ article.title | escape }}" style="border-radius:var(--radius);margin:20px 0">{% endif %}
+    <div class="rte">{{ article.content }}</div>
+  </div>
+</section>

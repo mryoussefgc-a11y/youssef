@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="wrap" style="max-width:780px">
+    <h1>My Account</h1>
+    <p>Welcome back, {{ customer.first_name | default: customer.email }}. <a href="{{ routes.account_logout_url }}">Log out</a></p>
+    <h3 style="margin-top:30px">Order History</h3>
+    {% if customer.orders.size > 0 %}
+      <table style="width:100%;border-collapse:collapse">
+        {% for order in customer.orders %}
+          <tr style="border-bottom:1px solid var(--beige)">
+            <td style="padding:12px"><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+            <td style="padding:12px">{{ order.created_at | date: "%b %d, %Y" }}</td>
+            <td style="padding:12px">{{ order.total_price | money }}</td>
+            <td style="padding:12px">{{ order.fulfillment_status_label }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p class="muted">You haven't placed any orders yet.</p>
+    {% endif %}
+    <p style="margin-top:20px"><a href="{{ routes.account_addresses_url }}">Manage addresses</a></p>
+  </div>
+</section>

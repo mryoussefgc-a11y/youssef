@@ -1,0 +1,16 @@
+<a href="{{ product.url }}" class="pcard">
+  <div class="ph">
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.title | escape }}">
+    {% else %}
+      {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    {% endif %}
+  </div>
+  <div class="pb">
+    <div class="pt">{{ product.title }}</div>
+    <div class="price" style="font-size:1.1rem">
+      {{ product.price | money }}
+      {% if product.compare_at_price > product.price %}<span class="compare" style="font-size:.9rem">{{ product.compare_at_price | money }}</span>{% endif %}
+    </div>
+  </div>
+</a>

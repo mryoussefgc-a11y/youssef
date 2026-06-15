@@ -1,0 +1,32 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h4>{{ shop.name }}</h4>
+      <p style="color:#bdb8ad">{{ section.settings.blurb }}</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <a href="{{ routes.all_products_collection_url }}">All products</a>
+      <a href="{{ routes.cart_url }}">Cart</a>
+      <a href="{{ routes.search_url }}">Search</a>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="/policies/refund-policy">Refund policy</a>
+      <a href="/policies/privacy-policy">Privacy policy</a>
+    </div>
+  </div>
+  <div class="foot-bottom wrap">
+    &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. All rights reserved.
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "textarea", "id": "blurb", "label": "About text", "default": "Gentle, natural care for your little one — thoughtfully selected and carefully diluted." }
+  ]
+}
+{% endschema %}

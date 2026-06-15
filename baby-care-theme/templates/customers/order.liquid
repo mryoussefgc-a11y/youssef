@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="wrap" style="max-width:780px">
+    <h1>Order {{ order.name }}</h1>
+    <p class="muted">Placed on {{ order.created_at | date: "%B %d, %Y" }}</p>
+    <table style="width:100%;border-collapse:collapse;margin-top:20px">
+      {% for line_item in order.line_items %}
+        <tr style="border-bottom:1px solid var(--beige)">
+          <td style="padding:12px">{{ line_item.title }} &times; {{ line_item.quantity }}</td>
+          <td style="padding:12px;text-align:right">{{ line_item.final_line_price | money }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+    <p style="text-align:right;margin-top:16px;font-size:1.2rem"><strong>Total: {{ order.total_price | money }}</strong></p>
+  </div>
+</section>

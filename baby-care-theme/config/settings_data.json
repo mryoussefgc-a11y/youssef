@@ -1,0 +1,14 @@
+{
+  "current": {
+    "color_sage": "#8a9a7b",
+    "color_cream": "#f6f2e9",
+    "color_text": "#3d3a34"
+  },
+  "presets": {
+    "Default": {
+      "color_sage": "#8a9a7b",
+      "color_cream": "#f6f2e9",
+      "color_text": "#3d3a34"
+    }
+  }
+}

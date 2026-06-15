@@ -1,0 +1,11 @@
+<section class="section">
+  <div class="wrap" style="max-width:780px">
+    <h1>Your Addresses</h1>
+    <p><a href="{{ routes.account_url }}">&larr; Back to account</a></p>
+    {% for address in customer.addresses %}
+      <div class="card" style="margin-bottom:16px">{{ address | format_address }}</div>
+    {% else %}
+      <p class="muted">No addresses saved.</p>
+    {% endfor %}
+  </div>
+</section>
