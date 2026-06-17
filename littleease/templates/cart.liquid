@@ -1,0 +1,26 @@
+{% section 'nav' %}
+<section class="section">
+  <div class="container" style="max-width:820px;">
+    <h1>Your cart</h1>
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post" novalidate>
+        <ul>
+          {% for item in cart.items %}
+            <li style="padding:1rem 0;border-bottom:1px solid var(--card-line);">
+              <strong>{{ item.product.title }}</strong> &times; {{ item.quantity }}
+              <span style="float:right;">{{ item.final_line_price | money }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+        <p style="margin-top:1rem;"><strong>Subtotal: {{ cart.total_price | money }}</strong></p>
+        <div style="max-width:320px;">
+          <button type="submit" name="checkout" class="btn btn--primary">Checkout</button>
+        </div>
+      </form>
+    {% else %}
+      <p class="lead">Your cart is empty.</p>
+      <p><a class="link-cta" href="{{ routes.root_url }}">Continue shopping</a></p>
+    {% endif %}
+  </div>
+</section>
+{% section 'footer' %}

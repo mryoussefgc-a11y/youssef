@@ -1,0 +1,133 @@
+{%- comment -%}
+  Product detail.
+  Left  — real product.images[0] with a hand-built SVG bottle-silhouette
+          fallback (never a broken image icon), plus ingredient/claim tags.
+  Right — 3 NUMBERED application points (where it goes and why — tied to the
+          nerve pathway), then a REAL Shopify add-to-cart form.
+{%- endcomment -%}
+
+{%- assign cart_variant = product.selected_or_first_available_variant -%}
+
+<section class="pdetail section" aria-labelledby="pdetailHeading">
+  <div class="container">
+    <p class="eyebrow">{{ section.settings.eyebrow | default: 'The bottle itself' }}</p>
+    <h2 id="pdetailHeading">
+      {{ section.settings.heading_a | default: 'One 10ml roller, rolled along the' }}
+      <span class="em-clay">{{ section.settings.heading_em | default: 'jaw' }}</span>{{ section.settings.heading_b | default: '.' }}
+    </h2>
+
+    <div class="pdetail__grid">
+
+      <div class="pdetail__media">
+        {%- if product.images.size > 0 -%}
+          <img
+            class="pdetail__photo"
+            src="{{ product.images[0] | image_url: width: 900 }}"
+            alt="{{ product.images[0].alt | escape | default: product.title | default: 'LittleEase roller bottle' }}"
+            width="900"
+            height="900"
+            loading="lazy">
+        {%- else -%}
+          {%- comment -%} Custom SVG bottle silhouette fallback {%- endcomment -%}
+          <div class="pdetail__fallback">
+            {%- comment -%} Hex values used directly: CSS var() does not resolve in SVG presentation attributes. {%- endcomment -%}
+            <svg viewBox="0 0 160 300" role="img" aria-label="LittleEase 10ml roller bottle illustration.">
+              <!-- roller ball cap -->
+              <rect x="62" y="14" width="36" height="22" rx="6" fill="none" stroke="#1C1B17" stroke-width="2"/>
+              <circle cx="80" cy="14" r="9" fill="#B5491F"/>
+              <!-- neck -->
+              <rect x="68" y="36" width="24" height="16" fill="none" stroke="#1C1B17" stroke-width="2"/>
+              <!-- body -->
+              <rect x="48" y="52" width="64" height="218" rx="18" fill="none" stroke="#1C1B17" stroke-width="2"/>
+              <!-- label -->
+              <rect x="58" y="120" width="44" height="96" rx="6" fill="#E8C6B4"/>
+              <text x="80" y="160" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" fill="#1C1B17">Little</text>
+              <text x="80" y="178" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" fill="#1C1B17">Ease</text>
+              <text x="80" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" fill="#6B7264">10ml roller</text>
+            </svg>
+          </div>
+        {%- endif -%}
+
+        <ul class="tagrow" aria-label="Ingredient and formulation claims">
+          <li class="tag">No benzocaine</li>
+          <li class="tag">No parabens</li>
+          <li class="tag">No artificial fragrance</li>
+          <li class="tag">Vegan</li>
+          <li class="tag">Cruelty-free</li>
+          <li class="tag">Made in the UK</li>
+        </ul>
+      </div>
+
+      <div class="pdetail__body">
+        <p class="lead">{{ section.settings.intro | default: 'You are not putting anything in the mouth. The roller glides along the outside of the jaw — the same line the pain travels — three points, a few seconds each.' }}</p>
+
+        <div class="applypoints">
+          <div class="applypoint">
+            <span class="applypoint__num" aria-hidden="true">01</span>
+            <div>
+              <strong>{{ section.settings.a1_title | default: 'Along the lower jaw' }}</strong>
+              <span>{{ section.settings.a1_body | default: 'Roll gently from below the ear toward the chin — following the jawbone where the trigeminal nerve runs.' }}</span>
+            </div>
+          </div>
+          <div class="applypoint">
+            <span class="applypoint__num" aria-hidden="true">02</span>
+            <div>
+              <strong>{{ section.settings.a2_title | default: 'The soft spot below the ear' }}</strong>
+              <span>{{ section.settings.a2_body | default: 'A small circle just under the earlobe — the upper end of the pathway, and usually the spot they keep tugging.' }}</span>
+            </div>
+          </div>
+          <div class="applypoint">
+            <span class="applypoint__num" aria-hidden="true">03</span>
+            <div>
+              <strong>{{ section.settings.a3_title | default: 'A light pass over the cheek' }}</strong>
+              <span>{{ section.settings.a3_body | default: 'Finish with one soft sweep across the cheek to cover the middle of the route. Never inside the mouth.' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pdetail__form">
+          {% form 'product', product %}
+            {%- if cart_variant -%}
+              <input type="hidden" name="id" value="{{ cart_variant.id }}">
+            {%- endif -%}
+            <button
+              type="submit"
+              name="add"
+              class="btn btn--primary"
+              {% unless cart_variant.available %}disabled aria-disabled="true"{% endunless %}>
+              {%- if cart_variant.available -%}
+                {{ section.settings.cta_label | default: 'Add to cart' }}
+                {%- if cart_variant.price %} &mdash; {{ cart_variant.price | money }}{% endif -%}
+              {%- else -%}
+                Currently unavailable
+              {%- endif -%}
+            </button>
+          {% endform %}
+          <p class="microtrust">{{ section.settings.microtrust | default: 'One bottle lasts roughly six to eight weeks of nightly use.' }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product detail",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The bottle itself" },
+    { "type": "text", "id": "heading_a", "label": "Heading (before emphasis)", "default": "One 10ml roller, rolled along the" },
+    { "type": "text", "id": "heading_em", "label": "Italic emphasis word", "default": "jaw" },
+    { "type": "text", "id": "heading_b", "label": "Heading (after emphasis)", "default": "." },
+    { "type": "textarea", "id": "intro", "label": "Intro paragraph", "default": "You are not putting anything in the mouth. The roller glides along the outside of the jaw — the same line the pain travels — three points, a few seconds each." },
+    { "type": "text", "id": "a1_title", "label": "Apply 1 title", "default": "Along the lower jaw" },
+    { "type": "textarea", "id": "a1_body", "label": "Apply 1 body", "default": "Roll gently from below the ear toward the chin — following the jawbone where the trigeminal nerve runs." },
+    { "type": "text", "id": "a2_title", "label": "Apply 2 title", "default": "The soft spot below the ear" },
+    { "type": "textarea", "id": "a2_body", "label": "Apply 2 body", "default": "A small circle just under the earlobe — the upper end of the pathway, and usually the spot they keep tugging." },
+    { "type": "text", "id": "a3_title", "label": "Apply 3 title", "default": "A light pass over the cheek" },
+    { "type": "textarea", "id": "a3_body", "label": "Apply 3 body", "default": "Finish with one soft sweep across the cheek to cover the middle of the route. Never inside the mouth." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Add to cart" },
+    { "type": "text", "id": "microtrust", "label": "Micro-trust line", "default": "One bottle lasts roughly six to eight weeks of nightly use." }
+  ]
+}
+{% endschema %}

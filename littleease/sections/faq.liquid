@@ -1,0 +1,117 @@
+{%- comment -%}
+  FAQ — 6 real questions. Accordion behaviour (one open at a time, smooth
+  max-height transition, aria-expanded management) lives in theme.js.
+  Panel ids are namespaced with section.id so they stay unique on the page.
+{%- endcomment -%}
+<section class="faq section" aria-labelledby="faqHeading">
+  <div class="container">
+    <div class="faq__head">
+      <p class="eyebrow">{{ section.settings.eyebrow | default: 'The questions we actually get asked' }}</p>
+      <h2 id="faqHeading">{{ section.settings.heading | default: 'Before you order' }}</h2>
+    </div>
+
+    <div class="faq__list">
+
+      {%- assign p1 = section.id | append: '-faq1' -%}
+      <div class="faq-item">
+        <h3>
+          <button class="faq__trigger" aria-expanded="false" aria-controls="{{ p1 }}">
+            {{ section.settings.q1 | default: 'What age is LittleEase safe for?' }}
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq__panel" id="{{ p1 }}" role="region">
+          <div class="faq__panel-inner"><p>{{ section.settings.a1 | default: 'It is formulated for babies from three months and up. It is applied only to the skin on the outside of the jaw and cheek — never in the mouth — at a dilution made for infant skin. As with anything new, patch test on the arm first and check with your GP if your baby has sensitive skin or a known allergy.' }}</p></div>
+        </div>
+      </div>
+
+      {%- assign p2 = section.id | append: '-faq2' -%}
+      <div class="faq-item">
+        <h3>
+          <button class="faq__trigger" aria-expanded="false" aria-controls="{{ p2 }}">
+            {{ section.settings.q2 | default: 'How quickly will we notice anything?' }}
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq__panel" id="{{ p2 }}" role="region">
+          <div class="faq__panel-inner"><p>{{ section.settings.a2 | default: 'Most parents tell us they see a calmer, more settled baby within the same evening — usually a few minutes after the jaw is rolled. It is not a numbing agent that switches pain off, so think of it as taking the edge off the whole side of the face rather than freezing one spot.' }}</p></div>
+        </div>
+      </div>
+
+      {%- assign p3 = section.id | append: '-faq3' -%}
+      <div class="faq-item">
+        <h3>
+          <button class="faq__trigger" aria-expanded="false" aria-controls="{{ p3 }}">
+            {{ section.settings.q3 | default: 'How exactly do I apply it?' }}
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq__panel" id="{{ p3 }}" role="region">
+          <div class="faq__panel-inner"><p>{{ section.settings.a3 | default: 'Roll gently along the outside of the lower jaw from below the ear toward the chin, make a small circle in the soft spot just under the earlobe, and finish with one light sweep across the cheek. A few seconds at each point, up to three times a day. Never inside the mouth and never near the eyes.' }}</p></div>
+        </div>
+      </div>
+
+      {%- assign p4 = section.id | append: '-faq4' -%}
+      <div class="faq-item">
+        <h3>
+          <button class="faq__trigger" aria-expanded="false" aria-controls="{{ p4 }}">
+            {{ section.settings.q4 | default: 'What if it does not work for us?' }}
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq__panel" id="{{ p4 }}" role="region">
+          <div class="faq__panel-inner"><p>{{ section.settings.a4 | default: 'Then you do not pay for it. Use it for thirty nights, and if your evenings are not calmer, email us for a full refund. You keep the bottle and there is nothing to post back to us.' }}</p></div>
+        </div>
+      </div>
+
+      {%- assign p5 = section.id | append: '-faq5' -%}
+      <div class="faq-item">
+        <h3>
+          <button class="faq__trigger" aria-expanded="false" aria-controls="{{ p5 }}">
+            {{ section.settings.q5 | default: 'How long does one bottle last?' }}
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq__panel" id="{{ p5 }}" role="region">
+          <div class="faq__panel-inner"><p>{{ section.settings.a5 | default: 'A single 10ml roller covers roughly six to eight weeks of nightly use. Teething tends to arrive in waves over many months, which is why a lot of parents keep a spare in the changing bag.' }}</p></div>
+        </div>
+      </div>
+
+      {%- assign p6 = section.id | append: '-faq6' -%}
+      <div class="faq-item">
+        <h3>
+          <button class="faq__trigger" aria-expanded="false" aria-controls="{{ p6 }}">
+            {{ section.settings.q6 | default: 'What does UK shipping look like?' }}
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="faq__panel" id="{{ p6 }}" role="region">
+          <div class="faq__panel-inner"><p>{{ section.settings.a6 | default: 'Shipping is free across the UK and orders are dispatched within one working day, with tracked delivery typically arriving in two to four days. We currently ship within the United Kingdom only.' }}</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The questions we actually get asked" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Before you order" },
+    { "type": "text", "id": "q1", "label": "Q1", "default": "What age is LittleEase safe for?" },
+    { "type": "textarea", "id": "a1", "label": "A1", "default": "It is formulated for babies from three months and up. It is applied only to the skin on the outside of the jaw and cheek — never in the mouth — at a dilution made for infant skin. As with anything new, patch test on the arm first and check with your GP if your baby has sensitive skin or a known allergy." },
+    { "type": "text", "id": "q2", "label": "Q2", "default": "How quickly will we notice anything?" },
+    { "type": "textarea", "id": "a2", "label": "A2", "default": "Most parents tell us they see a calmer, more settled baby within the same evening — usually a few minutes after the jaw is rolled. It is not a numbing agent that switches pain off, so think of it as taking the edge off the whole side of the face rather than freezing one spot." },
+    { "type": "text", "id": "q3", "label": "Q3", "default": "How exactly do I apply it?" },
+    { "type": "textarea", "id": "a3", "label": "A3", "default": "Roll gently along the outside of the lower jaw from below the ear toward the chin, make a small circle in the soft spot just under the earlobe, and finish with one light sweep across the cheek. A few seconds at each point, up to three times a day. Never inside the mouth and never near the eyes." },
+    { "type": "text", "id": "q4", "label": "Q4", "default": "What if it does not work for us?" },
+    { "type": "textarea", "id": "a4", "label": "A4", "default": "Then you do not pay for it. Use it for thirty nights, and if your evenings are not calmer, email us for a full refund. You keep the bottle and there is nothing to post back to us." },
+    { "type": "text", "id": "q5", "label": "Q5", "default": "How long does one bottle last?" },
+    { "type": "textarea", "id": "a5", "label": "A5", "default": "A single 10ml roller covers roughly six to eight weeks of nightly use. Teething tends to arrive in waves over many months, which is why a lot of parents keep a spare in the changing bag." },
+    { "type": "text", "id": "q6", "label": "Q6", "default": "What does UK shipping look like?" },
+    { "type": "textarea", "id": "a6", "label": "A6", "default": "Shipping is free across the UK and orders are dispatched within one working day, with tracked delivery typically arriving in two to four days. We currently ship within the United Kingdom only." }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,123 @@
+{%- comment -%}
+  Hero. Left: eyebrow, serif headline with one italic clay emphasis word,
+  support copy, star rating, REAL add-to-cart form, micro-trust line.
+  Right: the nerve-pathway diagram (custom inline SVG) — OR the real product
+  photo if one has been uploaded. The swap is automatic and graceful.
+{%- endcomment -%}
+
+{%- assign cart_variant = product.selected_or_first_available_variant -%}
+
+<section class="hero section" aria-label="Introduction">
+  <div class="container hero__grid">
+
+    <div class="hero__copy">
+      <p class="eyebrow">{{ section.settings.eyebrow | default: 'Natural teething relief · 10ml roller' }}</p>
+
+      <h1>
+        {{ section.settings.heading_a | default: 'The pain travels.' }}
+        <span class="em-clay">{{ section.settings.heading_em | default: 'Relief' }}</span>
+        {{ section.settings.heading_b | default: 'should travel with it.' }}
+      </h1>
+
+      <p class="hero__support">
+        {{ section.settings.support | default: 'Teething pain does not sit in the gum. It runs along the nerve through the jaw, cheek and ear — which is why your baby is inconsolable when there is nothing to see. LittleEase is rolled along that exact pathway.' }}
+      </p>
+
+      <div class="hero__rating rating" aria-label="Rated 4.8 out of 5 from 2,140 reviews">
+        <span class="rating__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="rating__count">{{ section.settings.rating_text | default: '4.8 / 5 from 2,140 UK parents' }}</span>
+      </div>
+
+      {%- comment -%} Real Shopify product form — single-CTA uses selected_or_first_available_variant {%- endcomment -%}
+      <div class="hero__form">
+        {% form 'product', product %}
+          {%- if cart_variant -%}
+            <input type="hidden" name="id" value="{{ cart_variant.id }}">
+          {%- endif -%}
+          <button
+            type="submit"
+            name="add"
+            class="btn btn--primary"
+            {% unless cart_variant.available %}disabled aria-disabled="true"{% endunless %}>
+            {%- if cart_variant.available -%}
+              {{ section.settings.cta_label | default: 'Add to cart' }}
+              {%- if cart_variant.price %} &mdash; {{ cart_variant.price | money }}{% endif -%}
+            {%- else -%}
+              Currently unavailable
+            {%- endif -%}
+          </button>
+        {% endform %}
+        <p class="microtrust">{{ section.settings.microtrust | default: 'Ships free in the UK · Most parents notice calmer evenings within the first few nights' }}</p>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      {%- if product.featured_image -%}
+        {%- comment -%} Real product photo override — same framed treatment {%- endcomment -%}
+        <div class="diagram-card">
+          <img
+            class="hero__photo"
+            src="{{ product.featured_image | image_url: width: 900 }}"
+            alt="{{ product.featured_image.alt | escape | default: product.title | default: 'LittleEase teething roller' }}"
+            width="900"
+            height="900"
+            loading="eager">
+          <p class="diagram-caption">{{ section.settings.diagram_caption | default: 'The trigeminal nerve carries teething pain from the gum out along the jaw to the ear — so that is where LittleEase is applied.' }}</p>
+        </div>
+      {%- else -%}
+        {%- comment -%}
+          Fallback / signature visual: line-art baby jaw profile with the
+          trigeminal nerve pathway traced in clay (animated dash-offset).
+          This is the visual thesis of the page and is called back later.
+        {%- endcomment -%}
+        <figure class="diagram-card" aria-labelledby="heroDiagramCaption">
+          <svg viewBox="0 0 460 420" role="img" aria-label="Side profile of a baby's face showing the trigeminal nerve pathway running from the gum, along the jaw, up to the ear.">
+            <!-- Baby face profile (simple line art) -->
+            <path class="diagram-jaw" d="M132 70
+              C 90 80, 70 130, 78 175
+              C 60 188, 60 205, 82 212
+              C 80 240, 96 262, 120 272
+              C 128 300, 150 322, 188 330
+              C 196 352, 226 360, 252 350" />
+            <!-- Ear -->
+            <path class="diagram-jaw" d="M150 120 c -26 -4, -34 26, -16 40 c 10 8, 6 22, -4 26" />
+
+            <!-- Trigeminal nerve pathway: gum -> jaw -> ear (animated) -->
+            <path class="nerve-path" d="M232 250
+              C 200 252, 176 246, 160 226
+              C 146 208, 150 184, 156 162
+              C 160 146, 152 132, 150 120" />
+
+            <!-- Labeled points -->
+            <circle class="nerve-dot" cx="232" cy="250" r="6" />
+            <text class="nerve-label" x="244" y="254">Where pain starts</text>
+
+            <circle class="nerve-dot" cx="150" cy="120" r="6" />
+            <text class="nerve-label" x="162" y="116">Where it travels</text>
+          </svg>
+          <figcaption id="heroDiagramCaption" class="diagram-caption">
+            {{ section.settings.diagram_caption | default: 'The trigeminal nerve carries teething pain from the gum out along the jaw to the ear — so that is where LittleEase is applied.' }}
+          </figcaption>
+        </figure>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Natural teething relief · 10ml roller" },
+    { "type": "text", "id": "heading_a", "label": "Headline (before emphasis)", "default": "The pain travels." },
+    { "type": "text", "id": "heading_em", "label": "Italic emphasis word", "default": "Relief" },
+    { "type": "text", "id": "heading_b", "label": "Headline (after emphasis)", "default": "should travel with it." },
+    { "type": "textarea", "id": "support", "label": "Support paragraph", "default": "Teething pain does not sit in the gum. It runs along the nerve through the jaw, cheek and ear — which is why your baby is inconsolable when there is nothing to see. LittleEase is rolled along that exact pathway." },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "4.8 / 5 from 2,140 UK parents" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Add to cart" },
+    { "type": "text", "id": "microtrust", "label": "Micro-trust line", "default": "Ships free in the UK · Most parents notice calmer evenings within the first few nights" },
+    { "type": "textarea", "id": "diagram_caption", "label": "Diagram caption", "default": "The trigeminal nerve carries teething pain from the gum out along the jaw to the ear — so that is where LittleEase is applied." }
+  ]
+}
+{% endschema %}

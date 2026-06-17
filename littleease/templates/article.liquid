@@ -1,0 +1,9 @@
+{% section 'nav' %}
+<section class="section">
+  <div class="container" style="max-width:720px;">
+    <h1>{{ article.title }}</h1>
+    <p class="microtrust">{{ article.published_at | date: '%-d %B %Y' }}</p>
+    <div class="rte">{{ article.content }}</div>
+  </div>
+</section>
+{% section 'footer' %}

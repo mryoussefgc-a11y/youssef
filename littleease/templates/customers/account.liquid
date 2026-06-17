@@ -1,0 +1,19 @@
+{% section 'nav' %}
+<section class="section">
+  <div class="container" style="max-width:720px;">
+    <h1>Your account</h1>
+    <p>{{ customer.email }}</p>
+    <p><a href="{{ routes.account_logout_url }}">Sign out</a></p>
+    <h3 style="margin-top:2rem;">Order history</h3>
+    {% paginate customer.orders by 20 %}
+      <ul>
+        {% for order in customer.orders %}
+          <li><a href="{{ order.customer_url }}">{{ order.name }}</a> &middot; {{ order.created_at | date: '%-d %b %Y' }} &middot; {{ order.total_price | money }}</li>
+        {% else %}
+          <li>No orders yet.</li>
+        {% endfor %}
+      </ul>
+    {% endpaginate %}
+  </div>
+</section>
+{% section 'footer' %}

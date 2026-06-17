@@ -1,0 +1,14 @@
+{% section 'nav' %}
+<section class="section">
+  <div class="container" style="max-width:420px;">
+    <h1>Sign in</h1>
+    {% form 'customer_login' %}
+      {{ form.errors | default_errors }}
+      <input type="email" name="customer[email]" placeholder="Email" aria-label="Email">
+      <input type="password" name="customer[password]" placeholder="Password" aria-label="Password" style="margin-top:0.6rem;">
+      <button type="submit" class="btn btn--primary" style="margin-top:1rem;">Sign in</button>
+    {% endform %}
+    <p style="margin-top:1rem;"><a href="{{ routes.account_register_url }}">Create an account</a></p>
+  </div>
+</section>
+{% section 'footer' %}

@@ -1,0 +1,14 @@
+{% section 'nav' %}
+<section class="section">
+  <div class="container" style="max-width:720px;">
+    <h1>Order {{ order.name }}</h1>
+    <p class="microtrust">{{ order.created_at | date: '%-d %B %Y' }}</p>
+    <ul>
+      {% for line in order.line_items %}
+        <li>{{ line.title }} &times; {{ line.quantity }} &middot; {{ line.final_line_price | money }}</li>
+      {% endfor %}
+    </ul>
+    <p><strong>Total: {{ order.total_price | money }}</strong></p>
+  </div>
+</section>
+{% section 'footer' %}

@@ -1,0 +1,9 @@
+{% section 'nav' %}
+<section class="section" style="text-align:center;">
+  <div class="container" style="max-width:520px;">
+    <h1>Gift card</h1>
+    <p class="lead" style="margin-inline:auto;">Value: {{ gift_card.balance | money }}</p>
+    <p>Code: <strong>{{ gift_card.code | format_code }}</strong></p>
+  </div>
+</section>
+{% section 'footer' %}

@@ -1,0 +1,41 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "LittleEase",
+    "theme_version": "1.0.0",
+    "theme_author": "LittleEase UK",
+    "theme_documentation_url": "https://littleease.co.uk",
+    "theme_support_url": "https://littleease.co.uk"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colours"
+      },
+      {
+        "type": "paragraph",
+        "content": "LittleEase ships with a fixed warm-paper and burnt-terracotta palette defined in theme.css. These swatches are informational."
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Ink (text / dark sections)",
+        "default": "#1C1B17"
+      },
+      {
+        "type": "color",
+        "id": "color_paper",
+        "label": "Paper (background)",
+        "default": "#FAF7F0"
+      },
+      {
+        "type": "color",
+        "id": "color_clay",
+        "label": "Clay (accent)",
+        "default": "#B5491F"
+      }
+    ]
+  }
+]

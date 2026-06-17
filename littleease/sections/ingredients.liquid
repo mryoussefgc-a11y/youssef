@@ -1,0 +1,51 @@
+{%- comment -%}
+  Ingredients (dark). 4 ingredients, each named plainly with one honest
+  sentence. Framed with "no proprietary blends, no hidden fragrance".
+{%- endcomment -%}
+<section class="ingredients section section--dark" aria-labelledby="ingredientsHeading">
+  <div class="container">
+    <div class="ingredients__head">
+      <p class="eyebrow">{{ section.settings.eyebrow | default: 'Four things. That is the whole list.' }}</p>
+      <h2 id="ingredientsHeading">{{ section.settings.heading | default: 'No proprietary blends. No hidden fragrance.' }}</h2>
+      <p class="lead">{{ section.settings.lead | default: 'Everything that touches your baby is named here in plain English, at a dilution made for infant skin. If it is not on this list, it is not in the bottle.' }}</p>
+    </div>
+
+    <div class="ingredients__grid">
+      <div class="ingredient">
+        <h3>{{ section.settings.i1_name | default: 'Roman chamomile' }}</h3>
+        <p>{{ section.settings.i1_body | default: 'A long-used calming botanical that helps settle the fussiness teething brings on.' }}</p>
+      </div>
+      <div class="ingredient">
+        <h3>{{ section.settings.i2_name | default: 'Lavender' }}</h3>
+        <p>{{ section.settings.i2_body | default: 'Eases tension and supports the wind-down to sleep — useful when the pain peaks at night.' }}</p>
+      </div>
+      <div class="ingredient">
+        <h3>{{ section.settings.i3_name | default: 'Fractionated coconut oil' }}</h3>
+        <p>{{ section.settings.i3_body | default: 'The gentle carrier base. It dilutes the botanicals safely and lets the roller glide over delicate skin.' }}</p>
+      </div>
+      <div class="ingredient">
+        <h3>{{ section.settings.i4_name | default: 'Frankincense' }}</h3>
+        <p>{{ section.settings.i4_body | default: 'Traditionally used to soothe — included in a small, well-diluted amount along the jawline.' }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredients",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Four things. That is the whole list." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "No proprietary blends. No hidden fragrance." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "Everything that touches your baby is named here in plain English, at a dilution made for infant skin. If it is not on this list, it is not in the bottle." },
+    { "type": "text", "id": "i1_name", "label": "Ingredient 1 name", "default": "Roman chamomile" },
+    { "type": "textarea", "id": "i1_body", "label": "Ingredient 1 body", "default": "A long-used calming botanical that helps settle the fussiness teething brings on." },
+    { "type": "text", "id": "i2_name", "label": "Ingredient 2 name", "default": "Lavender" },
+    { "type": "textarea", "id": "i2_body", "label": "Ingredient 2 body", "default": "Eases tension and supports the wind-down to sleep — useful when the pain peaks at night." },
+    { "type": "text", "id": "i3_name", "label": "Ingredient 3 name", "default": "Fractionated coconut oil" },
+    { "type": "textarea", "id": "i3_body", "label": "Ingredient 3 body", "default": "The gentle carrier base. It dilutes the botanicals safely and lets the roller glide over delicate skin." },
+    { "type": "text", "id": "i4_name", "label": "Ingredient 4 name", "default": "Frankincense" },
+    { "type": "textarea", "id": "i4_body", "label": "Ingredient 4 body", "default": "Traditionally used to soothe — included in a small, well-diluted amount along the jawline." }
+  ]
+}
+{% endschema %}

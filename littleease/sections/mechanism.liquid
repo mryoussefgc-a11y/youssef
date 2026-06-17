@@ -1,0 +1,68 @@
+{%- comment -%}
+  Mechanism explainer (dark). Three NUMBERED steps — a genuine sequence:
+  pain starts at the gum -> travels the jaw via the nerve -> LittleEase is
+  applied along that pathway. Includes a simplified callback of the hero
+  diagram so the idea reads as one cohesive thesis, not a one-off graphic.
+{%- endcomment -%}
+<section class="mechanism section section--dark" aria-labelledby="mechanismHeading">
+  <div class="container">
+    <div class="mechanism__head">
+      <p class="eyebrow">{{ section.settings.eyebrow | default: 'Why nothing else has worked' }}</p>
+      <h2 id="mechanismHeading">
+        {{ section.settings.heading_a | default: 'Most products treat the tooth.' }}
+        <span class="em-clay">{{ section.settings.heading_em | default: 'LittleEase' }}</span>
+        {{ section.settings.heading_b | default: 'treats the pathway.' }}
+      </h2>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <span class="step__num">01</span>
+        <h3>{{ section.settings.s1_title | default: 'It begins at the gum' }}</h3>
+        <p>{{ section.settings.s1_body | default: 'A tooth pushing through the gum line irritates the nerve endings packed into that ridge. This part you can sometimes see — swollen, red, sore.' }}</p>
+      </li>
+      <li class="step">
+        <span class="step__num">02</span>
+        <h3>{{ section.settings.s2_title | default: 'It travels the jaw' }}</h3>
+        <p>{{ section.settings.s2_body | default: 'From the gum, the signal runs along the trigeminal nerve — through the jaw, the cheek, up toward the ear. This is the part you cannot see, and the reason a baby keeps crying long after the gum is checked.' }}</p>
+      </li>
+      <li class="step">
+        <span class="step__num">03</span>
+        <h3>{{ section.settings.s3_title | default: 'Relief follows the same line' }}</h3>
+        <p>{{ section.settings.s3_body | default: 'LittleEase is rolled gently along that pathway — outside the jaw, never in the mouth. Calming botanicals meet the route the pain actually takes, instead of waiting at the tooth.' }}</p>
+      </li>
+    </ol>
+
+    {%- comment -%} Simplified callback of the hero diagram {%- endcomment -%}
+    <div class="mechanism__callback">
+      <figure aria-hidden="true">
+        <svg viewBox="0 0 320 180" role="img" aria-label="Simplified trigeminal nerve pathway from gum to ear.">
+          <path class="diagram-jaw" d="M40 40 C 30 80, 60 130, 130 150 C 200 168, 250 150, 280 120" />
+          <path class="nerve-path" d="M150 138 C 120 130, 104 110, 100 86 C 98 66, 90 52, 86 40" />
+          <circle class="nerve-dot" cx="150" cy="138" r="5" />
+          <circle class="nerve-dot" cx="86" cy="40" r="5" />
+        </svg>
+      </figure>
+      <p>{{ section.settings.callback | default: 'Same line you saw above: the clay path is the trigeminal nerve. Treating the tooth alone leaves most of that route untouched — which is exactly the part that keeps everyone awake.' }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mechanism",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why nothing else has worked" },
+    { "type": "text", "id": "heading_a", "label": "Heading (before emphasis)", "default": "Most products treat the tooth." },
+    { "type": "text", "id": "heading_em", "label": "Italic emphasis word", "default": "LittleEase" },
+    { "type": "text", "id": "heading_b", "label": "Heading (after emphasis)", "default": "treats the pathway." },
+    { "type": "text", "id": "s1_title", "label": "Step 1 title", "default": "It begins at the gum" },
+    { "type": "textarea", "id": "s1_body", "label": "Step 1 body", "default": "A tooth pushing through the gum line irritates the nerve endings packed into that ridge. This part you can sometimes see — swollen, red, sore." },
+    { "type": "text", "id": "s2_title", "label": "Step 2 title", "default": "It travels the jaw" },
+    { "type": "textarea", "id": "s2_body", "label": "Step 2 body", "default": "From the gum, the signal runs along the trigeminal nerve — through the jaw, the cheek, up toward the ear. This is the part you cannot see, and the reason a baby keeps crying long after the gum is checked." },
+    { "type": "text", "id": "s3_title", "label": "Step 3 title", "default": "Relief follows the same line" },
+    { "type": "textarea", "id": "s3_body", "label": "Step 3 body", "default": "LittleEase is rolled gently along that pathway — outside the jaw, never in the mouth. Calming botanicals meet the route the pain actually takes, instead of waiting at the tooth." },
+    { "type": "textarea", "id": "callback", "label": "Diagram callback text", "default": "Same line you saw above: the clay path is the trigeminal nerve. Treating the tooth alone leaves most of that route untouched — which is exactly the part that keeps everyone awake." }
+  ]
+}
+{% endschema %}

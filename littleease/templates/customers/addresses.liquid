@@ -1,0 +1,13 @@
+{% section 'nav' %}
+<section class="section">
+  <div class="container" style="max-width:720px;">
+    <h1>Your addresses</h1>
+    <p><a href="{{ routes.account_url }}">Back to account</a></p>
+    {% for address in customer.addresses %}
+      <div style="padding:1rem 0;border-bottom:1px solid var(--card-line);">
+        {{ address | format_address }}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% section 'footer' %}

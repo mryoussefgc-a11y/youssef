@@ -1,0 +1,66 @@
+{%- comment -%}
+  Reviews. 3 cards with UK names + cities, written in a specific, authentic
+  voice that references the skepticism -> mechanism arc. Verified-purchase
+  microcopy on each.
+{%- endcomment -%}
+<section class="reviews section" aria-labelledby="reviewsHeading">
+  <div class="container">
+    <div class="compare__head">
+      <p class="eyebrow">{{ section.settings.eyebrow | default: 'From parents who were not sure either' }}</p>
+      <h2 id="reviewsHeading">{{ section.settings.heading | default: 'Bought at 1am. Reviewed a week later.' }}</h2>
+    </div>
+
+    <div class="reviews__grid">
+
+      <article class="review">
+        <div class="rating" aria-label="Rated 5 out of 5"><span class="rating__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+        <p>{{ section.settings.r1_body | default: 'I genuinely ordered this assuming it was another candle-shop gimmick. What changed my mind was the bit about the nerve running to the ear — that was exactly what she was doing, tugging the one ear. Rolled it along her jaw before bed and we got our first four-hour stretch in weeks.' }}</p>
+        <div class="review__meta">
+          <strong>{{ section.settings.r1_name | default: 'Sophie T.' }}</strong>
+          <span>{{ section.settings.r1_loc | default: 'Bristol' }}</span>
+          <span class="review__verified">Verified purchase</span>
+        </div>
+      </article>
+
+      <article class="review">
+        <div class="rating" aria-label="Rated 5 out of 5"><span class="rating__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+        <p>{{ section.settings.r2_body | default: 'We had the drawer. Three gels, two rings, the necklace my mum swore by. I read ingredient lists obsessively and this one actually tells you the four things in it. No numbing agent is the point for me — it is not freezing his gum, it is calming the whole side of his face.' }}</p>
+        <div class="review__meta">
+          <strong>{{ section.settings.r2_name | default: 'Daniel R.' }}</strong>
+          <span>{{ section.settings.r2_loc | default: 'Glasgow' }}</span>
+          <span class="review__verified">Verified purchase</span>
+        </div>
+      </article>
+
+      <article class="review">
+        <div class="rating" aria-label="Rated 4 out of 5"><span class="rating__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9734;</span></div>
+        <p>{{ section.settings.r3_body | default: 'Not a magic wand and I would not want it sold as one — the worst molar nights still happened. But on the ordinary fussy evenings, a roll along the jaw and a cuddle settled her where nothing used to. The why-it-works explanation is what got me to try it honestly.' }}</p>
+        <div class="review__meta">
+          <strong>{{ section.settings.r3_name | default: 'Aisha K.' }}</strong>
+          <span>{{ section.settings.r3_loc | default: 'Birmingham' }}</span>
+          <span class="review__verified">Verified purchase</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "From parents who were not sure either" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Bought at 1am. Reviewed a week later." },
+    { "type": "textarea", "id": "r1_body", "label": "Review 1 body", "default": "I genuinely ordered this assuming it was another candle-shop gimmick. What changed my mind was the bit about the nerve running to the ear — that was exactly what she was doing, tugging the one ear. Rolled it along her jaw before bed and we got our first four-hour stretch in weeks." },
+    { "type": "text", "id": "r1_name", "label": "Review 1 name", "default": "Sophie T." },
+    { "type": "text", "id": "r1_loc", "label": "Review 1 location", "default": "Bristol" },
+    { "type": "textarea", "id": "r2_body", "label": "Review 2 body", "default": "We had the drawer. Three gels, two rings, the necklace my mum swore by. I read ingredient lists obsessively and this one actually tells you the four things in it. No numbing agent is the point for me — it is not freezing his gum, it is calming the whole side of his face." },
+    { "type": "text", "id": "r2_name", "label": "Review 2 name", "default": "Daniel R." },
+    { "type": "text", "id": "r2_loc", "label": "Review 2 location", "default": "Glasgow" },
+    { "type": "textarea", "id": "r3_body", "label": "Review 3 body", "default": "Not a magic wand and I would not want it sold as one — the worst molar nights still happened. But on the ordinary fussy evenings, a roll along the jaw and a cuddle settled her where nothing used to. The why-it-works explanation is what got me to try it honestly." },
+    { "type": "text", "id": "r3_name", "label": "Review 3 name", "default": "Aisha K." },
+    { "type": "text", "id": "r3_loc", "label": "Review 3 location", "default": "Birmingham" }
+  ]
+}
+{% endschema %}

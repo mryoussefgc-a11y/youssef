@@ -1,0 +1,31 @@
+{%- comment -%}
+  Footer — wordmark, policy links using real Shopify /policies/ paths (falling
+  back to the canonical path string if a policy has not been published yet),
+  and a single line of caregiving disclaimer text.
+{%- endcomment -%}
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__inner">
+      <a href="{{ routes.root_url }}" class="wordmark">{{ section.settings.wordmark | default: 'LittleEase' }}</a>
+      <nav class="footer__links" aria-label="Policies">
+        <a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Privacy</a>
+        <a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}">Refunds</a>
+        <a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}">Terms</a>
+        <a href="{{ shop.shipping_policy.url | default: '/policies/shipping-policy' }}">Shipping</a>
+      </nav>
+    </div>
+    <p class="footer__disclaimer">
+      {{ section.settings.disclaimer | default: 'LittleEase is a soothing botanical roller for external use along the jaw and cheek. It is not a medicine and is not intended to diagnose, treat or cure any condition. Always patch test first, keep away from the eyes and mouth, and speak to your GP or health visitor if you have any concerns about your baby.' }}
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "LittleEase" },
+    { "type": "textarea", "id": "disclaimer", "label": "Caregiving disclaimer", "default": "LittleEase is a soothing botanical roller for external use along the jaw and cheek. It is not a medicine and is not intended to diagnose, treat or cure any condition. Always patch test first, keep away from the eyes and mouth, and speak to your GP or health visitor if you have any concerns about your baby." }
+  ]
+}
+{% endschema %}

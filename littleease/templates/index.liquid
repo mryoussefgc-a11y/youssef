@@ -1,0 +1,24 @@
+{%- comment -%}
+  Home. LittleEase is a single-product brand, so the homepage points straight
+  at the product page. If a product exists in the store it links to it;
+  otherwise it links to the catalog. Uses the nav + footer for consistency.
+{%- endcomment -%}
+{% section 'nav' %}
+
+<section class="section" style="text-align:center;">
+  <div class="container" style="max-width:640px;">
+    <p class="eyebrow">Natural teething relief</p>
+    <h1>Most products treat the tooth. <span class="em-clay">LittleEase</span> treats the pathway.</h1>
+    <p class="lead" style="margin-inline:auto;">A botanical roller for teething babies, applied along the jaw — the route the pain actually travels.</p>
+    <div style="max-width:320px;margin:2rem auto 0;">
+      {%- assign first_product = collections.all.products.first -%}
+      {%- if first_product -%}
+        <a href="{{ first_product.url }}" class="btn btn--primary">See LittleEase</a>
+      {%- else -%}
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">Shop now</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% section 'footer' %}

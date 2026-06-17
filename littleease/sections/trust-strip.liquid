@@ -1,0 +1,65 @@
+{%- comment -%}
+  Trust strip: single row, 4 icon+text pairs on the light card background,
+  sitting between the two dark sections. Icons are inline SVG (no image deps).
+{%- endcomment -%}
+<section class="trust" aria-label="What makes LittleEase different">
+  <div class="container trust__row">
+
+    <div class="trust__item">
+      <span class="trust__icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4-3 7-6 7-11a7 7 0 0 0-14 0c0 5 3 8 7 11z"/><path d="M9 11c1.5 1.5 4.5 1.5 6 0"/></svg>
+      </span>
+      <div>
+        <strong>{{ section.settings.t1_title | default: 'No synthetic numbing' }}</strong>
+        <span>{{ section.settings.t1_body | default: 'Botanical roller — no benzocaine, no lidocaine.' }}</span>
+      </div>
+    </div>
+
+    <div class="trust__item">
+      <span class="trust__icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </span>
+      <div>
+        <strong>{{ section.settings.t2_title | default: 'Works within minutes' }}</strong>
+        <span>{{ section.settings.t2_body | default: 'Most parents see settling in the same evening.' }}</span>
+      </div>
+    </div>
+
+    <div class="trust__item">
+      <span class="trust__icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <div>
+        <strong>{{ section.settings.t3_title | default: 'Safe from 3 months' }}</strong>
+        <span>{{ section.settings.t3_body | default: 'Diluted for infant skin, applied outside the mouth.' }}</span>
+      </div>
+    </div>
+
+    <div class="trust__item">
+      <span class="trust__icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 20l-4.9 2.6.9-5.5-4-3.9L9.5 7z"/></svg>
+      </span>
+      <div>
+        <strong>{{ section.settings.t4_title | default: '30-night promise' }}</strong>
+        <span>{{ section.settings.t4_body | default: 'If it does not help, you do not pay. Keep the bottle.' }}</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust strip",
+  "settings": [
+    { "type": "text", "id": "t1_title", "label": "Item 1 title", "default": "No synthetic numbing" },
+    { "type": "text", "id": "t1_body", "label": "Item 1 body", "default": "Botanical roller — no benzocaine, no lidocaine." },
+    { "type": "text", "id": "t2_title", "label": "Item 2 title", "default": "Works within minutes" },
+    { "type": "text", "id": "t2_body", "label": "Item 2 body", "default": "Most parents see settling in the same evening." },
+    { "type": "text", "id": "t3_title", "label": "Item 3 title", "default": "Safe from 3 months" },
+    { "type": "text", "id": "t3_body", "label": "Item 3 body", "default": "Diluted for infant skin, applied outside the mouth." },
+    { "type": "text", "id": "t4_title", "label": "Item 4 title", "default": "30-night promise" },
+    { "type": "text", "id": "t4_body", "label": "Item 4 body", "default": "If it does not help, you do not pay. Keep the bottle." }
+  ]
+}
+{% endschema %}

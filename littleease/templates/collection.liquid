@@ -1,0 +1,17 @@
+{% section 'nav' %}
+<section class="section">
+  <div class="container">
+    <h1>{{ collection.title | default: 'Collection' }}</h1>
+    <ul class="reviews__grid" style="margin-top:2rem;">
+      {% for product in collection.products %}
+        <li class="review">
+          <a href="{{ product.url }}" class="wordmark">{{ product.title }}</a>
+          <p>{{ product.price | money }}</p>
+        </li>
+      {% else %}
+        <li>No products yet.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% section 'footer' %}

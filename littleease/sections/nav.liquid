@@ -1,0 +1,24 @@
+{%- comment -%}
+  Sticky nav: wordmark, shipping/guarantee microcopy (hidden on mobile via CSS),
+  and a single text-link-style CTA that scrolls to the #offer section.
+{%- endcomment -%}
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="{{ routes.root_url }}" class="wordmark">{{ section.settings.wordmark | default: 'LittleEase' }}</a>
+
+    <p class="nav__micro">{{ section.settings.microcopy | default: 'Free UK shipping &middot; 30-night promise' }}</p>
+
+    <a href="#offer" class="link-cta">{{ section.settings.cta_label | default: 'See the offer' }}</a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Nav",
+  "settings": [
+    { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "LittleEase" },
+    { "type": "text", "id": "microcopy", "label": "Shipping / guarantee microcopy", "default": "Free UK shipping · 30-night promise" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "See the offer" }
+  ]
+}
+{% endschema %}

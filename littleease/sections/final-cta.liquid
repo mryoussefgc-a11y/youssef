@@ -1,0 +1,48 @@
+{%- comment -%}
+  Final CTA (dark, full-bleed). Short reinforcing headline, REAL add-to-cart
+  form with a light button, micro-trust line.
+{%- endcomment -%}
+
+{%- assign cart_variant = product.selected_or_first_available_variant -%}
+
+<section class="finalcta section section--dark" aria-labelledby="finalCtaHeading">
+  <div class="container finalcta__inner">
+    <h2 id="finalCtaHeading">
+      {{ section.settings.heading_a | default: 'Tonight could be the night it' }}
+      <span class="em-clay">{{ section.settings.heading_em | default: 'settles' }}</span>{{ section.settings.heading_b | default: '.' }}
+    </h2>
+    <p class="lead" style="margin-inline:auto;">{{ section.settings.body | default: 'Treat the pathway, not just the tooth. Thirty nights to find out, with nothing to lose if it does not help.' }}</p>
+
+    <div class="finalcta__form">
+      {% form 'product', product %}
+        {%- if cart_variant -%}
+          <input type="hidden" name="id" value="{{ cart_variant.id }}">
+        {%- endif -%}
+        <button type="submit" name="add" class="btn btn--light"
+          {% unless cart_variant.available %}disabled aria-disabled="true"{% endunless %}>
+          {%- if cart_variant.available -%}
+            {{ section.settings.cta_label | default: 'Add to cart' }}
+            {%- if cart_variant.price %} &mdash; {{ cart_variant.price | money }}{% endif -%}
+          {%- else -%}
+            Currently unavailable
+          {%- endif -%}
+        </button>
+      {% endform %}
+      <p class="microtrust">{{ section.settings.microtrust | default: 'Free UK shipping · 30-night promise · No numbing agents' }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Final CTA",
+  "settings": [
+    { "type": "text", "id": "heading_a", "label": "Heading (before emphasis)", "default": "Tonight could be the night it" },
+    { "type": "text", "id": "heading_em", "label": "Italic emphasis word", "default": "settles" },
+    { "type": "text", "id": "heading_b", "label": "Heading (after emphasis)", "default": "." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Treat the pathway, not just the tooth. Thirty nights to find out, with nothing to lose if it does not help." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Add to cart" },
+    { "type": "text", "id": "microtrust", "label": "Micro-trust line", "default": "Free UK shipping · 30-night promise · No numbing agents" }
+  ]
+}
+{% endschema %}

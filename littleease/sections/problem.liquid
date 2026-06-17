@@ -1,0 +1,68 @@
+{%- comment -%}
+  Problem section: two columns.
+  Left  — eyebrow + headline + lead + 3 specific situational pain points.
+  Right — a single large pull-quote card from a named parent (with location)
+          that reinforces the mechanism insight.
+{%- endcomment -%}
+<section class="problem section" aria-labelledby="problemHeading">
+  <div class="container problem__grid">
+
+    <div class="problem__left">
+      <p class="eyebrow">{{ section.settings.eyebrow | default: 'If this sounds familiar' }}</p>
+      <h2 id="problemHeading">
+        {{ section.settings.heading_a | default: 'You have checked the gum. There is' }}
+        <span class="em-clay">{{ section.settings.heading_em | default: 'nothing' }}</span>
+        {{ section.settings.heading_b | default: 'there. The crying continues.' }}
+      </h2>
+      <p class="lead">{{ section.settings.lead | default: 'It is not in your head, and it is not that you are missing something. The tooth is one small part of what is happening — the rest is travelling somewhere you cannot reach with a teething ring.' }}</p>
+
+      <div class="painpoints">
+        <div class="painpoint">
+          <strong>{{ section.settings.p1_title | default: 'The 1am rub-the-cheek shift' }}</strong>
+          <span>{{ section.settings.p1_body | default: 'They keep pulling at one ear and rubbing the same cheek, and you cannot work out why a sore tooth would do that.' }}</span>
+        </div>
+        <div class="painpoint">
+          <strong>{{ section.settings.p2_title | default: 'The gel that lasts four minutes' }}</strong>
+          <span>{{ section.settings.p2_body | default: 'A numbing gel quiets the gum for a moment, then the crying picks back up because the gum was never the whole problem.' }}</span>
+        </div>
+        <div class="painpoint">
+          <strong>{{ section.settings.p3_title | default: 'The drawer of half-tried things' }}</strong>
+          <span>{{ section.settings.p3_body | default: 'A chilled ring, an amber necklace, three kinds of gel — reading this at 1am hoping the fourth thing finally works.' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem__right">
+      <figure class="pullquote">
+        <blockquote>{{ section.settings.quote | default: '&ldquo;Once someone explained the pain runs up to the ear, the constant ear-tugging finally made sense. We rolled it along her jaw and within ten minutes she unclenched.&rdquo;' }}</blockquote>
+        <cite>
+          <strong>{{ section.settings.quote_name | default: 'Hannah M.' }}</strong>
+          {{ section.settings.quote_loc | default: 'Leeds · mum of one' }}
+        </cite>
+      </figure>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Problem",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "If this sounds familiar" },
+    { "type": "text", "id": "heading_a", "label": "Heading (before emphasis)", "default": "You have checked the gum. There is" },
+    { "type": "text", "id": "heading_em", "label": "Italic emphasis word", "default": "nothing" },
+    { "type": "text", "id": "heading_b", "label": "Heading (after emphasis)", "default": "there. The crying continues." },
+    { "type": "textarea", "id": "lead", "label": "Lead paragraph", "default": "It is not in your head, and it is not that you are missing something. The tooth is one small part of what is happening — the rest is travelling somewhere you cannot reach with a teething ring." },
+    { "type": "text", "id": "p1_title", "label": "Pain point 1 title", "default": "The 1am rub-the-cheek shift" },
+    { "type": "textarea", "id": "p1_body", "label": "Pain point 1 body", "default": "They keep pulling at one ear and rubbing the same cheek, and you cannot work out why a sore tooth would do that." },
+    { "type": "text", "id": "p2_title", "label": "Pain point 2 title", "default": "The gel that lasts four minutes" },
+    { "type": "textarea", "id": "p2_body", "label": "Pain point 2 body", "default": "A numbing gel quiets the gum for a moment, then the crying picks back up because the gum was never the whole problem." },
+    { "type": "text", "id": "p3_title", "label": "Pain point 3 title", "default": "The drawer of half-tried things" },
+    { "type": "textarea", "id": "p3_body", "label": "Pain point 3 body", "default": "A chilled ring, an amber necklace, three kinds of gel — reading this at 1am hoping the fourth thing finally works." },
+    { "type": "textarea", "id": "quote", "label": "Pull quote", "default": "“Once someone explained the pain runs up to the ear, the constant ear-tugging finally made sense. We rolled it along her jaw and within ten minutes she unclenched.”" },
+    { "type": "text", "id": "quote_name", "label": "Quote name", "default": "Hannah M." },
+    { "type": "text", "id": "quote_loc", "label": "Quote location", "default": "Leeds · mum of one" }
+  ]
+}
+{% endschema %}

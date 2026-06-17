@@ -1,0 +1,14 @@
+{
+  "current": {
+    "color_ink": "#1C1B17",
+    "color_paper": "#FAF7F0",
+    "color_clay": "#B5491F"
+  },
+  "presets": {
+    "LittleEase": {
+      "color_ink": "#1C1B17",
+      "color_paper": "#FAF7F0",
+      "color_clay": "#B5491F"
+    }
+  }
+}

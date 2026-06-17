@@ -1,0 +1,122 @@
+{%- comment -%}
+  Bundle offer (#offer — the nav CTA scroll target).
+  Three pricing tiers, each wired to a REAL Shopify variant via {% form 'product' %}.
+  Variant resolution is defensive: tiers 2 and 3 fall back to variant[0] when a
+  fresh product only has the single default variant, so no CTA ever breaks.
+  The middle tier is visually emphasised with a small badge.
+{%- endcomment -%}
+
+{%- comment -%} Resolve a variant per tier with safe fallbacks {%- endcomment -%}
+{%- assign v_single = product.variants[0] -%}
+{%- assign v_pair   = product.variants[1] | default: product.variants[0] -%}
+{%- assign v_family = product.variants[2] | default: product.variants[0] -%}
+
+<section id="offer" class="bundle section" aria-labelledby="bundleHeading">
+  <div class="container">
+    <div class="bundle__head">
+      <p class="eyebrow">{{ section.settings.eyebrow | default: 'Choose your supply' }}</p>
+      <h2 id="bundleHeading">{{ section.settings.heading | default: 'Teething comes in waves. Most parents keep a spare.' }}</h2>
+      <p class="lead">{{ section.settings.lead | default: 'One bottle covers roughly six to eight weeks. A second means you are never caught out at 1am with an empty roller and a sore baby.' }}</p>
+    </div>
+
+    <div class="tiers">
+
+      {%- comment -%} ---------- Tier 1: Single ---------- {%- endcomment -%}
+      <div class="tier">
+        <h3>{{ section.settings.t1_name | default: 'Single' }}</h3>
+        {%- if v_single -%}
+          <div class="tier__price">{{ v_single.price | money }}</div>
+          <div class="tier__per">{{ v_single.price | money }} per bottle</div>
+        {%- else -%}
+          <div class="tier__price">&mdash;</div>
+          <div class="tier__per">Pricing coming soon</div>
+        {%- endif -%}
+        <ul class="tier__list">
+          <li>One 10ml LittleEase roller</li>
+          <li>Application guide card</li>
+          <li>Free UK shipping</li>
+        </ul>
+        <div class="tier__form">
+          {% form 'product', product %}
+            {%- if v_single -%}<input type="hidden" name="id" value="{{ v_single.id }}">{%- endif -%}
+            <button type="submit" name="add" class="btn btn--outline"
+              {% unless v_single.available %}disabled aria-disabled="true"{% endunless %}>
+              {%- if v_single.available -%}Choose single{%- else -%}Unavailable{%- endif -%}
+            </button>
+          {% endform %}
+        </div>
+      </div>
+
+      {%- comment -%} ---------- Tier 2: Pair (featured) ---------- {%- endcomment -%}
+      <div class="tier tier--featured">
+        <span class="tier__badge">{{ section.settings.t2_badge | default: 'Most chosen' }}</span>
+        <h3>{{ section.settings.t2_name | default: 'Pair' }}</h3>
+        {%- if v_pair -%}
+          <div class="tier__price">{{ v_pair.price | money }}</div>
+          <div class="tier__per">{{ v_pair.price | divided_by: 2 | money }} per bottle</div>
+        {%- else -%}
+          <div class="tier__price">&mdash;</div>
+          <div class="tier__per">Pricing coming soon</div>
+        {%- endif -%}
+        <ul class="tier__list">
+          <li>Two 10ml LittleEase rollers</li>
+          <li>One for the changing bag, one for the cot side</li>
+          <li>Application guide card</li>
+          <li>Free UK shipping</li>
+        </ul>
+        <div class="tier__form">
+          {% form 'product', product %}
+            {%- if v_pair -%}<input type="hidden" name="id" value="{{ v_pair.id }}">{%- endif -%}
+            <button type="submit" name="add" class="btn btn--primary"
+              {% unless v_pair.available %}disabled aria-disabled="true"{% endunless %}>
+              {%- if v_pair.available -%}Choose pair{%- else -%}Unavailable{%- endif -%}
+            </button>
+          {% endform %}
+        </div>
+      </div>
+
+      {%- comment -%} ---------- Tier 3: Family ---------- {%- endcomment -%}
+      <div class="tier">
+        <h3>{{ section.settings.t3_name | default: 'Family' }}</h3>
+        {%- if v_family -%}
+          <div class="tier__price">{{ v_family.price | money }}</div>
+          <div class="tier__per">{{ v_family.price | divided_by: 4 | money }} per bottle</div>
+        {%- else -%}
+          <div class="tier__price">&mdash;</div>
+          <div class="tier__per">Pricing coming soon</div>
+        {%- endif -%}
+        <ul class="tier__list">
+          <li>Four 10ml LittleEase rollers</li>
+          <li>Enough to share with a sibling or a friend</li>
+          <li>Application guide card</li>
+          <li>Free UK shipping</li>
+        </ul>
+        <div class="tier__form">
+          {% form 'product', product %}
+            {%- if v_family -%}<input type="hidden" name="id" value="{{ v_family.id }}">{%- endif -%}
+            <button type="submit" name="add" class="btn btn--outline"
+              {% unless v_family.available %}disabled aria-disabled="true"{% endunless %}>
+              {%- if v_family.available -%}Choose family{%- else -%}Unavailable{%- endif -%}
+            </button>
+          {% endform %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle offer",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Choose your supply" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Teething comes in waves. Most parents keep a spare." },
+    { "type": "textarea", "id": "lead", "label": "Lead", "default": "One bottle covers roughly six to eight weeks. A second means you are never caught out at 1am with an empty roller and a sore baby." },
+    { "type": "text", "id": "t1_name", "label": "Tier 1 name", "default": "Single" },
+    { "type": "text", "id": "t2_name", "label": "Tier 2 name", "default": "Pair" },
+    { "type": "text", "id": "t2_badge", "label": "Tier 2 badge", "default": "Most chosen" },
+    { "type": "text", "id": "t3_name", "label": "Tier 3 name", "default": "Family" }
+  ]
+}
+{% endschema %}
