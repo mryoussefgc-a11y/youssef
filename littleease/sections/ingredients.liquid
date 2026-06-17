@@ -1,0 +1,84 @@
+{%- comment -%} Ingredients transparency — 4 cards + "No [X]" tag list. {%- endcomment -%}
+<section class="le-section le-ingredients">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'Nothing to hide' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: 'Four gentle ingredients. And a long list of things we left out.' }}</h2>
+      <p class="le-section__lede">{{ section.settings.subheading | default: 'Every oil is here for a reason — and you’ll recognise every word on the label.' }}</p>
+    </div>
+
+    <div class="le-ingredients__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'ingredient' -%}
+          <div class="le-ingredient-card" {{ block.shopify_attributes }}>
+            <span class="le-ingredient-card__icon">
+              {%- case block.settings.icon -%}
+                {%- when 'flower' -%}{% render 'icon', name: 'flower' %}
+                {%- when 'drop' -%}{% render 'icon', name: 'drop' %}
+                {%- when 'leaf' -%}{% render 'icon', name: 'leaf' %}
+                {%- when 'sparkle' -%}{% render 'icon', name: 'sparkle' %}
+                {%- else -%}{% render 'icon', name: 'leaf' %}
+              {%- endcase -%}
+            </span>
+            <h3 class="le-ingredient-card__title">{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="le-nolist">
+      <span class="le-nolist__label">Made without:</span>
+      {%- assign no_items = section.settings.no_list | default: 'benzocaine, parabens, alcohol, numbing agents, artificial fragrance' | split: ',' -%}
+      {%- for item in no_items -%}
+        <span class="le-tag le-tag--no">{% render 'icon', name: 'x-circle' %}No {{ item | strip }}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredients",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Nothing to hide" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Four gentle ingredients. And a long list of things we left out." },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Every oil is here for a reason — and you’ll recognise every word on the label." },
+    { "type": "text", "id": "no_list", "label": "“No [X]” list (comma-separated)", "default": "benzocaine, parabens, alcohol, numbing agents, artificial fragrance" }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "flower", "label": "Flower" },
+            { "value": "drop", "label": "Drop" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "sparkle", "label": "Sparkle" }
+          ],
+          "default": "flower"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Roman Chamomile" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Long trusted by parents to calm and soothe — it helps take the edge off restlessness and fretful crying." }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Ingredients",
+      "blocks": [
+        { "type": "ingredient", "settings": { "icon": "flower", "title": "Roman Chamomile", "text": "Long trusted by parents to calm and soothe — it helps take the edge off restlessness and fretful crying." } },
+        { "type": "ingredient", "settings": { "icon": "sparkle", "title": "Lavender", "text": "Gently relaxing and naturally settling, helping your baby drift towards calmer, longer sleep." } },
+        { "type": "ingredient", "settings": { "icon": "drop", "title": "Fractionated Coconut Oil", "text": "A light, non-greasy carrier that’s kind to delicate baby skin and absorbs cleanly." } },
+        { "type": "ingredient", "settings": { "icon": "leaf", "title": "Frankincense", "text": "Warming and grounding, traditionally used to ease tension and bring a sense of calm." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

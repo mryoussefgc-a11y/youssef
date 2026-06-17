@@ -1,0 +1,32 @@
+{%- comment -%} 30-day guarantee — seal graphic + reassuring zero-risk copy. {%- endcomment -%}
+<section class="le-section le-guarantee">
+  <div class="le-container le-guarantee__inner">
+    <div class="le-seal" aria-hidden="true">
+      <span class="le-seal__ring">
+        {% render 'icon', name: 'shield-check' %}
+      </span>
+      <span class="le-seal__days">30</span>
+      <span class="le-seal__label">DAY GUARANTEE</span>
+    </div>
+
+    <div class="le-guarantee__copy">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'The risk is ours, not yours' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: 'Try it for 30 nights. If it doesn’t help, you don’t pay.' }}</h2>
+      <p>{{ section.settings.body | default: 'We know you’ve been let down before — so we’ve made this simple. Use LittleEase for a full month. If your little one isn’t calmer and you’re not convinced, email us and we’ll refund every penny. Keep the bottle. No forms, no awkward questions, no catch.' }}</p>
+      <a class="le-btn le-btn--primary le-btn--lg" href="#bundle">{{ section.settings.cta_label | default: 'Try LittleEase risk-free' }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Guarantee",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The risk is ours, not yours" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Try it for 30 nights. If it doesn’t help, you don’t pay." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "We know you’ve been let down before — so we’ve made this simple. Use LittleEase for a full month. If your little one isn’t calmer and you’re not convinced, email us and we’ll refund every penny. Keep the bottle. No forms, no awkward questions, no catch." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Try LittleEase risk-free" }
+  ],
+  "presets": [ { "name": "Guarantee" } ]
+}
+{% endschema %}

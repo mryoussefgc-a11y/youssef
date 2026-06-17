@@ -1,0 +1,64 @@
+{%- comment -%}
+  Real Shopify add-to-cart form with a safe variant fallback.
+
+  Params:
+    variant_index   - which product.variants index to sell (default 0)
+    quantity        - quantity to add (default 1)
+    label           - button text
+    sublabel        - optional micro-trust line under the button (HTML allowed)
+    button_class    - extra CSS classes for the button
+    show_price      - if 'true', renders the variant price next to nothing (handled by caller normally)
+
+  Edge cases handled:
+    - No product / no variants  -> renders a disabled "Coming soon" button (no Liquid error)
+    - Fewer variants than index -> falls back to the last available variant
+{%- endcomment -%}
+{%- liquid
+  assign v_index = variant_index | default: 0 | plus: 0
+  assign qty = quantity | default: 1
+  assign btn_label = label | default: 'Add to basket'
+  assign btn_class = button_class | default: ''
+
+  assign variant_count = 0
+  if product != blank and product.variants != blank
+    assign variant_count = product.variants.size
+  endif
+
+  assign selected_variant = nil
+  if variant_count > 0
+    if v_index > variant_count
+      assign v_index = variant_count
+    endif
+    if v_index >= variant_count
+      assign v_index = variant_count | minus: 1
+    endif
+    assign selected_variant = product.variants[v_index]
+  endif
+-%}
+
+{%- if selected_variant -%}
+  {%- form 'product', product, class: 'le-atc-form' -%}
+    <input type="hidden" name="id" value="{{ selected_variant.id }}">
+    <input type="hidden" name="quantity" value="{{ qty }}">
+    <button
+      type="submit"
+      name="add"
+      class="le-btn le-btn--primary {{ btn_class }}"
+      {% unless selected_variant.available %}disabled aria-disabled="true"{% endunless %}>
+      {%- if selected_variant.available -%}
+        {{ btn_label }}
+      {%- else -%}
+        Sold out
+      {%- endif -%}
+    </button>
+  {%- endform -%}
+{%- else -%}
+  {%- comment -%} Pre-launch fallback: no product/variants set up yet {%- endcomment -%}
+  <button type="button" class="le-btn le-btn--primary {{ btn_class }}" disabled aria-disabled="true">
+    {{ btn_label }}
+  </button>
+{%- endif -%}
+
+{%- if sublabel -%}
+  <p class="le-atc-sublabel">{{ sublabel }}</p>
+{%- endif -%}

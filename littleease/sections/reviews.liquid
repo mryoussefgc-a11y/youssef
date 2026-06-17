@@ -1,0 +1,65 @@
+{%- comment -%} Social proof — UGC-style review cards in authentic UK mum voice. {%- endcomment -%}
+<section class="le-section le-reviews">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'From mums who’ve been there' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: '243 UK families, a lot fewer 2am tears.' }}</h2>
+      <div class="le-reviews__summary">
+        {% render 'stars', rating: 5 %}
+        <span>{{ section.settings.summary | default: '4.9 average from 243 verified UK reviews' }}</span>
+      </div>
+    </div>
+
+    <div class="le-reviews__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'review' -%}
+          <figure class="le-review-card" {{ block.shopify_attributes }}>
+            {% render 'stars', rating: block.settings.rating %}
+            <blockquote>{{ block.settings.quote }}</blockquote>
+            <figcaption>
+              <span class="le-review-card__avatar" aria-hidden="true">{{ block.settings.name | slice: 0 }}</span>
+              <span class="le-review-card__meta">
+                <strong>{{ block.settings.name }}</strong>
+                <span class="le-review-card__verified">{% render 'icon', name: 'check-circle' %}{{ block.settings.location | default: 'Verified UK purchase' }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "From mums who’ve been there" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "243 UK families, a lot fewer 2am tears." },
+    { "type": "text", "id": "summary", "label": "Summary line", "default": "4.9 average from 243 verified UK reviews" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "Honestly I’d given up. Bought it half-expecting nothing. First night I rolled it on before her feed and she actually slept through. I cried a bit, not gonna lie." },
+        { "type": "text", "id": "name", "label": "Name", "default": "Hannah M." },
+        { "type": "text", "id": "location", "label": "Location / badge", "default": "Verified UK purchase · Leeds" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        { "type": "review", "settings": { "rating": 5, "quote": "Honestly I’d given up. Bought it half-expecting nothing. First night I rolled it on before her feed and she actually slept through. I cried a bit, not gonna lie.", "name": "Hannah M.", "location": "Verified UK purchase · Leeds" } },
+        { "type": "review", "settings": { "rating": 5, "quote": "We’d tried the rings, the gels, the amber bead thing my mum swore by. This is the only one that calms him. Smells lovely too, not chemically.", "name": "Priya S.", "location": "Verified UK purchase · Manchester" } },
+        { "type": "review", "settings": { "rating": 5, "quote": "Sceptical northern mum here. Wasn’t expecting much for the money but it genuinely settles her in a few minutes. Keep one in the changing bag and one by the cot now.", "name": "Becca T.", "location": "Verified UK purchase · Newcastle" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

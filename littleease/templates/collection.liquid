@@ -1,0 +1,26 @@
+{%- comment -%} Minimal collection grid (fallback — store is single-product focused). {%- endcomment -%}
+<section class="le-section">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <h1 class="le-h2">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}<div class="le-section__lede le-rte">{{ collection.description }}</div>{%- endif -%}
+    </div>
+
+    {%- paginate collection.products by 12 -%}
+      <div class="le-collection__grid">
+        {%- for product in collection.products -%}
+          <a class="le-pcard" href="{{ product.url }}">
+            {% render 'product-image', image: product.featured_image, size: '400x', alt: product.title %}
+            <h2 class="le-pcard__title">{{ product.title }}</h2>
+            <span class="le-pcard__price">{{ product.price | money }}</span>
+          </a>
+        {%- else -%}
+          <p>No products yet — check back soon.</p>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <div class="le-pagination">{{ paginate | default_pagination }}</div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>

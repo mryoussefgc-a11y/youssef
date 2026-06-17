@@ -1,0 +1,35 @@
+{%- comment -%}
+  Product image with a graceful CSS-only fallback bottle graphic.
+  Renders product.featured_image (or a named image) when present, otherwise
+  draws a tasteful roller-bottle so the page never looks broken pre-launch.
+  Usage: {% render 'product-image', image: product.featured_image, size: '700x', alt: product.title %}
+{%- endcomment -%}
+{%- liquid
+  assign img = image
+  assign img_size = size | default: '700x'
+  assign img_alt = alt | default: 'LittleEase teething relief roller'
+-%}
+{%- if img -%}
+  <img
+    class="le-product-img"
+    src="{{ img | img_url: img_size }}"
+    srcset="{{ img | img_url: '400x' }} 400w, {{ img | img_url: '700x' }} 700w, {{ img | img_url: '1000x' }} 1000w"
+    sizes="(max-width: 960px) 90vw, 45vw"
+    alt="{{ img_alt | escape }}"
+    width="700" height="700"
+    loading="lazy">
+{%- else -%}
+  {%- comment -%} CSS-built fallback bottle — no image request {%- endcomment -%}
+  <div class="le-bottle" role="img" aria-label="LittleEase teething relief roller bottle">
+    <span class="le-bottle__cap"></span>
+    <span class="le-bottle__neck"></span>
+    <span class="le-bottle__body">
+      <span class="le-bottle__label">
+        <span class="le-bottle__brand">Little<em>Ease</em></span>
+        <span class="le-bottle__sub">Teething Relief Roller</span>
+        <span class="le-bottle__leaf">{% render 'icon', name: 'leaf' %}</span>
+        <span class="le-bottle__size">10ml · Natural</span>
+      </span>
+    </span>
+  </div>
+{%- endif -%}

@@ -1,0 +1,39 @@
+{%- comment -%} Simple, on-brand cart page. {%- endcomment -%}
+<section class="le-section le-cart">
+  <div class="le-container le-rte-wrap">
+    <h1 class="le-h2">Your basket</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <p>Your basket is empty for now.</p>
+      <a class="le-btn le-btn--primary le-btn--lg" href="{{ routes.root_url }}">Continue shopping</a>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" novalidate class="le-cart__form">
+        <ul class="le-cart__items">
+          {%- for item in cart.items -%}
+            <li class="le-cart__item">
+              {%- if item.image -%}
+                <img src="{{ item.image | img_url: '120x' }}" alt="{{ item.title | escape }}" width="60" height="60" loading="lazy">
+              {%- endif -%}
+              <div class="le-cart__item-info">
+                <a href="{{ item.url }}"><strong>{{ item.product.title }}</strong></a>
+                {%- unless item.variant.title contains 'Default' -%}<span>{{ item.variant.title }}</span>{%- endunless -%}
+                <span>{{ item.final_price | money }}</span>
+              </div>
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantity" class="le-cart__qty">
+              <span class="le-cart__line-price">{{ item.final_line_price | money }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        <div class="le-cart__footer">
+          <p class="le-cart__subtotal">Subtotal <strong>{{ cart.total_price | money }}</strong></p>
+          <p class="le-cart__note">Shipping &amp; taxes calculated at checkout.</p>
+          <div class="le-cart__actions">
+            <button type="submit" name="update" class="le-btn le-btn--ghost">Update basket</button>
+            <button type="submit" name="checkout" class="le-btn le-btn--primary le-btn--lg">Checkout</button>
+          </div>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>

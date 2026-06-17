@@ -1,0 +1,83 @@
+{%- comment -%} Problem section — emotional framing + pain-point cards + pull-quote. {%- endcomment -%}
+<section class="le-section le-problem">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'If this is your night, you’re not alone' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: 'You love your baby. But teething is breaking you both.' }}</h2>
+      <p class="le-section__lede">{{ section.settings.subheading | default: 'It’s 2am. You’ve rocked, shushed, paced the hallway. Nothing’s working — and quietly, you’re wondering what you’re doing wrong. You’re not doing anything wrong.' }}</p>
+    </div>
+
+    <div class="le-problem__layout">
+      <div class="le-problem__cards">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'pain' -%}
+            <div class="le-pain-card" {{ block.shopify_attributes }}>
+              <span class="le-pain-card__icon">
+                {%- case block.settings.icon -%}
+                  {%- when 'tear' -%}{% render 'icon', name: 'tear' %}
+                  {%- when 'moon' -%}{% render 'icon', name: 'moon' %}
+                  {%- when 'heart' -%}{% render 'icon', name: 'heart' %}
+                  {%- when 'clock' -%}{% render 'icon', name: 'clock' %}
+                  {%- else -%}{% render 'icon', name: 'tear' %}
+                {%- endcase -%}
+              </span>
+              <h3 class="le-pain-card__title">{{ block.settings.title }}</h3>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <figure class="le-pullquote">
+        <blockquote>{{ section.settings.pullquote | default: 'You didn’t fail at teething. The products failed you.' }}</blockquote>
+        <figcaption>{{ section.settings.pullquote_caption | default: '— The LittleEase promise' }}</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Problem",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "If this is your night, you’re not alone" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You love your baby. But teething is breaking you both." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "It’s 2am. You’ve rocked, shushed, paced the hallway. Nothing’s working — and quietly, you’re wondering what you’re doing wrong. You’re not doing anything wrong." },
+    { "type": "textarea", "id": "pullquote", "label": "Pull quote", "default": "You didn’t fail at teething. The products failed you." },
+    { "type": "text", "id": "pullquote_caption", "label": "Pull quote caption", "default": "— The LittleEase promise" }
+  ],
+  "blocks": [
+    {
+      "type": "pain",
+      "name": "Pain point",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "tear", "label": "Tear" },
+            { "value": "moon", "label": "Moon (no sleep)" },
+            { "value": "heart", "label": "Heart (guilt)" },
+            { "value": "clock", "label": "Clock" }
+          ],
+          "default": "tear"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "The crying that won’t stop" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "That high, breathless cry that goes straight through you — and no cuddle seems to reach it." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Problem",
+      "blocks": [
+        { "type": "pain", "settings": { "icon": "tear", "title": "The crying that won’t stop", "text": "That high, breathless cry that goes straight through you — and no cuddle seems to reach it." } },
+        { "type": "pain", "settings": { "icon": "moon", "title": "Nights with no sleep", "text": "Up every 40 minutes. You’ve lost count of the 3am feeds, the cold tea, the bargaining with the dark." } },
+        { "type": "pain", "settings": { "icon": "heart", "title": "The guilt nobody talks about", "text": "Feeling helpless watching your baby hurt — then guilty for feeling so worn down by it." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

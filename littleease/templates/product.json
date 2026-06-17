@@ -1,0 +1,135 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "blocks": {
+        "b1": { "type": "bullet", "settings": { "text": "Gentle relief in 2–5 minutes" } },
+        "b2": { "type": "bullet", "settings": { "text": "No benzocaine, no numbing agents, no alcohol" } },
+        "b3": { "type": "bullet", "settings": { "text": "Safe from 3 months — paediatrician-informed blend" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "trust-bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "t1": { "type": "stat", "settings": { "icon": "leaf", "stat": "100% Natural", "label": "Plant-based oils" } },
+        "t2": { "type": "stat", "settings": { "icon": "clock", "stat": "2–5 min", "label": "To gentle relief" } },
+        "t3": { "type": "stat", "settings": { "icon": "baby", "stat": "3 Months+", "label": "Paediatrician-informed" } },
+        "t4": { "type": "stat", "settings": { "icon": "shield", "stat": "30-Day", "label": "Money-back guarantee" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "problem": {
+      "type": "problem",
+      "blocks": {
+        "p1": { "type": "pain", "settings": { "icon": "tear", "title": "The crying that won’t stop", "text": "That high, breathless cry that goes straight through you — and no cuddle seems to reach it." } },
+        "p2": { "type": "pain", "settings": { "icon": "moon", "title": "Nights with no sleep", "text": "Up every 40 minutes. You’ve lost count of the 3am feeds, the cold tea, the bargaining with the dark." } },
+        "p3": { "type": "pain", "settings": { "icon": "heart", "title": "The guilt nobody talks about", "text": "Feeling helpless watching your baby hurt — then guilty for feeling so worn down by it." } }
+      },
+      "block_order": ["p1", "p2", "p3"]
+    },
+    "failed-solutions": {
+      "type": "failed-solutions",
+      "blocks": {
+        "f1": { "type": "failed", "settings": { "title": "Teething rings", "text": "Get flung across the room. A 20-second distraction at best." } },
+        "f2": { "type": "failed", "settings": { "title": "Numbing gels", "text": "Benzocaine carries real safety warnings for babies — and the relief fades fast." } },
+        "f3": { "type": "failed", "settings": { "title": "Amber necklaces", "text": "No evidence they work, and a genuine choking and strangulation risk." } },
+        "f4": { "type": "failed", "settings": { "title": "Reaching for paracetamol", "text": "Fine occasionally, but you can’t — and shouldn’t — dose every single night." } },
+        "w1": { "type": "win", "settings": { "title": "Targets the jawline", "text": "Soothes along the path the ache actually follows — gently, in minutes." } },
+        "w2": { "type": "win", "settings": { "title": "Genuinely natural", "text": "Plant-based oils only. No benzocaine, no numbing agents, no alcohol." } },
+        "w3": { "type": "win", "settings": { "title": "Safe to use day or night", "text": "A gentle roll-on you can reach for as often as your baby needs it." } },
+        "w4": { "type": "win", "settings": { "title": "Backed by a real guarantee", "text": "30 days, money back, no awkward questions. The risk is on us." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "w1", "w2", "w3", "w4"]
+    },
+    "product-deepdive": {
+      "type": "product-deepdive",
+      "blocks": {
+        "c1": { "type": "chip", "settings": { "text": "No Benzocaine" } },
+        "c2": { "type": "chip", "settings": { "text": "No Parabens" } },
+        "c3": { "type": "chip", "settings": { "text": "No Alcohol" } },
+        "c4": { "type": "chip", "settings": { "text": "Vegan" } },
+        "n1": { "type": "benefit", "settings": { "title": "Soothes where it actually hurts", "text": "Rolled along the jawline, the blend follows the path of teething discomfort — not just the gum surface." } },
+        "n2": { "type": "benefit", "settings": { "title": "Calms in 2–5 minutes", "text": "Chamomile and lavender are known for their gentle, settling effect — so the tears ease and the shoulders drop." } },
+        "n3": { "type": "benefit", "settings": { "title": "Made for worried parents", "text": "A clean, transparent ingredient list you can actually pronounce — nothing hidden, nothing harsh." } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "n1", "n2", "n3"]
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "icon": "roller", "title": "Roll on the jawline", "text": "Two or three gentle strokes along each side of baby’s jaw. That’s it." } },
+        "s2": { "type": "step", "settings": { "icon": "clock", "title": "Wait 2–5 minutes", "text": "Hold your little one close while the calming oils begin to settle the ache." } },
+        "s3": { "type": "step", "settings": { "icon": "moon", "title": "Watch baby settle", "text": "Shoulders soften, breathing slows, and — finally — everyone can rest." } }
+      },
+      "block_order": ["s1", "s2", "s3"]
+    },
+    "ingredients": {
+      "type": "ingredients",
+      "blocks": {
+        "i1": { "type": "ingredient", "settings": { "icon": "flower", "title": "Roman Chamomile", "text": "Long trusted by parents to calm and soothe — it helps take the edge off restlessness and fretful crying." } },
+        "i2": { "type": "ingredient", "settings": { "icon": "sparkle", "title": "Lavender", "text": "Gently relaxing and naturally settling, helping your baby drift towards calmer, longer sleep." } },
+        "i3": { "type": "ingredient", "settings": { "icon": "drop", "title": "Fractionated Coconut Oil", "text": "A light, non-greasy carrier that’s kind to delicate baby skin and absorbs cleanly." } },
+        "i4": { "type": "ingredient", "settings": { "icon": "leaf", "title": "Frankincense", "text": "Warming and grounding, traditionally used to ease tension and bring a sense of calm." } }
+      },
+      "block_order": ["i1", "i2", "i3", "i4"]
+    },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "rating": 5, "quote": "Honestly I’d given up. Bought it half-expecting nothing. First night I rolled it on before her feed and she actually slept through. I cried a bit, not gonna lie.", "name": "Hannah M.", "location": "Verified UK purchase · Leeds" } },
+        "r2": { "type": "review", "settings": { "rating": 5, "quote": "We’d tried the rings, the gels, the amber bead thing my mum swore by. This is the only one that calms him. Smells lovely too, not chemically.", "name": "Priya S.", "location": "Verified UK purchase · Manchester" } },
+        "r3": { "type": "review", "settings": { "rating": 5, "quote": "Sceptical northern mum here. Wasn’t expecting much for the money but it genuinely settles her in a few minutes. Keep one in the changing bag and one by the cot now.", "name": "Becca T.", "location": "Verified UK purchase · Newcastle" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
+    },
+    "bundle": {
+      "type": "bundle",
+      "blocks": {
+        "tier1": { "type": "tier", "settings": { "featured": false, "name": "Starter", "qty_label": "1 roller", "items": "1× LittleEase roller (10ml)\nQuick-start jawline guide\n30-day money-back guarantee", "cta_label": "Add to basket", "fallback_price": "1995", "fallback_compare": "2995" } },
+        "tier2": { "type": "tier", "settings": { "featured": true, "flag": "Most popular", "name": "Value", "qty_label": "2 rollers", "items": "2× LittleEase rollers (10ml)\nOne for the changing bag, one for the cot\nFree UK shipping\n30-day money-back guarantee", "cta_label": "Add 2 & save", "fallback_price": "3495", "fallback_compare": "5990" } },
+        "tier3": { "type": "tier", "settings": { "featured": false, "name": "Family", "qty_label": "3 rollers", "items": "3× LittleEase rollers (10ml)\nKeep one at nursery / with grandparents\nFree UK shipping\n30-day money-back guarantee", "cta_label": "Add 3 & save most", "fallback_price": "4495", "fallback_compare": "8985" } }
+      },
+      "block_order": ["tier1", "tier2", "tier3"]
+    },
+    "guarantee": {
+      "type": "guarantee"
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "faq", "settings": { "question": "Is it actually safe for my baby?", "answer": "<p>Yes. LittleEase is made for babies from 3 months and uses only gentle, plant-based oils — no benzocaine, no numbing agents, no alcohol and no artificial fragrance. It’s applied externally to the jawline, never inside the mouth. If your baby has a known allergy or a medical condition, check with your GP or health visitor first.</p>" } },
+        "q2": { "type": "faq", "settings": { "question": "How quickly will I see a difference?", "answer": "<p>Most mums tell us their little one starts to settle within 2–5 minutes. Every baby is different, so give it a few uses to find your rhythm — many find it works best applied just before a feed or bedtime.</p>" } },
+        "q3": { "type": "faq", "settings": { "question": "How do I apply it?", "answer": "<p>Gently roll the applicator along each side of your baby’s jawline two or three times, then hold them close. That’s it — no measuring, no mess. Avoid the eyes, mouth and any broken skin.</p>" } },
+        "q4": { "type": "faq", "settings": { "question": "What if it doesn’t work for us?", "answer": "<p>Then you don’t pay. Try it for 30 days, and if you’re not happy email us for a full refund — you can even keep the bottle. We’d rather earn your trust than hold onto your money.</p>" } },
+        "q5": { "type": "faq", "settings": { "question": "How long does one bottle last?", "answer": "<p>A 10ml roller typically lasts 6–8 weeks with nightly use. Many mums keep two on the go — one by the cot and one in the changing bag — which is why our Value kit is the most popular choice.</p>" } },
+        "q6": { "type": "faq", "settings": { "question": "When will it arrive in the UK?", "answer": "<p>We ship from within the UK, so orders usually arrive in 2–4 working days. Shipping is free on orders over £30, and you’ll get tracking by email as soon as it’s on its way.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"]
+    },
+    "final-cta": {
+      "type": "final-cta",
+      "blocks": {
+        "c1": { "type": "trust", "settings": { "icon": "leaf", "text": "100% Natural" } },
+        "c2": { "type": "trust", "settings": { "icon": "baby", "text": "Safe 3 Months+" } },
+        "c3": { "type": "trust", "settings": { "icon": "shield", "text": "30-Day Guarantee" } },
+        "c4": { "type": "trust", "settings": { "icon": "truck", "text": "UK Shipping" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"]
+    }
+  },
+  "order": [
+    "hero",
+    "trust-bar",
+    "problem",
+    "failed-solutions",
+    "product-deepdive",
+    "how-it-works",
+    "ingredients",
+    "reviews",
+    "bundle",
+    "guarantee",
+    "faq",
+    "final-cta"
+  ]
+}

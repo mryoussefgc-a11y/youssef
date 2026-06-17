@@ -1,0 +1,518 @@
+/* =========================================================================
+   LittleEase — theme.css
+   A calm, editorial DTC baby-care aesthetic.
+   Re-theming is a ~10-line change: edit the :root tokens below.
+   ========================================================================= */
+
+:root {
+  /* ---- Brand colour system ---- */
+  --le-sage:        #5c7a5c;
+  --le-sage-dark:   #4a6349;
+  --le-sage-deep:   #3c5240;
+  --le-sage-soft:   #e7eee4;
+  --le-cream:       #f9f6f0;
+  --le-cream-deep:  #f1ece1;
+  --le-ink:         #2c2a26;   /* primary text */
+  --le-ink-soft:    #5f5b53;   /* secondary text */
+  --le-line:        #e4ddd0;   /* hairline borders */
+  --le-white:       #ffffff;
+  --le-gold:        #c9a24b;   /* star rating */
+  --le-error:       #b4543f;   /* red X / errors */
+  --le-success:     var(--le-sage);
+
+  /* ---- Typography ---- */
+  --le-font-serif:  "Playfair Display", Georgia, "Times New Roman", serif;
+  --le-font-sans:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* ---- Spacing scale ---- */
+  --le-space-1: 0.5rem;
+  --le-space-2: 1rem;
+  --le-space-3: 1.5rem;
+  --le-space-4: 2rem;
+  --le-space-5: 3rem;
+  --le-space-6: 4.5rem;
+  --le-section-y: clamp(3.5rem, 7vw, 6rem);
+
+  /* ---- Layout ---- */
+  --le-max:       1180px;
+  --le-radius:    18px;
+  --le-radius-sm: 10px;
+  --le-radius-pill: 999px;
+
+  /* ---- Effects ---- */
+  --le-shadow-sm: 0 2px 10px rgba(44, 42, 38, 0.06);
+  --le-shadow:    0 14px 40px rgba(44, 42, 38, 0.10);
+  --le-shadow-lg: 0 24px 70px rgba(44, 42, 38, 0.16);
+  --le-ease:      0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================================
+   Base / reset
+   ========================================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--le-font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--le-ink);
+  background: var(--le-cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 { margin: 0; font-family: var(--le-font-serif); font-weight: 600; line-height: 1.12; letter-spacing: -0.01em; }
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+button { font-family: inherit; cursor: pointer; }
+
+:focus-visible { outline: 3px solid var(--le-sage); outline-offset: 2px; border-radius: 4px; }
+
+.le-skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 999;
+  background: var(--le-sage); color: var(--le-white); padding: 0.75rem 1.25rem; border-radius: 0 0 var(--le-radius-sm) 0;
+}
+.le-skip-link:focus { left: 0; }
+
+/* =========================================================================
+   Layout helpers
+   ========================================================================= */
+.le-container { width: 100%; max-width: var(--le-max); margin: 0 auto; padding: 0 1.25rem; }
+
+.le-section { padding: var(--le-section-y) 0; }
+
+.le-section__head { max-width: 720px; margin-bottom: clamp(2rem, 4vw, 3.25rem); }
+.le-section__head--center { margin-left: auto; margin-right: auto; text-align: center; }
+
+.le-h2 { font-size: clamp(1.9rem, 4.2vw, 2.9rem); margin-bottom: 0.6rem; }
+
+.le-section__lede { font-size: 1.12rem; color: var(--le-ink-soft); margin-top: 0.4rem; }
+
+.le-eyebrow {
+  font-family: var(--le-font-sans);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--le-sage); margin: 0 0 0.75rem;
+}
+.le-eyebrow--light { color: rgba(255,255,255,0.85); }
+
+/* =========================================================================
+   Icons
+   ========================================================================= */
+.le-icon { display: inline-flex; width: 1.25em; height: 1.25em; flex: none; }
+.le-icon svg { width: 100%; height: 100%; }
+.icon--md { width: 1.75em; height: 1.75em; }
+.icon--lg { width: 2.25em; height: 2.25em; }
+.icon--good { color: var(--le-success); }
+.icon--bad { color: var(--le-error); }
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+.le-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  font-weight: 600; font-size: 1rem; line-height: 1; letter-spacing: 0.01em;
+  padding: 1rem 1.6rem; border: 1.5px solid transparent; border-radius: var(--le-radius-pill);
+  transition: transform var(--le-ease), box-shadow var(--le-ease), background var(--le-ease);
+  text-align: center;
+}
+.le-btn--primary { background: var(--le-sage); color: var(--le-white); box-shadow: var(--le-shadow-sm); }
+.le-btn--primary:hover { background: var(--le-sage-dark); transform: translateY(-2px); box-shadow: var(--le-shadow); }
+.le-btn--light { background: var(--le-white); color: var(--le-sage-deep); }
+.le-btn--light:hover { transform: translateY(-2px); box-shadow: var(--le-shadow); }
+.le-btn--ghost { background: transparent; border-color: var(--le-line); color: var(--le-ink); }
+.le-btn--ghost:hover { border-color: var(--le-sage); color: var(--le-sage); }
+.le-btn--lg { padding: 1.15rem 2.2rem; font-size: 1.08rem; }
+.le-btn--sm { padding: 0.7rem 1.2rem; font-size: 0.92rem; }
+.le-btn--block { width: 100%; }
+.le-btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.le-atc-form { margin: 0; }
+.le-atc-sublabel { margin: 0.85rem 0 0; font-size: 0.9rem; color: var(--le-ink-soft); }
+.le-atc-sublabel p { margin: 0; }
+
+/* =========================================================================
+   Stars
+   ========================================================================= */
+.le-stars { display: inline-flex; gap: 2px; color: var(--le-gold); vertical-align: middle; }
+.le-stars .le-icon { width: 1.05em; height: 1.05em; }
+.le-stars__count { margin-left: 0.5rem; font-size: 0.92rem; color: var(--le-ink-soft); font-weight: 500; }
+
+/* =========================================================================
+   Announcement bar
+   ========================================================================= */
+.le-announce { background: var(--announce-bg, var(--le-sage-dark)); color: var(--announce-fg, var(--le-cream)); font-size: 0.85rem; }
+.le-announce__inner { display: flex; align-items: center; justify-content: center; gap: 2.25rem; min-height: 42px; flex-wrap: wrap; }
+.le-announce__item { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500; }
+.le-announce__item .le-icon { width: 1.05em; height: 1.05em; opacity: 0.9; }
+
+/* =========================================================================
+   Header
+   ========================================================================= */
+.le-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(249, 246, 240, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid var(--le-line);
+  transition: box-shadow var(--le-ease);
+}
+.le-header.is-stuck { box-shadow: var(--le-shadow-sm); }
+.le-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 66px; }
+
+.le-logo { font-family: var(--le-font-serif); font-size: 1.55rem; font-weight: 700; color: var(--le-ink); letter-spacing: -0.01em; }
+.le-logo__accent { color: var(--le-sage); }
+.le-logo--light { color: var(--le-cream); }
+
+.le-header__badges { display: flex; align-items: center; gap: 1.5rem; }
+.le-header__badge { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.82rem; font-weight: 500; color: var(--le-ink-soft); }
+.le-header__badge .le-icon { width: 1.1em; height: 1.1em; color: var(--le-sage); }
+.le-header__cta { flex: none; }
+
+/* =========================================================================
+   Hero
+   ========================================================================= */
+.le-hero { padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(3rem, 6vw, 5rem); background: linear-gradient(180deg, var(--le-cream) 0%, var(--le-cream-deep) 100%); }
+.le-hero__grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.le-hero__title { font-size: clamp(2.3rem, 5.4vw, 4rem); margin-bottom: 1rem; }
+.le-hero__sub { font-size: 1.15rem; color: var(--le-ink-soft); max-width: 34ch; margin-bottom: 1.4rem; }
+.le-hero__rating { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
+.le-hero__rating-text { font-size: 0.95rem; color: var(--le-ink-soft); font-weight: 500; }
+.le-hero__cta { margin-top: 1.75rem; }
+
+.le-checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+.le-checklist li { display: flex; align-items: flex-start; gap: 0.65rem; font-weight: 500; }
+.le-checklist .le-icon { color: var(--le-sage); width: 1.35em; height: 1.35em; margin-top: 1px; }
+
+/* Hero media */
+.le-hero__media { position: relative; display: flex; align-items: center; justify-content: center; }
+.le-hero__media-bg {
+  position: absolute; inset: 8% 4%;
+  background: radial-gradient(circle at 50% 40%, var(--le-sage-soft) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.le-hero__media .le-product-img,
+.le-deepdive__media .le-product-img {
+  position: relative; border-radius: var(--le-radius); box-shadow: var(--le-shadow-lg);
+  width: 100%; object-fit: cover;
+}
+
+.le-floating-pill {
+  position: absolute; bottom: 8%; left: -4%;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: var(--le-white); padding: 0.7rem 1rem; border-radius: var(--le-radius-pill);
+  box-shadow: var(--le-shadow); font-size: 0.82rem; line-height: 1.25;
+}
+.le-floating-pill .le-icon { color: var(--le-sage); width: 1.6em; height: 1.6em; }
+
+/* =========================================================================
+   CSS fallback bottle (no image set)
+   ========================================================================= */
+.le-bottle {
+  position: relative; width: min(280px, 70%); aspect-ratio: 3 / 5;
+  display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 24px 40px rgba(44,42,38,0.18));
+}
+.le-bottle__cap { width: 34%; height: 7%; background: linear-gradient(180deg, #6b8a6b, var(--le-sage-dark)); border-radius: 6px 6px 3px 3px; }
+.le-bottle__neck { width: 26%; height: 5%; background: var(--le-sage-soft); border-radius: 0 0 4px 4px; }
+.le-bottle__body {
+  flex: 1; width: 100%;
+  background: linear-gradient(160deg, #ffffff 0%, var(--le-cream-deep) 100%);
+  border: 1px solid var(--le-line); border-radius: 14px 14px 26px 26px;
+  display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+}
+.le-bottle__body::after {
+  content: ""; position: absolute; top: 0; left: 12%; width: 16%; height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.7), transparent); border-radius: 50%;
+}
+.le-bottle__label {
+  background: var(--le-sage); color: var(--le-cream); width: 74%; padding: 1.1rem 0.6rem;
+  border-radius: 8px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.35rem; z-index: 1;
+}
+.le-bottle__brand { font-family: var(--le-font-serif); font-size: 1.3rem; font-weight: 700; }
+.le-bottle__brand em { font-style: normal; color: var(--le-sage-soft); }
+.le-bottle__sub { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+.le-bottle__leaf .le-icon { width: 1.8em; height: 1.8em; color: var(--le-cream); margin: 0.2rem 0; }
+.le-bottle__size { font-size: 0.65rem; letter-spacing: 0.06em; opacity: 0.85; }
+
+/* =========================================================================
+   Trust bar
+   ========================================================================= */
+.le-trustbar { background: var(--le-sage-soft); }
+.le-trustbar__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; padding: 1.6rem 1.25rem; }
+.le-trustbar__item { display: flex; align-items: center; gap: 0.75rem; flex: 1 1 200px; justify-content: center; }
+.le-trustbar__item .le-icon { color: var(--le-sage-dark); }
+.le-trustbar__text { display: flex; flex-direction: column; line-height: 1.2; }
+.le-trustbar__text strong { font-family: var(--le-font-serif); font-size: 1.15rem; color: var(--le-ink); }
+.le-trustbar__text span { font-size: 0.85rem; color: var(--le-ink-soft); }
+
+/* =========================================================================
+   Problem
+   ========================================================================= */
+.le-problem__layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: stretch; }
+.le-problem__cards { display: grid; gap: 1.25rem; }
+.le-pain-card {
+  background: var(--le-white); border: 1px solid var(--le-line); border-radius: var(--le-radius);
+  padding: 1.6rem; box-shadow: var(--le-shadow-sm); transition: transform var(--le-ease), box-shadow var(--le-ease);
+}
+.le-pain-card:hover { transform: translateY(-3px); box-shadow: var(--le-shadow); }
+.le-pain-card__icon { display: inline-flex; padding: 0.7rem; background: var(--le-sage-soft); border-radius: 12px; color: var(--le-sage-dark); margin-bottom: 0.9rem; }
+.le-pain-card__icon .le-icon { width: 1.6em; height: 1.6em; }
+.le-pain-card__title { font-size: 1.25rem; margin-bottom: 0.4rem; }
+.le-pain-card p { color: var(--le-ink-soft); margin: 0; }
+
+.le-pullquote {
+  margin: 0; background: var(--le-sage); color: var(--le-cream); border-radius: var(--le-radius);
+  padding: clamp(2rem, 4vw, 3rem); display: flex; flex-direction: column; justify-content: center; box-shadow: var(--le-shadow);
+}
+.le-pullquote blockquote { font-family: var(--le-font-serif); font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.25; margin: 0 0 1rem; }
+.le-pullquote figcaption { font-size: 0.9rem; opacity: 0.85; letter-spacing: 0.04em; }
+
+/* =========================================================================
+   Failed solutions comparison
+   ========================================================================= */
+.le-failed__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.le-failed__col { border-radius: var(--le-radius); padding: clamp(1.5rem, 3vw, 2.25rem); }
+.le-failed__col--bad { background: var(--le-white); border: 1px solid var(--le-line); }
+.le-failed__col--good { background: var(--le-sage-soft); border: 1.5px solid var(--le-sage); }
+.le-failed__col-title { display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; margin-bottom: 1.25rem; }
+.le-failed__col-title .le-icon { width: 1.4em; height: 1.4em; }
+.le-failed__col--bad .le-failed__col-title .le-icon { color: var(--le-error); }
+.le-failed__col--good .le-failed__col-title .le-icon { color: var(--le-sage-dark); }
+.le-failed__list { list-style: none; margin: 0 0 1.25rem; padding: 0; display: grid; gap: 1rem; }
+.le-failed__list li { display: flex; gap: 0.75rem; align-items: flex-start; }
+.le-failed__list .le-icon { width: 1.4em; height: 1.4em; margin-top: 2px; flex: none; }
+.le-failed__list strong { display: block; }
+.le-failed__list span { color: var(--le-ink-soft); font-size: 0.95rem; }
+.le-failed__col--good .le-btn { margin-top: 0.25rem; }
+
+/* =========================================================================
+   Product deep-dive
+   ========================================================================= */
+.le-deepdive__grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.le-deepdive__media { position: relative; display: flex; justify-content: center; }
+.le-deepdive__media-bg { position: absolute; inset: 6%; background: var(--le-sage-soft); border-radius: var(--le-radius); transform: rotate(-3deg); }
+.le-deepdive__lede { font-size: 1.12rem; color: var(--le-ink-soft); margin-bottom: 1.25rem; }
+
+.le-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+.le-chip {
+  display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; font-weight: 600;
+  background: var(--le-sage-soft); color: var(--le-sage-deep); padding: 0.4rem 0.8rem; border-radius: var(--le-radius-pill);
+}
+.le-chip .le-icon { width: 1em; height: 1em; }
+
+.le-benefits { list-style: none; margin: 0 0 1.75rem; padding: 0; display: grid; gap: 1.25rem; counter-reset: ben; }
+.le-benefit { display: flex; gap: 1rem; align-items: flex-start; }
+.le-benefit__num { font-family: var(--le-font-serif); font-size: 2rem; line-height: 1; color: var(--le-sage); opacity: 0.55; font-weight: 700; flex: none; }
+.le-benefit__title { font-size: 1.2rem; margin-bottom: 0.2rem; }
+.le-benefit p { color: var(--le-ink-soft); margin: 0; }
+
+.le-microtrust { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.1rem; }
+.le-microtrust span { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; color: var(--le-ink-soft); font-weight: 500; }
+.le-microtrust .le-icon { width: 1.15em; height: 1.15em; color: var(--le-sage); }
+
+/* =========================================================================
+   How it works
+   ========================================================================= */
+.le-how { background: var(--le-cream-deep); }
+.le-how__steps { display: flex; align-items: flex-start; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
+.le-how__step { flex: 1 1 220px; max-width: 300px; text-align: center; padding: 1rem; position: relative; }
+.le-how__num {
+  display: inline-flex; align-items: center; justify-content: center; width: 2.6rem; height: 2.6rem;
+  border-radius: 50%; background: var(--le-sage); color: var(--le-white); font-family: var(--le-font-serif);
+  font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem;
+}
+.le-how__icon { display: block; color: var(--le-sage-dark); margin-bottom: 0.5rem; }
+.le-how__icon .le-icon { width: 2.1em; height: 2.1em; }
+.le-how__title { font-size: 1.3rem; margin-bottom: 0.4rem; }
+.le-how__step p { color: var(--le-ink-soft); margin: 0; }
+.le-how__connector { align-self: center; flex: 0 0 40px; height: 2px; background: repeating-linear-gradient(90deg, var(--le-sage) 0 6px, transparent 6px 12px); opacity: 0.5; margin-top: 1.3rem; }
+
+/* =========================================================================
+   Ingredients
+   ========================================================================= */
+.le-ingredients__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
+.le-ingredient-card {
+  background: var(--le-white); border: 1px solid var(--le-line); border-radius: var(--le-radius); padding: 1.6rem;
+  text-align: center; transition: transform var(--le-ease), box-shadow var(--le-ease);
+}
+.le-ingredient-card:hover { transform: translateY(-4px); box-shadow: var(--le-shadow); }
+.le-ingredient-card__icon { display: inline-flex; padding: 0.85rem; background: var(--le-sage-soft); border-radius: 50%; color: var(--le-sage-dark); margin-bottom: 0.9rem; }
+.le-ingredient-card__icon .le-icon { width: 1.8em; height: 1.8em; }
+.le-ingredient-card__title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.le-ingredient-card p { color: var(--le-ink-soft); font-size: 0.95rem; margin: 0; }
+
+.le-nolist { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem; }
+.le-nolist__label { font-weight: 600; color: var(--le-ink); }
+.le-tag { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: var(--le-radius-pill); }
+.le-tag--no { background: var(--le-white); color: var(--le-ink-soft); border: 1px solid var(--le-line); }
+.le-tag--no .le-icon { width: 1em; height: 1em; color: var(--le-error); }
+
+/* =========================================================================
+   Reviews
+   ========================================================================= */
+.le-reviews { background: var(--le-cream-deep); }
+.le-reviews__summary { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 0.75rem; font-size: 0.95rem; color: var(--le-ink-soft); }
+.le-reviews__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.le-review-card { margin: 0; background: var(--le-white); border: 1px solid var(--le-line); border-radius: var(--le-radius); padding: 1.75rem; box-shadow: var(--le-shadow-sm); display: flex; flex-direction: column; gap: 1rem; }
+.le-review-card blockquote { margin: 0; font-size: 1.02rem; line-height: 1.6; }
+.le-review-card figcaption { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; }
+.le-review-card__avatar { display: inline-flex; align-items: center; justify-content: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--le-sage); color: var(--le-white); font-weight: 700; font-family: var(--le-font-serif); flex: none; }
+.le-review-card__meta { display: flex; flex-direction: column; line-height: 1.3; }
+.le-review-card__verified { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--le-sage); font-weight: 500; }
+.le-review-card__verified .le-icon { width: 1em; height: 1em; }
+
+/* =========================================================================
+   Bundle
+   ========================================================================= */
+.le-bundle__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
+.le-tier {
+  position: relative; background: var(--le-white); border: 1.5px solid var(--le-line); border-radius: var(--le-radius);
+  padding: 2rem 1.6rem; display: flex; flex-direction: column; transition: transform var(--le-ease), box-shadow var(--le-ease);
+}
+.le-tier:hover { transform: translateY(-4px); box-shadow: var(--le-shadow); }
+.le-tier--featured { border-color: var(--le-sage); box-shadow: var(--le-shadow); transform: scale(1.03); }
+.le-tier--featured:hover { transform: scale(1.03) translateY(-4px); }
+.le-tier__flag { position: absolute; top: -0.85rem; left: 50%; transform: translateX(-50%); background: var(--le-sage); color: var(--le-white); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: var(--le-radius-pill); white-space: nowrap; }
+.le-tier__head { margin-bottom: 1rem; }
+.le-tier__name { font-size: 1.5rem; }
+.le-tier__qty { font-size: 0.9rem; color: var(--le-ink-soft); margin: 0; }
+.le-tier__pricing { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+.le-tier__price { font-family: var(--le-font-serif); font-size: 2.25rem; font-weight: 700; color: var(--le-ink); }
+.le-tier__compare { text-decoration: line-through; color: var(--le-ink-soft); font-size: 1.05rem; }
+.le-tier__save { font-size: 0.78rem; font-weight: 700; background: var(--le-sage-soft); color: var(--le-sage-deep); padding: 0.25rem 0.6rem; border-radius: var(--le-radius-pill); }
+.le-tier__list { list-style: none; margin: 0 0 1.5rem; padding: 0; display: grid; gap: 0.65rem; }
+.le-tier__list li { display: flex; gap: 0.55rem; align-items: flex-start; font-size: 0.95rem; }
+.le-tier__list .le-icon { width: 1.15em; height: 1.15em; color: var(--le-sage); margin-top: 2px; flex: none; }
+.le-tier .le-btn, .le-tier .le-atc-form { margin-top: auto; }
+.le-bundle__reassure { text-align: center; margin-top: 2rem; color: var(--le-ink-soft); display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center; width: 100%; }
+.le-bundle__reassure .le-icon { color: var(--le-sage); width: 1.2em; height: 1.2em; }
+
+/* =========================================================================
+   Guarantee
+   ========================================================================= */
+.le-guarantee { background: var(--le-sage-soft); }
+.le-guarantee__inner { display: grid; grid-template-columns: auto 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.le-seal { position: relative; width: 160px; height: 160px; border-radius: 50%; background: var(--le-white); border: 3px solid var(--le-sage); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: var(--le-shadow); flex: none; margin: 0 auto; }
+.le-seal__ring { color: var(--le-sage); }
+.le-seal__ring .le-icon { width: 2.4em; height: 2.4em; }
+.le-seal__days { font-family: var(--le-font-serif); font-size: 2.4rem; font-weight: 700; line-height: 1; color: var(--le-sage-deep); }
+.le-seal__label { font-size: 0.62rem; letter-spacing: 0.18em; font-weight: 700; color: var(--le-sage-dark); }
+.le-guarantee__copy p { color: var(--le-ink-soft); margin-bottom: 1.5rem; max-width: 56ch; }
+
+/* =========================================================================
+   FAQ
+   ========================================================================= */
+.le-faq__container { max-width: 800px; }
+.le-faq__list { display: grid; gap: 0.75rem; }
+.le-faq__item { background: var(--le-white); border: 1px solid var(--le-line); border-radius: var(--le-radius-sm); overflow: hidden; }
+.le-faq__item[open] { border-color: var(--le-sage); box-shadow: var(--le-shadow-sm); }
+.le-faq__q { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem; font-weight: 600; font-size: 1.08rem; cursor: pointer; list-style: none; }
+.le-faq__q::-webkit-details-marker { display: none; }
+.le-faq__chevron { color: var(--le-sage); transition: transform var(--le-ease); flex: none; }
+.le-faq__item[open] .le-faq__chevron { transform: rotate(180deg); }
+.le-faq__a { padding: 0 1.5rem 1.4rem; color: var(--le-ink-soft); }
+.le-faq__a p { margin: 0; }
+
+/* =========================================================================
+   Final CTA
+   ========================================================================= */
+.le-final { background: var(--le-sage); color: var(--le-cream); padding: var(--le-section-y) 0; text-align: center; }
+.le-final__inner { max-width: 760px; margin: 0 auto; }
+.le-final__title { font-size: clamp(2rem, 4.5vw, 3.1rem); margin-bottom: 1rem; }
+.le-final__sub { font-size: 1.12rem; opacity: 0.92; margin-bottom: 1.75rem; }
+.le-final__trust { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem 2.25rem; margin-top: 2.25rem; }
+.le-final__trust-item { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; font-weight: 500; }
+.le-final__trust-item .le-icon { width: 1.3em; height: 1.3em; opacity: 0.9; }
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+.le-footer { background: var(--le-sage-deep); color: rgba(249,246,240,0.8); }
+.le-footer__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; padding: clamp(2.5rem, 5vw, 3.5rem) 1.25rem; }
+.le-footer__tag { max-width: 34ch; font-size: 0.92rem; margin: 0.75rem 0 0; }
+.le-footer__links { display: flex; flex-wrap: wrap; gap: 1rem 1.75rem; align-items: flex-start; }
+.le-footer__links a { font-size: 0.92rem; transition: color var(--le-ease); }
+.le-footer__links a:hover { color: var(--le-cream); }
+.le-footer__bar { border-top: 1px solid rgba(249,246,240,0.15); font-size: 0.8rem; }
+.le-footer__bar-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; padding: 1.1rem 1.25rem; }
+.le-footer__disclaimer { opacity: 0.7; max-width: 60ch; }
+
+/* =========================================================================
+   Simple content pages (cart, page, search, collection, etc.)
+   ========================================================================= */
+.le-rte-wrap { max-width: 760px; margin: 0 auto; }
+.le-rte { color: var(--le-ink-soft); }
+.le-rte a { color: var(--le-sage); text-decoration: underline; }
+.le-collection__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+.le-pcard { background: var(--le-white); border: 1px solid var(--le-line); border-radius: var(--le-radius); padding: 1.25rem; transition: transform var(--le-ease), box-shadow var(--le-ease); }
+.le-pcard:hover { transform: translateY(-3px); box-shadow: var(--le-shadow); }
+.le-pcard__title { font-size: 1.2rem; margin: 0.75rem 0 0.25rem; }
+.le-pcard__price { color: var(--le-sage); font-weight: 600; }
+.le-pcard__excerpt { display: block; color: var(--le-ink-soft); font-size: 0.92rem; margin-top: 0.5rem; }
+
+.le-cart__items { list-style: none; margin: 1.5rem 0; padding: 0; display: grid; gap: 1rem; }
+.le-cart__item { display: grid; grid-template-columns: auto 1fr auto auto; gap: 1rem; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--le-line); }
+.le-cart__item img { border-radius: var(--le-radius-sm); }
+.le-cart__item-info { display: flex; flex-direction: column; gap: 0.2rem; }
+.le-cart__qty { width: 60px; padding: 0.4rem; border: 1px solid var(--le-line); border-radius: var(--le-radius-sm); text-align: center; }
+.le-cart__footer { margin-top: 1.5rem; text-align: right; }
+.le-cart__subtotal { font-size: 1.2rem; }
+.le-cart__note { font-size: 0.88rem; color: var(--le-ink-soft); }
+.le-cart__actions { display: flex; gap: 0.75rem; justify-content: flex-end; flex-wrap: wrap; margin-top: 1rem; }
+
+.le-search__form, .le-password__row { display: flex; gap: 0.5rem; margin: 1.5rem 0; }
+.le-search__form input, .le-password__row input { flex: 1; padding: 0.9rem 1rem; border: 1px solid var(--le-line); border-radius: var(--le-radius-pill); font-size: 1rem; }
+.le-form__error { color: var(--le-error); font-weight: 500; }
+.le-article__img { border-radius: var(--le-radius); margin: 1.5rem 0; }
+.le-pagination { margin-top: 2rem; text-align: center; }
+.le-pagination a, .le-pagination span { padding: 0.4rem 0.7rem; }
+
+/* =========================================================================
+   Responsive — mobile-first collapse under ~960px
+   ========================================================================= */
+@media (max-width: 960px) {
+  .le-header__badges { display: none; }
+  .le-hero__grid,
+  .le-deepdive__grid,
+  .le-problem__layout,
+  .le-failed__grid,
+  .le-guarantee__inner { grid-template-columns: 1fr; }
+  .le-hero__media { order: -1; }
+  .le-deepdive__media { order: -1; }
+  .le-ingredients__grid { grid-template-columns: repeat(2, 1fr); }
+  .le-reviews__grid { grid-template-columns: 1fr; }
+  .le-bundle__grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .le-tier--featured { transform: none; order: -1; }
+  .le-tier--featured:hover { transform: translateY(-4px); }
+  .le-how__connector { display: none; }
+  .le-guarantee__inner { text-align: center; }
+  .le-floating-pill { left: 2%; }
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .le-announce__inner { gap: 1rem; font-size: 0.78rem; }
+  .le-announce__item:not(:first-child) { display: none; }  /* rotate: show primary message on small screens */
+  .le-ingredients__grid { grid-template-columns: 1fr; }
+  .le-hero__sub { max-width: none; }
+  .le-microtrust { gap: 0.85rem; }
+  .le-cart__item { grid-template-columns: auto 1fr; }
+  .le-cart__qty, .le-cart__line-price { grid-column: 2; justify-self: start; }
+}
+
+/* Animated rotation of announcement messages on small screens */
+@media (max-width: 560px) {
+  .le-announce__inner { position: relative; min-height: 42px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}

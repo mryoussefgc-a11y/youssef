@@ -1,0 +1,77 @@
+{%- comment -%} Final CTA — sage full-bleed, restated value prop, white button, trust icons. {%- endcomment -%}
+<section class="le-final">
+  <div class="le-container le-final__inner">
+    <p class="le-eyebrow le-eyebrow--light">{{ section.settings.eyebrow | default: 'One calmer night could start tonight' }}</p>
+    <h2 class="le-final__title">{{ section.settings.heading | default: 'You’ve carried this on your own long enough. Let’s ease it — together.' }}</h2>
+    <p class="le-final__sub">{{ section.settings.subheading | default: 'Natural, jawline-targeted relief your baby will feel and you can trust. Backed by a 30-day money-back guarantee.' }}</p>
+
+    <a class="le-btn le-btn--light le-btn--lg" href="#bundle">{{ section.settings.cta_label | default: 'Soothe my baby tonight' }}</a>
+
+    <div class="le-final__trust">
+      {%- for block in section.blocks -%}
+        <span class="le-final__trust-item" {{ block.shopify_attributes }}>
+          {%- case block.settings.icon -%}
+            {%- when 'leaf' -%}{% render 'icon', name: 'leaf' %}
+            {%- when 'baby' -%}{% render 'icon', name: 'baby' %}
+            {%- when 'shield' -%}{% render 'icon', name: 'shield-check' %}
+            {%- when 'truck' -%}{% render 'icon', name: 'truck' %}
+            {%- when 'lock' -%}{% render 'icon', name: 'lock' %}
+            {%- else -%}{% render 'icon', name: 'check' %}
+          {%- endcase -%}
+          <span>{{ block.settings.text }}</span>
+        </span>
+      {%- else -%}
+        <span class="le-final__trust-item">{% render 'icon', name: 'leaf' %}<span>100% Natural</span></span>
+        <span class="le-final__trust-item">{% render 'icon', name: 'baby' %}<span>Safe 3 Months+</span></span>
+        <span class="le-final__trust-item">{% render 'icon', name: 'shield-check' %}<span>30-Day Guarantee</span></span>
+        <span class="le-final__trust-item">{% render 'icon', name: 'truck' %}<span>UK Shipping</span></span>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Final CTA",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "One calmer night could start tonight" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "You’ve carried this on your own long enough. Let’s ease it — together." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Natural, jawline-targeted relief your baby will feel and you can trust. Backed by a 30-day money-back guarantee." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Soothe my baby tonight" }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust icon",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "baby", "label": "Baby" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "lock", "label": "Lock" }
+          ],
+          "default": "leaf"
+        },
+        { "type": "text", "id": "text", "label": "Text", "default": "100% Natural" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Final CTA",
+      "blocks": [
+        { "type": "trust", "settings": { "icon": "leaf", "text": "100% Natural" } },
+        { "type": "trust", "settings": { "icon": "baby", "text": "Safe 3 Months+" } },
+        { "type": "trust", "settings": { "icon": "shield", "text": "30-Day Guarantee" } },
+        { "type": "trust", "settings": { "icon": "truck", "text": "UK Shipping" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
