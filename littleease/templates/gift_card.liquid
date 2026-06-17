@@ -1,0 +1,11 @@
+<section class="le-section">
+  <div class="le-container le-rte-wrap" style="text-align:center;">
+    <p class="le-eyebrow">LittleEase gift card</p>
+    <h1 class="le-h2">{{ gift_card.balance | money }} to spend</h1>
+    {%- if gift_card.qr_identifier -%}
+      <img src="{{ gift_card.qr_identifier | generate_gift_card_qr_code }}" alt="Gift card QR code" width="180" height="180">
+    {%- endif -%}
+    <p class="le-giftcard__code"><strong>{{ gift_card.code | format_code }}</strong></p>
+    <a class="le-btn le-btn--primary le-btn--lg" href="{{ routes.root_url }}">Shop LittleEase</a>
+  </div>
+</section>

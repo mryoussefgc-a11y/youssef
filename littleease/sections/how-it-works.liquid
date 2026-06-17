@@ -1,0 +1,74 @@
+{%- comment -%} How it works — 3 numbered steps with icons. {%- endcomment -%}
+<section class="le-section le-how">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'Three calm steps' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: 'As simple as it should be at 2am.' }}</h2>
+    </div>
+
+    <div class="le-how__steps">
+      {%- assign n = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign n = n | plus: 1 -%}
+        <div class="le-how__step" {{ block.shopify_attributes }}>
+          <span class="le-how__num">{{ n }}</span>
+          <span class="le-how__icon">
+            {%- case block.settings.icon -%}
+              {%- when 'roller' -%}{% render 'icon', name: 'roller' %}
+              {%- when 'clock' -%}{% render 'icon', name: 'clock' %}
+              {%- when 'baby' -%}{% render 'icon', name: 'baby' %}
+              {%- when 'moon' -%}{% render 'icon', name: 'moon' %}
+              {%- else -%}{% render 'icon', name: 'check' %}
+            {%- endcase -%}
+          </span>
+          <h3 class="le-how__title">{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+        {%- unless forloop.last -%}<span class="le-how__connector" aria-hidden="true"></span>{%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Three calm steps" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "As simple as it should be at 2am." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "roller", "label": "Roller" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "baby", "label": "Baby" },
+            { "value": "moon", "label": "Moon" }
+          ],
+          "default": "roller"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Roll on the jawline" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Two or three gentle strokes along each side of baby’s jaw. That’s it." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "How it works",
+      "blocks": [
+        { "type": "step", "settings": { "icon": "roller", "title": "Roll on the jawline", "text": "Two or three gentle strokes along each side of baby’s jaw. That’s it." } },
+        { "type": "step", "settings": { "icon": "clock", "title": "Wait 2–5 minutes", "text": "Hold your little one close while the calming oils begin to settle the ache." } },
+        { "type": "step", "settings": { "icon": "moon", "title": "Watch baby settle", "text": "Shoulders soften, breathing slows, and — finally — everyone can rest." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

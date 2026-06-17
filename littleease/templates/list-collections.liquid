@@ -1,0 +1,15 @@
+<section class="le-section">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <h1 class="le-h2">{{ page_title }}</h1>
+    </div>
+    <div class="le-collection__grid">
+      {%- for collection in collections -%}
+        <a class="le-pcard" href="{{ collection.url }}">
+          {% render 'product-image', image: collection.featured_image, size: '400x', alt: collection.title %}
+          <h2 class="le-pcard__title">{{ collection.title }}</h2>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>

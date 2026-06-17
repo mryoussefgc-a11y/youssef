@@ -1,0 +1,50 @@
+{%- comment -%}
+  Lightweight homepage hero for a single-product store. Links through to the
+  product page (first product, or the configured one). Works with zero products.
+{%- endcomment -%}
+{%- liquid
+  assign target = section.settings.button_url
+  if target == blank
+    if collections.all.products.first != blank
+      assign target = collections.all.products.first.url
+    else
+      assign target = routes.all_products_collection_url
+    endif
+  endif
+-%}
+<section class="le-hero le-hero--home">
+  <div class="le-container le-hero__grid">
+    <div class="le-hero__copy">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'Natural teething relief · Made for UK mums' }}</p>
+      <h1 class="le-hero__title">{{ section.settings.heading | default: 'Finally — peaceful nights for your baby (and you).' }}</h1>
+      <p class="le-hero__sub">{{ section.settings.subheading | default: 'A natural roller you smooth along baby’s jawline, soothing the spot where teething pain actually travels. The natural teething solution that doesn’t make you stress.' }}</p>
+      <div class="le-hero__rating">
+        {% render 'stars', rating: 5 %}
+        <span class="le-hero__rating-text">Rated 4.9/5 by 243 UK mums</span>
+      </div>
+      <div class="le-hero__cta">
+        <a class="le-btn le-btn--primary le-btn--lg" href="{{ target }}">{{ section.settings.button_label | default: 'Discover LittleEase' }}</a>
+        <p class="le-atc-sublabel">Free UK shipping over £30 · 30-day money-back guarantee</p>
+      </div>
+    </div>
+    <div class="le-hero__media">
+      <div class="le-hero__media-bg" aria-hidden="true"></div>
+      {% render 'product-image', image: collections.all.products.first.featured_image, size: '760x', alt: 'LittleEase roller' %}
+      <span class="le-floating-pill">{% render 'icon', name: 'leaf' %}<span><strong>100% natural</strong><br>plant-based oils</span></span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Natural teething relief · Made for UK mums" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Finally — peaceful nights for your baby (and you)." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "A natural roller you smooth along baby’s jawline, soothing the spot where teething pain actually travels. The natural teething solution that doesn’t make you stress." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Discover LittleEase" },
+    { "type": "url", "id": "button_url", "label": "Button link (optional — defaults to your product)" }
+  ],
+  "presets": [ { "name": "Home hero" } ]
+}
+{% endschema %}

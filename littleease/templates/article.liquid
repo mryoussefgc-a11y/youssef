@@ -1,0 +1,8 @@
+<section class="le-section">
+  <div class="le-container le-rte-wrap">
+    <p class="le-eyebrow">{{ article.published_at | date: '%-d %B %Y' }}</p>
+    <h1 class="le-h2">{{ article.title }}</h1>
+    {%- if article.image -%}<img class="le-article__img" src="{{ article.image | img_url: '1000x' }}" alt="{{ article.title | escape }}">{%- endif -%}
+    <div class="le-rte">{{ article.content }}</div>
+  </div>
+</section>

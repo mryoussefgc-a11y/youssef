@@ -1,0 +1,16 @@
+<section class="le-section">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <h1 class="le-h2">{{ blog.title }}</h1>
+    </div>
+    <div class="le-collection__grid">
+      {%- for article in blog.articles -%}
+        <a class="le-pcard" href="{{ article.url }}">
+          {%- if article.image -%}<img src="{{ article.image | img_url: '400x' }}" alt="{{ article.title | escape }}" loading="lazy">{%- endif -%}
+          <h2 class="le-pcard__title">{{ article.title }}</h2>
+          <span class="le-pcard__excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>

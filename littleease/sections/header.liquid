@@ -1,0 +1,80 @@
+{%- comment -%}
+  Sticky navigation: wordmark logo, trust micro-badges (hidden on mobile),
+  and a CTA that scrolls to the bundle offer section.
+{%- endcomment -%}
+<header class="le-header" data-sticky-header>
+  <div class="le-container le-header__inner">
+    <a class="le-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }} home">
+      Little<span class="le-logo__accent">Ease</span>
+    </a>
+
+    <nav class="le-header__badges" aria-label="Trust badges">
+      {%- for block in section.blocks -%}
+        <span class="le-header__badge" {{ block.shopify_attributes }}>
+          {%- case block.settings.icon -%}
+            {%- when 'leaf' -%}{% render 'icon', name: 'leaf' %}
+            {%- when 'baby' -%}{% render 'icon', name: 'baby' %}
+            {%- when 'lock' -%}{% render 'icon', name: 'lock' %}
+            {%- else -%}{% render 'icon', name: 'check' %}
+          {%- endcase -%}
+          <span>{{ block.settings.text }}</span>
+        </span>
+      {%- else -%}
+        <span class="le-header__badge">{% render 'icon', name: 'leaf' %}<span>100% Natural</span></span>
+        <span class="le-header__badge">{% render 'icon', name: 'baby' %}<span>Safe 3 Months+</span></span>
+        <span class="le-header__badge">{% render 'icon', name: 'lock' %}<span>Secure Checkout</span></span>
+      {%- endfor -%}
+    </nav>
+
+    <a class="le-btn le-btn--primary le-btn--sm le-header__cta" href="#bundle">
+      {{ section.settings.cta_label | default: 'Shop now' }}
+    </a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "cta_label", "label": "CTA button label", "default": "Shop now" }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "baby", "label": "Baby" },
+            { "value": "lock", "label": "Lock" }
+          ],
+          "default": "leaf"
+        },
+        { "type": "text", "id": "text", "label": "Text", "default": "100% Natural" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "default": {
+    "blocks": [
+      { "type": "badge", "settings": { "icon": "leaf", "text": "100% Natural" } },
+      { "type": "badge", "settings": { "icon": "baby", "text": "Safe 3 Months+" } },
+      { "type": "badge", "settings": { "icon": "lock", "text": "Secure Checkout" } }
+    ]
+  },
+  "presets": [
+    {
+      "name": "Header",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "leaf", "text": "100% Natural" } },
+        { "type": "badge", "settings": { "icon": "baby", "text": "Safe 3 Months+" } },
+        { "type": "badge", "settings": { "icon": "lock", "text": "Secure Checkout" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

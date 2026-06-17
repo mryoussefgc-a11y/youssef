@@ -1,0 +1,58 @@
+{%- comment -%}
+  FAQ accordion. Uses native <details>/<summary> for accessibility +
+  no-JS resilience; theme.js enforces "only one open at a time".
+{%- endcomment -%}
+<section class="le-section le-faq">
+  <div class="le-container le-faq__container">
+    <div class="le-section__head le-section__head--center">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'The honest answers' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: 'Everything a careful mum wants to know.' }}</h2>
+    </div>
+
+    <div class="le-faq__list" data-faq>
+      {%- for block in section.blocks -%}
+        <details class="le-faq__item" {{ block.shopify_attributes }}>
+          <summary class="le-faq__q">
+            <span>{{ block.settings.question }}</span>
+            <span class="le-faq__chevron">{% render 'icon', name: 'chevron' %}</span>
+          </summary>
+          <div class="le-faq__a">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The honest answers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Everything a careful mum wants to know." }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Is it actually safe for my baby?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Yes. LittleEase is made for babies from 3 months and uses only gentle, plant-based oils — no benzocaine, no numbing agents, no alcohol and no artificial fragrance. It’s applied externally to the jawline, never inside the mouth. If your baby has a known allergy or a medical condition, check with your GP or health visitor first.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "Is it actually safe for my baby?", "answer": "<p>Yes. LittleEase is made for babies from 3 months and uses only gentle, plant-based oils — no benzocaine, no numbing agents, no alcohol and no artificial fragrance. It’s applied externally to the jawline, never inside the mouth. If your baby has a known allergy or a medical condition, check with your GP or health visitor first.</p>" } },
+        { "type": "faq", "settings": { "question": "How quickly will I see a difference?", "answer": "<p>Most mums tell us their little one starts to settle within 2–5 minutes. Every baby is different, so give it a few uses to find your rhythm — many find it works best applied just before a feed or bedtime.</p>" } },
+        { "type": "faq", "settings": { "question": "How do I apply it?", "answer": "<p>Gently roll the applicator along each side of your baby’s jawline two or three times, then hold them close. That’s it — no measuring, no mess. Avoid the eyes, mouth and any broken skin.</p>" } },
+        { "type": "faq", "settings": { "question": "What if it doesn’t work for us?", "answer": "<p>Then you don’t pay. Try it for 30 days, and if you’re not happy email us for a full refund — you can even keep the bottle. We’d rather earn your trust than hold onto your money.</p>" } },
+        { "type": "faq", "settings": { "question": "How long does one bottle last?", "answer": "<p>A 10ml roller typically lasts 6–8 weeks with nightly use. Many mums keep two on the go — one by the cot and one in the changing bag — which is why our Value kit is the most popular choice.</p>" } },
+        { "type": "faq", "settings": { "question": "When will it arrive in the UK?", "answer": "<p>We ship from within the UK, so orders usually arrive in 2–4 working days. Shipping is free on orders over £30, and you’ll get tracking by email as soon as it’s on its way.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,84 @@
+{%- comment -%} Failed solutions comparison — what families try vs LittleEase. {%- endcomment -%}
+<section class="le-section le-failed">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'You’ve probably tried most of these' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: 'Most products treat the symptom — not where the pain actually travels.' }}</h2>
+    </div>
+
+    <div class="le-failed__grid">
+      <div class="le-failed__col le-failed__col--bad">
+        <h3 class="le-failed__col-title">{% render 'icon', name: 'x-circle' %} What usually lets you down</h3>
+        <ul class="le-failed__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'failed' -%}
+              <li {{ block.shopify_attributes }}>
+                {% render 'icon', name: 'x-circle', class: 'icon--bad' %}
+                <div><strong>{{ block.settings.title }}</strong><span>{{ block.settings.text }}</span></div>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="le-failed__col le-failed__col--good">
+        <h3 class="le-failed__col-title">{% render 'icon', name: 'check-circle' %} The LittleEase way</h3>
+        <ul class="le-failed__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'win' -%}
+              <li {{ block.shopify_attributes }}>
+                {% render 'icon', name: 'check-circle', class: 'icon--good' %}
+                <div><strong>{{ block.settings.title }}</strong><span>{{ block.settings.text }}</span></div>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        <a class="le-btn le-btn--primary le-btn--block" href="#bundle">{{ section.settings.cta_label | default: 'Try LittleEase risk-free' }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Failed solutions",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "You’ve probably tried most of these" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Most products treat the symptom — not where the pain actually travels." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Try LittleEase risk-free" }
+  ],
+  "blocks": [
+    {
+      "type": "failed",
+      "name": "Failed solution",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Teething rings" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Get flung across the room. A 20-second distraction at best." }
+      ]
+    },
+    {
+      "type": "win",
+      "name": "LittleEase win",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Targets the jawline" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Soothes along the path the ache actually follows — gently, in minutes." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Failed solutions",
+      "blocks": [
+        { "type": "failed", "settings": { "title": "Teething rings", "text": "Get flung across the room. A 20-second distraction at best." } },
+        { "type": "failed", "settings": { "title": "Numbing gels", "text": "Benzocaine carries real safety warnings for babies — and the relief fades fast." } },
+        { "type": "failed", "settings": { "title": "Amber necklaces", "text": "No evidence they work, and a genuine choking and strangulation risk." } },
+        { "type": "failed", "settings": { "title": "Reaching for paracetamol", "text": "Fine occasionally, but you can’t — and shouldn’t — dose every single night." } },
+        { "type": "win", "settings": { "title": "Targets the jawline", "text": "Soothes along the path the ache actually follows — gently, in minutes." } },
+        { "type": "win", "settings": { "title": "Genuinely natural", "text": "Plant-based oils only. No benzocaine, no numbing agents, no alcohol." } },
+        { "type": "win", "settings": { "title": "Safe to use day or night", "text": "A gentle roll-on you can reach for as often as your baby needs it." } },
+        { "type": "win", "settings": { "title": "Backed by a real guarantee", "text": "30 days, money back, no awkward questions. The risk is on us." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

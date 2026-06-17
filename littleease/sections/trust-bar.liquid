@@ -1,0 +1,62 @@
+{%- comment -%} Trust bar — icon + stat pairs in a single responsive row. {%- endcomment -%}
+<section class="le-trustbar">
+  <div class="le-container le-trustbar__row">
+    {%- for block in section.blocks -%}
+      <div class="le-trustbar__item" {{ block.shopify_attributes }}>
+        {%- case block.settings.icon -%}
+          {%- when 'leaf' -%}{% render 'icon', name: 'leaf', class: 'icon--md' %}
+          {%- when 'clock' -%}{% render 'icon', name: 'clock', class: 'icon--md' %}
+          {%- when 'baby' -%}{% render 'icon', name: 'baby', class: 'icon--md' %}
+          {%- when 'shield' -%}{% render 'icon', name: 'shield-check', class: 'icon--md' %}
+          {%- when 'moon' -%}{% render 'icon', name: 'moon', class: 'icon--md' %}
+          {%- else -%}{% render 'icon', name: 'check', class: 'icon--md' %}
+        {%- endcase -%}
+        <div class="le-trustbar__text">
+          <strong>{{ block.settings.stat }}</strong>
+          <span>{{ block.settings.label }}</span>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "clock", "label": "Clock" },
+            { "value": "baby", "label": "Baby" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "moon", "label": "Moon" }
+          ],
+          "default": "leaf"
+        },
+        { "type": "text", "id": "stat", "label": "Stat", "default": "100% Natural" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Plant-based oils" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Trust bar",
+      "blocks": [
+        { "type": "stat", "settings": { "icon": "leaf", "stat": "100% Natural", "label": "Plant-based oils" } },
+        { "type": "stat", "settings": { "icon": "clock", "stat": "2–5 min", "label": "To gentle relief" } },
+        { "type": "stat", "settings": { "icon": "baby", "stat": "3 Months+", "label": "Paediatrician-informed" } },
+        { "type": "stat", "settings": { "icon": "shield", "stat": "30-Day", "label": "Money-back guarantee" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

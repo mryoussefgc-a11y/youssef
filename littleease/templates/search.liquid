@@ -1,0 +1,23 @@
+<section class="le-section">
+  <div class="le-container le-rte-wrap">
+    <h1 class="le-h2">Search</h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="le-search__form">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search the store" aria-label="Search">
+      <button type="submit" class="le-btn le-btn--primary">Search</button>
+    </form>
+
+    {%- if search.performed -%}
+      <p class="le-search__count">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for “{{ search.terms | escape }}”.</p>
+      <div class="le-collection__grid">
+        {%- for item in search.results -%}
+          <a class="le-pcard" href="{{ item.url }}">
+            {%- if item.featured_image -%}{% render 'product-image', image: item.featured_image, size: '400x', alt: item.title %}{%- endif -%}
+            <h2 class="le-pcard__title">{{ item.title }}</h2>
+          </a>
+        {%- else -%}
+          <p>Nothing found. Try another search.</p>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>

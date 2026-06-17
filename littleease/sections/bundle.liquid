@@ -1,0 +1,160 @@
+{%- comment -%}
+  Bundle offer — 3 pricing tiers, each a REAL Shopify variant add-to-cart form.
+  Tier N maps to product.variants[N]. If a variant doesn't exist yet, prices
+  fall back to the block's manual settings and the button degrades gracefully.
+{%- endcomment -%}
+<section class="le-section le-bundle" id="bundle">
+  <div class="le-container">
+    <div class="le-section__head le-section__head--center">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'Choose your kit' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: 'Most mums don’t stop at one.' }}</h2>
+      <p class="le-section__lede">{{ section.settings.subheading | default: 'Teething comes in waves — and keeping a roller in every bag means you’re never caught out at 2am. Stock up once and save.' }}</p>
+    </div>
+
+    <div class="le-bundle__grid">
+      {%- assign idx = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'tier' -%}
+          {%- liquid
+            assign variant_count = 0
+            if product != blank and product.variants != blank
+              assign variant_count = product.variants.size
+            endif
+            assign v = nil
+            if variant_count > 0
+              assign safe_idx = idx
+              if safe_idx >= variant_count
+                assign safe_idx = variant_count | minus: 1
+              endif
+              assign v = product.variants[safe_idx]
+            endif
+
+            if v
+              assign price_val = v.price
+            else
+              assign price_val = block.settings.fallback_price | times: 1
+            endif
+
+            if v and v.compare_at_price > v.price
+              assign compare_val = v.compare_at_price
+            else
+              assign compare_val = block.settings.fallback_compare | times: 1
+            endif
+          -%}
+
+          <div class="le-tier {% if block.settings.featured %}le-tier--featured{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.settings.featured -%}
+              <span class="le-tier__flag">{{ block.settings.flag | default: 'Most popular' }}</span>
+            {%- endif -%}
+
+            <div class="le-tier__head">
+              <h3 class="le-tier__name">{{ block.settings.name }}</h3>
+              <p class="le-tier__qty">{{ block.settings.qty_label }}</p>
+            </div>
+
+            <div class="le-tier__pricing">
+              <span class="le-tier__price">{{ price_val | money }}</span>
+              {%- if compare_val > price_val -%}
+                <span class="le-tier__compare">{{ compare_val | money }}</span>
+                {%- assign saved = compare_val | minus: price_val -%}
+                <span class="le-tier__save">Save {{ saved | money }}</span>
+              {%- endif -%}
+            </div>
+
+            <ul class="le-tier__list">
+              {%- assign items = block.settings.items | newline_to_br | split: '<br />' -%}
+              {%- for item in items -%}
+                {%- assign trimmed = item | strip -%}
+                {%- if trimmed != blank -%}
+                  <li>{% render 'icon', name: 'check' %}<span>{{ trimmed }}</span></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+
+            {% render 'add-to-cart',
+              variant_index: idx,
+              label: block.settings.cta_label,
+              button_class: 'le-btn--block'
+            %}
+          </div>
+          {%- assign idx = idx | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <p class="le-bundle__reassure">{% render 'icon', name: 'shield-check' %} Every kit is covered by our 30-day money-back guarantee. Free UK shipping over £30.</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle offer",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Choose your kit" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Most mums don’t stop at one." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Teething comes in waves — and keeping a roller in every bag means you’re never caught out at 2am. Stock up once and save." }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Pricing tier",
+      "settings": [
+        { "type": "checkbox", "id": "featured", "label": "Highlight as most popular", "default": false },
+        { "type": "text", "id": "flag", "label": "Highlight flag text", "default": "Most popular" },
+        { "type": "text", "id": "name", "label": "Tier name", "default": "Starter" },
+        { "type": "text", "id": "qty_label", "label": "Quantity label", "default": "1 roller" },
+        { "type": "textarea", "id": "items", "label": "Included items (one per line)", "default": "1× LittleEase roller (10ml)\nQuick-start jawline guide\n30-day money-back guarantee" },
+        { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Add to basket" },
+        { "type": "header", "content": "Fallback pricing (used before variants are set up)" },
+        { "type": "text", "id": "fallback_price", "label": "Fallback price (in pence, e.g. 1995)", "default": "1995", "info": "Used only when no matching product variant exists yet." },
+        { "type": "text", "id": "fallback_compare", "label": "Fallback compare-at price (in pence)", "default": "2995" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Bundle offer",
+      "blocks": [
+        {
+          "type": "tier",
+          "settings": {
+            "featured": false,
+            "name": "Starter",
+            "qty_label": "1 roller",
+            "items": "1× LittleEase roller (10ml)\nQuick-start jawline guide\n30-day money-back guarantee",
+            "cta_label": "Add to basket",
+            "fallback_price": "1995",
+            "fallback_compare": "2995"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "featured": true,
+            "flag": "Most popular",
+            "name": "Value",
+            "qty_label": "2 rollers",
+            "items": "2× LittleEase rollers (10ml)\nOne for the changing bag, one for the cot\nFree UK shipping\n30-day money-back guarantee",
+            "cta_label": "Add 2 & save",
+            "fallback_price": "3495",
+            "fallback_compare": "5990"
+          }
+        },
+        {
+          "type": "tier",
+          "settings": {
+            "featured": false,
+            "name": "Family",
+            "qty_label": "3 rollers",
+            "items": "3× LittleEase rollers (10ml)\nKeep one at nursery / with grandparents\nFree UK shipping\n30-day money-back guarantee",
+            "cta_label": "Add 3 & save most",
+            "fallback_price": "4495",
+            "fallback_compare": "8985"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

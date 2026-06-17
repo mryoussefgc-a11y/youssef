@@ -1,0 +1,32 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "LittleEase",
+    "theme_version": "1.0.0",
+    "theme_author": "LittleEase",
+    "theme_documentation_url": "https://littleease.co.uk",
+    "theme_support_url": "https://littleease.co.uk"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Square PNG, around 32×32px."
+      }
+    ]
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "These mirror the CSS :root tokens. The page styling is driven by assets/theme.css — edit the tokens there for a full re-theme."
+      },
+      { "type": "color", "id": "color_sage", "label": "Brand sage green", "default": "#5c7a5c" },
+      { "type": "color", "id": "color_cream", "label": "Warm cream", "default": "#f9f6f0" }
+    ]
+  }
+]

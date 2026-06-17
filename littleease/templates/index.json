@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "home": { "type": "home" },
+    "trust-bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "t1": { "type": "stat", "settings": { "icon": "leaf", "stat": "100% Natural", "label": "Plant-based oils" } },
+        "t2": { "type": "stat", "settings": { "icon": "clock", "stat": "2–5 min", "label": "To gentle relief" } },
+        "t3": { "type": "stat", "settings": { "icon": "baby", "stat": "3 Months+", "label": "Paediatrician-informed" } },
+        "t4": { "type": "stat", "settings": { "icon": "shield", "stat": "30-Day", "label": "Money-back guarantee" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "reviews": {
+      "type": "reviews",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "rating": 5, "quote": "Honestly I’d given up. Bought it half-expecting nothing. First night I rolled it on before her feed and she actually slept through. I cried a bit, not gonna lie.", "name": "Hannah M.", "location": "Verified UK purchase · Leeds" } },
+        "r2": { "type": "review", "settings": { "rating": 5, "quote": "We’d tried the rings, the gels, the amber bead thing my mum swore by. This is the only one that calms him. Smells lovely too, not chemically.", "name": "Priya S.", "location": "Verified UK purchase · Manchester" } },
+        "r3": { "type": "review", "settings": { "rating": 5, "quote": "Sceptical northern mum here. Wasn’t expecting much for the money but it genuinely settles her in a few minutes. Keep one in the changing bag and one by the cot now.", "name": "Becca T.", "location": "Verified UK purchase · Newcastle" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
+    },
+    "final-cta": {
+      "type": "final-cta",
+      "blocks": {
+        "c1": { "type": "trust", "settings": { "icon": "leaf", "text": "100% Natural" } },
+        "c2": { "type": "trust", "settings": { "icon": "baby", "text": "Safe 3 Months+" } },
+        "c3": { "type": "trust", "settings": { "icon": "shield", "text": "30-Day Guarantee" } },
+        "c4": { "type": "trust", "settings": { "icon": "truck", "text": "UK Shipping" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"]
+    }
+  },
+  "order": ["home", "trust-bar", "reviews", "final-cta"]
+}

@@ -1,0 +1,91 @@
+{%- comment -%}
+  Hero — split layout. Emotional "Problem → No Stress" headline, rating,
+  checkmark bullets, REAL add-to-cart form, and product image with a
+  CSS fallback bottle.
+{%- endcomment -%}
+<section class="le-hero">
+  <div class="le-container le-hero__grid">
+
+    <div class="le-hero__copy">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'Natural teething relief · Made for UK mums' }}</p>
+
+      <h1 class="le-hero__title">
+        {{ section.settings.headline | default: 'Teething tears tonight? Tomorrow doesn’t have to be like this.' }}
+      </h1>
+
+      <p class="le-hero__sub">
+        {{ section.settings.subheadline | default: 'A natural roller you smooth along baby’s jawline — soothing the spot where teething pain actually travels, so you both can finally rest. The natural teething solution that doesn’t make you stress.' }}
+      </p>
+
+      <div class="le-hero__rating">
+        {% render 'stars', rating: 5 %}
+        <span class="le-hero__rating-text">{{ section.settings.rating_text | default: 'Rated 4.9/5 by 243 UK mums' }}</span>
+      </div>
+
+      <ul class="le-checklist">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'bullet' -%}
+            <li {{ block.shopify_attributes }}>{% render 'icon', name: 'check-circle' %}<span>{{ block.settings.text }}</span></li>
+          {%- endif -%}
+        {%- else -%}
+          <li>{% render 'icon', name: 'check-circle' %}<span>Gentle relief in 2–5 minutes</span></li>
+          <li>{% render 'icon', name: 'check-circle' %}<span>No benzocaine, no numbing agents, no alcohol</span></li>
+          <li>{% render 'icon', name: 'check-circle' %}<span>Safe from 3 months — paediatrician-informed blend</span></li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="le-hero__cta">
+        {% render 'add-to-cart',
+          variant_index: 0,
+          label: section.settings.cta_label,
+          button_class: 'le-btn--lg',
+          sublabel: section.settings.trust_line
+        %}
+      </div>
+    </div>
+
+    <div class="le-hero__media">
+      <div class="le-hero__media-bg" aria-hidden="true"></div>
+      {% render 'product-image', image: product.featured_image, size: '760x', alt: product.title %}
+      <span class="le-floating-pill">
+        {% render 'icon', name: 'leaf' %}
+        <span><strong>100% natural</strong><br>plant-based oils</span>
+      </span>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow label", "default": "Natural teething relief · Made for UK mums" },
+    { "type": "textarea", "id": "headline", "label": "Headline", "default": "Teething tears tonight? Tomorrow doesn’t have to be like this." },
+    { "type": "textarea", "id": "subheadline", "label": "Subheadline", "default": "A natural roller you smooth along baby’s jawline — soothing the spot where teething pain actually travels, so you both can finally rest. The natural teething solution that doesn’t make you stress." },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "Rated 4.9/5 by 243 UK mums" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Soothe my baby tonight" },
+    { "type": "richtext", "id": "trust_line", "label": "Micro-trust line", "default": "<p>Free UK shipping over £30 · 30-day money-back guarantee</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Checkmark bullet",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Gentle relief in 2–5 minutes" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "bullet", "settings": { "text": "Gentle relief in 2–5 minutes" } },
+        { "type": "bullet", "settings": { "text": "No benzocaine, no numbing agents, no alcohol" } },
+        { "type": "bullet", "settings": { "text": "Safe from 3 months — paediatrician-informed blend" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

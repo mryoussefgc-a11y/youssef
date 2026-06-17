@@ -1,0 +1,99 @@
+{%- comment -%}
+  Product deep-dive — image + ingredient chips + numbered benefits (serif numerals)
+  + REAL add-to-cart form + micro-trust row.
+{%- endcomment -%}
+<section class="le-section le-deepdive">
+  <div class="le-container le-deepdive__grid">
+
+    <div class="le-deepdive__media">
+      <div class="le-deepdive__media-bg" aria-hidden="true"></div>
+      {% render 'product-image', image: product.featured_image, size: '700x', alt: product.title %}
+    </div>
+
+    <div class="le-deepdive__copy">
+      <p class="le-eyebrow">{{ section.settings.eyebrow | default: 'Meet LittleEase' }}</p>
+      <h2 class="le-h2">{{ section.settings.heading | default: 'Finally — peaceful nights for your baby (and you).' }}</h2>
+      <p class="le-deepdive__lede">{{ section.settings.subheading | default: 'One gentle roll along the jawline. Calming plant oils go to work in minutes — no numbing chemicals, no guesswork, no stress.' }}</p>
+
+      <div class="le-chips">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'chip' -%}
+            <span class="le-chip" {{ block.shopify_attributes }}>{% render 'icon', name: 'check' %}{{ block.settings.text }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <ol class="le-benefits">
+        {%- assign n = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'benefit' -%}
+            {%- assign n = n | plus: 1 -%}
+            <li class="le-benefit" {{ block.shopify_attributes }}>
+              <span class="le-benefit__num">{{ n | prepend: '0' }}</span>
+              <div>
+                <h3 class="le-benefit__title">{{ block.settings.title }}</h3>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ol>
+
+      <div class="le-deepdive__cta">
+        {% render 'add-to-cart',
+          variant_index: 0,
+          label: section.settings.cta_label,
+          button_class: 'le-btn--lg'
+        %}
+      </div>
+
+      <div class="le-microtrust">
+        <span>{% render 'icon', name: 'truck' %} Ships from the UK</span>
+        <span>{% render 'icon', name: 'shield-check' %} 30-day guarantee</span>
+        <span>{% render 'icon', name: 'lock' %} Secure checkout</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product deep-dive",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Meet LittleEase" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Finally — peaceful nights for your baby (and you)." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "One gentle roll along the jawline. Calming plant oils go to work in minutes — no numbing chemicals, no guesswork, no stress." },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Add LittleEase to my basket" }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Ingredient chip",
+      "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "No Benzocaine" } ]
+    },
+    {
+      "type": "benefit",
+      "name": "Numbered benefit",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Soothes where it actually hurts" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Rolled along the jawline, the blend follows the path of teething discomfort — not just the gum surface." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product deep-dive",
+      "blocks": [
+        { "type": "chip", "settings": { "text": "No Benzocaine" } },
+        { "type": "chip", "settings": { "text": "No Parabens" } },
+        { "type": "chip", "settings": { "text": "No Alcohol" } },
+        { "type": "chip", "settings": { "text": "Vegan" } },
+        { "type": "benefit", "settings": { "title": "Soothes where it actually hurts", "text": "Rolled along the jawline, the blend follows the path of teething discomfort — not just the gum surface." } },
+        { "type": "benefit", "settings": { "title": "Calms in 2–5 minutes", "text": "Chamomile and lavender are known for their gentle, settling effect — so the tears ease and the shoulders drop." } },
+        { "type": "benefit", "settings": { "title": "Made for worried parents", "text": "A clean, transparent ingredient list you can actually pronounce — nothing hidden, nothing harsh." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
