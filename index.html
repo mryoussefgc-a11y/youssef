@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="IPTV That Actually Works. No buffering during big matches. Real human support. Reliable service trusted by thousands." />
-  <title>IPTV TRUSTED — IPTV That Actually Works</title>
+  <meta name="description" content="UK IPTV that works when match day matters. Watch Premier League, Champions League, Boxing and UFC with reliable streaming, easy Firestick & Smart TV setup, and real WhatsApp support." />
+  <title>IPTV TRUSTED — UK IPTV For Premier League, Champions League, Boxing & UFC</title>
 
   <!-- Fonts: Inter (Stripe/SaaS feel) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -459,6 +459,61 @@
     .reveal.in { opacity:1; transform: none; }
 
     /* ============================================================
+       Trust Numbers Bar
+    ============================================================ */
+    .trustbar { border-bottom: 1px solid var(--line); background: #fff; }
+    .trustbar-grid { display:grid; grid-template-columns: repeat(5,1fr); gap:24px; padding: 40px 0; }
+    .trust-stat { text-align:center; position:relative; }
+    .trust-stat:not(:last-child)::after { content:""; position:absolute; right:-12px; top:50%; transform:translateY(-50%); width:1px; height:38px; background: var(--line); }
+    .trust-stat .ts-num { font-size:1.6rem; font-weight:800; letter-spacing:-0.03em; color: var(--ink); display:flex; align-items:center; justify-content:center; gap:8px; }
+    .trust-stat .ts-num i { color: var(--blue); font-size:1.15rem; }
+    .trust-stat .ts-num .stars { color:#f5a623; font-size:1rem; letter-spacing:1px; }
+    .trust-stat p { margin-top:4px; font-size:0.84rem; color: var(--muted); }
+
+    /* ============================================================
+       Comparison Table
+    ============================================================ */
+    .comparison { background:#fff; }
+    .cmp-table { max-width: 920px; margin:0 auto; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow-sm); }
+    .cmp-head, .cmp-row { display:grid; grid-template-columns: 1.4fr 1fr 1fr; align-items:center; }
+    .cmp-head { background: var(--ink); color:#fff; }
+    .cmp-head > div { padding: 20px 24px; font-weight:600; font-size:0.95rem; }
+    .cmp-head .col-us { background: linear-gradient(135deg, var(--blue), var(--indigo)); text-align:center; display:flex; align-items:center; justify-content:center; gap:8px; }
+    .cmp-head .col-them { text-align:center; color: rgba(255,255,255,0.7); }
+    .cmp-row { border-bottom:1px solid var(--line); }
+    .cmp-row:last-child { border-bottom:none; }
+    .cmp-row:nth-child(even) { background: var(--bg-soft); }
+    .cmp-row > div { padding: 18px 24px; font-size:0.94rem; }
+    .cmp-row .feat { font-weight:600; color: var(--ink); }
+    .cmp-row .us, .cmp-row .them { text-align:center; display:flex; align-items:center; justify-content:center; gap:8px; }
+    .cmp-row .us { color: var(--ink); font-weight:600; }
+    .cmp-row .us i { color: var(--green); }
+    .cmp-row .them { color: var(--muted); }
+    .cmp-row .them i { color: #c2cad6; }
+
+    /* ============================================================
+       Customer Reviews
+    ============================================================ */
+    .reviews-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:22px; }
+    .review-card { background:#fff; border:1px solid var(--line); border-radius: var(--radius); padding:28px; box-shadow: var(--shadow-xs); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .review-card .stars { color:#f5a623; font-size:0.9rem; letter-spacing:1px; margin-bottom:14px; }
+    .review-card p { font-size:1rem; color: var(--ink-2); line-height:1.6; }
+    .review-card .reviewer { display:flex; align-items:center; gap:11px; margin-top:18px; }
+    .review-card .reviewer .ra { width:38px; height:38px; border-radius:50%; background: linear-gradient(135deg,var(--blue),var(--indigo)); color:#fff; display:grid; place-items:center; font-weight:700; font-size:0.9rem; flex-shrink:0; }
+    .review-card .reviewer b { display:block; font-size:0.9rem; font-weight:600; }
+    .review-card .reviewer span { display:block; font-size:0.8rem; color: var(--muted); }
+
+    /* ============================================================
+       Device Compatibility
+    ============================================================ */
+    .devices-grid { display:grid; grid-template-columns: repeat(6,1fr); gap:16px; }
+    .device-card { background:#fff; border:1px solid var(--line); border-radius: var(--radius-sm); padding:22px 14px; text-align:center; box-shadow: var(--shadow-xs); transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
+    .device-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color:#cfe0ff; }
+    .device-card .dv-ic { width:46px; height:46px; margin:0 auto 12px; border-radius:12px; display:grid; place-items:center; font-size:1.3rem; color: var(--blue); background: var(--blue-soft); }
+    .device-card b { font-size:0.86rem; font-weight:600; color: var(--ink-2); }
+
+    /* ============================================================
        Responsive
     ============================================================ */
     @media (max-width: 980px) {
@@ -468,6 +523,8 @@
       .final-banner { grid-template-columns: 1fr; gap:28px; }
       .final-cta-col { text-align:left; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: repeat(2,1fr); }
+      .devices-grid { grid-template-columns: repeat(4,1fr); }
     }
     @media (max-width: 768px) {
       .section-pad { padding: 80px 0; }
@@ -486,6 +543,11 @@
       .step-card::after { display:none; }
       .faq-cols { grid-template-columns: 1fr; }
       .logos-row { gap: 28px; }
+      .trustbar-grid { grid-template-columns: repeat(2,1fr); gap:28px 16px; }
+      .trust-stat:not(:last-child)::after { display:none; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .devices-grid { grid-template-columns: repeat(3,1fr); }
+      .cmp-head > div, .cmp-row > div { padding:14px 12px; font-size:0.82rem; }
     }
     @media (max-width: 520px) {
       .container { padding: 0 18px; }
@@ -495,6 +557,8 @@
       .steps-grid { grid-template-columns: 1fr; }
       .matchday-banner, .guarantee-banner, .final-banner { padding: 36px 26px; border-radius: 24px; }
       .hero { padding-top: 140px; }
+      .devices-grid { grid-template-columns: repeat(2,1fr); }
+      .trust-stat .ts-num { font-size:1.35rem; }
     }
   </style>
 </head>
@@ -544,13 +608,9 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="hero-pill"><span class="dot"></span> Trusted by 10,000+ viewers worldwide</span>
-          <h1>IPTV That <span class="accent">Actually Works.</span></h1>
-          <p class="sub">
-            <span>No buffering during big matches.</span>
-            <span>Real human support.</span>
-            <span>Reliable service trusted by thousands.</span>
-          </p>
+          <span class="hero-pill"><span class="dot"></span> Trusted by 10,000+ UK viewers</span>
+          <h1>IPTV That Works When <span class="accent">Match Day Matters.</span></h1>
+          <p class="sub">Watch Premier League, Champions League, Boxing, UFC, movies and series with reliable streaming, real WhatsApp support, and easy setup.</p>
 
           <ul class="trust-points">
             <li><span class="tp-ic"><i class="fa-solid fa-check"></i></span><div><strong>No Scams</strong><small>Transparent service</small></div></li>
@@ -561,7 +621,7 @@
 
           <div class="hero-cta">
             <a href="#pricing" class="btn btn-blue btn-lg">View Plans <i class="fa-solid fa-arrow-right"></i></a>
-            <p class="hero-note">No long-term commitment.<br>Cancel anytime.</p>
+            <p class="hero-note">Fast activation. No long-term contract.<br>UK-friendly support.</p>
           </div>
 
           <div class="hero-social">
@@ -627,6 +687,19 @@
     </div>
   </section>
 
+  <!-- ===================== TRUST NUMBERS BAR ===================== -->
+  <section class="trustbar">
+    <div class="container">
+      <div class="trustbar-grid">
+        <div class="trust-stat reveal"><div class="ts-num">10,000+</div><p>Happy Viewers</p></div>
+        <div class="trust-stat reveal"><div class="ts-num">4.9/5 <span class="stars">★</span></div><p>Customer Rating</p></div>
+        <div class="trust-stat reveal"><div class="ts-num"><i class="fa-brands fa-whatsapp"></i> 24/7</div><p>WhatsApp Support</p></div>
+        <div class="trust-stat reveal"><div class="ts-num"><i class="fa-solid fa-bolt"></i> Fast</div><p>Activation</p></div>
+        <div class="trust-stat reveal"><div class="ts-num"><i class="fa-solid fa-tv"></i> All</div><p>Devices Supported</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== PROBLEM / SOLUTION ===================== -->
   <section class="section-pad compare" id="features">
     <div class="container">
@@ -662,6 +735,30 @@
     </div>
   </section>
 
+  <!-- ===================== COMPARISON TABLE ===================== -->
+  <section class="section-pad comparison" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The comparison</span>
+        <h2>Why UK Viewers <span class="accent">Switch</span> To Us</h2>
+        <p>See how we compare to a typical IPTV provider.</p>
+      </div>
+      <div class="cmp-table reveal">
+        <div class="cmp-head">
+          <div>Feature</div>
+          <div class="col-us"><i class="fa-solid fa-play"></i> IPTV Trusted</div>
+          <div class="col-them">Typical Provider</div>
+        </div>
+        <div class="cmp-row"><div class="feat">WhatsApp Support</div><div class="us"><i class="fa-solid fa-check"></i> Yes</div><div class="them"><i class="fa-solid fa-xmark"></i> Usually no</div></div>
+        <div class="cmp-row"><div class="feat">Match Day Stability</div><div class="us"><i class="fa-solid fa-check"></i> Optimized</div><div class="them"><i class="fa-solid fa-xmark"></i> Often buffers</div></div>
+        <div class="cmp-row"><div class="feat">Fast Activation</div><div class="us"><i class="fa-solid fa-check"></i> Minutes</div><div class="them"><i class="fa-solid fa-xmark"></i> Slow or unclear</div></div>
+        <div class="cmp-row"><div class="feat">Firestick Setup Help</div><div class="us"><i class="fa-solid fa-check"></i> Included</div><div class="them"><i class="fa-solid fa-xmark"></i> Not always</div></div>
+        <div class="cmp-row"><div class="feat">Transparent Pricing</div><div class="us"><i class="fa-solid fa-check"></i> Yes</div><div class="them"><i class="fa-solid fa-xmark"></i> Hidden fees possible</div></div>
+        <div class="cmp-row"><div class="feat">Long-Term Service</div><div class="us"><i class="fa-solid fa-check"></i> Active team</div><div class="them"><i class="fa-solid fa-xmark"></i> May disappear</div></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== PRICING ===================== -->
   <section class="section-pad pricing" id="pricing">
     <div class="container">
@@ -674,8 +771,8 @@
       <div class="pricing-grid">
         <div class="price-card reveal">
           <h3>Starter</h3>
-          <div class="price"><span class="amount">$12</span><span class="period">/ month</span></div>
-          <p class="pdesc">Everything you need to start streaming.</p>
+          <div class="price"><span class="amount">£14.99</span><span class="period">/ month</span></div>
+          <p class="pdesc">Best for simple viewing.</p>
           <ul class="feature-list">
             <li><span class="fc"><i class="fa-solid fa-check"></i></span> Live TV Channels</li>
             <li><span class="fc"><i class="fa-solid fa-check"></i></span> Sports</li>
@@ -690,13 +787,13 @@
         <div class="price-card featured reveal">
           <span class="price-badge">Most Popular</span>
           <h3>Premium</h3>
-          <div class="price"><span class="amount">$19</span><span class="period">/ month</span></div>
+          <div class="price"><span class="amount">£29.99</span><span class="period">/ 3 months</span></div>
           <p class="pdesc">The best balance of quality and value.</p>
           <ul class="feature-list">
             <li><span class="fc"><i class="fa-solid fa-check"></i></span> Everything in Starter</li>
             <li><span class="fc"><i class="fa-solid fa-check"></i></span> Full HD / 4K</li>
-            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Premium Sports</li>
-            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Faster Servers</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Premier League &amp; Champions League</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Boxing &amp; UFC</li>
             <li><span class="fc"><i class="fa-solid fa-check"></i></span> Priority Support</li>
             <li><span class="fc"><i class="fa-solid fa-check"></i></span> 2 Connections</li>
           </ul>
@@ -704,8 +801,9 @@
         </div>
 
         <div class="price-card reveal">
+          <span class="price-badge">Best Value</span>
           <h3>Family</h3>
-          <div class="price"><span class="amount">$29</span><span class="period">/ month</span></div>
+          <div class="price"><span class="amount">£59.99</span><span class="period">/ 12 months</span></div>
           <p class="pdesc">Stream everywhere, for the whole household.</p>
           <ul class="feature-list">
             <li><span class="fc"><i class="fa-solid fa-check"></i></span> Everything in Premium</li>
@@ -728,18 +826,18 @@
           <span class="eyebrow">Performance</span>
           <h2>Built For <span class="accent">Match Day.</span></h2>
           <div class="lines">
-            <span>When Real Madrid plays Barcelona...</span>
-            <span>When UFC Main Event starts...</span>
-            <span>When the World Cup Final begins...</span>
+            <span>When the big Premier League fixture kicks off...</span>
+            <span>When it's a Champions League night...</span>
+            <span>When the main boxing or UFC card starts...</span>
             <span class="em">That's when most IPTV services fail.</span>
             <span>Our infrastructure is optimized for high-demand live events.</span>
           </div>
         </div>
         <div class="md-cards">
-          <div class="md-card"><div class="md-bg ucl"></div><div class="md-ic"><i class="fa-solid fa-trophy"></i></div><h4>Champions League</h4><small>Football nights</small></div>
-          <div class="md-card"><div class="md-bg ufc"></div><div class="md-ic"><i class="fa-solid fa-hand-fist"></i></div><h4>UFC</h4><small>Fight night</small></div>
           <div class="md-card"><div class="md-bg epl"></div><div class="md-ic"><i class="fa-solid fa-futbol"></i></div><h4>Premier League</h4><small>Full coverage</small></div>
-          <div class="md-card"><div class="md-bg wc"></div><div class="md-ic"><i class="fa-solid fa-earth-americas"></i></div><h4>World Cup</h4><small>The biggest stage</small></div>
+          <div class="md-card"><div class="md-bg ucl"></div><div class="md-ic"><i class="fa-solid fa-trophy"></i></div><h4>Champions League</h4><small>Midweek nights</small></div>
+          <div class="md-card"><div class="md-bg ufc"></div><div class="md-ic"><i class="fa-solid fa-hand-back-fist"></i></div><h4>Boxing</h4><small>Fight night</small></div>
+          <div class="md-card"><div class="md-bg wc"></div><div class="md-ic"><i class="fa-solid fa-hand-fist"></i></div><h4>UFC</h4><small>Main events</small></div>
         </div>
       </div>
     </div>
@@ -764,6 +862,74 @@
     </div>
   </section>
 
+  <!-- ===================== DEVICE COMPATIBILITY ===================== -->
+  <section class="section-pad" id="devices" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Compatibility</span>
+        <h2>Works On All Your <span class="accent">Favourite</span> Devices</h2>
+        <p>Easy setup for the devices UK customers use most.</p>
+      </div>
+      <div class="devices-grid">
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-brands fa-amazon"></i></div><b>Firestick</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-tv"></i></div><b>Samsung Smart TV</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-tv"></i></div><b>LG Smart TV</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-brands fa-android"></i></div><b>Android TV</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-brands fa-apple"></i></div><b>iPhone / iPad</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-mobile-screen"></i></div><b>Android Phone</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-brands fa-windows"></i></div><b>Windows</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-brands fa-apple"></i></div><b>Mac</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-box"></i></div><b>MAG Box</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-play"></i></div><b>IPTV Smarters</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-clapperboard"></i></div><b>TiviMate</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-circle-nodes"></i></div><b>And More</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CUSTOMER REVIEWS ===================== -->
+  <section class="section-pad" id="reviews" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Reviews</span>
+        <h2>Real Feedback From <span class="accent">Happy Viewers</span></h2>
+        <p>Trusted by thousands of UK customers.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Finally watched Premier League without constant buffering."</p>
+          <div class="reviewer"><span class="ra">J</span><div><b>James</b><span>Manchester</span></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Setup on my Firestick was easy. Support replied in minutes."</p>
+          <div class="reviewer"><span class="ra">D</span><div><b>Daniel</b><span>Birmingham</span></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Used a few IPTV services before. This one feels more reliable."</p>
+          <div class="reviewer"><span class="ra">M</span><div><b>Mark</b><span>London</span></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Boxing nights are smooth now. That was my biggest issue before."</p>
+          <div class="reviewer"><span class="ra">R</span><div><b>Ryan</b><span>Liverpool</span></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Good picture quality and quick WhatsApp support."</p>
+          <div class="reviewer"><span class="ra">A</span><div><b>Adam</b><span>Leeds</span></div></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Simple plans, no hidden surprises."</p>
+          <div class="reviewer"><span class="ra">T</span><div><b>Tom</b><span>Glasgow</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== GUARANTEE ===================== -->
   <section class="guarantee">
     <div class="container">
@@ -771,14 +937,15 @@
         <div class="g-head">
           <div class="g-icon"><i class="fa-solid fa-shield-halved"></i></div>
           <div>
-            <h2>Our <span class="accent">7-Day</span> Service Guarantee</h2>
-            <p>If we cannot activate your service properly or deliver the promised access, we will fix the issue quickly or provide an appropriate solution.</p>
+            <h2>Our <span class="accent">Service</span> Promise</h2>
+            <p>If you have trouble activating your service or setting up your device, our support team will help you until everything is working properly.</p>
           </div>
         </div>
         <ul class="guarantee-points">
+          <li><span class="gp-ic"><i class="fa-solid fa-screwdriver-wrench"></i></span> Setup Help Included</li>
           <li><span class="gp-ic"><i class="fa-solid fa-tag"></i></span> Transparent Pricing</li>
           <li><span class="gp-ic"><i class="fa-solid fa-eye-slash"></i></span> No Hidden Fees</li>
-          <li><span class="gp-ic"><i class="fa-solid fa-headset"></i></span> Real Customer Support</li>
+          <li><span class="gp-ic"><i class="fa-brands fa-whatsapp"></i></span> Real WhatsApp Support</li>
           <li><span class="gp-ic"><i class="fa-solid fa-users-gear"></i></span> Active Service Team</li>
         </ul>
       </div>
@@ -812,14 +979,15 @@
       </div>
       <div class="faq-cols">
         <div class="faq-col">
-          <div class="faq-item reveal"><button class="faq-q">Will it buffer during matches? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>No. Our infrastructure is specifically optimized for high-demand live events, with high-stability servers built to handle peak match-day traffic — smooth, reliable streaming when it matters most.</p></div></div>
-          <div class="faq-item reveal"><button class="faq-q">Do you provide support? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. You get real human support directly over WhatsApp. Our active service team helps you set up, troubleshoot, and answers any question quickly.</p></div></div>
-          <div class="faq-item reveal"><button class="faq-q">Is setup difficult? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Not at all. We provide guided installation and walk you through every step. Most customers are watching within minutes of receiving their login.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Does it work on Firestick? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. Firestick is one of the most popular ways our UK customers watch. We'll guide you through the quick setup over WhatsApp so you're up and running in minutes.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Can I watch Premier League? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. Premier League and Champions League fixtures are fully covered, and our servers are optimized to stay smooth during peak match-day traffic.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Can I watch Boxing and UFC? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. Major boxing and UFC main events are covered, with stable streaming built for high-demand fight nights.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Does it work on Samsung and LG Smart TV? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Absolutely. It works on Samsung and LG Smart TVs, as well as Android TV, phones, tablets, computers, MAG boxes and more.</p></div></div>
         </div>
         <div class="faq-col">
-          <div class="faq-item reveal"><button class="faq-q">Can I use it on Smart TV? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Absolutely. It works on Smart TVs, phones, tablets, computers, and IPTV boxes. If your device connects to the internet and runs an app, we can help you get it running.</p></div></div>
-          <div class="faq-item reveal"><button class="faq-q">How fast will I receive my login? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Very fast — usually within minutes during business hours. Message us on WhatsApp and our team will set up your access right away.</p></div></div>
-          <div class="faq-item reveal"><button class="faq-q">Can I cancel anytime? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. There is no long-term commitment — no contracts, no hidden fees. You can cancel anytime.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">How fast is activation? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Very fast — usually within minutes during business hours. Message us on WhatsApp and our team will set up your access right away.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Do you help with setup? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. Setup help is included. We walk you through installing on Firestick, Smart TV, or any app like IPTV Smarters and TiviMate until everything works.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Is there a long-term contract? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>No long-term contract. Choose the plan that suits you with transparent pricing and no hidden fees.</p></div></div>
         </div>
       </div>
     </div>
@@ -830,11 +998,12 @@
     <div class="container">
       <div class="final-banner reveal">
         <div>
-          <h2>Stop Wasting Money On Unreliable IPTV Services.</h2>
+          <h2>Stop Missing Big Matches Because Of Unreliable IPTV.</h2>
           <ul class="final-benefits">
-            <li><i class="fa-solid fa-circle-check"></i> Less Buffering</li>
-            <li><i class="fa-solid fa-circle-check"></i> Better Support</li>
-            <li><i class="fa-solid fa-circle-check"></i> More Reliability</li>
+            <li><i class="fa-solid fa-circle-check"></i> Better Match Day Stability</li>
+            <li><i class="fa-solid fa-circle-check"></i> Easy Firestick Setup</li>
+            <li><i class="fa-solid fa-circle-check"></i> Real WhatsApp Support</li>
+            <li><i class="fa-solid fa-circle-check"></i> UK-Friendly Plans</li>
           </ul>
         </div>
         <div class="final-cta-col">
