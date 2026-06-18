@@ -6,7 +6,11 @@
   <meta name="description" content="IPTV That Actually Works. No buffering during big matches. Real human support. Reliable service trusted by thousands." />
   <title>IPTV TRUSTED — IPTV That Actually Works</title>
 
-  <!-- Font Awesome -->
+  <!-- Fonts: Inter (Stripe/SaaS feel) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Font Awesome icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
@@ -14,26 +18,33 @@
        Design Tokens
     ============================================================ */
     :root {
-      --purple: #2563eb;
-      --purple-dark: #1d4ed8;
-      --purple-light: #60a5fa;
-      --purple-soft: #eff4ff;
-      --navy: #0a0f1e;
-      --navy-2: #111831;
-      --ink: #0f172a;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-light: #60a5fa;
+      --cyan: #06b6d4;
+      --indigo: #4f46e5;
+      --blue-soft: #eff4ff;
+
+      --ink: #0a1024;
+      --ink-2: #1e293b;
       --slate: #475569;
-      --muted: #64748b;
-      --line: #e6e8ee;
+      --muted: #6b7689;
+      --line: #e9edf4;
       --white: #ffffff;
-      --bg-soft: #f8fafc;
-      --green: #22c55e;
+      --bg-soft: #f6f8fc;
+      --navy: #070b16;
+      --navy-2: #0d1426;
+
+      --green: #16a34a;
       --red: #ef4444;
-      --radius: 20px;
-      --radius-sm: 14px;
-      --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.06);
-      --shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
-      --shadow-lg: 0 30px 70px rgba(15, 23, 42, 0.18);
-      --maxw: 1180px;
+
+      --radius: 24px;
+      --radius-sm: 16px;
+      --shadow-xs: 0 1px 2px rgba(10,16,36,0.06), 0 1px 1px rgba(10,16,36,0.04);
+      --shadow-sm: 0 2px 8px rgba(10,16,36,0.05), 0 8px 24px rgba(10,16,36,0.06);
+      --shadow: 0 8px 24px rgba(10,16,36,0.08), 0 24px 48px rgba(10,16,36,0.08);
+      --shadow-lg: 0 30px 80px rgba(10,16,36,0.20);
+      --maxw: 1140px;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
@@ -41,157 +52,202 @@
        Reset & Base
     ============================================================ */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: var(--ink);
       background: var(--white);
       line-height: 1.6;
+      letter-spacing: -0.011em;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
     img { max-width: 100%; display: block; }
+    ::selection { background: rgba(37,99,235,0.18); }
 
     .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
     section { position: relative; }
-    .section-pad { padding: 96px 0; }
+    .section-pad { padding: 120px 0; }
 
-    .section-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
-    .section-head h2 {
-      font-size: clamp(1.9rem, 4vw, 2.8rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em;
+      color: var(--blue); margin-bottom: 18px;
     }
-    .section-head h2 .accent { color: var(--purple); }
+    .eyebrow::before { content:""; width: 22px; height: 2px; border-radius: 2px; background: var(--blue); }
+
+    .section-head { max-width: 680px; margin: 0 auto 72px; text-align: center; }
+    .section-head .eyebrow { justify-content: center; }
+    .section-head h2 {
+      font-size: clamp(2rem, 4.2vw, 3.1rem);
+      font-weight: 800; letter-spacing: -0.035em; line-height: 1.05;
+    }
+    .section-head h2 .accent {
+      background: linear-gradient(100deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
     .section-head h2 .accent-red { color: var(--red); }
-    .section-head p { margin-top: 14px; font-size: 1.1rem; color: var(--muted); }
+    .section-head p { margin-top: 18px; font-size: 1.18rem; color: var(--muted); font-weight: 400; }
 
     /* ============================================================
        Buttons
     ============================================================ */
     .btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 1rem; font-weight: 700;
-      padding: 15px 28px; border-radius: 999px;
-      border: none; cursor: pointer;
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
-      white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 9px;
+      font-size: 0.98rem; font-weight: 600; font-family: inherit;
+      padding: 14px 26px; border-radius: 999px; border: none; cursor: pointer;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), color .25s;
+      white-space: nowrap; letter-spacing: -0.01em;
     }
-    .btn-primary { background: var(--purple); color: #fff; box-shadow: 0 12px 26px rgba(37, 99, 235, 0.35); }
-    .btn-primary:hover { background: var(--purple-dark); transform: translateY(-2px); box-shadow: 0 18px 34px rgba(37, 99, 235, 0.42); }
-    .btn-light { background: #fff; color: var(--purple); border: 1.5px solid #cfe0ff; }
-    .btn-light:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: var(--purple); }
-    .btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.18); }
-    .btn-ghost:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
+    .btn i { transition: transform .25s var(--ease); }
+    .btn:hover i.fa-arrow-right { transform: translateX(3px); }
+    .btn-primary { background: var(--ink); color: #fff; box-shadow: var(--shadow-xs); }
+    .btn-primary:hover { background: #000; transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .btn-blue { background: var(--blue); color: #fff; box-shadow: 0 8px 22px rgba(37,99,235,0.35); }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(37,99,235,0.42); }
+    .btn-light { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    .btn-light:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: #d6deea; }
+    .btn-ghost { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(6px); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
     .btn-block { width: 100%; justify-content: center; }
+    .btn-lg { padding: 16px 30px; font-size: 1.02rem; }
 
     /* ============================================================
        Header
     ============================================================ */
     .header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease);
-      background: rgba(10, 13, 22, 0);
+      position: fixed; top: 14px; left: 0; right: 0; z-index: 1000;
+      transition: top .3s var(--ease);
     }
-    .header.scrolled {
-      background: rgba(10, 13, 22, 0.82);
-      backdrop-filter: saturate(180%) blur(16px);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    .header-inner {
+      max-width: var(--maxw); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px; padding: 0 14px 0 20px;
+      border-radius: 999px;
+      background: rgba(10,16,36,0.55);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: saturate(180%) blur(20px);
+      transition: background .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-    .logo { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 1.18rem; letter-spacing: -0.01em; color: #fff; line-height: 1; }
+    .header.scrolled .header-inner {
+      background: rgba(255,255,255,0.82);
+      border-color: var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .logo { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 1.06rem; color: #fff; line-height: 1; letter-spacing: -0.02em; }
+    .header.scrolled .logo { color: var(--ink); }
     .logo .logo-mark {
-      width: 38px; height: 38px; border-radius: 11px;
-      background: linear-gradient(135deg, var(--purple), var(--purple-light));
-      display: grid; place-items: center; color: #fff; font-size: 1rem;
-      box-shadow: 0 8px 18px rgba(37,99,235,0.4);
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--blue), var(--indigo));
+      display: grid; place-items: center; color: #fff; font-size: 0.85rem;
+      box-shadow: 0 6px 16px rgba(37,99,235,0.45);
     }
-    .logo small { display:block; font-size:0.6rem; font-weight:700; letter-spacing:0.22em; color: var(--purple-light); margin-top:3px; }
+    .logo small { display:block; font-size:0.56rem; font-weight:700; letter-spacing:0.24em; color: var(--blue-light); margin-top:3px; }
+    .header.scrolled .logo small { color: var(--blue); }
 
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { color: rgba(255,255,255,0.82); font-weight: 500; font-size: 0.94rem; transition: color 0.2s; position: relative; }
-    .nav-links a:hover, .nav-links a.active { color: #fff; }
-    .nav-links a.active::after {
-      content:""; position:absolute; left:0; right:0; bottom:-7px; height:2px; border-radius:2px; background: var(--purple-light);
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.78); font-weight: 500; font-size: 0.9rem;
+      padding: 8px 13px; border-radius: 999px; transition: color .2s, background .2s;
     }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    .header.scrolled .nav-links a { color: var(--slate); }
+    .header.scrolled .nav-links a:hover, .header.scrolled .nav-links a.active { color: var(--ink); background: var(--bg-soft); }
 
-    .nav-actions { display: flex; align-items: center; gap: 18px; }
-    .whatsapp-badge { display: inline-flex; align-items: center; gap: 10px; color: #fff; }
-    .whatsapp-badge .wa-ic {
-      width: 34px; height: 34px; border-radius: 50%; display:grid; place-items:center;
-      background: rgba(37,211,102,0.15); color: #25d366; font-size: 1.1rem;
-    }
-    .whatsapp-badge .wa-txt b { display:block; font-size:0.88rem; font-weight:700; }
-    .whatsapp-badge .wa-txt span { display:block; font-size:0.7rem; color: #22c55e; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .whatsapp-badge { display: inline-flex; align-items: center; gap: 9px; color: #fff; padding: 6px 8px; }
+    .header.scrolled .whatsapp-badge { color: var(--ink); }
+    .whatsapp-badge .wa-ic { width: 30px; height: 30px; border-radius: 50%; display:grid; place-items:center; background: rgba(22,163,74,0.16); color: #16a34a; font-size: 1rem; }
+    .whatsapp-badge .wa-txt b { display:block; font-size:0.8rem; font-weight:600; line-height:1.1; }
+    .whatsapp-badge .wa-txt span { display:block; font-size:0.66rem; color: #16a34a; }
 
-    .nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+    .nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.35rem; cursor: pointer; padding: 6px; }
+    .header.scrolled .nav-toggle { color: var(--ink); }
 
     .mobile-menu {
-      position: fixed; top: 76px; left: 0; right: 0; background: #111831;
-      box-shadow: var(--shadow); padding: 12px 24px 26px;
-      transform: translateY(-130%); transition: transform 0.35s var(--ease); z-index: 999;
+      position: fixed; top: 84px; left: 14px; right: 14px;
+      background: #fff; border: 1px solid var(--line); border-radius: 22px;
+      box-shadow: var(--shadow); padding: 10px 12px 18px;
+      transform: translateY(-130%) scale(0.98); opacity: 0; pointer-events: none;
+      transition: transform .35s var(--ease), opacity .25s; z-index: 999;
     }
-    .mobile-menu.open { transform: translateY(0); }
-    .mobile-menu a { display: block; padding: 14px 4px; font-weight: 600; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .mobile-menu .btn { margin-top: 18px; }
+    .mobile-menu.open { transform: none; opacity: 1; pointer-events: auto; }
+    .mobile-menu a { display: block; padding: 13px 14px; font-weight: 500; color: var(--ink); border-radius: 12px; }
+    .mobile-menu a:hover { background: var(--bg-soft); }
+    .mobile-menu .btn { margin-top: 10px; }
 
     /* ============================================================
-       Hero
+       Hero — Stripe-style gradient
     ============================================================ */
-    .hero {
+    .hero { position: relative; background: var(--navy); color: #fff; padding: 168px 0 110px; overflow: hidden; }
+    .hero::before {
+      content:""; position:absolute; inset:-20% -10% auto -10%; height: 130%;
       background:
-        radial-gradient(900px 500px at 88% 8%, rgba(37,99,235,0.28), transparent 55%),
-        radial-gradient(700px 500px at 0% 30%, rgba(91,33,182,0.18), transparent 55%),
-        linear-gradient(160deg, #070a12, var(--navy-2));
-      color: #fff; padding: 138px 0 84px; overflow: hidden;
+        radial-gradient(50% 50% at 78% 8%, rgba(37,99,235,0.55), transparent 60%),
+        radial-gradient(45% 45% at 12% 12%, rgba(79,70,229,0.45), transparent 60%),
+        radial-gradient(40% 40% at 60% 0%, rgba(6,182,212,0.30), transparent 55%);
+      transform: skewY(-7deg); transform-origin: top left; pointer-events:none;
     }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1.08fr; gap: 56px; align-items: center; }
-    .hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.1rem); font-weight: 800; line-height: 1.03; letter-spacing: -0.03em; }
+    .hero::after {
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 56px 56px; mask-image: radial-gradient(70% 60% at 50% 30%, #000, transparent 80%);
+    }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 60px; align-items: center; }
+
+    .hero-pill {
+      display:inline-flex; align-items:center; gap:9px; font-size:0.82rem; font-weight:500;
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14);
+      padding: 7px 14px; border-radius: 999px; margin-bottom: 26px; backdrop-filter: blur(6px);
+    }
+    .hero-pill .dot { width:7px; height:7px; border-radius:50%; background: #34d399; box-shadow: 0 0 0 4px rgba(52,211,153,0.2); }
+    .hero h1 {
+      font-size: clamp(2.7rem, 5.6vw, 4.4rem); font-weight: 800;
+      line-height: 1.02; letter-spacing: -0.04em;
+    }
     .hero h1 .accent {
-      background: linear-gradient(120deg, #3b82f6, #93c5fd);
+      background: linear-gradient(100deg, #60a5fa, #22d3ee);
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .hero p.sub { margin-top: 22px; font-size: 1.12rem; color: rgba(255,255,255,0.74); }
+    .hero p.sub { margin-top: 22px; font-size: 1.16rem; color: rgba(255,255,255,0.72); font-weight: 400; max-width: 460px; }
     .hero p.sub span { display: block; }
 
-    .trust-points { display: grid; grid-template-columns: repeat(4, auto); gap: 14px 22px; margin-top: 28px; }
-    .trust-points li { display: flex; align-items: center; gap: 10px; }
-    .trust-points .tp-ic { width: 26px; height: 26px; border-radius: 50%; background: rgba(37,99,235,0.18); color: var(--purple-light); display:grid; place-items:center; font-size:0.72rem; flex-shrink:0; }
-    .trust-points strong { display:block; font-size: 0.92rem; font-weight: 700; line-height:1.1; }
-    .trust-points small { display:block; font-size: 0.74rem; color: rgba(255,255,255,0.55); }
+    .trust-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 24px; margin-top: 30px; max-width: 440px; }
+    .trust-points li { display: flex; align-items: center; gap: 11px; }
+    .trust-points .tp-ic { width: 28px; height: 28px; border-radius: 8px; background: rgba(37,99,235,0.22); color: var(--blue-light); display:grid; place-items:center; font-size:0.72rem; flex-shrink:0; }
+    .trust-points strong { display:block; font-size: 0.9rem; font-weight: 600; line-height:1.1; }
+    .trust-points small { display:block; font-size: 0.74rem; color: rgba(255,255,255,0.5); }
 
-    .hero-cta { margin-top: 32px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-    .hero-note { font-size: 0.86rem; color: rgba(255,255,255,0.55); line-height:1.3; }
+    .hero-cta { margin-top: 34px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .hero-note { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height:1.35; }
 
-    .hero-social { margin-top: 30px; display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
-    .trustpilot { display:flex; align-items:center; gap:9px; font-size:0.86rem; color: rgba(255,255,255,0.8); }
-    .trustpilot .stars { color:#22c55e; letter-spacing:1px; }
-    .trustpilot b { color:#fff; }
+    .hero-social { margin-top: 34px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .trustpilot { display:flex; align-items:center; gap:9px; font-size:0.84rem; color: rgba(255,255,255,0.78); }
+    .trustpilot .stars { color:#34d399; letter-spacing:1px; }
+    .trustpilot b { color:#fff; font-weight:600; }
     .avatars { display:flex; align-items:center; gap:12px; }
     .avatars .stack { display:flex; }
     .avatars .stack span {
-      width:34px; height:34px; border-radius:50%; margin-left:-10px;
-      border:2px solid #111831; background: linear-gradient(135deg,#2563eb,#60a5fa);
-      display:grid; place-items:center; color:#fff; font-size:0.8rem; font-weight:700;
+      width:32px; height:32px; border-radius:50%; margin-left:-9px;
+      border:2px solid var(--navy); background: linear-gradient(135deg,var(--blue),var(--indigo));
+      display:grid; place-items:center; color:#fff; font-size:0.74rem; font-weight:700;
     }
     .avatars .stack span:first-child { margin-left:0; }
-    .avatars small { font-size:0.84rem; color: rgba(255,255,255,0.7); }
+    .avatars small { font-size:0.82rem; color: rgba(255,255,255,0.65); }
 
-    /* ---- Hero Visual: realistic TV ---- */
+    /* ---- Hero Visual: TV ---- */
     .hero-visual { position: relative; }
     .tv {
-      background: #060810; border-radius: 16px; padding: 12px 12px 14px;
-      box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,0.05);
+      background: linear-gradient(180deg,#11151f,#05070d); border-radius: 18px; padding: 13px 13px 15px;
+      box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,0.06);
       position: relative;
     }
-    .tv-screen {
-      border-radius: 8px; overflow: hidden; position: relative; aspect-ratio: 16 / 9;
-      background: linear-gradient(180deg,#5a7a99,#2c4a63);
-    }
-    /* crowd + pitch scene */
+    .tv-screen { border-radius: 9px; overflow: hidden; position: relative; aspect-ratio: 16 / 9; background: linear-gradient(180deg,#5a7a99,#2c4a63); }
     .scene { position:absolute; inset:0; }
     .scene .stands {
       position:absolute; left:0; right:0; top:0; height:34%;
@@ -201,13 +257,11 @@
         radial-gradient(2px 2px at 55% 30%, rgba(255,255,255,.5) 50%, transparent 51%),
         radial-gradient(2px 2px at 75% 55%, rgba(255,255,255,.4) 50%, transparent 51%),
         radial-gradient(2px 2px at 90% 35%, rgba(255,255,255,.5) 50%, transparent 51%),
-        linear-gradient(180deg,#1c2740,#33506e);
+        linear-gradient(180deg,#16223b,#2c4a66);
     }
     .scene .pitch {
       position:absolute; left:0; right:0; bottom:0; top:30%;
-      background:
-        repeating-linear-gradient(105deg, rgba(255,255,255,0.05) 0 30px, transparent 30px 60px),
-        linear-gradient(180deg,#2faa55,#157a3a);
+      background: repeating-linear-gradient(105deg, rgba(255,255,255,0.05) 0 30px, transparent 30px 60px), linear-gradient(180deg,#2faa55,#157a3a);
     }
     .scene .line-h { position:absolute; left:0; right:0; top:46%; height:2px; background:rgba(255,255,255,0.4); }
     .scene .circle { position:absolute; left:50%; top:62%; width:70px; height:34px; border:2px solid rgba(255,255,255,0.4); border-radius:50%; transform:translateX(-50%); }
@@ -216,275 +270,231 @@
     .scene .pl.white { background:#f3f4f6; }
     .scene .pl.red { background:#c0202e; }
     .scene .ball { position:absolute; width:9px; height:9px; border-radius:50%; background:#fff; box-shadow:0 0 8px rgba(255,255,255,0.9); }
-
-    .ov-score {
-      position:absolute; top:10px; left:10px; display:flex; align-items:center; gap:8px;
-      background: rgba(8,10,18,0.82); backdrop-filter: blur(6px);
-      padding:6px 11px; border-radius:8px; font-size:0.7rem; font-weight:800; color:#fff;
-    }
+    .ov-score { position:absolute; top:10px; left:10px; display:flex; align-items:center; gap:8px; background: rgba(7,11,22,0.85); backdrop-filter: blur(6px); padding:6px 11px; border-radius:8px; font-size:0.7rem; font-weight:700; color:#fff; }
     .ov-score .live { background:#e11d48; padding:2px 7px; border-radius:4px; font-size:0.6rem; letter-spacing:0.05em; }
-    .ov-score .clock { color: rgba(255,255,255,0.65); font-weight:600; }
-    .ov-quality { position:absolute; top:10px; right:10px; background: var(--purple); color:#fff; font-size:0.62rem; font-weight:800; padding:4px 9px; border-radius:6px; }
+    .ov-score .clock { color: rgba(255,255,255,0.6); font-weight:500; }
+    .ov-quality { position:absolute; top:10px; right:10px; background: var(--blue); color:#fff; font-size:0.62rem; font-weight:700; padding:4px 9px; border-radius:6px; }
     .ov-bar { position:absolute; left:12px; right:12px; bottom:12px; height:4px; border-radius:99px; background: rgba(255,255,255,0.3); }
-    .ov-bar span { position:absolute; inset:0 38% 0 0; border-radius:99px; background:var(--purple-light); }
+    .ov-bar span { position:absolute; inset:0 38% 0 0; border-radius:99px; background:var(--blue-light); }
 
-    /* channel cards under TV */
     .tv-cards { display:grid; grid-template-columns: repeat(4,1fr); gap:10px; margin-top:14px; }
-    .tv-card {
-      background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
-      border-radius:11px; padding:12px 10px; text-align:left;
-    }
-    .tv-card i { color: var(--purple-light); font-size:0.85rem; }
-    .tv-card b { display:block; font-size:0.82rem; font-weight:800; margin-top:6px; }
-    .tv-card small { display:block; font-size:0.66rem; color: rgba(255,255,255,0.5); }
-
-    .tv-stand { width:120px; height:10px; background:#11151f; margin:10px auto 0; border-radius:0 0 6px 6px; }
-    .tv-base { width:230px; height:8px; background:#0a0f1e; border-radius:99px; margin:0 auto; box-shadow:0 16px 30px rgba(0,0,0,0.5); }
+    .tv-card { background: rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.08); border-radius:11px; padding:12px 10px; }
+    .tv-card i { color: var(--blue-light); font-size:0.85rem; }
+    .tv-card b { display:block; font-size:0.8rem; font-weight:700; margin-top:6px; }
+    .tv-card small { display:block; font-size:0.64rem; color: rgba(255,255,255,0.48); }
+    .tv-stand { width:120px; height:10px; background:#0c111c; margin:10px auto 0; border-radius:0 0 6px 6px; }
+    .tv-base { width:230px; height:8px; background:#070b16; border-radius:99px; margin:0 auto; box-shadow:0 18px 34px rgba(0,0,0,0.55); }
     .remote {
       position:absolute; bottom:-6px; left:50%; transform:translateX(-30px) rotate(-8deg);
-      width:34px; padding:8px 0; background:linear-gradient(180deg,#1a1f2c,#0a0f1e);
+      width:32px; padding:8px 0; background:linear-gradient(180deg,#161b27,#070b16);
       border-radius:10px; display:flex; flex-direction:column; align-items:center; gap:5px;
       box-shadow:var(--shadow); z-index:3; border:1px solid rgba(255,255,255,0.06);
     }
     .remote .pad { width:18px; height:18px; border-radius:50%; background:rgba(37,99,235,0.6); }
-    .remote .k { width:7px; height:7px; border-radius:2px; background:rgba(255,255,255,0.25); }
+    .remote .k { width:7px; height:7px; border-radius:2px; background:rgba(255,255,255,0.22); }
+
+    /* logos strip */
+    .logos-strip { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 76px; padding-top: 34px; }
+    .logos-strip p { text-align:center; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color: rgba(255,255,255,0.4); margin-bottom:20px; }
+    .logos-row { display:flex; justify-content:center; align-items:center; gap:46px; flex-wrap:wrap; color: rgba(255,255,255,0.55); font-size:1.5rem; }
+    .logos-row span { display:flex; align-items:center; gap:9px; font-size:0.95rem; font-weight:600; }
 
     /* ============================================================
-       Problem / Solution  (horizontal flow)
+       Problem / Solution
     ============================================================ */
     .compare { background:#fff; }
-    .compare-row {
-      display:grid;
-      grid-template-columns: 1fr 1fr 60px 1fr 1fr;
-      gap:24px; align-items:center;
-      padding: 22px 0;
-      border-bottom:1px solid var(--line);
-    }
+    .compare-table { max-width: 1000px; margin: 0 auto; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .compare-row { display:grid; grid-template-columns: 1fr 1fr 54px 1fr 1fr; gap:22px; align-items:center; padding: 24px 28px; border-bottom:1px solid var(--line); }
+    .compare-row:nth-child(even) { background: var(--bg-soft); }
     .compare-row:last-child { border-bottom:none; }
     .ps-item { display:flex; gap:13px; align-items:flex-start; }
-    .ps-item .ic { flex-shrink:0; width:36px; height:36px; border-radius:10px; display:grid; place-items:center; font-size:0.92rem; }
-    .ps-item.bad .ic { background:#fee2e2; color:var(--red); }
-    .ps-item.good .ic { background:#dbeafe; color:var(--purple); }
-    .ps-item strong { display:block; font-size:0.98rem; font-weight:700; line-height:1.2; }
-    .ps-item small { display:block; color:var(--muted); font-size:0.84rem; }
-    .ps-arrow { display:grid; place-items:center; color:var(--purple-light); font-size:1.3rem; }
+    .ps-item .ic { flex-shrink:0; width:38px; height:38px; border-radius:11px; display:grid; place-items:center; font-size:0.92rem; }
+    .ps-item.bad .ic { background:#fef2f2; color:var(--red); }
+    .ps-item.good .ic { background:var(--blue-soft); color:var(--blue); }
+    .ps-item strong { display:block; font-size:0.96rem; font-weight:600; line-height:1.2; }
+    .ps-item small { display:block; color:var(--muted); font-size:0.82rem; }
+    .ps-arrow { display:grid; place-items:center; }
+    .ps-arrow span { width:36px; height:36px; border-radius:50%; background: linear-gradient(135deg,var(--blue),var(--indigo)); color:#fff; display:grid; place-items:center; font-size:0.85rem; box-shadow: 0 8px 18px rgba(37,99,235,0.35); }
 
     /* ============================================================
        Pricing
     ============================================================ */
     .pricing { background: var(--bg-soft); }
-    .pricing-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:26px; align-items:stretch; }
+    .pricing-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; align-items:stretch; }
     .price-card {
       background:#fff; border:1px solid var(--line); border-radius: var(--radius);
-      padding:38px 32px; display:flex; flex-direction:column;
-      box-shadow: var(--shadow-sm); position:relative;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+      padding:38px 34px; display:flex; flex-direction:column; box-shadow: var(--shadow-xs); position:relative;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
     }
     .price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-    .price-card.featured { border:2px solid var(--purple); box-shadow: var(--shadow-lg); transform: scale(1.03); }
-    .price-card.featured:hover { transform: scale(1.03) translateY(-6px); }
-    .price-badge {
-      position:absolute; top:-14px; left:50%; transform:translateX(-50%);
-      background: var(--purple); color:#fff; font-size:0.75rem; font-weight:800; letter-spacing:0.04em;
-      padding:7px 18px; border-radius:999px; box-shadow: 0 8px 18px rgba(37,99,235,0.4);
-    }
-    .price-card h3 { font-size:1.25rem; font-weight:800; text-align:center; }
-    .price-card .price { margin:14px 0 22px; text-align:center; }
-    .price-card .price .amount { font-size:2.8rem; font-weight:800; letter-spacing:-0.02em; color:var(--purple); }
-    .price-card .price .period { color: var(--muted); font-weight:600; }
-    .feature-list { flex:1; margin-bottom:26px; }
-    .feature-list li { display:flex; align-items:center; gap:11px; padding:9px 0; font-size:0.96rem; color: var(--slate); }
-    .feature-list li i { color: var(--purple); font-size:0.95rem; }
+    .price-card.featured { border:1.5px solid transparent; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg, var(--blue), var(--indigo)) border-box; box-shadow: var(--shadow); transform: scale(1.035); }
+    .price-card.featured:hover { transform: scale(1.035) translateY(-6px); }
+    .price-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background: linear-gradient(135deg, var(--blue), var(--indigo)); color:#fff; font-size:0.72rem; font-weight:700; letter-spacing:0.03em; padding:6px 16px; border-radius:999px; box-shadow: 0 8px 18px rgba(37,99,235,0.4); }
+    .price-card h3 { font-size:1.1rem; font-weight:700; }
+    .price-card .price { margin:16px 0 4px; display:flex; align-items:baseline; gap:6px; }
+    .price-card .price .amount { font-size:3rem; font-weight:800; letter-spacing:-0.04em; }
+    .price-card .price .period { color: var(--muted); font-weight:500; font-size:0.95rem; }
+    .price-card .pdesc { color: var(--muted); font-size:0.9rem; margin-bottom:26px; }
+    .feature-list { flex:1; margin-bottom:28px; }
+    .feature-list li { display:flex; align-items:center; gap:12px; padding:8px 0; font-size:0.94rem; color: var(--slate); }
+    .feature-list li .fc { width:20px; height:20px; border-radius:50%; background: var(--blue-soft); color: var(--blue); display:grid; place-items:center; font-size:0.62rem; flex-shrink:0; }
 
     /* ============================================================
        Match Day
     ============================================================ */
-    .matchday { padding: 30px 0 96px; }
+    .matchday { padding: 40px 0 120px; }
     .matchday-banner {
-      background: radial-gradient(700px 400px at 95% 0%, rgba(37,99,235,0.28), transparent 55%), linear-gradient(160deg, var(--navy), var(--navy-2));
-      color:#fff; border-radius: 26px; padding: 46px 44px;
-      display:grid; grid-template-columns: 0.9fr 1.4fr; gap:40px; align-items:center;
-      box-shadow: var(--shadow-lg);
+      background: radial-gradient(60% 90% at 95% 0%, rgba(37,99,235,0.28), transparent 60%), linear-gradient(160deg, var(--navy), var(--navy-2));
+      color:#fff; border-radius: 32px; padding: 56px 52px;
+      display:grid; grid-template-columns: 0.9fr 1.4fr; gap:48px; align-items:center;
+      box-shadow: var(--shadow-lg); overflow:hidden; position:relative;
     }
-    .matchday-banner h2 { font-size: clamp(1.7rem,3vw,2.4rem); font-weight:800; letter-spacing:-0.02em; }
-    .matchday-banner h2 .accent { color: var(--purple-light); }
-    .matchday-banner .lines { margin-top:16px; font-size:1rem; color: rgba(255,255,255,0.72); }
+    .matchday-banner .eyebrow { color: var(--blue-light); }
+    .matchday-banner .eyebrow::before { background: var(--blue-light); }
+    .matchday-banner h2 { font-size: clamp(1.8rem,3vw,2.5rem); font-weight:800; letter-spacing:-0.03em; line-height:1.08; }
+    .matchday-banner h2 .accent { background: linear-gradient(100deg,#60a5fa,#22d3ee); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .matchday-banner .lines { margin-top:18px; font-size:1.02rem; color: rgba(255,255,255,0.7); }
     .matchday-banner .lines span { display:block; }
-    .matchday-banner .lines .em { color:#fff; font-weight:700; margin:12px 0 4px; }
+    .matchday-banner .lines .em { color:#fff; font-weight:600; margin:14px 0 4px; }
     .md-cards { display:grid; grid-template-columns: repeat(4,1fr); gap:16px; }
-    .md-card {
-      border-radius:16px; overflow:hidden; aspect-ratio: 3/4; position:relative;
-      display:flex; flex-direction:column; justify-content:flex-end;
-      padding:16px 14px; color:#fff; text-align:center;
-      transition: transform 0.3s var(--ease);
-      border:1px solid rgba(255,255,255,0.08);
-    }
+    .md-card { border-radius:18px; overflow:hidden; aspect-ratio: 3/4; position:relative; display:flex; flex-direction:column; justify-content:flex-end; padding:18px 14px; color:#fff; text-align:center; transition: transform .35s var(--ease); border:1px solid rgba(255,255,255,0.08); }
     .md-card:hover { transform: translateY(-6px); }
-    .md-card::before { content:""; position:absolute; inset:0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.75)); z-index:1; }
+    .md-card::before { content:""; position:absolute; inset:0; background: linear-gradient(180deg, transparent 28%, rgba(0,0,0,0.78)); z-index:1; }
     .md-card .md-bg { position:absolute; inset:0; z-index:0; }
-    .md-card .md-ic { position:absolute; top:50%; left:50%; transform:translate(-50%,-60%); z-index:1; font-size:2.4rem; color:#fff; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5)); }
-    .md-card h4 { position:relative; z-index:2; font-size:0.98rem; font-weight:800; }
-    .md-card small { position:relative; z-index:2; font-size:0.72rem; color: rgba(255,255,255,0.75); }
-    /* league-evoking gradient backgrounds (generic, no logos) */
-    .md-bg.ucl { background: radial-gradient(circle at 50% 30%, #1e3a8a, #0b1335); }
-    .md-bg.ufc { background: radial-gradient(circle at 50% 30%, #4b1d1d, #1a0a0a); }
+    .md-card .md-ic { position:absolute; top:46%; left:50%; transform:translate(-50%,-50%); z-index:1; font-size:2.3rem; color:#fff; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5)); }
+    .md-card h4 { position:relative; z-index:2; font-size:0.96rem; font-weight:700; }
+    .md-card small { position:relative; z-index:2; font-size:0.7rem; color: rgba(255,255,255,0.72); }
+    .md-bg.ucl { background: radial-gradient(circle at 50% 30%, #1e3a8a, #0a1230); }
+    .md-bg.ufc { background: radial-gradient(circle at 50% 30%, #4b1d1d, #160808); }
     .md-bg.epl { background: radial-gradient(circle at 50% 30%, #312e81, #0c1030); }
-    .md-bg.wc  { background: radial-gradient(circle at 50% 30%, #b45309, #3a1d04); }
+    .md-bg.wc  { background: radial-gradient(circle at 50% 30%, #0e7490, #052430); }
 
     /* ============================================================
        Everything You Get
     ============================================================ */
-    .features-grid { display:grid; grid-template-columns: repeat(6,1fr); gap:18px; }
-    .feature-card { text-align:center; padding:14px 8px; }
-    .feature-card .f-ic {
-      width:60px; height:60px; border-radius:16px; margin:0 auto 14px;
-      display:grid; place-items:center; font-size:1.5rem;
-      color: var(--purple); background: var(--purple-soft);
-    }
-    .feature-card h4 { font-size:1rem; font-weight:800; }
-    .feature-card p { color: var(--muted); margin-top:4px; font-size:0.84rem; }
+    .features-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
+    .feature-card { background:#fff; border:1px solid var(--line); border-radius: var(--radius); padding:30px; box-shadow: var(--shadow-xs); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .feature-card .f-ic { width:54px; height:54px; border-radius:14px; display:grid; place-items:center; font-size:1.35rem; color: var(--blue); background: var(--blue-soft); margin-bottom:18px; }
+    .feature-card h4 { font-size:1.45rem; font-weight:800; letter-spacing:-0.02em; }
+    .feature-card p { color: var(--muted); margin-top:4px; font-size:0.96rem; }
 
     /* ============================================================
        Guarantee
     ============================================================ */
-    .guarantee { padding: 30px 0 96px; }
-    .guarantee-banner {
-      background: radial-gradient(700px 400px at 100% 0%, rgba(37,99,235,0.34), transparent 60%), linear-gradient(135deg, #0b1226, #060b16);
-      color:#fff; border-radius: 24px; padding: 44px 44px;
-      display:grid; grid-template-columns: 1.3fr 1.4fr; gap:40px; align-items:center;
-      box-shadow: var(--shadow-lg);
-    }
-    .guarantee-banner .g-head { display:flex; gap:20px; align-items:flex-start; }
-    .guarantee-banner .g-icon {
-      flex-shrink:0; width:64px; height:64px; border-radius:18px;
-      background: linear-gradient(135deg, var(--purple), var(--purple-light));
-      display:grid; place-items:center; font-size:1.7rem;
-      box-shadow: 0 12px 26px rgba(37,99,235,0.5);
-    }
-    .guarantee-banner h2 { font-size: clamp(1.5rem,2.4vw,2rem); font-weight:800; letter-spacing:-0.02em; }
-    .guarantee-banner h2 .accent { color: var(--purple-light); }
-    .guarantee-banner p { margin-top:10px; color: rgba(255,255,255,0.74); font-size:0.98rem; }
-    .guarantee-points { display:grid; grid-template-columns: repeat(4,1fr); gap:14px; text-align:center; }
-    .guarantee-points li { font-size:0.84rem; font-weight:600; }
-    .guarantee-points .gp-ic { width:46px; height:46px; margin:0 auto 10px; border-radius:50%; display:grid; place-items:center; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color: var(--purple-light); font-size:1.05rem; }
+    .guarantee { padding: 0 0 120px; }
+    .guarantee-banner { background: var(--bg-soft); border:1px solid var(--line); border-radius: var(--radius); padding: 50px 52px; display:grid; grid-template-columns: 1.3fr 1.4fr; gap:48px; align-items:center; }
+    .guarantee-banner .g-head { display:flex; gap:22px; align-items:flex-start; }
+    .guarantee-banner .g-icon { flex-shrink:0; width:64px; height:64px; border-radius:18px; background: linear-gradient(135deg, var(--blue), var(--indigo)); display:grid; place-items:center; font-size:1.6rem; color:#fff; box-shadow: 0 12px 26px rgba(37,99,235,0.4); }
+    .guarantee-banner h2 { font-size: clamp(1.5rem,2.4vw,2rem); font-weight:800; letter-spacing:-0.03em; }
+    .guarantee-banner h2 .accent { color: var(--blue); }
+    .guarantee-banner p { margin-top:12px; color: var(--slate); font-size:0.98rem; }
+    .guarantee-points { display:grid; grid-template-columns: repeat(2,1fr); gap:14px; }
+    .guarantee-points li { display:flex; align-items:center; gap:12px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px 16px; font-size:0.92rem; font-weight:500; }
+    .guarantee-points .gp-ic { width:34px; height:34px; flex-shrink:0; border-radius:9px; display:grid; place-items:center; background: var(--blue-soft); color: var(--blue); font-size:0.9rem; }
 
     /* ============================================================
-       How It Works (steps with connectors)
+       How It Works
     ============================================================ */
     .steps-grid { display:grid; grid-template-columns: repeat(4,1fr); gap:0; position:relative; }
-    .step-card { text-align:center; padding:0 18px; position:relative; }
-    .step-card::after {
-      content:""; position:absolute; top:24px; left:60%; right:-40%; height:2px;
-      background-image: linear-gradient(90deg, var(--purple-light) 40%, transparent 0);
-      background-size: 12px 2px; background-repeat: repeat-x;
-    }
+    .step-card { text-align:center; padding:0 20px; position:relative; }
+    .step-card::after { content:""; position:absolute; top:27px; left:62%; right:-38%; height:2px; background-image: linear-gradient(90deg, var(--blue-light) 45%, transparent 0); background-size: 11px 2px; background-repeat: repeat-x; opacity:0.6; }
     .step-card:last-child::after { display:none; }
-    .step-num {
-      width:50px; height:50px; margin:0 auto 16px; position:relative; z-index:1;
-      border-radius:50%; display:grid; place-items:center; font-size:1.2rem; font-weight:800; color:#fff;
-      background: linear-gradient(135deg, var(--purple), var(--purple-light));
-      box-shadow: 0 10px 22px rgba(37,99,235,0.4);
-    }
-    .step-card h4 { font-size:1.05rem; font-weight:700; }
-    .step-card p { color: var(--muted); font-size:0.88rem; margin-top:6px; }
+    .step-num { width:56px; height:56px; margin:0 auto 18px; position:relative; z-index:1; border-radius:18px; display:grid; place-items:center; font-size:1.25rem; font-weight:800; color:#fff; background: linear-gradient(135deg, var(--blue), var(--indigo)); box-shadow: 0 12px 24px rgba(37,99,235,0.4); }
+    .step-card h4 { font-size:1.08rem; font-weight:700; }
+    .step-card p { color: var(--muted); font-size:0.9rem; margin-top:6px; }
 
     /* ============================================================
-       FAQ (2 columns)
+       FAQ
     ============================================================ */
     .faq { background: var(--bg-soft); }
-    .faq-cols { display:grid; grid-template-columns: 1fr 1fr; gap:16px; max-width: 980px; margin:0 auto; align-items:start; }
-    .faq-item { background:#fff; border:1px solid var(--line); border-radius: var(--radius-sm); overflow:hidden; transition: box-shadow 0.25s, border-color 0.25s; }
-    .faq-item.active { box-shadow: var(--shadow-sm); border-color:#c7dbff; }
-    .faq-q {
-      width:100%; text-align:left; background:none; border:none; cursor:pointer;
-      padding:18px 20px; display:flex; align-items:center; justify-content:space-between; gap:14px;
-      font-size:0.98rem; font-weight:700; color: var(--ink);
-    }
-    .faq-q i { flex-shrink:0; color: var(--purple); transition: transform 0.3s var(--ease); }
+    .faq-cols { display:grid; grid-template-columns: 1fr 1fr; gap:16px; max-width: 960px; margin:0 auto; align-items:start; }
+    .faq-item { background:#fff; border:1px solid var(--line); border-radius: var(--radius-sm); overflow:hidden; transition: box-shadow .25s, border-color .25s; }
+    .faq-item.active { box-shadow: var(--shadow-sm); border-color:#cfe0ff; }
+    .faq-q { width:100%; text-align:left; background:none; border:none; cursor:pointer; padding:20px 22px; display:flex; align-items:center; justify-content:space-between; gap:14px; font-size:0.98rem; font-weight:600; color: var(--ink); font-family: inherit; }
+    .faq-q i { flex-shrink:0; color: var(--blue); font-size:0.85rem; transition: transform .3s var(--ease); }
     .faq-item.active .faq-q i { transform: rotate(180deg); }
-    .faq-a { max-height:0; overflow:hidden; transition: max-height 0.35s var(--ease); }
-    .faq-a p { padding:0 20px 20px; color: var(--muted); font-size:0.92rem; }
+    .faq-a { max-height:0; overflow:hidden; transition: max-height .35s var(--ease); }
+    .faq-a p { padding:0 22px 22px; color: var(--muted); font-size:0.92rem; }
 
     /* ============================================================
        Final CTA
     ============================================================ */
-    .final { padding: 30px 0 90px; }
+    .final { padding: 0 0 120px; }
     .final-banner {
-      background: radial-gradient(700px 400px at 70% 120%, rgba(37,99,235,0.4), transparent 60%), linear-gradient(160deg, var(--navy), var(--navy-2));
-      color:#fff; border-radius: 24px; padding: 44px 46px;
-      display:grid; grid-template-columns: 1.4fr 0.8fr auto; gap:36px; align-items:center;
-      box-shadow: var(--shadow-lg);
+      position:relative; overflow:hidden;
+      background: linear-gradient(135deg, var(--blue), var(--indigo));
+      color:#fff; border-radius: 32px; padding: 60px 56px;
+      display:grid; grid-template-columns: 1.5fr auto; gap:40px; align-items:center;
+      box-shadow: 0 30px 70px rgba(37,99,235,0.4);
     }
-    .final-banner h2 { font-size: clamp(1.6rem,2.8vw,2.2rem); font-weight:800; letter-spacing:-0.02em; line-height:1.15; }
-    .final-banner h2 .accent { color: var(--purple-light); }
-    .final-benefits li { display:flex; align-items:center; gap:10px; font-weight:600; font-size:0.98rem; padding:5px 0; }
-    .final-benefits i { color: var(--green); }
+    .final-banner::before { content:""; position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(80% 80% at 80% 20%, #000, transparent); }
+    .final-banner > * { position:relative; z-index:1; }
+    .final-banner h2 { font-size: clamp(1.8rem,3.2vw,2.6rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; }
+    .final-benefits { display:flex; gap:24px; flex-wrap:wrap; margin-top:22px; }
+    .final-benefits li { display:flex; align-items:center; gap:9px; font-weight:500; font-size:0.98rem; color: rgba(255,255,255,0.92); }
+    .final-benefits i { color:#fff; }
     .final-cta-col { text-align:center; }
-    .final-cta-col .note { font-size:0.82rem; color: rgba(255,255,255,0.55); margin-top:12px; }
+    .final-cta-col .note { font-size:0.82rem; color: rgba(255,255,255,0.75); margin-top:14px; }
 
     /* ============================================================
        Footer
     ============================================================ */
-    .footer { background: #070a12; color: rgba(255,255,255,0.6); padding: 56px 0 28px; }
-    .footer-grid { display:grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px; }
-    .footer .logo { color:#fff; margin-bottom:16px; }
-    .footer p { font-size:0.9rem; max-width:280px; }
-    .footer h5 { color:#fff; font-size:0.92rem; font-weight:700; margin-bottom:14px; }
-    .footer-links a { display:block; padding:6px 0; font-size:0.9rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--purple-light); }
-    .footer-social { display:flex; gap:11px; margin-top:18px; }
-    .footer-social a { width:38px; height:38px; border-radius:11px; background: rgba(255,255,255,0.06); display:grid; place-items:center; color:#fff; transition: background 0.2s, transform 0.2s; }
-    .footer-social a:hover { background: var(--purple); transform: translateY(-3px); }
-    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:0.84rem; }
+    .footer { background: var(--navy); color: rgba(255,255,255,0.58); padding: 72px 0 30px; }
+    .footer-grid { display:grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap:44px; margin-bottom:48px; }
+    .footer .logo { color:#fff; margin-bottom:18px; }
+    .footer p { font-size:0.9rem; max-width:280px; line-height:1.7; }
+    .footer h5 { color:#fff; font-size:0.82rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:16px; }
+    .footer-links a { display:block; padding:7px 0; font-size:0.9rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--blue-light); }
+    .footer-social { display:flex; gap:11px; margin-top:20px; }
+    .footer-social a { width:38px; height:38px; border-radius:11px; background: rgba(255,255,255,0.06); display:grid; place-items:center; color:#fff; transition: background .2s, transform .2s; }
+    .footer-social a:hover { background: var(--blue); transform: translateY(-3px); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:0.83rem; }
 
-    .fab {
-      position:fixed; bottom:24px; right:24px; z-index:900;
-      width:58px; height:58px; border-radius:50%; background:#25d366; color:#fff;
-      display:grid; place-items:center; font-size:1.6rem;
-      box-shadow: 0 14px 30px rgba(37,211,102,0.5); transition: transform 0.25s var(--ease);
-    }
+    .fab { position:fixed; bottom:24px; right:24px; z-index:900; width:58px; height:58px; border-radius:50%; background:#25d366; color:#fff; display:grid; place-items:center; font-size:1.6rem; box-shadow: 0 14px 30px rgba(37,211,102,0.5); transition: transform .25s var(--ease); }
     .fab:hover { transform: scale(1.08); }
 
-    .reveal { opacity:0; transform: translateY(26px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal { opacity:0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     .reveal.in { opacity:1; transform: none; }
 
     /* ============================================================
        Responsive
     ============================================================ */
     @media (max-width: 980px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 56px; }
-      .trust-points { grid-template-columns: repeat(2, 1fr); }
-      .matchday-banner, .guarantee-banner, .final-banner { grid-template-columns: 1fr; gap:30px; }
-      .features-grid { grid-template-columns: repeat(3,1fr); gap:24px; }
-      .guarantee-points { grid-template-columns: repeat(4,1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+      .hero p.sub, .trust-points { max-width: none; }
+      .matchday-banner, .guarantee-banner { grid-template-columns: 1fr; gap:34px; }
+      .final-banner { grid-template-columns: 1fr; gap:28px; }
       .final-cta-col { text-align:left; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      .section-pad { padding: 64px 0; }
+      .section-pad { padding: 80px 0; }
       .nav-links { display:none; }
       .nav-actions .whatsapp-badge, .nav-actions .btn { display:none; }
       .nav-toggle { display:block; }
-      .compare-row { grid-template-columns: 1fr; gap:14px; }
+      .compare-row { grid-template-columns: 1fr; gap:16px; padding:22px; }
       .ps-arrow { display:none; }
       .pricing-grid { grid-template-columns: 1fr; }
       .price-card.featured { transform:none; }
       .price-card.featured:hover { transform: translateY(-6px); }
       .md-cards { grid-template-columns: repeat(2,1fr); }
-      .features-grid { grid-template-columns: repeat(2,1fr); }
-      .guarantee-points { grid-template-columns: repeat(2,1fr); }
-      .steps-grid { grid-template-columns: 1fr 1fr; gap:32px 0; }
+      .features-grid { grid-template-columns: 1fr; }
+      .guarantee-points { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap:36px 0; }
       .step-card::after { display:none; }
       .faq-cols { grid-template-columns: 1fr; }
+      .logos-row { gap: 28px; }
     }
     @media (max-width: 520px) {
-      .container { padding: 0 16px; }
-      .trust-points { grid-template-columns: 1fr 1fr; }
+      .container { padding: 0 18px; }
+      .trust-points { grid-template-columns: 1fr; }
       .tv-cards { grid-template-columns: repeat(2,1fr); }
       .md-cards { grid-template-columns: 1fr 1fr; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
-      .matchday-banner, .guarantee-banner, .final-banner { padding: 32px 24px; }
+      .matchday-banner, .guarantee-banner, .final-banner { padding: 36px 26px; border-radius: 24px; }
+      .hero { padding-top: 140px; }
     }
   </style>
 </head>
@@ -492,31 +502,29 @@
 
   <!-- ===================== HEADER ===================== -->
   <header class="header" id="header">
-    <div class="container">
-      <nav class="nav">
-        <a href="#home" class="logo">
-          <span class="logo-mark"><i class="fa-solid fa-play"></i></span>
-          <span>IPTV<small>TRUSTED</small></span>
-        </a>
+    <div class="header-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark"><i class="fa-solid fa-play"></i></span>
+        <span>IPTV<small>TRUSTED</small></span>
+      </a>
 
-        <ul class="nav-links">
-          <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#channels">Channels</a></li>
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-
-        <div class="nav-actions">
-          <a href="https://wa.me/1234567890" target="_blank" rel="noopener" class="whatsapp-badge">
-            <span class="wa-ic"><i class="fa-brands fa-whatsapp"></i></span>
-            <span class="wa-txt"><b>WhatsApp Support</b><span>24/7 Online</span></span>
-          </a>
-          <a href="#pricing" class="btn btn-primary">View Plans</a>
-          <button class="nav-toggle" id="navToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
-        </div>
+      <nav class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#features">Features</a>
+        <a href="#channels">Channels</a>
+        <a href="#how">How It Works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
       </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/1234567890" target="_blank" rel="noopener" class="whatsapp-badge">
+          <span class="wa-ic"><i class="fa-brands fa-whatsapp"></i></span>
+          <span class="wa-txt"><b>WhatsApp Support</b><span>24/7 Online</span></span>
+        </a>
+        <a href="#pricing" class="btn btn-blue">View Plans</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
     </div>
   </header>
 
@@ -527,8 +535,8 @@
     <a href="#how">How It Works</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
-    <a href="https://wa.me/1234567890" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="color:#25d366"></i> WhatsApp Support</a>
-    <a href="#pricing" class="btn btn-primary btn-block">View Plans</a>
+    <a href="https://wa.me/1234567890" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="color:#16a34a"></i>&nbsp; WhatsApp Support</a>
+    <a href="#pricing" class="btn btn-blue btn-block">View Plans</a>
   </div>
 
   <!-- ===================== HERO ===================== -->
@@ -536,6 +544,7 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-copy">
+          <span class="hero-pill"><span class="dot"></span> Trusted by 10,000+ viewers worldwide</span>
           <h1>IPTV That <span class="accent">Actually Works.</span></h1>
           <p class="sub">
             <span>No buffering during big matches.</span>
@@ -551,19 +560,17 @@
           </ul>
 
           <div class="hero-cta">
-            <a href="#pricing" class="btn btn-primary">View Plans <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#pricing" class="btn btn-blue btn-lg">View Plans <i class="fa-solid fa-arrow-right"></i></a>
             <p class="hero-note">No long-term commitment.<br>Cancel anytime.</p>
           </div>
 
           <div class="hero-social">
             <div class="trustpilot">
               <span class="stars">★★★★★</span>
-              <span><b>Trustpilot</b> &nbsp;4.9/5 from 2,000+ reviews</span>
+              <span><b>Trustpilot</b> &nbsp;4.9/5 · 2,000+ reviews</span>
             </div>
             <div class="avatars">
-              <div class="stack">
-                <span>A</span><span>M</span><span>K</span><span>S</span><span>+</span>
-              </div>
+              <div class="stack"><span>A</span><span>M</span><span>K</span><span>S</span><span>+</span></div>
               <small>Join 10,000+ happy users</small>
             </div>
           </div>
@@ -601,9 +608,20 @@
           </div>
           <div class="tv-stand"></div>
           <div class="tv-base"></div>
-          <div class="remote">
-            <span class="pad"></span><span class="k"></span><span class="k"></span><span class="k"></span>
-          </div>
+          <div class="remote"><span class="pad"></span><span class="k"></span><span class="k"></span><span class="k"></span></div>
+        </div>
+      </div>
+
+      <!-- trust logos strip -->
+      <div class="logos-strip reveal">
+        <p>Watch on every device you own</p>
+        <div class="logos-row">
+          <span><i class="fa-brands fa-apple"></i> Apple TV</span>
+          <span><i class="fa-brands fa-android"></i> Android</span>
+          <span><i class="fa-solid fa-tv"></i> Smart TV</span>
+          <span><i class="fa-solid fa-mobile-screen"></i> Mobile</span>
+          <span><i class="fa-solid fa-box"></i> IPTV Box</span>
+          <span><i class="fa-solid fa-laptop"></i> Desktop</span>
         </div>
       </div>
     </div>
@@ -613,30 +631,30 @@
   <section class="section-pad compare" id="features">
     <div class="container">
       <div class="section-head reveal">
+        <span class="eyebrow">The difference</span>
         <h2>Why People <span class="accent-red">Leave</span> Their Current IPTV</h2>
+        <p>Most services fail when it matters most. Here's how we do it differently.</p>
       </div>
 
-      <div class="compare-table">
-        <div class="compare-row reveal">
+      <div class="compare-table reveal">
+        <div class="compare-row">
           <div class="ps-item bad"><span class="ic"><i class="fa-solid fa-circle-xmark"></i></span><div><strong>Got Scammed</strong><small>Paid and lost money</small></div></div>
           <div class="ps-item bad"><span class="ic"><i class="fa-solid fa-spinner"></i></span><div><strong>Buffering During Matches</strong><small>Frustrating experience</small></div></div>
-          <div class="ps-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+          <div class="ps-arrow"><span><i class="fa-solid fa-arrow-right"></i></span></div>
           <div class="ps-item good"><span class="ic"><i class="fa-solid fa-circle-check"></i></span><div><strong>Transparent Service</strong><small>Honest and reliable</small></div></div>
           <div class="ps-item good"><span class="ic"><i class="fa-solid fa-bolt"></i></span><div><strong>High Stability Servers</strong><small>Smooth streaming always</small></div></div>
         </div>
-
-        <div class="compare-row reveal">
+        <div class="compare-row">
           <div class="ps-item bad"><span class="ic"><i class="fa-solid fa-ghost"></i></span><div><strong>Provider Disappeared</strong><small>Service stopped suddenly</small></div></div>
           <div class="ps-item bad"><span class="ic"><i class="fa-solid fa-phone-slash"></i></span><div><strong>No Support</strong><small>No one answers</small></div></div>
-          <div class="ps-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+          <div class="ps-arrow"><span><i class="fa-solid fa-arrow-right"></i></span></div>
           <div class="ps-item good"><span class="ic"><i class="fa-solid fa-infinity"></i></span><div><strong>Long-Term Active Service</strong><small>We are here for the long run</small></div></div>
           <div class="ps-item good"><span class="ic"><i class="fa-brands fa-whatsapp"></i></span><div><strong>WhatsApp Support</strong><small>Real people, real support</small></div></div>
         </div>
-
-        <div class="compare-row reveal">
+        <div class="compare-row">
           <div class="ps-item bad"><span class="ic"><i class="fa-solid fa-image"></i></span><div><strong>Fake 4K Quality</strong><small>Low quality streams</small></div></div>
           <div class="ps-item bad"><span class="ic"><i class="fa-solid fa-gears"></i></span><div><strong>Difficult Setup</strong><small>Confusing and hard</small></div></div>
-          <div class="ps-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+          <div class="ps-arrow"><span><i class="fa-solid fa-arrow-right"></i></span></div>
           <div class="ps-item good"><span class="ic"><i class="fa-solid fa-gem"></i></span><div><strong>Real HD / 4K Streams</strong><small>High quality you can see</small></div></div>
           <div class="ps-item good"><span class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></span><div><strong>Guided Installation</strong><small>We help you step by step</small></div></div>
         </div>
@@ -648,6 +666,7 @@
   <section class="section-pad pricing" id="pricing">
     <div class="container">
       <div class="section-head reveal">
+        <span class="eyebrow">Pricing</span>
         <h2>Choose <span class="accent">Your</span> Plan</h2>
         <p>Simple plans. No hidden fees. Cancel anytime.</p>
       </div>
@@ -655,14 +674,15 @@
       <div class="pricing-grid">
         <div class="price-card reveal">
           <h3>Starter</h3>
-          <div class="price"><span class="amount">$12</span> <span class="period">/ Month</span></div>
+          <div class="price"><span class="amount">$12</span><span class="period">/ month</span></div>
+          <p class="pdesc">Everything you need to start streaming.</p>
           <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> Live TV Channels</li>
-            <li><i class="fa-solid fa-circle-check"></i> Sports</li>
-            <li><i class="fa-solid fa-circle-check"></i> Movies &amp; Series</li>
-            <li><i class="fa-solid fa-circle-check"></i> HD Quality</li>
-            <li><i class="fa-solid fa-circle-check"></i> WhatsApp Support</li>
-            <li><i class="fa-solid fa-circle-check"></i> 1 Connection</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Live TV Channels</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Sports</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Movies &amp; Series</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> HD Quality</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> WhatsApp Support</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> 1 Connection</li>
           </ul>
           <a href="https://wa.me/1234567890?text=I'm%20interested%20in%20the%20Starter%20plan" target="_blank" rel="noopener" class="btn btn-light btn-block">Get Started</a>
         </div>
@@ -670,27 +690,29 @@
         <div class="price-card featured reveal">
           <span class="price-badge">Most Popular</span>
           <h3>Premium</h3>
-          <div class="price"><span class="amount">$19</span> <span class="period">/ Month</span></div>
+          <div class="price"><span class="amount">$19</span><span class="period">/ month</span></div>
+          <p class="pdesc">The best balance of quality and value.</p>
           <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> Everything in Starter</li>
-            <li><i class="fa-solid fa-circle-check"></i> Full HD / 4K</li>
-            <li><i class="fa-solid fa-circle-check"></i> Premium Sports</li>
-            <li><i class="fa-solid fa-circle-check"></i> Faster Servers</li>
-            <li><i class="fa-solid fa-circle-check"></i> Priority Support</li>
-            <li><i class="fa-solid fa-circle-check"></i> 2 Connections</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Everything in Starter</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Full HD / 4K</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Premium Sports</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Faster Servers</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Priority Support</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> 2 Connections</li>
           </ul>
-          <a href="https://wa.me/1234567890?text=I'm%20interested%20in%20the%20Premium%20plan" target="_blank" rel="noopener" class="btn btn-primary btn-block">Get Started</a>
+          <a href="https://wa.me/1234567890?text=I'm%20interested%20in%20the%20Premium%20plan" target="_blank" rel="noopener" class="btn btn-blue btn-block">Get Started</a>
         </div>
 
         <div class="price-card reveal">
           <h3>Family</h3>
-          <div class="price"><span class="amount">$29</span> <span class="period">/ Month</span></div>
+          <div class="price"><span class="amount">$29</span><span class="period">/ month</span></div>
+          <p class="pdesc">Stream everywhere, for the whole household.</p>
           <ul class="feature-list">
-            <li><i class="fa-solid fa-circle-check"></i> Everything in Premium</li>
-            <li><i class="fa-solid fa-circle-check"></i> Multiple Devices</li>
-            <li><i class="fa-solid fa-circle-check"></i> Family Access</li>
-            <li><i class="fa-solid fa-circle-check"></i> Premium Support</li>
-            <li><i class="fa-solid fa-circle-check"></i> 4 Connections</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Everything in Premium</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Multiple Devices</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Family Access</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Premium Support</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> 4 Connections</li>
           </ul>
           <a href="https://wa.me/1234567890?text=I'm%20interested%20in%20the%20Family%20plan" target="_blank" rel="noopener" class="btn btn-light btn-block">Get Started</a>
         </div>
@@ -703,6 +725,7 @@
     <div class="container">
       <div class="matchday-banner reveal">
         <div>
+          <span class="eyebrow">Performance</span>
           <h2>Built For <span class="accent">Match Day.</span></h2>
           <div class="lines">
             <span>When Real Madrid plays Barcelona...</span>
@@ -726,15 +749,17 @@
   <section class="section-pad" id="channels" style="padding-top:0;">
     <div class="container">
       <div class="section-head reveal">
-        <h2><span class="accent">Everything</span> You Get</h2>
+        <span class="eyebrow">Everything you get</span>
+        <h2>One Subscription. <span class="accent">Endless</span> Content.</h2>
+        <p>A complete entertainment library, ready on day one.</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-tower-broadcast"></i></div><h4>20,000+</h4><p>Live Channels</p></div>
-        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-clapperboard"></i></div><h4>80,000+</h4><p>Movies &amp; Series</p></div>
-        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-gem"></i></div><h4>HD / Full HD / 4K</h4><p>High Quality</p></div>
-        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-calendar-days"></i></div><h4>TV Guide (EPG)</h4><p>7 Days</p></div>
-        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-laptop-mobile"></i></div><h4>Works On</h4><p>All Devices</p></div>
-        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-rotate"></i></div><h4>Regular Updates</h4><p>New Content</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-tower-broadcast"></i></div><h4>20,000+</h4><p>Live channels from around the world.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-clapperboard"></i></div><h4>80,000+</h4><p>Movies &amp; series on demand.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-gem"></i></div><h4>HD · 4K</h4><p>Real high-definition you can see.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-calendar-days"></i></div><h4>TV Guide</h4><p>Full 7-day EPG program guide.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-laptop-mobile"></i></div><h4>All Devices</h4><p>Smart TV, phone, tablet, box, PC.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-rotate"></i></div><h4>Always Fresh</h4><p>Regular updates &amp; new content.</p></div>
       </div>
     </div>
   </section>
@@ -751,10 +776,10 @@
           </div>
         </div>
         <ul class="guarantee-points">
-          <li><span class="gp-ic"><i class="fa-solid fa-tag"></i></span>Transparent Pricing</li>
-          <li><span class="gp-ic"><i class="fa-solid fa-eye-slash"></i></span>No Hidden Fees</li>
-          <li><span class="gp-ic"><i class="fa-solid fa-headset"></i></span>Real Customer Support</li>
-          <li><span class="gp-ic"><i class="fa-solid fa-users-gear"></i></span>Active Service Team</li>
+          <li><span class="gp-ic"><i class="fa-solid fa-tag"></i></span> Transparent Pricing</li>
+          <li><span class="gp-ic"><i class="fa-solid fa-eye-slash"></i></span> No Hidden Fees</li>
+          <li><span class="gp-ic"><i class="fa-solid fa-headset"></i></span> Real Customer Support</li>
+          <li><span class="gp-ic"><i class="fa-solid fa-users-gear"></i></span> Active Service Team</li>
         </ul>
       </div>
     </div>
@@ -764,13 +789,15 @@
   <section class="section-pad" id="how" style="padding-top:0;">
     <div class="container">
       <div class="section-head reveal">
-        <h2>Setup Is <span class="accent">Simple</span></h2>
+        <span class="eyebrow">How it works</span>
+        <h2>Up And Running In <span class="accent">Minutes</span></h2>
+        <p>Four simple steps from sign-up to watching.</p>
       </div>
       <div class="steps-grid">
         <div class="step-card reveal"><div class="step-num">1</div><h4>Choose Your Plan</h4><p>Select the plan that suits you.</p></div>
-        <div class="step-card reveal"><div class="step-num">2</div><h4>Receive Login Details</h4><p>We send you your login instantly.</p></div>
+        <div class="step-card reveal"><div class="step-num">2</div><h4>Receive Login Details</h4><p>We send your login instantly.</p></div>
         <div class="step-card reveal"><div class="step-num">3</div><h4>Open Your App</h4><p>Use your favorite IPTV app.</p></div>
-        <div class="step-card reveal"><div class="step-num">4</div><h4>Start Watching</h4><p>Enjoy your content in the best quality.</p></div>
+        <div class="step-card reveal"><div class="step-num">4</div><h4>Start Watching</h4><p>Enjoy content in the best quality.</p></div>
       </div>
     </div>
   </section>
@@ -779,36 +806,20 @@
   <section class="section-pad faq" id="faq">
     <div class="container">
       <div class="section-head reveal">
-        <h2>Frequently Asked <span class="accent">Questions</span></h2>
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions, <span class="accent">Answered</span></h2>
+        <p>Everything you need to know before getting started.</p>
       </div>
       <div class="faq-cols">
         <div class="faq-col">
-          <div class="faq-item reveal">
-            <button class="faq-q">Will it buffer during matches? <i class="fa-solid fa-chevron-down"></i></button>
-            <div class="faq-a"><p>No. Our infrastructure is specifically optimized for high-demand live events, with high-stability servers built to handle peak match-day traffic — smooth, reliable streaming when it matters most.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-q">Do you provide support? <i class="fa-solid fa-chevron-down"></i></button>
-            <div class="faq-a"><p>Yes. You get real human support directly over WhatsApp. Our active service team helps you set up, troubleshoot, and answers any question quickly.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-q">Is setup difficult? <i class="fa-solid fa-chevron-down"></i></button>
-            <div class="faq-a"><p>Not at all. We provide guided installation and walk you through every step. Most customers are watching within minutes of receiving their login.</p></div>
-          </div>
+          <div class="faq-item reveal"><button class="faq-q">Will it buffer during matches? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>No. Our infrastructure is specifically optimized for high-demand live events, with high-stability servers built to handle peak match-day traffic — smooth, reliable streaming when it matters most.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Do you provide support? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. You get real human support directly over WhatsApp. Our active service team helps you set up, troubleshoot, and answers any question quickly.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Is setup difficult? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Not at all. We provide guided installation and walk you through every step. Most customers are watching within minutes of receiving their login.</p></div></div>
         </div>
         <div class="faq-col">
-          <div class="faq-item reveal">
-            <button class="faq-q">Can I use it on Smart TV? <i class="fa-solid fa-chevron-down"></i></button>
-            <div class="faq-a"><p>Absolutely. It works on Smart TVs, phones, tablets, computers, and IPTV boxes. If your device connects to the internet and runs an app, we can help you get it running.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-q">How fast will I receive my login? <i class="fa-solid fa-chevron-down"></i></button>
-            <div class="faq-a"><p>Very fast — usually within minutes during business hours. Message us on WhatsApp and our team will set up your access right away.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-q">Can I cancel anytime? <i class="fa-solid fa-chevron-down"></i></button>
-            <div class="faq-a"><p>Yes. There is no long-term commitment — no contracts, no hidden fees. You can cancel anytime.</p></div>
-          </div>
+          <div class="faq-item reveal"><button class="faq-q">Can I use it on Smart TV? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Absolutely. It works on Smart TVs, phones, tablets, computers, and IPTV boxes. If your device connects to the internet and runs an app, we can help you get it running.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">How fast will I receive my login? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Very fast — usually within minutes during business hours. Message us on WhatsApp and our team will set up your access right away.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Can I cancel anytime? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. There is no long-term commitment — no contracts, no hidden fees. You can cancel anytime.</p></div></div>
         </div>
       </div>
     </div>
@@ -818,14 +829,16 @@
   <section class="final" id="contact">
     <div class="container">
       <div class="final-banner reveal">
-        <h2>Stop Wasting Money On <span class="accent">Unreliable</span> IPTV Services.</h2>
-        <ul class="final-benefits">
-          <li><i class="fa-solid fa-circle-check"></i> Less Buffering</li>
-          <li><i class="fa-solid fa-circle-check"></i> Better Support</li>
-          <li><i class="fa-solid fa-circle-check"></i> More Reliability</li>
-        </ul>
+        <div>
+          <h2>Stop Wasting Money On Unreliable IPTV Services.</h2>
+          <ul class="final-benefits">
+            <li><i class="fa-solid fa-circle-check"></i> Less Buffering</li>
+            <li><i class="fa-solid fa-circle-check"></i> Better Support</li>
+            <li><i class="fa-solid fa-circle-check"></i> More Reliability</li>
+          </ul>
+        </div>
         <div class="final-cta-col">
-          <a href="#pricing" class="btn btn-primary">View Plans <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#pricing" class="btn btn-light btn-lg">View Plans <i class="fa-solid fa-arrow-right"></i></a>
           <p class="note">No commitment. Cancel anytime.</p>
         </div>
       </div>
@@ -849,30 +862,9 @@
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
           </div>
         </div>
-        <div>
-          <h5>Product</h5>
-          <div class="footer-links">
-            <a href="#features">Features</a>
-            <a href="#channels">Channels</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#how">How It Works</a>
-          </div>
-        </div>
-        <div>
-          <h5>Company</h5>
-          <div class="footer-links">
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
-            <a href="https://wa.me/1234567890" target="_blank" rel="noopener">Support</a>
-          </div>
-        </div>
-        <div>
-          <h5>Get Started</h5>
-          <div class="footer-links">
-            <a href="#pricing">View Plans</a>
-            <a href="https://wa.me/1234567890" target="_blank" rel="noopener">WhatsApp Us</a>
-          </div>
-        </div>
+        <div><h5>Product</h5><div class="footer-links"><a href="#features">Features</a><a href="#channels">Channels</a><a href="#pricing">Pricing</a><a href="#how">How It Works</a></div></div>
+        <div><h5>Company</h5><div class="footer-links"><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="https://wa.me/1234567890" target="_blank" rel="noopener">Support</a></div></div>
+        <div><h5>Get Started</h5><div class="footer-links"><a href="#pricing">View Plans</a><a href="https://wa.me/1234567890" target="_blank" rel="noopener">WhatsApp Us</a></div></div>
       </div>
       <div class="footer-bottom">
         <span>© 2026 IPTV Trusted. All rights reserved.</span>
@@ -885,12 +877,10 @@
 
   <!-- ===================== JAVASCRIPT ===================== -->
   <script>
-    // Header background on scroll
     const header = document.getElementById('header');
-    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 30);
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 24);
     window.addEventListener('scroll', onScroll); onScroll();
 
-    // Mobile menu
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     navToggle.addEventListener('click', () => {
@@ -902,7 +892,6 @@
       navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
     }));
 
-    // FAQ accordion
     document.querySelectorAll('.faq-item').forEach(item => {
       const q = item.querySelector('.faq-q');
       const a = item.querySelector('.faq-a');
@@ -916,8 +905,6 @@
       });
     });
 
-    // Active nav link on scroll
-    const sections = [...document.querySelectorAll('section[id]')];
     const navItems = [...document.querySelectorAll('.nav-links a')];
     const navMap = {};
     navItems.forEach(a => navMap[a.getAttribute('href').slice(1)] = a);
@@ -929,13 +916,10 @@
         }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(s => spy.observe(s));
+    document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
 
-    // Reveal on scroll
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   </script>
