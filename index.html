@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IPTV Trusted — premium UK IPTV that stays stable on match day. Watch Premier League, Champions League, Boxing & UFC in HD & 4K with fast activation, easy Firestick & Smart TV setup, and real WhatsApp support." />
+  <meta name="theme-color" content="#070b16" />
+  <title>IPTV TRUSTED — Premium UK IPTV for Premier League, Champions League, Boxing & UFC</title>
+
+  <!-- Preconnects for faster font + icon loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* ============================================================
+       Design Tokens — premium navy + clean blue SaaS palette
+    ============================================================ */
+    :root {
+      --blue: #2563eb;        /* primary */
+      --blue-dark: #1e40af;   /* deep */
+      --blue-mid: #1d4ed8;
+      --blue-light: #3b82f6;  /* light accent */
+      --blue-300: #60a5fa;
+      --indigo: #4f46e5;
+      --blue-soft: #eef3ff;
+
+      --ink: #0a1024;
+      --ink-2: #1e293b;
+      --slate: #475569;
+      --muted: #6b7689;
+      --line: #e8edf5;
+      --white: #ffffff;
+      --bg-soft: #f6f8fc;
+      --navy: #070b16;
+      --navy-2: #0c1426;
+      --navy-3: #111a2e;
+
+      --green: #16a34a;
+      --green-bright: #22c55e;
+      --red: #ef4444;
+      --wa: #25d366;
+
+      --radius: 22px;
+      --radius-sm: 16px;
+      --shadow-xs: 0 1px 2px rgba(10,16,36,0.06), 0 1px 1px rgba(10,16,36,0.04);
+      --shadow-sm: 0 2px 8px rgba(10,16,36,0.05), 0 8px 24px rgba(10,16,36,0.06);
+      --shadow: 0 8px 24px rgba(10,16,36,0.08), 0 24px 48px rgba(10,16,36,0.08);
+      --shadow-lg: 0 30px 80px rgba(10,16,36,0.22);
+      --maxw: 1160px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============================================================
+       Reset & Base
+    ============================================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      letter-spacing: -0.011em;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: rgba(37,99,235,0.18); }
+
+    .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    section { position: relative; }
+    .section-pad { padding: 110px 0; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em;
+      color: var(--blue); margin-bottom: 18px;
+    }
+    .eyebrow::before { content:""; width: 22px; height: 2px; border-radius: 2px; background: var(--blue); }
+
+    .section-head { max-width: 700px; margin: 0 auto 64px; text-align: center; }
+    .section-head .eyebrow { justify-content: center; }
+    .section-head h2 {
+      font-size: clamp(2rem, 4.2vw, 3rem);
+      font-weight: 800; letter-spacing: -0.035em; line-height: 1.06;
+    }
+    .section-head h2 .accent {
+      background: linear-gradient(100deg, var(--blue), var(--blue-light));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .section-head h2 .accent-red { color: var(--red); }
+    .section-head p { margin-top: 16px; font-size: 1.15rem; color: var(--muted); font-weight: 400; }
+
+    /* ============================================================
+       Buttons
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      font-size: 0.98rem; font-weight: 600; font-family: inherit;
+      padding: 14px 26px; border-radius: 999px; border: none; cursor: pointer;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), color .25s, border-color .25s;
+      white-space: nowrap; letter-spacing: -0.01em;
+    }
+    .btn i { transition: transform .25s var(--ease); }
+    .btn:hover i.fa-arrow-right { transform: translateX(3px); }
+    .btn-blue { background: var(--blue); color: #fff; box-shadow: 0 8px 22px rgba(37,99,235,0.32); }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 14px 30px rgba(37,99,235,0.4); }
+    .btn-wa { background: var(--wa); color: #fff; box-shadow: 0 8px 22px rgba(37,211,102,0.35); }
+    .btn-wa:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 14px 30px rgba(37,211,102,0.42); }
+    .btn-light { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+    .btn-light:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: #d6deea; }
+    .btn-ghost { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(6px); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    .btn-block { width: 100%; }
+    .btn-lg { padding: 16px 30px; font-size: 1.02rem; }
+
+    /* ============================================================
+       Header
+    ============================================================ */
+    .header { position: fixed; top: 14px; left: 0; right: 0; z-index: 1000; transition: top .3s var(--ease); }
+    .header-inner {
+      max-width: var(--maxw); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px; padding: 0 14px 0 20px;
+      border-radius: 999px;
+      background: rgba(10,16,36,0.55);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: saturate(180%) blur(20px);
+      transition: background .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
+    }
+    .header.scrolled .header-inner {
+      background: rgba(255,255,255,0.86);
+      border-color: var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ---- Premium logo (play + signal "stream" mark) ---- */
+    .logo { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 1.08rem; color: #fff; line-height: 1; letter-spacing: -0.02em; }
+    .header.scrolled .logo { color: var(--ink); }
+    .logo-mark {
+      position: relative; width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
+      background: linear-gradient(140deg, var(--blue-light), var(--blue), var(--blue-dark));
+      display: grid; place-items: center; color: #fff; font-size: 0.9rem;
+      box-shadow: 0 6px 18px rgba(37,99,235,0.45), inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+    .logo-mark::after { /* subtle stream/signal arc */
+      content:""; position:absolute; right:-3px; top:-3px; width:13px; height:13px; border-radius:50%;
+      border:2px solid rgba(255,255,255,0.9); border-left-color: transparent; border-bottom-color: transparent;
+      transform: rotate(38deg);
+    }
+    .logo .logo-text b { font-weight: 800; }
+    .logo small { display:block; font-size:0.56rem; font-weight:700; letter-spacing:0.26em; color: var(--blue-300); margin-top:3px; }
+    .header.scrolled .logo small { color: var(--blue); }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.78); font-weight: 500; font-size: 0.9rem;
+      padding: 8px 13px; border-radius: 999px; transition: color .2s, background .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    .header.scrolled .nav-links a { color: var(--slate); }
+    .header.scrolled .nav-links a:hover, .header.scrolled .nav-links a.active { color: var(--ink); background: var(--bg-soft); }
+
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .whatsapp-badge { display: inline-flex; align-items: center; gap: 9px; color: #fff; padding: 6px 8px; }
+    .header.scrolled .whatsapp-badge { color: var(--ink); }
+    .whatsapp-badge .wa-ic { width: 30px; height: 30px; border-radius: 50%; display:grid; place-items:center; background: rgba(37,211,102,0.16); color: var(--wa); font-size: 1rem; }
+    .whatsapp-badge .wa-txt b { display:block; font-size:0.8rem; font-weight:600; line-height:1.1; }
+    .whatsapp-badge .wa-txt span { display:block; font-size:0.66rem; color: var(--green); }
+
+    .nav-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.35rem; cursor: pointer; padding: 6px; }
+    .header.scrolled .nav-toggle { color: var(--ink); }
+
+    .mobile-menu {
+      position: fixed; top: 84px; left: 14px; right: 14px;
+      background: #fff; border: 1px solid var(--line); border-radius: 22px;
+      box-shadow: var(--shadow); padding: 10px 12px 18px;
+      transform: translateY(-130%) scale(0.98); opacity: 0; pointer-events: none;
+      transition: transform .35s var(--ease), opacity .25s; z-index: 999;
+    }
+    .mobile-menu.open { transform: none; opacity: 1; pointer-events: auto; }
+    .mobile-menu a { display: block; padding: 13px 14px; font-weight: 500; color: var(--ink); border-radius: 12px; }
+    .mobile-menu a:hover { background: var(--bg-soft); }
+    .mobile-menu .btn { margin-top: 10px; }
+
+    /* ============================================================
+       Hero
+    ============================================================ */
+    .hero { position: relative; background: var(--navy); color: #fff; padding: 168px 0 104px; overflow: hidden; }
+    .hero::before {
+      content:""; position:absolute; inset:-20% -10% auto -10%; height: 130%;
+      background:
+        radial-gradient(50% 50% at 78% 8%, rgba(37,99,235,0.5), transparent 60%),
+        radial-gradient(45% 45% at 12% 12%, rgba(59,130,246,0.34), transparent 60%),
+        radial-gradient(40% 40% at 60% 0%, rgba(30,64,175,0.4), transparent 55%);
+      transform: skewY(-7deg); transform-origin: top left; pointer-events:none;
+    }
+    .hero::after {
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 56px 56px; mask-image: radial-gradient(70% 60% at 50% 30%, #000, transparent 80%);
+    }
+    .hero .container { position: relative; z-index: 2; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 60px; align-items: center; }
+
+    .hero-pill {
+      display:inline-flex; align-items:center; gap:9px; font-size:0.82rem; font-weight:500;
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14);
+      padding: 7px 14px; border-radius: 999px; margin-bottom: 26px; backdrop-filter: blur(6px);
+    }
+    .hero-pill .dot { width:7px; height:7px; border-radius:50%; background: var(--green-bright); box-shadow: 0 0 0 4px rgba(34,197,94,0.2); }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.4vw, 4.2rem); font-weight: 800;
+      line-height: 1.03; letter-spacing: -0.04em;
+    }
+    .hero h1 .accent {
+      background: linear-gradient(100deg, var(--blue-300), var(--blue-light));
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero p.sub { margin-top: 22px; font-size: 1.16rem; color: rgba(255,255,255,0.74); font-weight: 400; max-width: 480px; }
+
+    /* hero trust badges */
+    .trust-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 30px; max-width: 460px; }
+    .trust-points li {
+      display: flex; align-items: center; gap: 11px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 12px 14px; backdrop-filter: blur(6px);
+    }
+    .trust-points .tp-ic { width: 32px; height: 32px; border-radius: 9px; background: rgba(37,99,235,0.22); color: var(--blue-300); display:grid; place-items:center; font-size:0.82rem; flex-shrink:0; }
+    .trust-points strong { display:block; font-size: 0.9rem; font-weight: 600; line-height:1.15; }
+    .trust-points small { display:block; font-size: 0.74rem; color: rgba(255,255,255,0.5); }
+
+    .hero-cta { margin-top: 32px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-note { margin-top: 16px; font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height:1.4; }
+
+    .hero-social { margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .trustpilot { display:flex; align-items:center; gap:9px; font-size:0.84rem; color: rgba(255,255,255,0.78); }
+    .trustpilot .stars { color:#fbbf24; letter-spacing:1px; }
+    .trustpilot b { color:#fff; font-weight:600; }
+    .avatars { display:flex; align-items:center; gap:12px; }
+    .avatars .stack { display:flex; }
+    .avatars .stack span {
+      width:32px; height:32px; border-radius:50%; margin-left:-9px;
+      border:2px solid var(--navy); background: linear-gradient(135deg,var(--blue),var(--indigo));
+      display:grid; place-items:center; color:#fff; font-size:0.74rem; font-weight:700;
+    }
+    .avatars .stack span:first-child { margin-left:0; }
+    .avatars small { font-size:0.82rem; color: rgba(255,255,255,0.65); }
+
+    /* ---- Hero Visual: premium IPTV dashboard mockup ---- */
+    @keyframes floaty { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-9px);} }
+    .hero-visual { position: relative; padding: 6px 4px; }
+    .tv {
+      background: linear-gradient(180deg,#11151f,#05070d); border-radius: 22px; padding: 14px;
+      box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .tv-screen { border-radius: 14px; overflow: hidden; position: relative; aspect-ratio: 16 / 10; background: radial-gradient(120% 100% at 80% 0%, #16213c, #0a0f1c 62%); }
+    .dash { display:grid; grid-template-columns: 98px 1fr; height:100%; }
+    .dash-side { background: rgba(255,255,255,0.025); border-right:1px solid rgba(255,255,255,0.06); padding:16px 10px; display:flex; flex-direction:column; gap:5px; }
+    .dash-brand { display:flex; align-items:center; gap:7px; margin-bottom:14px; padding:0 4px; }
+    .dash-brand .bd { width:18px; height:18px; border-radius:6px; background: linear-gradient(135deg,var(--blue-light),var(--blue-dark)); display:grid; place-items:center; color:#fff; font-size:0.46rem; }
+    .dash-brand b { font-size:0.6rem; font-weight:700; color:#fff; letter-spacing:0.04em; }
+    .dash-nav { display:flex; align-items:center; gap:9px; padding:8px 9px; border-radius:9px; color: rgba(255,255,255,0.52); font-size:0.64rem; font-weight:500; white-space:nowrap; }
+    .dash-nav i { font-size:0.72rem; width:13px; text-align:center; }
+    .dash-nav.active { background: linear-gradient(135deg, rgba(37,99,235,0.95), rgba(30,64,175,0.95)); color:#fff; box-shadow: 0 6px 14px rgba(37,99,235,0.35); }
+    .dash-main { padding:15px; display:flex; flex-direction:column; gap:11px; min-width:0; }
+    .dash-hero { position:relative; border-radius:12px; overflow:hidden; padding:15px; min-height:120px; display:flex; flex-direction:column; justify-content:flex-end; background: linear-gradient(135deg,var(--blue-dark),var(--blue)); }
+    .dash-hero::after { content:""; position:absolute; inset:0; background: radial-gradient(85% 130% at 100% 0%, rgba(255,255,255,0.2), transparent 60%); }
+    .dash-hero .dh-tag { position:relative; z-index:1; display:inline-flex; align-items:center; gap:6px; align-self:flex-start; background: rgba(0,0,0,0.32); backdrop-filter: blur(4px); color:#fff; font-size:0.55rem; font-weight:700; padding:4px 9px; border-radius:99px; margin-bottom:auto; letter-spacing:0.04em; }
+    .dash-hero .dh-tag .liveDot { width:5px; height:5px; border-radius:50%; background:#ff5470; box-shadow:0 0 0 3px rgba(255,84,112,0.25); }
+    .dash-hero h5 { position:relative; z-index:1; color:#fff; font-size:1.1rem; font-weight:800; letter-spacing:-0.02em; }
+    .dash-hero .dh-sub { position:relative; z-index:1; color: rgba(255,255,255,0.82); font-size:0.6rem; margin-top:3px; }
+    .dash-hero .dh-play { position:absolute; right:14px; bottom:14px; z-index:1; width:36px; height:36px; border-radius:50%; background:#fff; color:var(--blue); display:grid; place-items:center; font-size:0.82rem; box-shadow:0 8px 18px rgba(0,0,0,0.4); }
+    .dash-strip { display:flex; align-items:center; gap:9px; background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:9px; padding:9px 12px; color: rgba(255,255,255,0.72); font-size:0.6rem; font-weight:600; }
+    .dash-strip .pill { display:inline-flex; align-items:center; gap:5px; }
+    .dash-strip .pill.live { color:#ff7a93; }
+    .dash-strip .pill.live i { font-size:0.36rem; }
+    .dash-strip .sep { width:3px; height:3px; border-radius:50%; background: rgba(255,255,255,0.25); }
+    .dash-row { display:grid; grid-template-columns: repeat(4,1fr); gap:8px; margin-top:auto; }
+    .dash-card { border-radius:9px; padding:11px 8px; background: rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); display:flex; flex-direction:column; gap:7px; }
+    .dash-card i { color: var(--blue-300); font-size:0.8rem; }
+    .dash-card b { font-size:0.58rem; font-weight:600; color: rgba(255,255,255,0.78); }
+    .float-badge { position:absolute; z-index:5; display:flex; align-items:center; gap:9px; background: rgba(255,255,255,0.96); border:1px solid rgba(255,255,255,0.7); border-radius:13px; padding:9px 13px; box-shadow: var(--shadow); backdrop-filter: blur(6px); }
+    .float-badge .fb-ic { width:30px; height:30px; border-radius:9px; display:grid; place-items:center; color:#fff; font-size:0.78rem; flex-shrink:0; }
+    .float-badge b { display:block; font-size:0.76rem; font-weight:700; color: var(--ink); line-height:1.15; }
+    .float-badge span { display:block; font-size:0.62rem; color: var(--muted); }
+    .float-badge.fb-1 { top:30px; left:-24px; animation: floaty 6s ease-in-out infinite; }
+    .float-badge.fb-1 .fb-ic { background: linear-gradient(135deg,#15803d,#22c55e); }
+    .float-badge.fb-2 { bottom:14px; right:-20px; animation: floaty 6s ease-in-out infinite; animation-delay:1.4s; }
+    .float-badge.fb-2 .fb-ic { background: var(--wa); }
+    .tv-stand { width:120px; height:10px; background:#0c111c; margin:12px auto 0; border-radius:0 0 6px 6px; }
+    .tv-base { width:230px; height:8px; background:#070b16; border-radius:99px; margin:0 auto; box-shadow:0 18px 34px rgba(0,0,0,0.55); }
+
+    /* logos strip */
+    .logos-strip { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 72px; padding-top: 34px; }
+    .logos-strip p { text-align:center; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color: rgba(255,255,255,0.4); margin-bottom:20px; }
+    .logos-row { display:flex; justify-content:center; align-items:center; gap:46px; flex-wrap:wrap; color: rgba(255,255,255,0.55); }
+    .logos-row span { display:flex; align-items:center; gap:9px; font-size:0.95rem; font-weight:600; }
+    .logos-row i { font-size:1.3rem; }
+
+    /* ============================================================
+       Trust Numbers Bar
+    ============================================================ */
+    .trustbar { border-bottom: 1px solid var(--line); background: #fff; }
+    .trustbar-grid { display:grid; grid-template-columns: repeat(4,1fr); gap:24px; padding: 38px 0; }
+    .trust-stat { text-align:center; position:relative; }
+    .trust-stat:not(:last-child)::after { content:""; position:absolute; right:-12px; top:50%; transform:translateY(-50%); width:1px; height:38px; background: var(--line); }
+    .trust-stat .ts-num { font-size:1.5rem; font-weight:800; letter-spacing:-0.03em; color: var(--ink); display:flex; align-items:center; justify-content:center; gap:8px; }
+    .trust-stat .ts-num i { color: var(--blue); font-size:1.1rem; }
+    .trust-stat .ts-num .stars { color:#fbbf24; font-size:1rem; letter-spacing:1px; }
+    .trust-stat p { margin-top:4px; font-size:0.84rem; color: var(--muted); }
+
+    /* ============================================================
+       Category Cards
+    ============================================================ */
+    .cat-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
+    .cat-card {
+      position:relative; overflow:hidden; min-height: 200px;
+      border-radius: var(--radius); padding: 26px; color:#fff;
+      display:flex; flex-direction:column; justify-content:flex-end;
+      border:1px solid rgba(255,255,255,0.08);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .cat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .cat-card::after { content:""; position:absolute; inset:0; background: radial-gradient(90% 120% at 100% 0%, rgba(255,255,255,0.18), transparent 55%); pointer-events:none; }
+    .cat-card .cat-ic {
+      position:relative; z-index:1; width:54px; height:54px; border-radius:14px;
+      display:grid; place-items:center; font-size:1.4rem; color:#fff;
+      background: rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px); margin-bottom:auto;
+    }
+    .cat-card .cat-ghost { position:absolute; right:-10px; bottom:-18px; font-size:7rem; opacity:0.1; z-index:0; }
+    .cat-card h3 { position:relative; z-index:1; margin-top:18px; font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; }
+    .cat-card p { position:relative; z-index:1; margin-top:4px; font-size:0.9rem; color: rgba(255,255,255,0.78); }
+    .cat-sports { background: linear-gradient(150deg, #1e40af, #2563eb 55%, #1d4ed8); }
+    .cat-movies { background: linear-gradient(150deg, #1e3a8a, #3b82f6); }
+    .cat-series { background: linear-gradient(150deg, #312e81, #4f46e5); }
+    .cat-kids   { background: linear-gradient(150deg, #155e75, #0891b2); }
+    .cat-ent    { background: linear-gradient(150deg, #1e293b, #334155); }
+    .cat-docs   { background: linear-gradient(150deg, #0f172a, #1d4ed8); }
+
+    /* ============================================================
+       Match Day
+    ============================================================ */
+    .matchday { padding: 0 0 110px; }
+    .matchday-banner {
+      background: radial-gradient(60% 90% at 95% 0%, rgba(37,99,235,0.28), transparent 60%), linear-gradient(160deg, var(--navy), var(--navy-2));
+      color:#fff; border-radius: 32px; padding: 56px 52px;
+      display:grid; grid-template-columns: 0.9fr 1.4fr; gap:48px; align-items:center;
+      box-shadow: var(--shadow-lg); overflow:hidden; position:relative;
+    }
+    .matchday-banner .eyebrow { color: var(--blue-300); }
+    .matchday-banner .eyebrow::before { background: var(--blue-300); }
+    .matchday-banner h2 { font-size: clamp(1.8rem,3vw,2.5rem); font-weight:800; letter-spacing:-0.03em; line-height:1.08; }
+    .matchday-banner h2 .accent { background: linear-gradient(100deg,var(--blue-300),var(--blue-light)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .matchday-banner .lines { margin-top:18px; font-size:1.02rem; color: rgba(255,255,255,0.7); }
+    .matchday-banner .lines span { display:block; }
+    .matchday-banner .lines .em { color:#fff; font-weight:600; margin:14px 0 4px; }
+    .md-cards { display:grid; grid-template-columns: repeat(4,1fr); gap:16px; }
+    .md-card { border-radius:18px; overflow:hidden; aspect-ratio: 3/4; position:relative; display:flex; flex-direction:column; justify-content:flex-end; padding:18px 14px; color:#fff; text-align:center; transition: transform .35s var(--ease); border:1px solid rgba(255,255,255,0.08); }
+    .md-card:hover { transform: translateY(-6px); }
+    .md-card::before { content:""; position:absolute; inset:0; background: linear-gradient(180deg, transparent 28%, rgba(0,0,0,0.78)); z-index:1; }
+    .md-card .md-bg { position:absolute; inset:0; z-index:0; }
+    .md-card .md-ic { position:absolute; top:46%; left:50%; transform:translate(-50%,-50%); z-index:1; font-size:2.3rem; color:#fff; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5)); }
+    .md-card h4 { position:relative; z-index:2; font-size:0.96rem; font-weight:700; }
+    .md-card small { position:relative; z-index:2; font-size:0.7rem; color: rgba(255,255,255,0.72); }
+    .md-live { position:absolute; top:12px; left:12px; z-index:3; display:inline-flex; align-items:center; gap:5px; background: rgba(239,68,68,0.92); color:#fff; font-size:0.6rem; font-weight:800; letter-spacing:0.06em; padding:4px 9px; border-radius:99px; box-shadow:0 4px 12px rgba(239,68,68,0.4); }
+    .md-live .ld { width:5px; height:5px; border-radius:50%; background:#fff; animation: pulseLive 1.4s ease-in-out infinite; }
+    @keyframes pulseLive { 0%,100%{ opacity:1; } 50%{ opacity:0.3; } }
+    .md-bg.ucl { background: radial-gradient(circle at 50% 30%, #1e3a8a, #0a1230); }
+    .md-bg.ufc { background: radial-gradient(circle at 50% 30%, #4b1d1d, #160808); }
+    .md-bg.epl { background: radial-gradient(circle at 50% 30%, #1e40af, #0c1030); }
+    .md-bg.box { background: radial-gradient(circle at 50% 30%, #3b2410, #160d04); }
+
+    /* ============================================================
+       Before / After
+    ============================================================ */
+    .ba-grid { display:grid; grid-template-columns: 1fr 1fr; gap:24px; max-width: 1000px; margin: 0 auto; align-items:stretch; }
+    .ba-card { border-radius: var(--radius); padding: 34px 32px; border:1px solid var(--line); }
+    .ba-card.before { background: #fff; }
+    .ba-card.after {
+      color:#fff; border-color: transparent; position:relative; overflow:hidden;
+      background: linear-gradient(160deg, var(--navy), var(--navy-2));
+      box-shadow: var(--shadow);
+    }
+    .ba-card.after::before { content:""; position:absolute; inset:0; background: radial-gradient(70% 80% at 100% 0%, rgba(37,99,235,0.3), transparent 60%); pointer-events:none; }
+    .ba-head { display:flex; align-items:center; gap:13px; margin-bottom:24px; position:relative; z-index:1; }
+    .ba-head .ba-ic { width:46px; height:46px; border-radius:13px; display:grid; place-items:center; font-size:1.15rem; flex-shrink:0; }
+    .ba-card.before .ba-ic { background:#fef2f2; color: var(--red); }
+    .ba-card.after .ba-ic { background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color:#fff; box-shadow:0 8px 18px rgba(37,99,235,0.4); }
+    .ba-head h3 { font-size:1.2rem; font-weight:800; letter-spacing:-0.02em; }
+    .ba-card.before .ba-head h3 { color: var(--ink); }
+    .ba-head .ba-tag { font-size:0.74rem; font-weight:600; }
+    .ba-card.before .ba-tag { color: var(--muted); }
+    .ba-card.after .ba-tag { color: var(--blue-300); }
+    .ba-list { position:relative; z-index:1; }
+    .ba-list li { display:flex; align-items:flex-start; gap:13px; padding:13px 0; font-size:0.98rem; font-weight:500; }
+    .ba-card.before .ba-list li { border-bottom:1px solid var(--line); color: var(--slate); }
+    .ba-card.before .ba-list li:last-child { border-bottom:none; }
+    .ba-card.after .ba-list li { border-bottom:1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.92); }
+    .ba-card.after .ba-list li:last-child { border-bottom:none; }
+    .ba-list .bl-ic { width:24px; height:24px; border-radius:50%; display:grid; place-items:center; font-size:0.7rem; flex-shrink:0; margin-top:1px; }
+    .ba-card.before .bl-ic { background:#fef2f2; color: var(--red); }
+    .ba-card.after .bl-ic { background: rgba(34,197,94,0.18); color: var(--green-bright); }
+
+    /* ============================================================
+       Feature cards (What You Get)
+    ============================================================ */
+    .features-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
+    .feature-card { background:#fff; border:1px solid var(--line); border-radius: var(--radius); padding:30px; box-shadow: var(--shadow-xs); transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .3s; }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color:#d7e3ff; }
+    .feature-card .f-ic { width:54px; height:54px; border-radius:14px; display:grid; place-items:center; font-size:1.35rem; color: var(--blue); background: var(--blue-soft); margin-bottom:18px; }
+    .feature-card h4 { font-size:1.2rem; font-weight:800; letter-spacing:-0.02em; }
+    .feature-card p { color: var(--muted); margin-top:6px; font-size:0.96rem; }
+
+    /* ============================================================
+       Device Compatibility
+    ============================================================ */
+    .devices-grid { display:grid; grid-template-columns: repeat(6,1fr); gap:16px; }
+    .device-card { background:#fff; border:1px solid var(--line); border-radius: var(--radius-sm); padding:26px 14px; text-align:center; box-shadow: var(--shadow-xs); transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s; }
+    .device-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color:#d7e3ff; }
+    .device-card .dv-ic { width:50px; height:50px; margin:0 auto 14px; border-radius:13px; display:grid; place-items:center; font-size:1.4rem; color: var(--blue); background: var(--blue-soft); }
+    .device-card b { font-size:0.9rem; font-weight:600; color: var(--ink-2); }
+
+    /* ============================================================
+       How It Works
+    ============================================================ */
+    .steps-grid { display:grid; grid-template-columns: repeat(4,1fr); gap:0; position:relative; }
+    .step-card { text-align:center; padding:0 20px; position:relative; }
+    .step-card::after { content:""; position:absolute; top:27px; left:62%; right:-38%; height:2px; background-image: linear-gradient(90deg, var(--blue-300) 45%, transparent 0); background-size: 11px 2px; background-repeat: repeat-x; opacity:0.6; }
+    .step-card:last-child::after { display:none; }
+    .step-num { width:56px; height:56px; margin:0 auto 18px; position:relative; z-index:1; border-radius:18px; display:grid; place-items:center; font-size:1.25rem; font-weight:800; color:#fff; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); box-shadow: 0 12px 24px rgba(37,99,235,0.4); }
+    .step-card h4 { font-size:1.08rem; font-weight:700; }
+    .step-card p { color: var(--muted); font-size:0.9rem; margin-top:6px; }
+
+    /* ============================================================
+       Customer Reviews
+    ============================================================ */
+    .reviews-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:22px; }
+    .review-card { background:#fff; border:1px solid var(--line); border-radius: var(--radius); padding:28px; box-shadow: var(--shadow-xs); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+    .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .review-card .stars { color:#fbbf24; font-size:0.92rem; letter-spacing:1px; margin-bottom:14px; }
+    .review-card p { font-size:1rem; color: var(--ink-2); line-height:1.6; }
+    .review-card .reviewer { display:flex; align-items:center; gap:11px; margin-top:20px; }
+    .review-card .reviewer .ra { width:40px; height:40px; border-radius:50%; background: linear-gradient(135deg,var(--blue),var(--indigo)); color:#fff; display:grid; place-items:center; font-weight:700; font-size:0.92rem; flex-shrink:0; }
+    .review-card .reviewer b { display:block; font-size:0.9rem; font-weight:600; }
+    .review-card .reviewer span { display:block; font-size:0.8rem; color: var(--muted); }
+    .review-card .reviewer .verified { margin-left:auto; font-size:0.72rem; color: var(--green); display:flex; align-items:center; gap:5px; font-weight:500; }
+
+    /* ============================================================
+       Pricing
+    ============================================================ */
+    .pricing { background: var(--bg-soft); }
+    .pricing-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; align-items:stretch; }
+    .price-card {
+      background:#fff; border:1px solid var(--line); border-radius: var(--radius);
+      padding:38px 34px; display:flex; flex-direction:column; box-shadow: var(--shadow-xs); position:relative;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .price-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .price-card.featured { border:1.5px solid transparent; background: linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg, var(--blue), var(--blue-dark)) border-box; box-shadow: var(--shadow); transform: scale(1.035); }
+    .price-card.featured:hover { transform: scale(1.035) translateY(-6px); }
+    .price-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color:#fff; font-size:0.72rem; font-weight:700; letter-spacing:0.03em; padding:6px 16px; border-radius:999px; box-shadow: 0 8px 18px rgba(37,99,235,0.4); white-space:nowrap; }
+    .price-card h3 { font-size:1.1rem; font-weight:700; }
+    .price-card .price { margin:16px 0 4px; display:flex; align-items:baseline; gap:6px; }
+    .price-card .price .amount { font-size:3rem; font-weight:800; letter-spacing:-0.04em; }
+    .price-card .price .period { color: var(--muted); font-weight:500; font-size:0.95rem; }
+    .price-card .save { font-size:0.78rem; font-weight:600; color: var(--green); background: rgba(22,163,74,0.1); border-radius:8px; padding:5px 11px; display:inline-block; }
+    .price-best { font-size:0.78rem; font-weight:600; color: var(--blue); background: var(--blue-soft); border-radius:8px; padding:7px 12px; display:inline-block; margin:14px 0 4px; }
+    .feature-list { flex:1; margin:18px 0 28px; }
+    .feature-list li { display:flex; align-items:center; gap:12px; padding:8px 0; font-size:0.94rem; color: var(--slate); }
+    .feature-list li .fc { width:20px; height:20px; border-radius:50%; background: var(--blue-soft); color: var(--blue); display:grid; place-items:center; font-size:0.62rem; flex-shrink:0; }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    .faq { background: var(--bg-soft); }
+    .faq-cols { display:grid; grid-template-columns: 1fr 1fr; gap:16px; max-width: 960px; margin:0 auto; align-items:start; }
+    .faq-col { display:flex; flex-direction:column; gap:16px; }
+    .faq-item { background:#fff; border:1px solid var(--line); border-radius: var(--radius-sm); overflow:hidden; transition: box-shadow .25s, border-color .25s; }
+    .faq-item.active { box-shadow: var(--shadow-sm); border-color:#cfe0ff; }
+    .faq-q { width:100%; text-align:left; background:none; border:none; cursor:pointer; padding:20px 22px; display:flex; align-items:center; justify-content:space-between; gap:14px; font-size:0.98rem; font-weight:600; color: var(--ink); font-family: inherit; }
+    .faq-q i { flex-shrink:0; color: var(--blue); font-size:0.85rem; transition: transform .3s var(--ease); }
+    .faq-item.active .faq-q i { transform: rotate(180deg); }
+    .faq-a { max-height:0; overflow:hidden; transition: max-height .35s var(--ease); }
+    .faq-a p { padding:0 22px 22px; color: var(--muted); font-size:0.92rem; }
+
+    /* ============================================================
+       Final CTA
+    ============================================================ */
+    .final { padding: 0 0 110px; }
+    .final-banner {
+      position:relative; overflow:hidden;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color:#fff; border-radius: 32px; padding: 64px 56px; text-align:center;
+      box-shadow: 0 30px 70px rgba(37,99,235,0.4);
+    }
+    .final-banner::before { content:""; position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(80% 80% at 50% 20%, #000, transparent); }
+    .final-banner > * { position:relative; z-index:1; }
+    .final-banner .eyebrow { color:#fff; justify-content:center; }
+    .final-banner .eyebrow::before { background:#fff; }
+    .final-banner h2 { font-size: clamp(1.9rem,3.4vw,2.8rem); font-weight:800; letter-spacing:-0.03em; line-height:1.1; max-width:680px; margin:0 auto; }
+    .final-benefits { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin-top:24px; }
+    .final-benefits li { display:flex; align-items:center; gap:9px; font-weight:500; font-size:0.98rem; color: rgba(255,255,255,0.92); }
+    .final-benefits i { color:#fff; }
+    .final-cta { margin-top:34px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+    .final-banner .note { font-size:0.84rem; color: rgba(255,255,255,0.78); margin-top:18px; }
+
+    /* ============================================================
+       Footer
+    ============================================================ */
+    .footer { background: var(--navy); color: rgba(255,255,255,0.58); padding: 72px 0 30px; }
+    .footer-grid { display:grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap:44px; margin-bottom:48px; }
+    .footer .logo { color:#fff; margin-bottom:18px; }
+    .footer p { font-size:0.9rem; max-width:280px; line-height:1.7; }
+    .footer h5 { color:#fff; font-size:0.82rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:16px; }
+    .footer-links a { display:block; padding:7px 0; font-size:0.9rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--blue-300); }
+    .footer-social { display:flex; gap:11px; margin-top:20px; }
+    .footer-social a { width:38px; height:38px; border-radius:11px; background: rgba(255,255,255,0.06); display:grid; place-items:center; color:#fff; transition: background .2s, transform .2s; }
+    .footer-social a:hover { background: var(--blue); transform: translateY(-3px); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:0.83rem; }
+
+    /* Floating WhatsApp + sticky mobile bar */
+    .fab { position:fixed; bottom:24px; right:24px; z-index:900; width:58px; height:58px; border-radius:50%; background: var(--wa); color:#fff; display:grid; place-items:center; font-size:1.6rem; box-shadow: 0 14px 30px rgba(37,211,102,0.5); transition: transform .25s var(--ease); }
+    .fab:hover { transform: scale(1.08); }
+
+    .reveal { opacity:0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in { opacity:1; transform: none; }
+
+    .mobile-cta-bar { display:none; }
+
+    /* ============================================================
+       Responsive
+    ============================================================ */
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+      .hero p.sub, .trust-points { max-width: none; }
+      .matchday-banner { grid-template-columns: 1fr; gap:34px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .cat-grid { grid-template-columns: repeat(2,1fr); }
+      .reviews-grid { grid-template-columns: repeat(2,1fr); }
+      .devices-grid { grid-template-columns: repeat(3,1fr); }
+      .trustbar-grid { grid-template-columns: repeat(4,1fr); }
+    }
+    @media (max-width: 768px) {
+      .section-pad { padding: 76px 0; }
+      .nav-links { display:none; }
+      .nav-actions .whatsapp-badge, .nav-actions .btn { display:none; }
+      .nav-toggle { display:block; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .price-card.featured { transform:none; }
+      .price-card.featured:hover { transform: translateY(-6px); }
+      .md-cards { grid-template-columns: repeat(2,1fr); }
+      .features-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap:36px 0; }
+      .step-card::after { display:none; }
+      .faq-cols { grid-template-columns: 1fr; }
+      .logos-row { gap: 28px; }
+      .trustbar-grid { grid-template-columns: repeat(2,1fr); gap:28px 16px; }
+      .trust-stat:not(:last-child)::after { display:none; }
+      .trust-stat:nth-child(odd)::after { content:""; display:block; position:absolute; right:-8px; top:50%; transform:translateY(-50%); width:1px; height:38px; background: var(--line); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .devices-grid { grid-template-columns: repeat(3,1fr); }
+      .float-badge.fb-1 { left:0; }
+      .float-badge.fb-2 { right:0; }
+      .mobile-cta-bar { display:grid; }
+      body { padding-bottom: 76px; }
+    }
+    @media (max-width: 520px) {
+      .container { padding: 0 18px; }
+      .trust-points { grid-template-columns: 1fr; }
+      .md-cards { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .matchday-banner, .final-banner { padding: 40px 26px; border-radius: 24px; }
+      .hero { padding-top: 140px; }
+      .devices-grid { grid-template-columns: repeat(2,1fr); }
+      .trust-stat .ts-num { font-size:1.3rem; }
+      .dash { grid-template-columns: 78px 1fr; }
+      .dash-nav { font-size:0.58rem; padding:7px; gap:6px; }
+      .dash-hero h5 { font-size:0.95rem; }
+      .float-badge { padding:7px 10px; }
+      .float-badge b { font-size:0.68rem; }
+      .float-badge span { font-size:0.58rem; }
+      .hero-cta .btn { flex:1; }
+    }
+
+    /* Sticky mobile bottom bar */
+    .mobile-cta-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 950;
+      grid-template-columns: 1fr 1fr; gap: 10px;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(255,255,255,0.92); backdrop-filter: saturate(180%) blur(16px);
+      border-top: 1px solid var(--line); box-shadow: 0 -6px 24px rgba(10,16,36,0.08);
+    }
+    .mobile-cta-bar .btn { padding: 13px 16px; font-size: 0.95rem; }
+    @media (max-width: 768px) { .fab { display: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+      .reveal { opacity:1; transform:none; transition:none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#home" class="logo" aria-label="IPTV Trusted home">
+        <span class="logo-mark"><i class="fa-solid fa-play"></i></span>
+        <span class="logo-text"><b>IPTV</b><small>TRUSTED</small></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#categories">Channels</a>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/1234567890" target="_blank" rel="noopener" class="whatsapp-badge">
+          <span class="wa-ic"><i class="fa-brands fa-whatsapp"></i></span>
+          <span class="wa-txt"><b>WhatsApp Support</b><span>Online now</span></span>
+        </a>
+        <a href="#pricing" class="btn btn-blue">View Plans</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#categories">Channels</a>
+    <a href="#features">Features</a>
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://wa.me/1234567890" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="color:#25d366"></i>&nbsp; WhatsApp Support</a>
+    <a href="#pricing" class="btn btn-blue btn-block">View Plans</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="hero-pill"><span class="dot"></span> Built for UK sports viewers</span>
+          <h1>Stable IPTV When <span class="accent">Match Day Matters.</span></h1>
+          <p class="sub">Watch Premier League, Champions League, Boxing and UFC in crisp HD &amp; 4K — with fast activation, easy setup and real WhatsApp support that never disappears.</p>
+
+          <ul class="trust-points">
+            <li><span class="tp-ic"><i class="fa-solid fa-bolt"></i></span><div><strong>Fast Activation</strong><small>Live in minutes</small></div></li>
+            <li><span class="tp-ic"><i class="fa-brands fa-whatsapp"></i></span><div><strong>WhatsApp Support</strong><small>Real human help</small></div></li>
+            <li><span class="tp-ic"><i class="fa-solid fa-server"></i></span><div><strong>Stable Servers</strong><small>No match-day buffering</small></div></li>
+            <li><span class="tp-ic"><i class="fa-solid fa-gem"></i></span><div><strong>HD &amp; 4K</strong><small>True high quality</small></div></li>
+          </ul>
+
+          <div class="hero-cta">
+            <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20start%20a%20free%20trial" target="_blank" rel="noopener" class="btn btn-blue btn-lg">Start Free Trial <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#pricing" class="btn btn-ghost btn-lg">View Plans</a>
+            <a href="https://wa.me/1234567890" target="_blank" rel="noopener" class="btn btn-wa btn-lg"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+          </div>
+          <p class="hero-note">Fast activation · No long-term contract · UK-friendly support.</p>
+
+          <div class="hero-social">
+            <div class="trustpilot">
+              <span class="stars">★★★★★</span>
+              <span><b>Rated 4.9/5</b> by happy customers</span>
+            </div>
+            <div class="avatars">
+              <div class="stack"><span>A</span><span>M</span><span>K</span><span>S</span><span>+</span></div>
+              <small>Trusted by UK viewers</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero visual: premium TV dashboard -->
+        <div class="hero-visual">
+          <div class="tv">
+            <div class="tv-screen">
+              <div class="dash">
+                <aside class="dash-side">
+                  <div class="dash-brand"><span class="bd"><i class="fa-solid fa-play"></i></span><b>IPTV</b></div>
+                  <div class="dash-nav active"><i class="fa-solid fa-tower-broadcast"></i> Live TV</div>
+                  <div class="dash-nav"><i class="fa-solid fa-futbol"></i> Sports</div>
+                  <div class="dash-nav"><i class="fa-solid fa-film"></i> Movies</div>
+                  <div class="dash-nav"><i class="fa-solid fa-clapperboard"></i> Series</div>
+                  <div class="dash-nav"><i class="fa-solid fa-calendar-days"></i> TV Guide</div>
+                </aside>
+                <main class="dash-main">
+                  <div class="dash-hero">
+                    <span class="dh-tag"><span class="liveDot"></span> LIVE NOW</span>
+                    <h5>Premier League Live</h5>
+                    <span class="dh-sub">Match Day · Kick-off 17:30</span>
+                    <span class="dh-play"><i class="fa-solid fa-play"></i></span>
+                  </div>
+                  <div class="dash-strip">
+                    <span class="pill live"><i class="fa-solid fa-circle"></i> LIVE</span>
+                    <span class="sep"></span>
+                    <span class="pill">4K UHD</span>
+                    <span class="sep"></span>
+                    <span class="pill"><i class="fa-solid fa-wifi"></i> Stable Stream</span>
+                  </div>
+                  <div class="dash-row">
+                    <div class="dash-card"><i class="fa-solid fa-futbol"></i><b>Sports</b></div>
+                    <div class="dash-card"><i class="fa-solid fa-film"></i><b>Movies</b></div>
+                    <div class="dash-card"><i class="fa-solid fa-clapperboard"></i><b>Series</b></div>
+                    <div class="dash-card"><i class="fa-solid fa-child-reaching"></i><b>Kids</b></div>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+          <div class="tv-stand"></div>
+          <div class="tv-base"></div>
+          <div class="float-badge fb-1"><span class="fb-ic"><i class="fa-solid fa-shield-halved"></i></span><div><b>Stable on Match Day</b><span>Optimized servers</span></div></div>
+          <div class="float-badge fb-2"><span class="fb-ic"><i class="fa-brands fa-whatsapp"></i></span><div><b>Fast WhatsApp Setup</b><span>Real human help</span></div></div>
+        </div>
+      </div>
+
+      <!-- device logos strip -->
+      <div class="logos-strip reveal">
+        <p>Watch on every device you own</p>
+        <div class="logos-row">
+          <span><i class="fa-solid fa-tv"></i> Smart TV</span>
+          <span><i class="fa-brands fa-amazon"></i> Firestick</span>
+          <span><i class="fa-brands fa-android"></i> Android Box</span>
+          <span><i class="fa-brands fa-apple"></i> iPhone / iPad</span>
+          <span><i class="fa-solid fa-mobile-screen"></i> Android</span>
+          <span><i class="fa-solid fa-laptop"></i> Laptop / PC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST NUMBERS BAR ===================== -->
+  <section class="trustbar">
+    <div class="container">
+      <div class="trustbar-grid">
+        <div class="trust-stat reveal"><div class="ts-num"><span class="stars">★</span> 4.9/5</div><p>Rated by happy customers</p></div>
+        <div class="trust-stat reveal"><div class="ts-num"><i class="fa-solid fa-bolt"></i> Minutes</div><p>Fast activation</p></div>
+        <div class="trust-stat reveal"><div class="ts-num"><i class="fa-brands fa-whatsapp"></i> 24/7</div><p>WhatsApp support</p></div>
+        <div class="trust-stat reveal"><div class="ts-num"><i class="fa-solid fa-tv"></i> All</div><p>Devices supported</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CATEGORY CARDS ===================== -->
+  <section class="section-pad" id="categories">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Channels &amp; content</span>
+        <h2>Everything You Love, <span class="accent">In One Place</span></h2>
+        <p>From live sports to box-set binges and kids' favourites — all in HD &amp; 4K.</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card cat-sports reveal">
+          <i class="fa-solid fa-futbol cat-ghost"></i>
+          <span class="cat-ic"><i class="fa-solid fa-futbol"></i></span>
+          <h3>Sports</h3>
+          <p>Premier League, Champions League, boxing, UFC and more — live.</p>
+        </div>
+        <div class="cat-card cat-movies reveal">
+          <i class="fa-solid fa-film cat-ghost"></i>
+          <span class="cat-ic"><i class="fa-solid fa-film"></i></span>
+          <h3>Movies</h3>
+          <p>A huge on-demand library of the latest blockbusters and classics.</p>
+        </div>
+        <div class="cat-card cat-series reveal">
+          <i class="fa-solid fa-clapperboard cat-ghost"></i>
+          <span class="cat-ic"><i class="fa-solid fa-clapperboard"></i></span>
+          <h3>Series</h3>
+          <p>Full box sets and trending shows ready to stream anytime.</p>
+        </div>
+        <div class="cat-card cat-kids reveal">
+          <i class="fa-solid fa-child-reaching cat-ghost"></i>
+          <span class="cat-ic"><i class="fa-solid fa-child-reaching"></i></span>
+          <h3>Kids</h3>
+          <p>Cartoons and family-friendly channels the little ones will love.</p>
+        </div>
+        <div class="cat-card cat-ent reveal">
+          <i class="fa-solid fa-tv cat-ghost"></i>
+          <span class="cat-ic"><i class="fa-solid fa-tv"></i></span>
+          <h3>Entertainment</h3>
+          <p>Reality, music, lifestyle and the channels everyone's watching.</p>
+        </div>
+        <div class="cat-card cat-docs reveal">
+          <i class="fa-solid fa-earth-americas cat-ghost"></i>
+          <span class="cat-ic"><i class="fa-solid fa-earth-americas"></i></span>
+          <h3>Documentaries</h3>
+          <p>Nature, history, science and true-crime in stunning clarity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MATCH DAY ===================== -->
+  <section class="matchday">
+    <div class="container">
+      <div class="matchday-banner reveal">
+        <div>
+          <span class="eyebrow">Match day</span>
+          <h2>Never Miss The <span class="accent">Big Moments.</span></h2>
+          <div class="lines">
+            <span>When the big Premier League fixture kicks off...</span>
+            <span>When it's a Champions League night...</span>
+            <span>When the main boxing or UFC card starts...</span>
+            <span class="em">That's when most IPTV services fail.</span>
+            <span>Our infrastructure is optimized for high-demand live events — so you stay watching.</span>
+          </div>
+        </div>
+        <div class="md-cards">
+          <div class="md-card"><div class="md-bg epl"></div><span class="md-live"><span class="ld"></span> LIVE</span><div class="md-ic"><i class="fa-solid fa-futbol"></i></div><h4>Premier League</h4><small>Full coverage</small></div>
+          <div class="md-card"><div class="md-bg ucl"></div><span class="md-live"><span class="ld"></span> LIVE</span><div class="md-ic"><i class="fa-solid fa-trophy"></i></div><h4>Champions League</h4><small>Midweek nights</small></div>
+          <div class="md-card"><div class="md-bg box"></div><span class="md-live"><span class="ld"></span> LIVE</span><div class="md-ic"><i class="fa-solid fa-hand-back-fist"></i></div><h4>Boxing</h4><small>Fight night</small></div>
+          <div class="md-card"><div class="md-bg ufc"></div><span class="md-live"><span class="ld"></span> LIVE</span><div class="md-ic"><i class="fa-solid fa-hand-fist"></i></div><h4>UFC</h4><small>Main events</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BEFORE / AFTER ===================== -->
+  <section class="section-pad" id="features" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">The difference</span>
+        <h2>Why People <span class="accent">Switch</span> To Us</h2>
+        <p>See exactly what changes when you move to IPTV Trusted.</p>
+      </div>
+
+      <div class="ba-grid">
+        <div class="ba-card before reveal">
+          <div class="ba-head">
+            <span class="ba-ic"><i class="fa-solid fa-circle-xmark"></i></span>
+            <div><h3>Other IPTV Services</h3><span class="ba-tag">The usual frustrations</span></div>
+          </div>
+          <ul class="ba-list">
+            <li><span class="bl-ic"><i class="fa-solid fa-xmark"></i></span> Buffering during matches</li>
+            <li><span class="bl-ic"><i class="fa-solid fa-xmark"></i></span> No support after payment</li>
+            <li><span class="bl-ic"><i class="fa-solid fa-xmark"></i></span> Confusing, complicated setup</li>
+            <li><span class="bl-ic"><i class="fa-solid fa-xmark"></i></span> Unreliable service that disappears</li>
+            <li><span class="bl-ic"><i class="fa-solid fa-xmark"></i></span> Low quality streams</li>
+          </ul>
+        </div>
+
+        <div class="ba-card after reveal">
+          <div class="ba-head">
+            <span class="ba-ic"><i class="fa-solid fa-shield-halved"></i></span>
+            <div><h3>IPTV Trusted</h3><span class="ba-tag">The premium way to watch</span></div>
+          </div>
+          <ul class="ba-list">
+            <li><span class="bl-ic"><i class="fa-solid fa-check"></i></span> Stable streams, even on match day</li>
+            <li><span class="bl-ic"><i class="fa-solid fa-check"></i></span> Real WhatsApp support, anytime</li>
+            <li><span class="bl-ic"><i class="fa-solid fa-check"></i></span> Easy, guided setup in minutes</li>
+            <li><span class="bl-ic"><i class="fa-solid fa-check"></i></span> Reliable service from an active team</li>
+            <li><span class="bl-ic"><i class="fa-solid fa-check"></i></span> True HD &amp; 4K quality</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHAT YOU GET ===================== -->
+  <section class="section-pad" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What you get</span>
+        <h2>One Subscription. <span class="accent">Endless</span> Content.</h2>
+        <p>A complete entertainment library, ready from day one.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-tower-broadcast"></i></div><h4>20,000+ Channels</h4><p>Live channels from the UK and around the world.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-futbol"></i></div><h4>Sports Live Events</h4><p>Football, boxing, UFC and major fixtures, live.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-clapperboard"></i></div><h4>Movies &amp; Series</h4><p>A massive on-demand library of films and box sets.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-child-reaching"></i></div><h4>Kids Channels</h4><p>Cartoons and family-friendly content in one place.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-calendar-days"></i></div><h4>TV Guide</h4><p>A full 7-day EPG so you never miss what's on.</p></div>
+        <div class="feature-card reveal"><div class="f-ic"><i class="fa-solid fa-laptop-mobile"></i></div><h4>Multi-Device Support</h4><p>Watch on Smart TV, phone, tablet, box or PC.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WORKS ON EVERY DEVICE ===================== -->
+  <section class="section-pad" id="devices" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Compatibility</span>
+        <h2>Works On <span class="accent">Every Device</span></h2>
+        <p>Easy setup for the devices UK customers use most.</p>
+      </div>
+      <div class="devices-grid">
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-tv"></i></div><b>Smart TV</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-brands fa-amazon"></i></div><b>Firestick</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-brands fa-android"></i></div><b>Android Box</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-brands fa-apple"></i></div><b>iPhone / iPad</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-mobile-screen"></i></div><b>Android Phone</b></div>
+        <div class="device-card reveal"><div class="dv-ic"><i class="fa-solid fa-laptop"></i></div><b>Laptop / PC</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="section-pad" id="how" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Up And Running In <span class="accent">Minutes</span></h2>
+        <p>Four simple steps from sign-up to watching.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal"><div class="step-num">1</div><h4>Choose Your Plan</h4><p>Pick the plan that suits you best.</p></div>
+        <div class="step-card reveal"><div class="step-num">2</div><h4>Message Us On WhatsApp</h4><p>Tap a button and message our team.</p></div>
+        <div class="step-card reveal"><div class="step-num">3</div><h4>Get Your Setup Guide</h4><p>We send login details and easy steps.</p></div>
+        <div class="step-card reveal"><div class="step-num">4</div><h4>Start Watching</h4><p>Enjoy everything in HD &amp; 4K quality.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CUSTOMER REVIEWS ===================== -->
+  <section class="section-pad" id="reviews" style="padding-top:0;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Customer reviews</span>
+        <h2>Loved By <span class="accent">UK Viewers</span></h2>
+        <p>Real feedback from customers across the country.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Set it up on my Firestick in about ten minutes and it's been rock solid. No buffering during the United game — finally."</p>
+          <div class="reviewer"><span class="ra">J</span><div><b>James</b><span>Manchester</span></div><span class="verified"><i class="fa-solid fa-circle-check"></i> Verified</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Support actually replied within minutes on WhatsApp and walked me through everything. Big difference from my last provider."</p>
+          <div class="reviewer"><span class="ra">L</span><div><b>Liam</b><span>London</span></div><span class="verified"><i class="fa-solid fa-circle-check"></i> Verified</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Picture quality is genuinely better than what I had before, and boxing night ran perfectly. Worth it."</p>
+          <div class="reviewer"><span class="ra">D</span><div><b>Daniel</b><span>Birmingham</span></div><span class="verified"><i class="fa-solid fa-circle-check"></i> Verified</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Easy to set up on my Samsung TV and the kids have their channels too. Simple pricing, no surprises."</p>
+          <div class="reviewer"><span class="ra">R</span><div><b>Ryan</b><span>Liverpool</span></div><span class="verified"><i class="fa-solid fa-circle-check"></i> Verified</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Activation was fast and they helped me install everything step by step. Champions League nights have been flawless."</p>
+          <div class="reviewer"><span class="ra">M</span><div><b>Mark</b><span>Leeds</span></div><span class="verified"><i class="fa-solid fa-circle-check"></i> Verified</span></div>
+        </div>
+        <div class="review-card reveal">
+          <div class="stars">★★★★★</div>
+          <p>"Finally found something reliable. Works on my phone when I'm out and the TV at home. Happy customer."</p>
+          <div class="reviewer"><span class="ra">A</span><div><b>Adam</b><span>Glasgow</span></div><span class="verified"><i class="fa-solid fa-circle-check"></i> Verified</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICING ===================== -->
+  <section class="section-pad pricing" id="pricing">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Simple Plans, <span class="accent">No Surprises</span></h2>
+        <p>Transparent pricing. No hidden fees. Cancel anytime.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <h3>1 Month</h3>
+          <div class="price"><span class="amount">£14.99</span><span class="period">/ month</span></div>
+          <span class="price-best">Great for trying it out</span>
+          <ul class="feature-list">
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> 20,000+ live channels</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Sports, movies &amp; series</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> HD &amp; 4K quality</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> WhatsApp support</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Fast activation</li>
+          </ul>
+          <a href="https://wa.me/1234567890?text=I%27m%20interested%20in%20the%201%20Month%20plan" target="_blank" rel="noopener" class="btn btn-light btn-block"><i class="fa-brands fa-whatsapp"></i> Start On WhatsApp</a>
+        </div>
+
+        <div class="price-card reveal">
+          <h3>3 Months</h3>
+          <div class="price"><span class="amount">£29.99</span><span class="period">/ 3 months</span></div>
+          <span class="save">Save vs monthly</span>
+          <span class="price-best">Popular for sports fans</span>
+          <ul class="feature-list">
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Everything in 1 Month</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Premier &amp; Champions League</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Boxing &amp; UFC events</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Priority WhatsApp support</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Multi-device ready</li>
+          </ul>
+          <a href="https://wa.me/1234567890?text=I%27m%20interested%20in%20the%203%20Month%20plan" target="_blank" rel="noopener" class="btn btn-light btn-block"><i class="fa-brands fa-whatsapp"></i> Start On WhatsApp</a>
+        </div>
+
+        <div class="price-card featured reveal">
+          <span class="price-badge">★ Best Value</span>
+          <h3>12 Months</h3>
+          <div class="price"><span class="amount">£59.99</span><span class="period">/ year</span></div>
+          <span class="save">Save up to 65%</span>
+          <span class="price-best">Best for the whole season</span>
+          <ul class="feature-list">
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Everything in 3 Months</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Full season coverage</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Best price per month</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Premium WhatsApp support</li>
+            <li><span class="fc"><i class="fa-solid fa-check"></i></span> Multi-device &amp; family access</li>
+          </ul>
+          <a href="https://wa.me/1234567890?text=I%27m%20interested%20in%20the%2012%20Month%20plan" target="_blank" rel="noopener" class="btn btn-blue btn-block"><i class="fa-brands fa-whatsapp"></i> Start On WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section-pad faq" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions, <span class="accent">Answered</span></h2>
+        <p>Everything you need to know before getting started.</p>
+      </div>
+      <div class="faq-cols">
+        <div class="faq-col">
+          <div class="faq-item reveal"><button class="faq-q">Is setup easy? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes — very. After you message us on WhatsApp we send your login details and a simple step-by-step guide. Most customers are up and running in just a few minutes, and we'll help until everything works.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Does it work on Firestick? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Absolutely. Firestick is one of the most popular ways our UK customers watch. We guide you through the quick install over WhatsApp, and it also works on Smart TVs, Android boxes, phones, tablets and computers.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Do you offer support? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes. Real WhatsApp support is included with every plan. Unlike many providers, we stay available after payment to help with setup or any questions.</p></div></div>
+        </div>
+        <div class="faq-col">
+          <div class="faq-item reveal"><button class="faq-q">Can I test before buying? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>Yes — just message us on WhatsApp to start a free trial. You can check the streams, channels and quality on your own device before choosing a plan.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">What internet speed do I need? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>For smooth HD streaming we recommend around 15–25 Mbps, and 25 Mbps or more for 4K. Most UK broadband connections handle this comfortably. A wired or strong Wi-Fi connection gives the most stable match-day experience.</p></div></div>
+          <div class="faq-item reveal"><button class="faq-q">Is there a long-term contract? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a"><p>No long-term contract. Choose 1, 3 or 12 months with transparent pricing and no hidden fees — and cancel anytime.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="final" id="contact">
+    <div class="container">
+      <div class="final-banner reveal">
+        <span class="eyebrow">Get started today</span>
+        <h2>Ready To Watch Without Buffering?</h2>
+        <ul class="final-benefits">
+          <li><i class="fa-solid fa-circle-check"></i> Stable on match day</li>
+          <li><i class="fa-solid fa-circle-check"></i> Easy Firestick setup</li>
+          <li><i class="fa-solid fa-circle-check"></i> Real WhatsApp support</li>
+          <li><i class="fa-solid fa-circle-check"></i> HD &amp; 4K quality</li>
+        </ul>
+        <div class="final-cta">
+          <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20start%20a%20free%20trial" target="_blank" rel="noopener" class="btn btn-wa btn-lg"><i class="fa-brands fa-whatsapp"></i> Start Free Trial on WhatsApp</a>
+          <a href="#pricing" class="btn btn-light btn-lg">View Plans</a>
+        </div>
+        <p class="note">No commitment. Cancel anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#home" class="logo">
+            <span class="logo-mark"><i class="fa-solid fa-play"></i></span>
+            <span class="logo-text"><b>IPTV</b><small>TRUSTED</small></span>
+          </a>
+          <p>Premium IPTV built on trust, stability and real human support. The service that actually works — especially on match day.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/1234567890" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          </div>
+        </div>
+        <div><h5>Product</h5><div class="footer-links"><a href="#categories">Channels</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#how">How It Works</a></div></div>
+        <div><h5>Company</h5><div class="footer-links"><a href="#reviews">Reviews</a><a href="#faq">FAQ</a><a href="https://wa.me/1234567890" target="_blank" rel="noopener">Support</a></div></div>
+        <div><h5>Get Started</h5><div class="footer-links"><a href="#pricing">View Plans</a><a href="https://wa.me/1234567890" target="_blank" rel="noopener">Start Free Trial</a></div></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 IPTV Trusted. All rights reserved.</span>
+        <span>Privacy Policy · Terms of Service</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/1234567890" target="_blank" rel="noopener" class="fab" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <!-- Sticky mobile bottom bar (mobile only) -->
+  <div class="mobile-cta-bar">
+    <a href="#pricing" class="btn btn-blue">View Plans</a>
+    <a href="https://wa.me/1234567890?text=Hi%2C%20I%27d%20like%20to%20start%20a%20free%20trial" target="_blank" rel="noopener" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> Free Trial</a>
+  </div>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    // Header scroll state
+    const header = document.getElementById('header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 24);
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    // Mobile menu
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    navToggle.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      navToggle.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      q.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(other => {
+          other.classList.remove('active');
+          other.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!isActive) { item.classList.add('active'); a.style.maxHeight = a.scrollHeight + 'px'; }
+      });
+    });
+
+    // Active nav highlight (scroll spy)
+    const navItems = [...document.querySelectorAll('.nav-links a')];
+    const navMap = {};
+    navItems.forEach(a => navMap[a.getAttribute('href').slice(1)] = a);
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && navMap[e.target.id]) {
+          navItems.forEach(a => a.classList.remove('active'));
+          navMap[e.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
