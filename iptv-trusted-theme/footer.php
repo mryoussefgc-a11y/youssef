@@ -1,9 +1,10 @@
+  <?php $home = esc_url( home_url( '/' ) ); ?>
   <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="#home" class="logo">
+          <a href="<?php echo $home; ?>" class="logo">
             <img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/690ba9cc3ef46c785bd2c9c6/0x0.png" alt="IPTV Trusted" style="height:44px;width:auto;display:block;">
           </a>
           <p>Reliable IPTV built on trust, stability, and real human support. The service that actually works — especially on match day.</p>
@@ -14,9 +15,9 @@
             <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
           </div>
         </div>
-        <div><h5>Product</h5><div class="footer-links"><a href="#features">Features</a><a href="#channels">Channels</a><a href="#pricing">Pricing</a><a href="#how">How It Works</a></div></div>
-        <div><h5>Company</h5><div class="footer-links"><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="https://wa.me/1234567890" target="_blank" rel="noopener">Support</a></div></div>
-        <div><h5>Get Started</h5><div class="footer-links"><a href="#pricing">View Plans</a><a href="https://wa.me/1234567890" target="_blank" rel="noopener">WhatsApp Us</a></div></div>
+        <div><h5>Product</h5><div class="footer-links"><a href="<?php echo $home; ?>#features">Features</a><a href="<?php echo $home; ?>#channels">Channels</a><a href="<?php echo $home; ?>#pricing">Pricing</a><a href="<?php echo $home; ?>#how">How It Works</a></div></div>
+        <div><h5>Company</h5><div class="footer-links"><a href="<?php echo $home; ?>#faq">FAQ</a><a href="<?php echo $home; ?>#contact">Contact</a><a href="https://wa.me/1234567890" target="_blank" rel="noopener">Support</a></div></div>
+        <div><h5>Get Started</h5><div class="footer-links"><a href="<?php echo $home; ?>#pricing">View Plans</a><a href="https://wa.me/1234567890" target="_blank" rel="noopener">WhatsApp Us</a></div></div>
       </div>
       <div class="footer-bottom">
         <span>© 2026 IPTV Trusted. All rights reserved.</span>
@@ -41,7 +42,7 @@
       .mobile-cta-bar .btn-wa { background:#25d366; color:#fff; border:none; box-shadow:0 8px 22px rgba(37,211,102,0.4); }
       .mobile-cta-bar .btn-wa:hover { background:#1ebe5d; }
     </style>
-    <a href="#pricing" class="btn btn-blue"><i class="fa-solid fa-bolt"></i> View Plans</a>
+    <a href="<?php echo $home; ?>#pricing" class="btn btn-blue"><i class="fa-solid fa-bolt"></i> View Plans</a>
     <a href="https://wa.me/1234567890" target="_blank" rel="noopener" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
   </div>
   <!-- ===================== JAVASCRIPT ===================== -->
@@ -76,7 +77,7 @@
 
     const navItems = [...document.querySelectorAll('.nav-links a')];
     const navMap = {};
-    navItems.forEach(a => navMap[a.getAttribute('href').slice(1)] = a);
+    navItems.forEach(a => { const h = a.getAttribute('href') || ''; if (h.includes('#')) navMap[h.split('#')[1]] = a; });
     const spy = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting && navMap[e.target.id]) {

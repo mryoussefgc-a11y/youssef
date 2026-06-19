@@ -677,20 +677,21 @@
 <body <?php body_class(); ?>>
 
   <!-- ===================== HEADER ===================== -->
+  <?php $home = esc_url( home_url( '/' ) ); ?>
   <header class="header" id="header">
     <div class="header-inner">
-      <a href="#home" class="logo">
+      <a href="<?php echo $home; ?>" class="logo">
         <span class="logo-mark"><i class="fa-solid fa-play"></i></span>
         <span>IPTV<small>TRUSTED</small></span>
       </a>
 
       <nav class="nav-links">
-        <a href="#home" class="active">Home</a>
-        <a href="#features">Features</a>
-        <a href="#channels">Channels</a>
-        <a href="#how">How It Works</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="<?php echo $home; ?>#home" class="active">Home</a>
+        <a href="<?php echo $home; ?>#features">Features</a>
+        <a href="<?php echo $home; ?>#channels">Channels</a>
+        <a href="<?php echo $home; ?>#how">How It Works</a>
+        <a href="<?php echo $home; ?>#faq">FAQ</a>
+        <a href="<?php echo $home; ?>#contact">Contact</a>
       </nav>
 
       <div class="nav-actions">
@@ -698,20 +699,20 @@
           <span class="wa-ic"><i class="fa-brands fa-whatsapp"></i></span>
           <span class="wa-txt"><b>WhatsApp Support</b><span>24/7 Online</span></span>
         </a>
-        <a href="#pricing" class="btn btn-blue">View Plans</a>
+        <a href="<?php echo $home; ?>#pricing" class="btn btn-blue">View Plans</a>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#home">Home</a>
-    <a href="#features">Features</a>
-    <a href="#channels">Channels</a>
-    <a href="#how">How It Works</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
+    <a href="<?php echo $home; ?>#home">Home</a>
+    <a href="<?php echo $home; ?>#features">Features</a>
+    <a href="<?php echo $home; ?>#channels">Channels</a>
+    <a href="<?php echo $home; ?>#how">How It Works</a>
+    <a href="<?php echo $home; ?>#faq">FAQ</a>
+    <a href="<?php echo $home; ?>#contact">Contact</a>
     <a href="https://wa.me/1234567890" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" style="color:#16a34a"></i>&nbsp; WhatsApp Support</a>
-    <a href="#pricing" class="btn btn-blue btn-block">View Plans</a>
+    <a href="<?php echo $home; ?>#pricing" class="btn btn-blue btn-block">View Plans</a>
   </div>
 
