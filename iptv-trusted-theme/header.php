@@ -19,12 +19,12 @@
        Design Tokens
     ============================================================ */
     :root {
-      --blue: #2563eb;
-      --blue-dark: #1d4ed8;
+      --blue: #1d4ed8;
+      --blue-dark: #1e3a8a;
       --blue-light: #60a5fa;
-      --cyan: #06b6d4;
-      --indigo: #4f46e5;
-      --blue-soft: #eff4ff;
+      --cyan: #0ea5e9;
+      --indigo: #1e40af;
+      --blue-soft: #eef2ff;
 
       --ink: #0a1024;
       --ink-2: #1e293b;
