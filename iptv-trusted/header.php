@@ -681,9 +681,13 @@
   <header class="header" id="header">
     <div class="header-inner">
       <a href="<?php echo $home; ?>" class="logo">
-        <?php $iptv_header_logo = get_theme_mod( 'iptv_header_logo', '' ); ?>
-        <?php if ( $iptv_header_logo ) : ?>
-          <img src="<?php echo iptv_media( 'iptv_header_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="logo-img" style="height:38px;width:auto;display:block;">
+        <?php
+        // 1) Site Identity → Logo (WordPress custom logo)  2) IPTV Media → Header logo  3) text logo.
+        $iptv_custom_logo_id = get_theme_mod( 'custom_logo' );
+        $iptv_logo_url       = $iptv_custom_logo_id ? wp_get_attachment_image_url( $iptv_custom_logo_id, 'full' ) : get_theme_mod( 'iptv_header_logo', '' );
+        ?>
+        <?php if ( $iptv_logo_url ) : ?>
+          <img src="<?php echo esc_url( $iptv_logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="logo-img" style="height:42px;width:auto;display:block;">
         <?php else : ?>
           <span class="logo-mark"><i class="fa-solid fa-play"></i></span>
           <span>IPTV<small>TRUSTED</small></span>
