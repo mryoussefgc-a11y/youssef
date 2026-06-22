@@ -681,8 +681,13 @@
   <header class="header" id="header">
     <div class="header-inner">
       <a href="<?php echo $home; ?>" class="logo">
-        <span class="logo-mark"><i class="fa-solid fa-play"></i></span>
-        <span>IPTV<small>TRUSTED</small></span>
+        <?php $iptv_header_logo = get_theme_mod( 'iptv_header_logo', '' ); ?>
+        <?php if ( $iptv_header_logo ) : ?>
+          <img src="<?php echo iptv_media( 'iptv_header_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" class="logo-img" style="height:38px;width:auto;display:block;">
+        <?php else : ?>
+          <span class="logo-mark"><i class="fa-solid fa-play"></i></span>
+          <span>IPTV<small>TRUSTED</small></span>
+        <?php endif; ?>
       </a>
 
       <nav class="nav-links">

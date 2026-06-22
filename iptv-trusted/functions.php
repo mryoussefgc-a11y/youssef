@@ -84,6 +84,7 @@ function iptv_customize_register( $wp_customize ) {
 		'iptv_sec_logo' => array(
 			'Logo',
 			array(
+				'iptv_header_logo' => array( 'Header logo (leave empty to keep the text logo)', '', 'image' ),
 				'iptv_footer_logo' => array( 'Footer logo', 'https://s3-eu-west-1.amazonaws.com/tpd/logos/690ba9cc3ef46c785bd2c9c6/0x0.png', 'image' ),
 			),
 		),
