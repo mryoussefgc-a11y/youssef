@@ -1,0 +1,117 @@
+<!-- =====================================================================
+     MOVIE ROW — auto-scroll marquee (right → left)
+     Standalone, drop-in section. Self-contained CSS + JS (scoped .mvr-).
+     Paste this anywhere inside <body>. Requires Font Awesome (already in page).
+
+     ▶ To use a REAL movie poster, add an <img> inside any .mvr-card:
+         <img src="poster.jpg" alt="Movie title" loading="lazy">
+       The gradient fallback shows automatically when no <img> is present.
+===================================================================== -->
+<style>
+  .mvr { background:#070b16; color:#fff; padding:96px 0; overflow:hidden; position:relative;
+         font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  .mvr::before { content:""; position:absolute; inset:-30% -10% auto -10%; height:120%; pointer-events:none;
+    background: radial-gradient(50% 50% at 80% 0%, rgba(37,99,235,0.35), transparent 60%),
+                radial-gradient(45% 45% at 10% 0%, rgba(59,130,246,0.22), transparent 60%); }
+  .mvr-inner { width:100%; max-width:1160px; margin:0 auto; padding:0 24px; position:relative; z-index:1; text-align:center; }
+  .mvr-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:0.8rem; font-weight:600; letter-spacing:0.02em; color:#60a5fa; margin-bottom:18px; }
+  .mvr-eyebrow::before { content:""; width:22px; height:2px; border-radius:2px; background:#60a5fa; }
+  .mvr h2 { font-size:clamp(2rem,4.2vw,3rem); font-weight:800; letter-spacing:-0.035em; line-height:1.06; color:#fff; }
+  .mvr h2 .mvr-accent { background:linear-gradient(100deg,#60a5fa,#3b82f6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .mvr-lead { margin:16px 0 56px; font-size:1.15rem; color:rgba(255,255,255,0.6); }
+
+  .mvr-viewport { position:relative; z-index:1; overflow:hidden; width:100%;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); }
+  .mvr-track { display:flex; gap:18px; width:max-content; padding:6px 0; animation:mvrScroll 55s linear infinite; will-change:transform; }
+  .mvr-viewport:hover .mvr-track { animation-play-state:paused; }
+  @keyframes mvrScroll { from { transform:translate3d(0,0,0); } to { transform:translate3d(-50%,0,0); } }
+
+  .mvr-card { position:relative; flex:0 0 auto; width:210px; aspect-ratio:2/3; border-radius:16px; overflow:hidden; cursor:pointer;
+    border:1px solid rgba(255,255,255,0.08); box-shadow:0 14px 32px rgba(0,0,0,0.45);
+    transition:transform .35s cubic-bezier(0.22,1,0.36,1), box-shadow .35s, border-color .35s; }
+  .mvr-card:hover { transform:translateY(-8px); box-shadow:0 24px 48px rgba(0,0,0,0.6); border-color:rgba(96,165,250,0.5); }
+  .mvr-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .mvr-fallback { position:absolute; inset:0; }
+  .mvr-grad { position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.82)); z-index:1; }
+  .mvr-meta { position:relative; z-index:2; padding:14px; width:100%; position:absolute; bottom:0; left:0; text-align:left; }
+  .mvr-genre { font-size:0.62rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#60a5fa; }
+  .mvr-meta h4 { font-size:0.98rem; font-weight:800; letter-spacing:-0.02em; line-height:1.15; margin-top:3px; color:#fff; }
+  .mvr-sub { font-size:0.72rem; color:rgba(255,255,255,0.6); margin-top:4px; display:block; }
+  .mvr-badge { position:absolute; top:12px; left:12px; z-index:3; display:inline-flex; align-items:center; gap:5px; background:rgba(0,0,0,0.45); backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.16); color:#fff; font-size:0.6rem; font-weight:700; padding:4px 9px; border-radius:99px; }
+  .mvr-badge.rating { left:auto; right:12px; color:#fbbf24; }
+  .mvr-play { position:absolute; top:42%; left:50%; transform:translate(-50%,-50%) scale(0.85); z-index:4; width:50px; height:50px; border-radius:50%; background:rgba(255,255,255,0.92); color:#2563eb; display:grid; place-items:center; font-size:1rem; opacity:0; transition:opacity .3s, transform .3s; box-shadow:0 10px 24px rgba(0,0,0,0.4); }
+  .mvr-card:hover .mvr-play { opacity:1; transform:translate(-50%,-50%) scale(1); }
+
+  @media (max-width:768px) { .mvr-card { width:150px; } .mvr-track { gap:14px; } .mvr { padding:72px 0; } .mvr-lead { margin-bottom:40px; } }
+  @media (prefers-reduced-motion:reduce) { .mvr-track { animation:none; } }
+</style>
+
+<section class="mvr" id="movies" aria-label="Trending movies">
+  <div class="mvr-inner">
+    <span class="mvr-eyebrow">Now streaming</span>
+    <h2>Thousands Of <span class="mvr-accent">Movies &amp; Shows</span></h2>
+    <p class="mvr-lead">The latest blockbusters and box-set favourites — updated all the time.</p>
+  </div>
+  <div class="mvr-viewport">
+    <div class="mvr-track" id="mvrTrack">
+      <a class="mvr-card" href="#pricing">
+        <span class="mvr-badge"><i class="fa-solid fa-clapperboard"></i> HD</span><span class="mvr-badge rating">★ 7.8</span>
+        <span class="mvr-fallback" style="background:linear-gradient(160deg,#7c2d12,#b45309)"></span>
+        <span class="mvr-play"><i class="fa-solid fa-play"></i></span><span class="mvr-grad"></span>
+        <span class="mvr-meta"><span class="mvr-genre">Action</span><h4>Land of Bad</h4><span class="mvr-sub">2024 · Action</span></span>
+      </a>
+      <a class="mvr-card" href="#pricing">
+        <span class="mvr-badge"><i class="fa-solid fa-clapperboard"></i> 4K</span><span class="mvr-badge rating">★ 6.9</span>
+        <span class="mvr-fallback" style="background:linear-gradient(160deg,#3f6212,#65a30d)"></span>
+        <span class="mvr-play"><i class="fa-solid fa-play"></i></span><span class="mvr-grad"></span>
+        <span class="mvr-meta"><span class="mvr-genre">Comedy</span><h4>Lift</h4><span class="mvr-sub">2024 · Heist</span></span>
+      </a>
+      <a class="mvr-card" href="#pricing">
+        <span class="mvr-badge"><i class="fa-solid fa-clapperboard"></i> HD</span><span class="mvr-badge rating">★ 7.2</span>
+        <span class="mvr-fallback" style="background:linear-gradient(160deg,#7f1d1d,#991b1b)"></span>
+        <span class="mvr-play"><i class="fa-solid fa-play"></i></span><span class="mvr-grad"></span>
+        <span class="mvr-meta"><span class="mvr-genre">Thriller</span><h4>Madame Web</h4><span class="mvr-sub">2024 · Superhero</span></span>
+      </a>
+      <a class="mvr-card" href="#pricing">
+        <span class="mvr-badge"><i class="fa-solid fa-clapperboard"></i> 4K</span><span class="mvr-badge rating">★ 6.4</span>
+        <span class="mvr-fallback" style="background:linear-gradient(160deg,#1e293b,#475569)"></span>
+        <span class="mvr-play"><i class="fa-solid fa-play"></i></span><span class="mvr-grad"></span>
+        <span class="mvr-meta"><span class="mvr-genre">Action</span><h4>Retribution</h4><span class="mvr-sub">2023 · Thriller</span></span>
+      </a>
+      <a class="mvr-card" href="#pricing">
+        <span class="mvr-badge"><i class="fa-solid fa-clapperboard"></i> HD</span><span class="mvr-badge rating">★ 7.5</span>
+        <span class="mvr-fallback" style="background:linear-gradient(160deg,#111827,#374151)"></span>
+        <span class="mvr-play"><i class="fa-solid fa-play"></i></span><span class="mvr-grad"></span>
+        <span class="mvr-meta"><span class="mvr-genre">Horror</span><h4>Scream VI</h4><span class="mvr-sub">2023 · Horror</span></span>
+      </a>
+      <a class="mvr-card" href="#pricing">
+        <span class="mvr-badge"><i class="fa-solid fa-clapperboard"></i> 4K</span><span class="mvr-badge rating">★ 8.1</span>
+        <span class="mvr-fallback" style="background:linear-gradient(160deg,#1e3a8a,#1d4ed8)"></span>
+        <span class="mvr-play"><i class="fa-solid fa-play"></i></span><span class="mvr-grad"></span>
+        <span class="mvr-meta"><span class="mvr-genre">Sci-Fi</span><h4>Dune: Part Two</h4><span class="mvr-sub">2024 · Sci-Fi</span></span>
+      </a>
+      <a class="mvr-card" href="#pricing">
+        <span class="mvr-badge"><i class="fa-solid fa-clapperboard"></i> HD</span><span class="mvr-badge rating">★ 7.0</span>
+        <span class="mvr-fallback" style="background:linear-gradient(160deg,#312e81,#4f46e5)"></span>
+        <span class="mvr-play"><i class="fa-solid fa-play"></i></span><span class="mvr-grad"></span>
+        <span class="mvr-meta"><span class="mvr-genre">Action</span><h4>The Beekeeper</h4><span class="mvr-sub">2024 · Action</span></span>
+      </a>
+      <a class="mvr-card" href="#pricing">
+        <span class="mvr-badge"><i class="fa-solid fa-clapperboard"></i> 4K</span><span class="mvr-badge rating">★ 7.7</span>
+        <span class="mvr-fallback" style="background:linear-gradient(160deg,#155e75,#0891b2)"></span>
+        <span class="mvr-play"><i class="fa-solid fa-play"></i></span><span class="mvr-grad"></span>
+        <span class="mvr-meta"><span class="mvr-genre">Adventure</span><h4>Aquaman 2</h4><span class="mvr-sub">2023 · Adventure</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var track = document.getElementById('mvrTrack');
+    if (track && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      track.innerHTML += track.innerHTML; // duplicate for a seamless -50% loop
+    }
+  })();
+</script>
