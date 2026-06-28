@@ -186,7 +186,7 @@ body {
   font-size: 0.8rem;
   animation: floatCard 6s ease-in-out infinite;
 }
-.float-card .card-icon { font-size: 1.4rem; }
+.card-icon-fa { font-size: 1.3rem; color: var(--gold); }
 .float-card .card-title { color: var(--muted); font-size: 0.72rem; margin-bottom: 2px; }
 .float-card .card-val { font-weight: 700; color: #fff; font-size: 0.85rem; }
 
@@ -301,8 +301,12 @@ body {
   font-weight: 600;
   color: var(--muted);
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 .plat:hover { color: var(--gold); border-color: rgba(245,166,35,0.3); }
+.plat i { font-size: 0.9rem; }
 
 /* ===== SECTION COMMONS ===== */
 .section { padding: 100px 0; }
@@ -362,7 +366,7 @@ body {
   object-fit: cover;
   border-radius: 50%;
 }
-.photo-icon { font-size: 2.5rem; }
+.photo-icon-fa { font-size: 2.8rem; color: var(--muted); }
 .photo-text { font-size: 0.7rem; color: var(--muted); font-weight: 500; }
 
 .photo-badge {
@@ -463,7 +467,11 @@ body {
   font-weight: 500;
   border-bottom: 1px solid var(--border);
   color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+.niche-item i { color: var(--gold); width: 14px; }
 .niche-item:last-child { border-bottom: none; }
 
 /* ===== SERVICES ===== */
@@ -493,7 +501,12 @@ body {
   grid-column: span 1;
 }
 
-.service-icon { font-size: 2rem; margin-bottom: 16px; }
+.service-icon-fa {
+  font-size: 1.8rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
 .service-card h3 {
   font-size: 1.1rem;
   font-weight: 700;
@@ -671,7 +684,11 @@ body {
   color: var(--muted);
   font-size: 0.88rem;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+.info-item i { color: var(--gold); }
 
 /* ===== FOOTER ===== */
 .footer {
