@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youssef | Performance Marketing & Media Buyer</title>
+  <meta name="description" content="Senior Performance Marketer & Media Buyer specializing in Meta Ads, Google Ads, Lead Generation, and CRO." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #111827;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+    ::selection { background: #DBEAFE; color: #1E3A8A; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F1F5F9; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 99px; }
+
+    /* ===================== VARIABLES ===================== */
+    :root {
+      --blue: #2563EB;
+      --blue-dark: #1D4ED8;
+      --blue-light: #EFF6FF;
+      --blue-border: #BFDBFE;
+      --text: #111827;
+      --gray: #6B7280;
+      --light-gray: #9CA3AF;
+      --bg-light: #F8FAFC;
+      --border: #E5E7EB;
+      --white: #ffffff;
+      --radius-sm: 12px;
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 24px;
+    }
+
+    /* ===================== UTILITIES ===================== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 112px 0; }
+    .section-alt { background: var(--bg-light); }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      font-size: 11px; font-weight: 700;
+      color: var(--gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .badge-blue {
+      background: var(--blue-light);
+      border-color: var(--blue-border);
+      color: #1D4ED8;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .section-sub {
+      font-size: 1.125rem;
+      color: var(--gray);
+      max-width: 520px;
+      margin: 16px auto 0;
+    }
+    .text-center { text-align: center; }
+    .mb-20 { margin-bottom: 80px; }
+
+    /* ===================== ANIMATIONS ===================== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: 0.08s; }
+    .fade-up.d2 { transition-delay: 0.16s; }
+    .fade-up.d3 { transition-delay: 0.24s; }
+    .fade-up.d4 { transition-delay: 0.32s; }
+    .fade-up.d5 { transition-delay: 0.40s; }
+    .fade-up.d6 { transition-delay: 0.48s; }
+    .fade-up.d7 { transition-delay: 0.56s; }
+    .fade-up.d8 { transition-delay: 0.64s; }
+
+    /* ===================== NAVBAR ===================== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      display: flex; align-items: center;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+      background: transparent;
+    }
+    .navbar.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+    }
+    .navbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%;
+    }
+    .nav-logo {
+      font-size: 1.125rem; font-weight: 800; color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--blue); }
+    .nav-links {
+      display: flex; align-items: center; gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      padding: 8px 16px;
+      font-size: 14px; font-weight: 500;
+      color: var(--gray);
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+    .nav-cta {
+      padding: 10px 20px;
+      background: var(--blue);
+      color: #fff !important;
+      font-size: 14px; font-weight: 600;
+      border-radius: var(--radius);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--blue-dark) !important; transform: scale(1.03); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .nav-hamburger span {
+      display: block; width: 20px; height: 2px;
+      background: var(--gray);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .nav-mobile {
+      display: none;
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      flex-direction: column; gap: 4px;
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      padding: 12px 16px;
+      font-size: 14px; font-weight: 500;
+      color: var(--gray);
+      border-radius: var(--radius);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-mobile a:hover { color: var(--text); background: var(--bg-light); }
+    .nav-mobile .nav-cta { text-align: center; margin-top: 8px; }
+
+    /* ===================== HERO ===================== */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding-top: 64px;
+      background: #fff;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      opacity: 0.025;
+      background-image:
+        linear-gradient(#111827 1px, transparent 1px),
+        linear-gradient(90deg, #111827 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      top: 25%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: #EFF6FF;
+      opacity: 0.7;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 24px;
+    }
+    .hero-available {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      border-radius: 99px;
+      font-size: 13px; font-weight: 500; color: #1D4ED8;
+      margin-bottom: 32px;
+      animation: fadeIn 0.6s ease both;
+    }
+    .hero-available .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-h1 {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -0.04em;
+      line-height: 1.06;
+      margin-bottom: 24px;
+      animation: fadeIn 0.8s 0.1s ease both;
+    }
+    .hero-h1 .blue { color: var(--blue); }
+    .hero-p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--gray);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      animation: fadeIn 0.8s 0.2s ease both;
+    }
+    .hero-btns {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: center; gap: 16px;
+      margin-bottom: 80px;
+      animation: fadeIn 0.8s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 15px; font-weight: 600;
+      border-radius: var(--radius-lg);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: scale(1.04);
+      box-shadow: 0 8px 28px rgba(37,99,235,0.3);
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px;
+      background: #fff;
+      color: var(--text);
+      font-size: 15px; font-weight: 600;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: scale(1.03);
+    }
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      animation: fadeIn 0.8s 0.45s ease both;
+    }
+    .hero-stat {
+      background: #fff;
+      padding: 20px 16px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat:hover { background: var(--bg-light); }
+    .hero-stat-val {
+      font-size: 2rem; font-weight: 800;
+      color: var(--text); letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 11px; font-weight: 500;
+      color: var(--light-gray);
+      margin-top: 6px;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      animation: fadeIn 1s 1.2s ease both;
+    }
+    .hero-scroll span {
+      font-size: 11px; font-weight: 500;
+      color: #9CA3AF; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 16px; height: 16px;
+      border-right: 2px solid #9CA3AF;
+      border-bottom: 2px solid #9CA3AF;
+      transform: rotate(45deg);
+      animation: bounceDown 1.6s ease-in-out infinite;
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ===================== ABOUT ===================== */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .about-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 32px;
+    }
+    .tag {
+      padding: 6px 14px;
+      font-size: 13px; font-weight: 500;
+      color: var(--blue);
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      border-radius: 99px;
+    }
+    .principles-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .principle-card {
+      padding: 24px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .principle-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .icon-box {
+      width: 40px; height: 40px;
+      background: var(--blue-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+    .principle-card h3 {
+      font-size: 15px; font-weight: 700; color: var(--text);
+      margin-bottom: 8px;
+    }
+    .principle-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ===================== PROCESS ===================== */
+    .process-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .process-card {
+      display: flex; gap: 20px; align-items: flex-start;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .process-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    }
+    .process-card:hover .step-num {
+      background: var(--blue);
+      color: #fff;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 44px; height: 44px;
+      background: var(--blue-light);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--blue);
+      transition: background 0.3s, color 0.3s;
+    }
+    .process-card h3 {
+      font-size: 15px; font-weight: 700; color: var(--text);
+      margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+    .process-card:hover h3 { color: var(--blue); }
+    .process-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ===================== SKILLS ===================== */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .skill-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .skill-card:hover .icon-box { background: var(--blue); }
+    .skill-card:hover .icon-box svg { color: #fff; }
+    .skill-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .skill-pct {
+      font-size: 1.75rem; font-weight: 800;
+      color: var(--text); letter-spacing: -0.03em;
+    }
+    .skill-name {
+      font-size: 15px; font-weight: 700; color: var(--text);
+      margin-bottom: 12px;
+    }
+    .progress-bar {
+      height: 4px; background: #F1F5F9;
+      border-radius: 99px; overflow: hidden; margin-bottom: 16px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--blue);
+      border-radius: 99px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag {
+      padding: 4px 10px;
+      font-size: 11px; font-weight: 500;
+      color: var(--gray);
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    /* ===================== INDUSTRIES ===================== */
+    .industries-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .industry-card {
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .industry-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .industry-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .industry-card p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+    .ind-amber { background: linear-gradient(135deg,#FFFBEB,#FFF7ED); border-color: #FDE68A; }
+    .ind-blue { background: linear-gradient(135deg,#EFF6FF,#EEF2FF); border-color: #BFDBFE; }
+    .ind-pink { background: linear-gradient(135deg,#FFF0F6,#FFF1F2); border-color: #FBCFE8; }
+    .ind-purple { background: linear-gradient(135deg,#F5F3FF,#EEF2FF); border-color: #DDD6FE; }
+    .ind-yellow { background: linear-gradient(135deg,#FEFCE8,#FFFBEB); border-color: #FDE68A; }
+    .ind-red { background: linear-gradient(135deg,#FFF5F5,#FFF1F2); border-color: #FECACA; }
+    .ind-teal { background: linear-gradient(135deg,#F0FDFB,#ECFDF5); border-color: #99F6E4; }
+    .ind-slate { background: linear-gradient(135deg,#F8FAFC,#F1F5F9); border-color: #E2E8F0; }
+    .ind-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    /* ===================== TOOLS ===================== */
+    .tools-wrap {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
+    }
+    .tool-chip {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 20px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .tool-chip:hover {
+      transform: scale(1.07) translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+    .tool-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .tool-chip span { font-size: 14px; font-weight: 600; color: var(--text); }
+
+    /* ===================== PROJECTS ===================== */
+    .project-featured {
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      border: 1px solid;
+      margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .project-featured:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+    .project-featured-inner {
+      display: flex; align-items: center; gap: 32px;
+    }
+    .project-featured-left { flex: 1; }
+    .project-featured-right { text-align: right; flex-shrink: 0; }
+    .project-cat {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 0;
+    }
+    .project-title { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+    .project-desc { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 20px; max-width: 560px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .project-tag {
+      padding: 6px 12px;
+      font-size: 12px; font-weight: 500;
+      color: var(--gray);
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #fff;
+      border-radius: 8px;
+    }
+    .project-metric {
+      font-size: 2.25rem; font-weight: 800;
+      color: var(--text); letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .project-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600;
+      transition: transform 0.2s;
+    }
+    .project-cta:hover { transform: translateX(4px); }
+
+    .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .project-card {
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.09);
+    }
+    .project-card-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .project-card-meta {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 16px; margin-bottom: 12px;
+    }
+    .project-card-title { font-size: 16px; font-weight: 700; color: var(--text); }
+    .project-card-metric { font-size: 14px; font-weight: 800; color: var(--text); white-space: nowrap; flex-shrink: 0; }
+    .project-card-desc { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 16px; }
+
+    /* ===================== CASE STUDY ===================== */
+    .cs-metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+    .cs-metric {
+      background: #fff;
+      padding: 24px 16px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .cs-metric:last-child { border-right: none; }
+    .cs-metric-val { font-size: 1.75rem; font-weight: 800; color: var(--blue); letter-spacing: -0.02em; }
+    .cs-metric-label { font-size: 12px; color: var(--gray); margin-top: 4px; font-weight: 500; }
+    .accordion { display: flex; flex-direction: column; gap: 12px; }
+    .accordion-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .accordion-btn {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px;
+      background: #fff;
+      text-align: left;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .accordion-btn:hover { background: var(--bg-light); }
+    .accordion-btn-left { display: flex; align-items: center; gap: 16px; }
+    .accordion-num {
+      width: 28px; height: 28px;
+      background: var(--blue-light);
+      color: var(--blue);
+      border-radius: 8px;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .accordion-btn-title { font-size: 15px; font-weight: 600; color: var(--text); }
+    .accordion-chevron { font-size: 16px; color: var(--gray); transition: transform 0.3s; }
+    .accordion-item.open .accordion-chevron { transform: rotate(180deg); }
+    .accordion-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.22,1,0.36,1);
+      background: #fff;
+    }
+    .accordion-item.open .accordion-body { max-height: 200px; }
+    .accordion-body-inner {
+      padding: 0 24px 20px;
+      font-size: 14px; color: var(--gray); line-height: 1.75;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    /* ===================== CREATIVE ANALYSIS ===================== */
+    .creative-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .creative-label-bar {
+      padding: 12px 24px;
+      background: var(--bg-light);
+      border-bottom: 1px solid var(--border);
+      font-size: 11px; font-weight: 700;
+      color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .creative-compare {
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .creative-before, .creative-after {
+      padding: 24px;
+    }
+    .creative-before { background: rgba(254,242,242,0.4); border-right: 1px solid var(--border); }
+    .creative-after { background: rgba(240,253,244,0.4); }
+    .compare-head {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 16px;
+    }
+    .compare-dot {
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .dot-red { background: #FEE2E2; color: #EF4444; }
+    .dot-green { background: #DCFCE7; color: #16A34A; }
+    .compare-label {
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .label-red { color: #EF4444; }
+    .label-green { color: #16A34A; }
+    .compare-quote {
+      font-size: 15px; font-weight: 600; color: var(--text);
+      line-height: 1.5; margin-bottom: 16px;
+    }
+    .compare-list { display: flex; flex-direction: column; gap: 8px; }
+    .compare-list li {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; list-style: none;
+    }
+    .bullet-red { width: 6px; height: 6px; border-radius: 50%; background: #EF4444; flex-shrink: 0; }
+    .bullet-green { width: 6px; height: 6px; border-radius: 50%; background: #22C55E; flex-shrink: 0; }
+    .text-red { color: #DC2626; }
+    .text-green { color: #15803D; }
+
+    /* ===================== CUSTOMER RESEARCH ===================== */
+    .sources-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-bottom: 56px;
+    }
+    .source-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+    .source-card:hover { transform: translateY(-3px); }
+    .source-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 12px; font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .source-desc { font-size: 12px; color: var(--gray); line-height: 1.6; }
+    .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .insight-card {
+      background: #fff;
+      border: 1px solid;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .insight-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+    .insight-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .insight-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+    .insight-list { display: flex; flex-direction: column; gap: 10px; }
+    .insight-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--gray); list-style: none;
+      line-height: 1.5;
+    }
+    .insight-bullet {
+      width: 6px; height: 6px; border-radius: 50%;
+      flex-shrink: 0; margin-top: 6px;
+    }
+
+    /* ===================== COPYWRITING ===================== */
+    .copy-card {
+      display: flex; gap: 20px;
+      padding: 24px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 16px;
+      transition: background 0.3s, border-color 0.3s, transform 0.2s;
+      cursor: default;
+    }
+    .copy-card:hover {
+      background: var(--blue-light);
+      border-color: var(--blue-border);
+      transform: translateX(4px);
+    }
+    .copy-card:hover .copy-quote { color: #1D4ED8; }
+    .copy-type-col { flex-shrink: 0; min-width: 90px; }
+    .copy-type-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #DBEAFE;
+      color: var(--blue);
+      font-size: 11px; font-weight: 700;
+      border-radius: 8px;
+      margin-bottom: 4px;
+    }
+    .copy-sublabel { font-size: 11px; font-weight: 500; color: #9CA3AF; }
+    .copy-quote {
+      font-size: 17px; font-weight: 600; color: var(--text);
+      line-height: 1.4; margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+    .copy-note { font-size: 13px; color: var(--gray); }
+
+    /* ===================== TESTIMONIALS ===================== */
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+    .stars { display: flex; gap: 4px; margin-bottom: 16px; }
+    .star { color: #F59E0B; font-size: 14px; }
+    .testimonial-text {
+      font-size: 15px; color: #374151; line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .testimonial-footer {
+      display: flex; align-items: center; gap: 12px;
+      padding-top: 16px; border-top: 1px solid var(--border);
+    }
+    .testimonial-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .testimonial-name { font-size: 14px; font-weight: 600; color: var(--text); }
+    .testimonial-role { font-size: 12px; color: var(--gray); }
+
+    /* ===================== CONTACT ===================== */
+    .contact-banner {
+      background: #111827;
+      border-radius: 24px;
+      padding: 56px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 56px;
+    }
+    .contact-banner-grid {
+      position: absolute; inset: 0;
+      opacity: 0.04;
+      background-image:
+        linear-gradient(white 1px, transparent 1px),
+        linear-gradient(90deg, white 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .contact-banner-glow {
+      position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 320px; height: 160px;
+      background: var(--blue);
+      opacity: 0.2;
+      filter: blur(60px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .contact-banner-available {
+      position: relative; z-index: 1;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 99px;
+      font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8);
+      margin-bottom: 24px;
+    }
+    .contact-banner-available .dot { background: #4ADE80; }
+    .contact-banner h2 {
+      position: relative; z-index: 1;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 900; color: #fff;
+      letter-spacing: -0.04em; margin-bottom: 16px;
+    }
+    .contact-banner p {
+      position: relative; z-index: 1;
+      font-size: 1.1rem; color: rgba(255,255,255,0.6);
+      margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto;
+    }
+    .contact-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .contact-link:hover {
+      border-color: var(--blue-border);
+      background: var(--blue-light);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.07);
+    }
+    .contact-link:hover .contact-link-val { color: var(--blue); }
+    .contact-link-icon {
+      width: 40px; height: 40px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+    .contact-link:hover .contact-link-icon { border-color: var(--blue); }
+    .contact-link-label { font-size: 11px; font-weight: 500; color: #9CA3AF; }
+    .contact-link-val { font-size: 13px; font-weight: 600; color: var(--text); transition: color 0.2s; }
+    .contact-cv { text-align: center; }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .footer-logo { font-size: 16px; font-weight: 800; color: var(--text); }
+    .footer-logo span { color: var(--blue); }
+    .footer-copy { font-size: 13px; color: #9CA3AF; }
+    .footer-right { font-size: 13px; color: #9CA3AF; }
+
+    /* ===================== SVG ICONS ===================== */
+    .icon { width: 20px; height: 20px; display: inline-block; vertical-align: middle; }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 1024px) {
+      .industries-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 80px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: 1fr 1fr; }
+      .project-featured-inner { flex-direction: column; }
+      .project-featured-right { text-align: left; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .cs-metrics { grid-template-columns: 1fr; }
+      .cs-metric { border-right: none; border-bottom: 1px solid var(--border); }
+      .cs-metric:last-child { border-bottom: none; }
+      .creative-compare { grid-template-columns: 1fr; }
+      .creative-before { border-right: none; border-bottom: 1px solid var(--border); }
+      .sources-grid { grid-template-columns: 1fr 1fr; }
+      .insights-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-links { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stat:nth-child(2) { border-right: none; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .copy-card { flex-direction: column; gap: 12px; }
+      .contact-banner { padding: 40px 24px; }
+    }
+    @media (max-width: 480px) {
+      .industries-grid { grid-template-columns: 1fr; }
+      .sources-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =================== NAVBAR =================== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="#hero" class="nav-logo">Youssef<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#process" onclick="closeMenu()">Process</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#research" onclick="closeMenu()">Research</a>
+  <a href="#contact" class="nav-cta" onclick="closeMenu()">Let's Talk</a>
+</nav>
+
+<!-- =================== HERO =================== -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-available">
+      <span class="dot"></span>
+      Available for new projects
+    </div>
+    <h1 class="hero-h1">
+      Performance Marketing<br>
+      <span class="blue">That Actually Scales.</span>
+    </h1>
+    <p class="hero-p">
+      I help brands grow through data-driven paid media, deep market research,
+      and conversion-focused strategy — from first ad to profitable scale.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">
+        <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        View Projects
+      </a>
+      <a href="cv.pdf" download class="btn-secondary">
+        <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download CV
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-val">50+</div>
+        <div class="hero-stat-label">Campaigns Launched</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">3x</div>
+        <div class="hero-stat-label">Avg. ROAS Delivered</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-val">8</div>
+        <div class="hero-stat-label">Industries Covered</div>
+      </div>
+      <div class="hero-stat" style="border-right:none">
+        <div class="hero-stat-val">100%</div>
+        <div class="hero-stat-label">Data-Driven</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- =================== ABOUT =================== -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="badge fade-up">About Me</div>
+        <h2 class="section-title fade-up d1">
+          I turn ad spend into<br>
+          <span style="color:var(--blue)">predictable revenue.</span>
+        </h2>
+        <p style="font-size:1.05rem;color:var(--gray);line-height:1.75;margin-top:24px" class="fade-up d2">
+          I'm a Performance Marketing specialist and Media Buyer with hands-on experience
+          across Meta Ads, Google Ads, and multi-channel paid strategies. I combine deep
+          customer research with sharp creative direction and relentless optimization to
+          build marketing systems that scale.
+        </p>
+        <p style="font-size:1.05rem;color:var(--gray);line-height:1.75;margin-top:16px" class="fade-up d3">
+          My approach is simple: understand the market better than anyone else,
+          build an irresistible offer, and then distribute it to exactly the right people
+          at the right cost.
+        </p>
+        <div class="about-tags fade-up d4">
+          <span class="tag">Meta Ads</span>
+          <span class="tag">Google Ads</span>
+          <span class="tag">Lead Gen</span>
+          <span class="tag">CRO</span>
+          <span class="tag">Copywriting</span>
+          <span class="tag">Analytics</span>
+        </div>
+      </div>
+      <div class="principles-grid">
+        <div class="principle-card fade-up d2">
+          <div class="icon-box">🧠</div>
+          <h3>Research First</h3>
+          <p>Every decision starts with deep market understanding, not assumptions.</p>
+        </div>
+        <div class="principle-card fade-up d3">
+          <div class="icon-box">🎯</div>
+          <h3>Precision Targeting</h3>
+          <p>Reach the right audience at the right moment with the right message.</p>
+        </div>
+        <div class="principle-card fade-up d4">
+          <div class="icon-box">📈</div>
+          <h3>Data-Driven Scaling</h3>
+          <p>Scale what works, cut what doesn't — relentlessly and systematically.</p>
+        </div>
+        <div class="principle-card fade-up d5">
+          <div class="icon-box">👥</div>
+          <h3>Customer-Centric</h3>
+          <p>Every ad, copy, and page speaks directly to real customer pain points.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PROCESS =================== -->
+<section id="process" class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-20">
+      <div class="badge fade-up" style="background:#fff">My Process</div>
+      <h2 class="section-title fade-up d1">From zero to scalable — systematically.</h2>
+      <p class="section-sub fade-up d2">A repeatable 10-step framework I apply to every project to minimize risk and maximize ROI.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card fade-up">
+        <div class="step-num">01</div>
+        <div><h3>Business Goals</h3><p>Understand KPIs, revenue targets, and what success looks like for the business.</p></div>
+      </div>
+      <div class="process-card fade-up d1">
+        <div class="step-num">02</div>
+        <div><h3>Market Research</h3><p>Analyze market size, trends, seasonality, and category-level opportunities.</p></div>
+      </div>
+      <div class="process-card fade-up d1">
+        <div class="step-num">03</div>
+        <div><h3>Competitor Analysis</h3><p>Audit competitor ads, landing pages, offers, and positioning using spy tools.</p></div>
+      </div>
+      <div class="process-card fade-up d2">
+        <div class="step-num">04</div>
+        <div><h3>Customer Research</h3><p>Mine Reddit, reviews, forums, and social for real customer language and needs.</p></div>
+      </div>
+      <div class="process-card fade-up d2">
+        <div class="step-num">05</div>
+        <div><h3>Offer Creation</h3><p>Build an irresistible offer stack with clear value, urgency, and differentiation.</p></div>
+      </div>
+      <div class="process-card fade-up d3">
+        <div class="step-num">06</div>
+        <div><h3>Copywriting</h3><p>Write hooks, headlines, and body copy grounded in customer psychology.</p></div>
+      </div>
+      <div class="process-card fade-up d3">
+        <div class="step-num">07</div>
+        <div><h3>Landing Page</h3><p>Design and optimize a conversion-focused page aligned with ad messaging.</p></div>
+      </div>
+      <div class="process-card fade-up d4">
+        <div class="step-num">08</div>
+        <div><h3>Media Buying</h3><p>Launch campaigns on Meta and Google with precision targeting and structure.</p></div>
+      </div>
+      <div class="process-card fade-up d4">
+        <div class="step-num">09</div>
+        <div><h3>Optimization</h3><p>Analyze data, kill losers, iterate on winners, improve creative and targeting.</p></div>
+      </div>
+      <div class="process-card fade-up d5">
+        <div class="step-num">10</div>
+        <div><h3>Scaling</h3><p>Scale proven campaigns horizontally and vertically while maintaining efficiency.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SKILLS =================== -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="text-center mb-20">
+      <div class="badge fade-up">Skills</div>
+      <h2 class="section-title fade-up d1">Full-stack marketing expertise.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-head">
+          <div class="icon-box">🎯</div>
+          <span class="skill-pct">95%</span>
+        </div>
+        <div class="skill-name">Paid Advertising</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="95"></div></div>
+        <div class="skill-tags"><span class="skill-tag">Meta Ads</span><span class="skill-tag">Google Ads</span><span class="skill-tag">TikTok</span></div>
+      </div>
+      <div class="skill-card fade-up d1">
+        <div class="skill-head">
+          <div class="icon-box">⚡</div>
+          <span class="skill-pct">92%</span>
+        </div>
+        <div class="skill-name">Lead Generation</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="92"></div></div>
+        <div class="skill-tags"><span class="skill-tag">B2C</span><span class="skill-tag">B2B</span><span class="skill-tag">Real Estate</span></div>
+      </div>
+      <div class="skill-card fade-up d2">
+        <div class="skill-head">
+          <div class="icon-box">🔍</div>
+          <span class="skill-pct">78%</span>
+        </div>
+        <div class="skill-name">SEO</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="78"></div></div>
+        <div class="skill-tags"><span class="skill-tag">On-Page</span><span class="skill-tag">Technical</span><span class="skill-tag">Local</span></div>
+      </div>
+      <div class="skill-card fade-up d1">
+        <div class="skill-head">
+          <div class="icon-box">📐</div>
+          <span class="skill-pct">90%</span>
+        </div>
+        <div class="skill-name">Landing Pages</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="90"></div></div>
+        <div class="skill-tags"><span class="skill-tag">CRO</span><span class="skill-tag">A/B Testing</span><span class="skill-tag">UX</span></div>
+      </div>
+      <div class="skill-card fade-up d2">
+        <div class="skill-head">
+          <div class="icon-box">✍️</div>
+          <span class="skill-pct">88%</span>
+        </div>
+        <div class="skill-name">Copywriting</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="88"></div></div>
+        <div class="skill-tags"><span class="skill-tag">Direct Response</span><span class="skill-tag">UGC</span><span class="skill-tag">Email</span></div>
+      </div>
+      <div class="skill-card fade-up d3">
+        <div class="skill-head">
+          <div class="icon-box">📊</div>
+          <span class="skill-pct">85%</span>
+        </div>
+        <div class="skill-name">CRO</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="85"></div></div>
+        <div class="skill-tags"><span class="skill-tag">Heatmaps</span><span class="skill-tag">Funnels</span><span class="skill-tag">Testing</span></div>
+      </div>
+      <div class="skill-card fade-up d2">
+        <div class="skill-head">
+          <div class="icon-box">🌐</div>
+          <span class="skill-pct">93%</span>
+        </div>
+        <div class="skill-name">Marketing Strategy</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="93"></div></div>
+        <div class="skill-tags"><span class="skill-tag">GTM</span><span class="skill-tag">Positioning</span><span class="skill-tag">Offers</span></div>
+      </div>
+      <div class="skill-card fade-up d3">
+        <div class="skill-head">
+          <div class="icon-box">💻</div>
+          <span class="skill-pct">80%</span>
+        </div>
+        <div class="skill-name">WordPress</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="80"></div></div>
+        <div class="skill-tags"><span class="skill-tag">Elementor</span><span class="skill-tag">WooCommerce</span><span class="skill-tag">Speed</span></div>
+      </div>
+      <div class="skill-card fade-up d4">
+        <div class="skill-head">
+          <div class="icon-box">📉</div>
+          <span class="skill-pct">88%</span>
+        </div>
+        <div class="skill-name">Analytics</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="88"></div></div>
+        <div class="skill-tags"><span class="skill-tag">GA4</span><span class="skill-tag">GTM</span><span class="skill-tag">Reporting</span></div>
+      </div>
+      <div class="skill-card fade-up d3">
+        <div class="skill-head">
+          <div class="icon-box">🤖</div>
+          <span class="skill-pct">87%</span>
+        </div>
+        <div class="skill-name">AI Tools</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="87"></div></div>
+        <div class="skill-tags"><span class="skill-tag">ChatGPT</span><span class="skill-tag">Claude</span><span class="skill-tag">Automation</span></div>
+      </div>
+      <div class="skill-card fade-up d4">
+        <div class="skill-head">
+          <div class="icon-box">🔬</div>
+          <span class="skill-pct">94%</span>
+        </div>
+        <div class="skill-name">Market Research</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="94"></div></div>
+        <div class="skill-tags"><span class="skill-tag">Reddit</span><span class="skill-tag">Reviews</span><span class="skill-tag">Surveys</span></div>
+      </div>
+      <div class="skill-card fade-up d5">
+        <div class="skill-head">
+          <div class="icon-box">🎨</div>
+          <span class="skill-pct">83%</span>
+        </div>
+        <div class="skill-name">Creative Direction</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="83"></div></div>
+        <div class="skill-tags"><span class="skill-tag">Ad Creative</span><span class="skill-tag">Hooks</span><span class="skill-tag">Angles</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== INDUSTRIES =================== -->
+<section id="research" class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-20">
+      <div class="badge fade-up" style="background:#fff">Industries</div>
+      <h2 class="section-title fade-up d1">Deep expertise across markets.</h2>
+      <p class="section-sub fade-up d2">Every industry has its own language. I learn it before running a single ad.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card ind-amber fade-up">
+        <div class="ind-icon" style="background:#FDE68A">🏠</div>
+        <h3>Real Estate</h3>
+        <p>Lead generation and buyer/seller funnels for agents and developers.</p>
+      </div>
+      <div class="industry-card ind-blue fade-up d1">
+        <div class="ind-icon" style="background:#BFDBFE">💻</div>
+        <h3>SaaS</h3>
+        <p>Trial signups, MRR growth, and retention marketing for software products.</p>
+      </div>
+      <div class="industry-card ind-pink fade-up d1">
+        <div class="ind-icon" style="background:#FBCFE8">👶</div>
+        <h3>Baby & Parenting</h3>
+        <p>Emotional-driven campaigns for new parents with trust-building creative.</p>
+      </div>
+      <div class="industry-card ind-purple fade-up d2">
+        <div class="ind-icon" style="background:#DDD6FE">📺</div>
+        <h3>IPTV</h3>
+        <p>Subscription funnels and audience targeting for streaming services.</p>
+      </div>
+      <div class="industry-card ind-yellow fade-up d2">
+        <div class="ind-icon" style="background:#FEF08A">☀️</div>
+        <h3>Solar Energy</h3>
+        <p>High-intent lead generation and educational ad campaigns for solar installers.</p>
+      </div>
+      <div class="industry-card ind-red fade-up d3">
+        <div class="ind-icon" style="background:#FECACA">❤️</div>
+        <h3>Healthcare</h3>
+        <p>Compliant, compassionate advertising for clinics and health brands.</p>
+      </div>
+      <div class="industry-card ind-teal fade-up d3">
+        <div class="ind-icon" style="background:#99F6E4">🎓</div>
+        <h3>Education</h3>
+        <p>Course sales, webinar funnels, and enrollment campaigns for ed-tech.</p>
+      </div>
+      <div class="industry-card ind-slate fade-up d4">
+        <div class="ind-icon" style="background:#E2E8F0">📍</div>
+        <h3>Local Businesses</h3>
+        <p>Geo-targeted campaigns that drive foot traffic and local leads.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== TOOLS =================== -->
+<section id="tools" class="section">
+  <div class="container">
+    <div class="text-center mb-20">
+      <div class="badge fade-up">Tools</div>
+      <h2 class="section-title fade-up d1">The stack I rely on.</h2>
+    </div>
+    <div class="tools-wrap fade-up d2">
+      <div class="tool-chip"><div class="tool-icon" style="background:#EBF5FB;color:#1877F2">M</div><span>Meta Ads</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#FEF2F2;color:#EA4335">G</div><span>Google Ads</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#FFF3E0;color:#F57C00">A</div><span>GA4</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#E0F2F1;color:#00897B">T</div><span>Tag Manager</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#E8F4F8;color:#21759B">W</div><span>WordPress</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#F3E8FF;color:#7C3AED">C</div><span>Canva</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#FFF0EE;color:#F24E1E">F</div><span>Figma</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#F8FAFC;color:#111827">N</div><span>Notion</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#E8F8F4;color:#10A37F">⊕</div><span>ChatGPT</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#FFFBEB;color:#D97706">◆</div><span>Claude</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#F5F3FF;color:#5B21B6">P</div><span>Perplexity</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#EFF6FF;color:#1A73E8">↗</div><span>Google Trends</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#EBF5FB;color:#1877F2">L</div><span>Ads Library</span></div>
+      <div class="tool-chip"><div class="tool-icon" style="background:#FFF4EF;color:#FF642D">S</div><span>SEMrush</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PROJECTS =================== -->
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-20">
+      <div class="badge fade-up" style="background:#fff">Projects</div>
+      <h2 class="section-title fade-up d1">Work that speaks for itself.</h2>
+      <p class="section-sub fade-up d2">A selection of projects across industries, each one built from research to results.</p>
+    </div>
+    <!-- Featured -->
+    <div class="project-featured fade-up ind-purple" style="border-color:#DDD6FE">
+      <div class="project-featured-inner">
+        <div class="project-featured-left">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <div class="ind-icon" style="background:#DDD6FE;width:48px;height:48px;border-radius:16px">📺</div>
+            <span class="project-cat" style="color:#7C3AED">Media Strategy</span>
+          </div>
+          <h3 class="project-title">IPTV Marketing Strategy</h3>
+          <p class="project-desc">Built a full acquisition funnel for an IPTV subscription service — from audience research to ad creative, resulting in a scalable growth engine.</p>
+          <div class="project-tags">
+            <span class="project-tag">Meta Ads</span>
+            <span class="project-tag">Copywriting</span>
+            <span class="project-tag">Funnel Design</span>
+          </div>
+        </div>
+        <div class="project-featured-right">
+          <div class="project-metric">3.2x ROAS</div>
+          <a href="#case-study" class="project-cta" style="color:#7C3AED">
+            View Case Study →
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Grid -->
+    <div class="projects-grid">
+      <div class="project-card fade-up ind-amber" style="border-color:#FDE68A">
+        <div class="project-card-head">
+          <div class="ind-icon" style="background:#FDE68A;width:40px;height:40px;border-radius:12px">🏠</div>
+          <span class="project-cat" style="color:#B45309;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em">Lead Generation</span>
+        </div>
+        <div class="project-card-meta">
+          <div class="project-card-title">Real Estate Lead Gen</div>
+          <div class="project-card-metric">−40% CPL</div>
+        </div>
+        <p class="project-card-desc">Designed a hyper-targeted local campaign for a real estate agency that cut cost-per-lead by 40% while tripling qualified inquiry volume.</p>
+        <div class="project-tags" style="margin-bottom:16px"><span class="project-tag">Google Ads</span><span class="project-tag">Landing Page</span><span class="project-tag">Local Targeting</span></div>
+        <a href="#" class="project-cta" style="color:#B45309;font-size:13px">View Case Study →</a>
+      </div>
+      <div class="project-card fade-up d1 ind-pink" style="border-color:#FBCFE8">
+        <div class="project-card-head">
+          <div class="ind-icon" style="background:#FBCFE8;width:40px;height:40px;border-radius:12px">👶</div>
+          <span class="project-cat" style="color:#9D174D;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em">Market Research</span>
+        </div>
+        <div class="project-card-meta">
+          <div class="project-card-title">Baby Brand Research</div>
+          <div class="project-card-metric">12 Insights</div>
+        </div>
+        <p class="project-card-desc">Conducted deep customer research across Reddit, Amazon, and parenting forums to uncover winning angles and product positioning.</p>
+        <div class="project-tags" style="margin-bottom:16px"><span class="project-tag">Customer Research</span><span class="project-tag">Positioning</span><span class="project-tag">Reddit Mining</span></div>
+        <a href="#" class="project-cta" style="color:#9D174D;font-size:13px">View Case Study →</a>
+      </div>
+      <div class="project-card fade-up d1 ind-teal" style="border-color:#99F6E4">
+        <div class="project-card-head">
+          <div class="ind-icon" style="background:#99F6E4;width:40px;height:40px;border-radius:12px">📐</div>
+          <span class="project-cat" style="color:#0F766E;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em">CRO</span>
+        </div>
+        <div class="project-card-meta">
+          <div class="project-card-title">Landing Page Optimization</div>
+          <div class="project-card-metric">+28% CVR</div>
+        </div>
+        <p class="project-card-desc">Audited and redesigned a SaaS landing page using heatmap data, session recordings, and copy testing — increasing conversion rate significantly.</p>
+        <div class="project-tags" style="margin-bottom:16px"><span class="project-tag">CRO</span><span class="project-tag">A/B Testing</span><span class="project-tag">Copywriting</span></div>
+        <a href="#" class="project-cta" style="color:#0F766E;font-size:13px">View Case Study →</a>
+      </div>
+      <div class="project-card fade-up d2 ind-blue" style="border-color:#BFDBFE">
+        <div class="project-card-head">
+          <div class="ind-icon" style="background:#BFDBFE;width:40px;height:40px;border-radius:12px">📊</div>
+          <span class="project-cat" style="color:#1E40AF;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em">Creative Analysis</span>
+        </div>
+        <div class="project-card-meta">
+          <div class="project-card-title">Meta Ads Analysis</div>
+          <div class="project-card-metric">50+ Ads</div>
+        </div>
+        <p class="project-card-desc">Analyzed 50+ competitor ads from the Meta Ads Library to extract winning creative formulas, hooks, and offer structures for a new campaign.</p>
+        <div class="project-tags" style="margin-bottom:16px"><span class="project-tag">Ads Library</span><span class="project-tag">Creative Strategy</span><span class="project-tag">Hooks</span></div>
+        <a href="#" class="project-cta" style="color:#1E40AF;font-size:13px">View Case Study →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CASE STUDY =================== -->
+<section id="case-study" class="section">
+  <div class="container" style="max-width:860px">
+    <div class="text-center mb-20">
+      <div class="badge fade-up">Case Study</div>
+      <h2 class="section-title fade-up d1">IPTV Marketing Strategy</h2>
+      <p class="section-sub fade-up d2">How I built a scalable acquisition system for an IPTV subscription brand from scratch.</p>
+    </div>
+    <div class="cs-metrics fade-up d1">
+      <div class="cs-metric"><div class="cs-metric-val">+200%</div><div class="cs-metric-label">CTR Improvement</div></div>
+      <div class="cs-metric"><div class="cs-metric-val">3.2x</div><div class="cs-metric-label">Final ROAS</div></div>
+      <div class="cs-metric"><div class="cs-metric-val">−38%</div><div class="cs-metric-label">CPA Reduction</div></div>
+    </div>
+    <div class="accordion fade-up d2">
+      <div class="accordion-item open">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <div class="accordion-btn-left">
+            <span class="accordion-num">01</span>
+            <span class="accordion-btn-title">The Problem</span>
+          </div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            The client had a quality product but zero marketing infrastructure. No defined audience, no tested creative angles, and no conversion funnel. They were losing money on untargeted Meta campaigns with a 0.8% CTR and 1.1x ROAS.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <div class="accordion-btn-left">
+            <span class="accordion-num">02</span>
+            <span class="accordion-btn-title">Research & Analysis</span>
+          </div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            I spent 3 days mining Reddit (r/cordcutters, r/IPTV), Facebook groups, Trustpilot, and YouTube comments. I extracted 47 unique customer pain points, objections, and buying triggers. The #1 insight: customers didn't care about price — they cared about reliability and content variety.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <div class="accordion-btn-left">
+            <span class="accordion-num">03</span>
+            <span class="accordion-btn-title">Competitor Analysis</span>
+          </div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Analyzed 60+ ads from the Meta Ads Library. Identified 3 dominant creative angles: price comparison, channel list showcase, and free trial hooks. Found a gap: nobody was addressing the 'cutting the cable' emotional story angle.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <div class="accordion-btn-left">
+            <span class="accordion-num">04</span>
+            <span class="accordion-btn-title">Strategy & Offer</span>
+          </div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Repositioned the offer from 'cheap IPTV' to 'never miss your favorite shows again.' Built a 7-day free trial funnel with a risk-reversal guarantee. Created 3 ad angles: emotional story, logical comparison, and social proof.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <div class="accordion-btn-left">
+            <span class="accordion-num">05</span>
+            <span class="accordion-btn-title">Creative Direction</span>
+          </div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Scripted 6 UGC-style video ads and 4 static creatives. Hooks tested: "I canceled Netflix after this...", "Watch 10,000+ channels for less than your morning coffee", and "7 days free — no credit card needed."
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAccordion(this)">
+          <div class="accordion-btn-left">
+            <span class="accordion-num">06</span>
+            <span class="accordion-btn-title">Results & KPIs</span>
+          </div>
+          <span class="accordion-chevron">▼</span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            After 30 days: CTR improved from 0.8% to 2.4%. CPA dropped 38%. ROAS reached 3.2x. The winning ad was the emotional cable-cutting story. Free trial-to-paid conversion rate: 34%.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CREATIVE ANALYSIS =================== -->
+<section id="creative-analysis" class="section section-alt">
+  <div class="container">
+    <div class="text-center mb-20">
+      <div class="badge fade-up" style="background:#fff">Creative Analysis</div>
+      <h2 class="section-title fade-up d1">Before & after — the difference detail makes.</h2>
+      <p class="section-sub fade-up d2">Small creative changes compound into big performance differences.</p>
+    </div>
+
+    <div class="creative-card fade-up">
+      <div class="creative-label-bar">Ad Hook</div>
+      <div class="creative-compare">
+        <div class="creative-before">
+          <div class="compare-head"><div class="compare-dot dot-red">✕</div><span class="compare-label label-red">Before</span></div>
+          <p class="compare-quote">"Best IPTV Service — Watch 10,000 Channels!"</p>
+          <ul class="compare-list">
+            <li><span class="bullet-red"></span><span class="text-red">No emotional hook</span></li>
+            <li><span class="bullet-red"></span><span class="text-red">Sounds like spam</span></li>
+            <li><span class="bullet-red"></span><span class="text-red">No curiosity gap</span></li>
+          </ul>
+        </div>
+        <div class="creative-after">
+          <div class="compare-head"><div class="compare-dot dot-green">✓</div><span class="compare-label label-green">After</span></div>
+          <p class="compare-quote">"I canceled Netflix last month. Here's what I use now instead (and it's cheaper)."</p>
+          <ul class="compare-list">
+            <li><span class="bullet-green"></span><span class="text-green">Curiosity-driven</span></li>
+            <li><span class="bullet-green"></span><span class="text-green">First-person authority</span></li>
+            <li><span class="bullet-green"></span><span class="text-green">Implies cost saving</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="creative-card fade-up d1">
+      <div class="creative-label-bar">CTA Copy</div>
+      <div class="creative-compare">
+        <div class="creative-before">
+          <div class="compare-head"><div class="compare-dot dot-red">✕</div><span class="compare-label label-red">Before</span></div>
+          <p class="compare-quote">"Click Here to Subscribe"</p>
+          <ul class="compare-list">
+            <li><span class="bullet-red"></span><span class="text-red">Generic</span></li>
+            <li><span class="bullet-red"></span><span class="text-red">No value in the action</span></li>
+            <li><span class="bullet-red"></span><span class="text-red">Passive language</span></li>
+          </ul>
+        </div>
+        <div class="creative-after">
+          <div class="compare-head"><div class="compare-dot dot-green">✓</div><span class="compare-label label-green">After</span></div>
+          <p class="compare-quote">"Start Watching Free for 7 Days →"</p>
+          <ul class="compare-list">
+            <li><span class="bullet-green"></span><span class="text-green">Outcome-focused</span></li>
+            <li><span class="bullet-green"></span><span class="text-green">Risk-free framing</span></li>
+            <li><span class="bullet-green"></span><span class="text-green">Action + benefit</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="creative-card fade-up d2">
+      <div class="creative-label-bar">Ad Visual</div>
+      <div class="creative-compare">
+        <div class="creative-before">
+          <div class="compare-head"><div class="compare-dot dot-red">✕</div><span class="compare-label label-red">Before</span></div>
+          <p class="compare-quote">"Stock photo of a remote control with logo overlay"</p>
+          <ul class="compare-list">
+            <li><span class="bullet-red"></span><span class="text-red">Ignored in feed</span></li>
+            <li><span class="bullet-red"></span><span class="text-red">No context</span></li>
+            <li><span class="bullet-red"></span><span class="text-red">Feels corporate</span></li>
+          </ul>
+        </div>
+        <div class="creative-after">
+          <div class="compare-head"><div class="compare-dot dot-green">✓</div><span class="compare-label label-green">After</span></div>
+          <p class="compare-quote">"Person reacting to their TV bill, then smiling — UGC-style video"</p>
+          <ul class="compare-list">
+            <li><span class="bullet-green"></span><span class="text-green">Native to platform</span></li>
+            <li><span class="bullet-green"></span><span class="text-green">Emotional storytelling</span></li>
+            <li><span class="bullet-green"></span><span class="text-green">High scroll-stop power</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CUSTOMER RESEARCH =================== -->
+<section id="customer-research" class="section">
+  <div class="container">
+    <div class="text-center mb-20">
+      <div class="badge fade-up">Customer Research</div>
+      <h2 class="section-title fade-up d1">I listen before I speak.</h2>
+      <p class="section-sub fade-up d2">Great marketing starts with understanding real people — their fears, desires, and exact words.</p>
+    </div>
+    <div class="sources-grid fade-up d1">
+      <div class="source-card">
+        <div class="source-badge" style="background:#FFF4F0;color:#FF4500">Reddit</div>
+        <p class="source-desc">Organic conversations, honest opinions, niche communities with high signal</p>
+      </div>
+      <div class="source-card">
+        <div class="source-badge" style="background:#F0FBF6;color:#00B67A">Trustpilot</div>
+        <p class="source-desc">Verified reviews with detailed buying journeys and decision-making context</p>
+      </div>
+      <div class="source-card">
+        <div class="source-badge" style="background:#FFFBF0;color:#FF9900">Amazon Reviews</div>
+        <p class="source-desc">High-volume product feedback and star distribution analysis</p>
+      </div>
+      <div class="source-card">
+        <div class="source-badge" style="background:#F0F5FF;color:#4285F4">Google Reviews</div>
+        <p class="source-desc">Local trust signals and recurring themes from verified customers</p>
+      </div>
+      <div class="source-card">
+        <div class="source-badge" style="background:#EEF5FF;color:#1877F2">Facebook Groups</div>
+        <p class="source-desc">Community Q&A and peer-to-peer recommendations in real time</p>
+      </div>
+      <div class="source-card">
+        <div class="source-badge" style="background:#FFF0F0;color:#FF0000">YouTube Comments</div>
+        <p class="source-desc">Emotional reactions and deep engagement signals from video content</p>
+      </div>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card fade-up" style="border-color:#FECACA">
+        <div class="insight-icon" style="background:#FEE2E2">⚠️</div>
+        <h3>Pain Points</h3>
+        <ul class="insight-list">
+          <li><span class="insight-bullet" style="background:#EF4444"></span>Unreliable providers breaking trust</li>
+          <li><span class="insight-bullet" style="background:#EF4444"></span>Complex cancellation processes</li>
+          <li><span class="insight-bullet" style="background:#EF4444"></span>Hidden fees discovered post-purchase</li>
+          <li><span class="insight-bullet" style="background:#EF4444"></span>Poor customer support response times</li>
+        </ul>
+      </div>
+      <div class="insight-card fade-up d1" style="border-color:#FDE68A">
+        <div class="insight-icon" style="background:#FEF3C7">💬</div>
+        <h3>Objections</h3>
+        <ul class="insight-list">
+          <li><span class="insight-bullet" style="background:#F59E0B"></span>"Is this even legal?"</li>
+          <li><span class="insight-bullet" style="background:#F59E0B"></span>"Will it work on my device?"</li>
+          <li><span class="insight-bullet" style="background:#F59E0B"></span>"What if the quality is bad?"</li>
+          <li><span class="insight-bullet" style="background:#F59E0B"></span>"I've been burned by similar services"</li>
+        </ul>
+      </div>
+      <div class="insight-card fade-up d1" style="border-color:#BFDBFE">
+        <div class="insight-icon" style="background:#DBEAFE">🛍️</div>
+        <h3>Buying Triggers</h3>
+        <ul class="insight-list">
+          <li><span class="insight-bullet" style="background:#2563EB"></span>Free trial with no credit card</li>
+          <li><span class="insight-bullet" style="background:#2563EB"></span>Social proof from community</li>
+          <li><span class="insight-bullet" style="background:#2563EB"></span>Large content library emphasized</li>
+          <li><span class="insight-bullet" style="background:#2563EB"></span>Simple setup and onboarding</li>
+        </ul>
+      </div>
+      <div class="insight-card fade-up d2" style="border-color:#DDD6FE">
+        <div class="insight-icon" style="background:#EDE9FE">💡</div>
+        <h3>Key Insights</h3>
+        <ul class="insight-list">
+          <li><span class="insight-bullet" style="background:#7C3AED"></span>Reliability beats price in decision-making</li>
+          <li><span class="insight-bullet" style="background:#7C3AED"></span>Community trust is the #1 conversion lever</li>
+          <li><span class="insight-bullet" style="background:#7C3AED"></span>Technical ease removes the biggest objection</li>
+          <li><span class="insight-bullet" style="background:#7C3AED"></span>"Cancel anytime" doubles trial signups</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== COPYWRITING =================== -->
+<section id="copywriting" class="section section-alt">
+  <div class="container" style="max-width:860px">
+    <div class="text-center mb-20">
+      <div class="badge fade-up" style="background:#fff">Copywriting</div>
+      <h2 class="section-title fade-up d1">Words that make people act.</h2>
+      <p class="section-sub fade-up d2">Every word is chosen to move the reader closer to a decision.</p>
+    </div>
+    <div class="copy-card fade-up">
+      <div class="copy-type-col">
+        <div class="copy-type-badge">Hook</div>
+        <div class="copy-sublabel">Pattern Interrupt</div>
+      </div>
+      <div>
+        <div class="copy-quote">"I canceled Netflix, Disney+, and Hulu all in the same week. Here's what I switched to instead..."</div>
+        <div class="copy-note">Opens with curiosity, implies social proof, teases value</div>
+      </div>
+    </div>
+    <div class="copy-card fade-up d1">
+      <div class="copy-type-col">
+        <div class="copy-type-badge">Headline</div>
+        <div class="copy-sublabel">Problem-Solution</div>
+      </div>
+      <div>
+        <div class="copy-quote">"Stop Paying for 3 Streaming Services You Only Use 20% Of"</div>
+        <div class="copy-note">Speaks directly to a specific, relatable frustration</div>
+      </div>
+    </div>
+    <div class="copy-card fade-up d2">
+      <div class="copy-type-col">
+        <div class="copy-type-badge">Offer</div>
+        <div class="copy-sublabel">Risk Reversal</div>
+      </div>
+      <div>
+        <div class="copy-quote">"Try all 10,000 channels FREE for 7 days. No credit card. No commitment. Just press play."</div>
+        <div class="copy-note">Removes every objection in a single sentence</div>
+      </div>
+    </div>
+    <div class="copy-card fade-up d3">
+      <div class="copy-type-col">
+        <div class="copy-type-badge">CTA</div>
+        <div class="copy-sublabel">Action-Oriented</div>
+      </div>
+      <div>
+        <div class="copy-quote">"Start My Free Trial →"</div>
+        <div class="copy-note">First-person CTA increases conversion by removing friction</div>
+      </div>
+    </div>
+    <div class="copy-card fade-up d4">
+      <div class="copy-type-col">
+        <div class="copy-type-badge">UGC Script</div>
+        <div class="copy-sublabel">Testimonial Hook</div>
+      </div>
+      <div>
+        <div class="copy-quote">"POV: You just realized you've been overpaying for TV by $80/month for years. [cut to reaction] This is what I found instead..."</div>
+        <div class="copy-note">Native-feeling, high-engagement format for Reels/TikTok</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== TESTIMONIALS =================== -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="text-center mb-20">
+      <div class="badge fade-up">Testimonials</div>
+      <h2 class="section-title fade-up d1">What clients say.</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-text">"Youssef completely transformed our lead generation. Our cost per lead dropped by 40% in the first month, and the quality of leads improved dramatically. He doesn't just run ads — he understands the business."</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar" style="background:#FEF3C7;color:#D97706">AK</div>
+          <div><div class="testimonial-name">Ahmed K.</div><div class="testimonial-role">Real Estate Agency Owner</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up d1">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-text">"The customer research Youssef delivered was eye-opening. He uncovered angles and pain points we had never considered. Our conversion rate on the new landing page is 3x what it was before."</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar" style="background:#FCE7F3;color:#DB2777">SM</div>
+          <div><div class="testimonial-name">Sara M.</div><div class="testimonial-role">E-Commerce Founder, Baby Niche</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up d1">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-text">"We went from burning money on untargeted campaigns to a 3.2x ROAS in 30 days. Youssef's process is methodical, data-driven, and genuinely different from any marketer we've worked with before."</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar" style="background:#EDE9FE;color:#7C3AED">KB</div>
+          <div><div class="testimonial-name">Karim B.</div><div class="testimonial-role">IPTV Service — CEO</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up d2">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testimonial-text">"The landing page analysis was incredibly detailed. Youssef identified 12 conversion killers we had missed entirely. After implementing his recommendations, our trial signups jumped 28%."</p>
+        <div class="testimonial-footer">
+          <div class="testimonial-avatar" style="background:#DBEAFE;color:#1D4ED8">LF</div>
+          <div><div class="testimonial-name">Laila F.</div><div class="testimonial-role">SaaS Startup — Marketing Lead</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACT =================== -->
+<section id="contact" class="section section-alt">
+  <div class="container" style="max-width:860px">
+    <div class="contact-banner fade-up">
+      <div class="contact-banner-grid"></div>
+      <div class="contact-banner-glow"></div>
+      <div class="contact-banner-available">
+        <span class="dot" style="width:8px;height:8px;border-radius:50%;background:#4ADE80;display:inline-block;animation:pulse 2s infinite"></span>
+        Available for new projects
+      </div>
+      <h2>Ready to scale?</h2>
+      <p>Let's build a marketing system that turns every dollar into measurable growth.</p>
+      <a href="mailto:hello@youssef.com" class="btn-primary" style="display:inline-flex">
+        Start a Conversation
+        <svg style="width:18px;height:18px;margin-left:8px" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+    <div class="contact-links fade-up d1">
+      <a href="mailto:hello@youssef.com" class="contact-link">
+        <div class="contact-link-icon">📧</div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-val">hello@youssef.com</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/youssef" class="contact-link" target="_blank" rel="noopener">
+        <div class="contact-link-icon">💼</div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-val">linkedin.com/in/youssef</div>
+        </div>
+      </a>
+      <a href="https://wa.me/212600000000" class="contact-link" target="_blank" rel="noopener">
+        <div class="contact-link-icon">📱</div>
+        <div>
+          <div class="contact-link-label">WhatsApp</div>
+          <div class="contact-link-val">+212 600 000 000</div>
+        </div>
+      </a>
+    </div>
+    <div class="contact-cv fade-up d2">
+      <a href="cv.pdf" download class="btn-secondary">
+        <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">Youssef<span>.</span></div>
+      <div class="footer-copy">© 2026 Youssef — Performance Marketing & Media Buyer</div>
+      <div class="footer-right">Built with precision.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== SCRIPTS =================== -->
+<script>
+  /* ---- Navbar scroll ---- */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+    highlightNav();
+  }, { passive: true });
+
+  /* ---- Active nav ---- */
+  function highlightNav() {
+    const sections = ['about','process','skills','projects','research','contact'];
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+
+  /* ---- Mobile menu ---- */
+  function toggleMenu() {
+    document.getElementById('nav-mobile').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('nav-mobile').classList.remove('open');
+  }
+
+  /* ---- Smooth scroll ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ---- Scroll reveal ---- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+
+        /* Animate progress bars */
+        entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+          const w = bar.dataset.width;
+          if (w) bar.style.width = w + '%';
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* Also observe skill cards for progress bars */
+  document.querySelectorAll('.skill-card').forEach(card => {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+            bar.style.width = bar.dataset.width + '%';
+          });
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    io.observe(card);
+  });
+
+  /* ---- Accordion ---- */
+  function toggleAccordion(btn) {
+    const item = btn.closest('.accordion-item');
+    const isOpen = item.classList.contains('open');
+
+    /* Close all */
+    document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+
+    /* Open clicked if it was closed */
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
