@@ -1,0 +1,136 @@
+/* ============ MY1MDOLLAR — Reddit theme popup ============ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #1A1A1B;            /* Reddit dark bg */
+  --panel: #272729;          /* Reddit dark panel */
+  --border: #343536;         /* Reddit dark border */
+  --text: #D7DADC;           /* Reddit dark text */
+  --muted: #818384;          /* Reddit muted */
+  --orange: #FF4500;         /* Reddit orangered */
+  --orange-soft: #FF6314;
+  --upvote: #FF8b60;
+  --green: #46D160;          /* Reddit online green */
+}
+
+html, body { width: 400px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  font-size: 14px;
+}
+
+.popup { padding: 18px 18px 14px; }
+
+/* ---------- Header ---------- */
+.header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.logo-mark {
+  width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--orange), var(--orange-soft));
+  color: #fff; font-weight: 800; font-size: 17px;
+  display: flex; align-items: center; justify-content: center;
+  letter-spacing: -1px;
+}
+.title { font-size: 17px; font-weight: 700; color: #fff; }
+.subtitle { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+/* ---------- Tabs ---------- */
+.tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.tab {
+  flex: 1; padding: 9px 10px; border-radius: 8px; cursor: pointer;
+  background: var(--panel); color: var(--muted);
+  border: 1px solid var(--border);
+  font-size: 13px; font-weight: 600; font-family: inherit;
+  transition: all 0.15s;
+}
+.tab:hover { border-color: var(--muted); }
+.tab.active {
+  background: rgba(255, 69, 0, 0.14);
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+/* ---------- Fields ---------- */
+.field { margin-bottom: 13px; }
+.label {
+  display: block; font-size: 10.5px; font-weight: 700;
+  letter-spacing: 1.2px; color: var(--muted); margin-bottom: 6px;
+}
+input[type="text"], input[type="number"], select {
+  width: 100%; padding: 10px 12px;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-size: 13.5px;
+  font-family: inherit;
+}
+input::placeholder { color: #565758; }
+input:focus, select:focus { outline: none; border-color: var(--orange); }
+select { cursor: pointer; appearance: auto; }
+
+.sub-input-wrap { position: relative; }
+.sub-prefix {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--orange); font-weight: 700; font-size: 13.5px; pointer-events: none;
+}
+.sub-input-wrap input { padding-left: 32px; }
+
+.row { display: flex; gap: 10px; }
+.half { flex: 1; }
+
+/* ---------- Checkbox ---------- */
+.check-row {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 12.5px; color: var(--text); cursor: pointer;
+  margin: 2px 0 15px; user-select: none;
+}
+.check-row input { accent-color: var(--orange); width: 15px; height: 15px; cursor: pointer; }
+.tag-demo {
+  font-size: 10px; font-weight: 700; color: var(--upvote);
+  background: rgba(255, 69, 0, 0.12); padding: 1px 6px; border-radius: 4px;
+  font-family: "Consolas", monospace;
+}
+.tag-demo.pain { color: #FF6B6B; background: rgba(255, 107, 107, 0.1); }
+
+/* ---------- Main button ---------- */
+.btn-main {
+  width: 100%; padding: 13px;
+  background: linear-gradient(135deg, var(--orange), var(--orange-soft));
+  color: #fff; border: none; border-radius: 10px;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit;
+  transition: filter 0.15s;
+}
+.btn-main:hover { filter: brightness(1.1); }
+.btn-main:disabled { filter: grayscale(0.5); opacity: 0.7; cursor: wait; }
+
+/* ---------- Progress ---------- */
+.progress-wrap { margin-top: 14px; }
+.progress-bar {
+  height: 6px; background: var(--panel); border-radius: 999px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--orange), var(--upvote));
+  border-radius: 999px; transition: width 0.3s;
+}
+.progress-text { font-size: 12px; color: var(--muted); margin-top: 7px; text-align: center; }
+.progress-text.done { color: var(--green); font-weight: 600; }
+.progress-text.error { color: #FF6B6B; }
+
+/* ---------- Footnote ---------- */
+.footnote {
+  margin-top: 14px; font-size: 11px; line-height: 1.5; color: var(--muted);
+  border-top: 1px solid var(--border); padding-top: 11px;
+}
+.footnote code {
+  background: var(--panel); padding: 1px 5px; border-radius: 4px;
+  font-family: "Consolas", monospace; font-size: 10.5px;
+}
+
+/* ---------- Background note ---------- */
+.bg-note {
+  margin-top: 10px; padding: 9px 12px; border-radius: 8px;
+  background: rgba(70, 209, 96, 0.08); border: 1px solid rgba(70, 209, 96, 0.3);
+  color: var(--green); font-size: 11.5px; line-height: 1.5;
+}

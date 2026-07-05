@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-mark">$/</div>
+      <div class="header-text">
+        <div class="title">My1MDollar</div>
+        <div class="subtitle">Keyword search or full subreddit export to .txt</div>
+      </div>
+    </header>
+
+    <!-- Mode tabs -->
+    <div class="tabs">
+      <button class="tab active" data-mode="keyword" type="button">Keyword search</button>
+      <button class="tab" data-mode="subreddit" type="button">Subreddit / community</button>
+    </div>
+
+    <!-- Keyword input -->
+    <div class="field" id="keywordField">
+      <label class="label" for="keywordInput">KEYWORD</label>
+      <input type="text" id="keywordInput" placeholder="e.g. dog pulling on leash" />
+    </div>
+
+    <!-- Subreddit input -->
+    <div class="field" id="subredditField" hidden>
+      <label class="label" for="subredditInput">SUBREDDIT</label>
+      <div class="sub-input-wrap">
+        <span class="sub-prefix">r/</span>
+        <input type="text" id="subredditInput" placeholder="e.g. DogAdvice" />
+      </div>
+    </div>
+
+    <!-- Options row -->
+    <div class="row">
+      <div class="field half">
+        <label class="label" for="sortSelect">SORT BY</label>
+        <select id="sortSelect">
+          <option value="relevance">Relevance</option>
+          <option value="top">Top</option>
+          <option value="hot">Hot</option>
+          <option value="new">New</option>
+          <option value="comments">Most comments</option>
+        </select>
+      </div>
+      <div class="field half">
+        <label class="label" for="maxPosts">MAX POSTS</label>
+        <input type="number" id="maxPosts" value="25" min="1" max="100" />
+      </div>
+    </div>
+
+    <div class="row" id="timeRow">
+      <div class="field half">
+        <label class="label" for="timeSelect">TIME</label>
+        <select id="timeSelect">
+          <option value="month" selected>1 month</option>
+          <option value="2months">2 months</option>
+          <option value="3months">3 months</option>
+          <option value="6months">6 months</option>
+          <option value="year">1 year</option>
+          <option value="2years">2 years</option>
+          <option value="all">All time</option>
+        </select>
+      </div>
+      <div class="field half">
+        <label class="label" for="minScore">MIN UPVOTES</label>
+        <input type="number" id="minScore" value="0" min="0" />
+      </div>
+    </div>
+
+    <!-- Signal tagging -->
+    <label class="check-row">
+      <input type="checkbox" id="tagSignals" checked />
+      <span>Tag buying signals f l'export <span class="tag-demo">[$$ BUY]</span> <span class="tag-demo pain">[PAIN]</span></span>
+    </label>
+
+    <!-- Action -->
+    <button class="btn-main" id="searchBtn" type="button">Search &amp; export</button>
+
+    <!-- Progress -->
+    <div class="progress-wrap" id="progressWrap" hidden>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText">...</div>
+    </div>
+    <div class="bg-note" id="bgNote" hidden>
+      &#128274; T9der tsedd had popup — l'export kaykhdem f background. Progress ban f badge dyal icon, w notification ghadi tjik melli ysali.
+    </div>
+
+    <p class="footnote">
+      Uses Reddit's public <code>.json</code> endpoints. No login needed — but
+      Reddit may rate-limit large exports, so this runs with built-in delays.
+    </p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
